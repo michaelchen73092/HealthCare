@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  HealthCare
+//  test
 //
-//  Created by CHENWEI CHIH on 6/16/16.
+//  Created by CHENWEI CHIH on 6/18/16.
 //  Copyright © 2016 HealthCare.inc. All rights reserved.
 //
 
@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        // Setting Front color and size for All NavigationBar
-        let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFontOfSize(17)
-        
-        //UINavigationBar.appearance().barTintColor = UIColor(netHex: 0x003366)
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        
         return true
     }
 
@@ -54,14 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "HealthCare.inc.HealthCare" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "HealthCare.inc.test" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("HealthCare", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("test", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 
@@ -114,20 +107,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
-
-//Define Color by HEX type
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-    }
-    
-    convenience init(netHex:Int) {
-        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
-    }
 }
 
