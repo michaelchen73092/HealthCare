@@ -1,6 +1,6 @@
 //
 //  Doctors.swift
-//  HealthCare
+//  PersonsKit
 //
 //  Created by CHENWEI CHIH on 6/23/16.
 //  Copyright © 2016 HealthCare.inc. All rights reserved.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Doctors: NSManagedObject {
+public class Doctors: Persons {
 
 // Insert code here to add functionality to your managed object subclass
 

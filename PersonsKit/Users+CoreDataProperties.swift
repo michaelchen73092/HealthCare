@@ -1,6 +1,6 @@
 //
 //  Users+CoreDataProperties.swift
-//  HealthCare
+//  PersonsKit
 //
 //  Created by CHENWEI CHIH on 6/23/16.
 //  Copyright © 2016 HealthCare.inc. All rights reserved.
@@ -14,6 +14,6 @@ import CoreData
 
 extension Users {
 
-    @NSManaged var favorateDoctors: NSObject?
+    @NSManaged public var favorateDoctors: NSObject?
 
 }

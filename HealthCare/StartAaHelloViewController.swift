@@ -12,7 +12,6 @@ class StartAaHelloViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -28,7 +27,9 @@ class StartAaHelloViewController: UIViewController {
         let delay = 1 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue()) {
-           // self.performSegueWithIdentifier("hello", sender: nil)
+           self.performSegueWithIdentifier("StartAb", sender: nil)
+           //if has user default account to to Main MVC(Aa)
+           //else go to login page (StartAb)
         }
         
     }

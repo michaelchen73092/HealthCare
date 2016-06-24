@@ -18,8 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="HealthCare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IHS-js-g9h">
+                                <rect key="frame" x="150" y="354" width="115" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                </variation>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HealthCare_logo_inner" translatesAutoresizingMaskIntoConstraints="NO" id="nwA-Z1-yuj">
-                                <rect key="frame" x="182" y="279" width="50" height="50"/>
+                                <rect key="frame" x="182" y="275" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="do5-eS-Ylu">
                                         <variation key="heightClass=regular-widthClass=regular" constant="70"/>
@@ -29,15 +38,6 @@
                                     </constraint>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="HealthCare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IHS-js-g9h">
-                                <rect key="frame" x="166" y="358" width="82" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -58,10 +58,98 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="KCH-2q-0lh" kind="show" identifier="StartAb" id="gak-cq-mtO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="203.25" y="332.25"/>
+        </scene>
+        <!--Start Ab Login View Controller-->
+        <scene sceneID="mXT-32-dPp">
+            <objects>
+                <viewController id="KCH-2q-0lh" customClass="StartAbLoginViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hxC-nj-IHA"/>
+                        <viewControllerLayoutGuide type="bottom" id="czg-h2-U1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ElL-QL-TEI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-0I-LlM">
+                                <rect key="frame" x="20" y="353" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwE-bZ-Nmf">
+                                <rect key="frame" x="20" y="325" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNp-vq-a45">
+                                <rect key="frame" x="20" y="399" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibm-BT-vDL">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <state key="normal" title="Log In">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ibm-BT-vDL" firstAttribute="top" secondItem="UNp-vq-a45" secondAttribute="top" id="IEY-jd-rRb"/>
+                                    <constraint firstAttribute="trailing" secondItem="ibm-BT-vDL" secondAttribute="trailing" id="KaQ-w3-Op6"/>
+                                    <constraint firstAttribute="bottom" secondItem="ibm-BT-vDL" secondAttribute="bottom" id="g9b-0F-j2F"/>
+                                    <constraint firstItem="ibm-BT-vDL" firstAttribute="leading" secondItem="UNp-vq-a45" secondAttribute="leading" id="q03-SL-RGh"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HealthCare_logo_inner" translatesAutoresizingMaskIntoConstraints="NO" id="xK2-d4-wT4">
+                                <rect key="frame" x="182" y="235" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sjq-Ze-vpO"/>
+                                    <constraint firstAttribute="width" constant="50" id="uQt-D8-VhY"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUU-c8-xKA">
+                                <rect key="frame" x="20" y="623" width="374" height="30"/>
+                                <state key="normal" title="Sign Up for HealthCare">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FxV-0I-LlM" firstAttribute="centerX" secondItem="ElL-QL-TEI" secondAttribute="centerX" id="1AO-7M-PKi"/>
+                            <constraint firstItem="FxV-0I-LlM" firstAttribute="top" secondItem="bwE-bZ-Nmf" secondAttribute="bottom" constant="-2" id="9C6-gB-qb1"/>
+                            <constraint firstItem="czg-h2-U1j" firstAttribute="top" secondItem="KUU-c8-xKA" secondAttribute="bottom" constant="83" id="BXj-nb-32C"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="UNp-vq-a45" secondAttribute="leading" id="Cdc-dP-5il"/>
+                            <constraint firstItem="UNp-vq-a45" firstAttribute="top" secondItem="FxV-0I-LlM" secondAttribute="bottom" constant="16" id="Dkj-b9-TPb"/>
+                            <constraint firstItem="FxV-0I-LlM" firstAttribute="centerY" secondItem="ElL-QL-TEI" secondAttribute="centerY" id="H1t-8r-w34"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KUU-c8-xKA" secondAttribute="trailing" id="J0p-x8-ccd"/>
+                            <constraint firstItem="FxV-0I-LlM" firstAttribute="top" secondItem="hxC-nj-IHA" secondAttribute="bottom" constant="333" id="RAG-5A-8N0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UNp-vq-a45" secondAttribute="trailing" id="RhI-Mi-HhS"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bwE-bZ-Nmf" secondAttribute="leading" id="Sda-kF-QiL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FxV-0I-LlM" secondAttribute="trailing" id="WdL-lL-aWa"/>
+                            <constraint firstItem="xK2-d4-wT4" firstAttribute="centerX" secondItem="ElL-QL-TEI" secondAttribute="centerX" id="Y9t-YQ-cc0"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="KUU-c8-xKA" secondAttribute="leading" id="nPH-7l-BY5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bwE-bZ-Nmf" secondAttribute="trailing" id="npg-u5-czw"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FxV-0I-LlM" secondAttribute="leading" id="stO-Xq-WFo"/>
+                            <constraint firstItem="bwE-bZ-Nmf" firstAttribute="top" secondItem="xK2-d4-wT4" secondAttribute="bottom" constant="40" id="xdl-cn-xwi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="RAG-5A-8N0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbB-7m-cyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="332"/>
         </scene>
     </scenes>
     <resources>

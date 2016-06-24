@@ -1,0 +1,10 @@
+framework module PersonsKit {
+  umbrella header "PersonsKit.h"
+
+  export *
+  module * { export * }
+}
+
+module PersonsKit.Swift {
+    header "PersonsKit-Swift.h"
+}

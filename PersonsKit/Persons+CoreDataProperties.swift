@@ -1,6 +1,6 @@
 //
 //  Persons+CoreDataProperties.swift
-//  HealthCare
+//  PersonsKit
 //
 //  Created by CHENWEI CHIH on 6/23/16.
 //  Copyright © 2016 HealthCare.inc. All rights reserved.
@@ -14,12 +14,13 @@ import CoreData
 
 extension Persons {
 
-    @NSManaged var birthday: NSDate?
-    @NSManaged var isdoctor: NSNumber?
-    @NSManaged var email: String?
-    @NSManaged var firstname: String?
-    @NSManaged var gender: String?
-    @NSManaged var lastname: String?
-    @NSManaged var password: String?
+    @NSManaged public var birthday: NSDate?
+    @NSManaged public var isdoctor: NSNumber?
+    @NSManaged public var email: String?
+    @NSManaged public var firstname: String?
+    @NSManaged public var gender: String?
+    @NSManaged public var lastname: String?
+    @NSManaged public var password: String?
+    
 
 }
