@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import CoreData
+import PersonsKit
+
+var signInUser: Persons?
 
 class StartAaHelloViewController: UIViewController {
     // MARK: - Life Cycle
@@ -27,11 +31,41 @@ class StartAaHelloViewController: UIViewController {
         let delay = 1 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue()) {
-           self.performSegueWithIdentifier("StartAb", sender: nil)
-           //if has user default account to to Main MVC(Aa)
-           //else go to login page (StartAb)
+            //if account is Users, go to to user Main MVC(Aa)
+            //if account is Doctors, go to to doctor Main MVC(??)
+            //if no account to go login page(StartAb)
+           self.searchDefaultUserOrDoctor()
         }
-        
+    }
+    
+    func searchDefaultUserOrDoctor(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+
+        let fetchRequestDoctor = NSFetchRequest(entityName: "Doctors")
+        let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+        do {
+            //fetch a local user
+            let Personresults =  try managedContext.executeFetchRequest(fetchRequestPerson)
+            let person = Personresults as! [NSManagedObject]
+            //fetch a local doctor
+            let Doctorresults =  try managedContext.executeFetchRequest(fetchRequestDoctor)
+            let doctor = Doctorresults as! [NSManagedObject]
+            
+            if person.count != 0{
+                //if account is Persons, go to to user Main MVC(Aa)
+                signInUser = person[0] as? Persons //make sure person[0] always can downcasting to Person
+            }else if doctor.count != 0 {
+                //if account is Doctors, go to to doctor Main MVC(??)
+                signInUser = doctor[0] as! Doctors //make sure doctor[0] always can downcasting to Doctors
+            }else {
+                //if no account to go login page(StartAb)
+                performSegueWithIdentifier("StartAb", sender: nil)
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     /*

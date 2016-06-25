@@ -77,7 +77,7 @@ class ViewController: UIViewController {
                 image.image = UIImage(data: person.image!)
                 
             }else {
-                Alert.show("Failed", message: "No Record is Found", vc: self)
+                Alert.show("Failed", message: "AA No Record is Found", vc: self)
             }
         
         }catch let error as NSError

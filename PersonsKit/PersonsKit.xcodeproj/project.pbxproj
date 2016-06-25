@@ -10,13 +10,11 @@
 		8B1216141D1D02290033843A /* PersonsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B1216131D1D02290033843A /* PersonsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B12161B1D1D02290033843A /* PersonsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1216101D1D02290033843A /* PersonsKit.framework */; };
 		8B1216201D1D02290033843A /* PersonsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12161F1D1D02290033843A /* PersonsKitTests.swift */; };
-		8B12162C1D1D024C0033843A /* PersonsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B12162A1D1D024C0033843A /* PersonsModel.xcdatamodeld */; };
-		8B1216331D1D03A30033843A /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12162D1D1D03A30033843A /* Persons+CoreDataProperties.swift */; };
-		8B1216341D1D03A30033843A /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12162E1D1D03A30033843A /* Persons.swift */; };
-		8B1216351D1D03A30033843A /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12162F1D1D03A30033843A /* Users+CoreDataProperties.swift */; };
-		8B1216361D1D03A30033843A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216301D1D03A30033843A /* Users.swift */; };
-		8B1216371D1D03A30033843A /* Doctors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216311D1D03A30033843A /* Doctors+CoreDataProperties.swift */; };
-		8B1216381D1D03A30033843A /* Doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216321D1D03A30033843A /* Doctors.swift */; };
+		8B12166D1D1E12F70033843A /* PersonsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166B1D1E12F70033843A /* PersonsModel.xcdatamodeld */; };
+		8B1216721D1E14200033843A /* Doctors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */; };
+		8B1216731D1E14200033843A /* Doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166F1D1E14200033843A /* Doctors.swift */; };
+		8B1216741D1E14200033843A /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */; };
+		8B1216751D1E14200033843A /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216711D1E14200033843A /* Persons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +34,11 @@
 		8B12161A1D1D02290033843A /* PersonsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B12161F1D1D02290033843A /* PersonsKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsKitTests.swift; sourceTree = "<group>"; };
 		8B1216211D1D02290033843A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B12162B1D1D024C0033843A /* PersonsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonsModel.xcdatamodel; sourceTree = "<group>"; };
-		8B12162D1D1D03A30033843A /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B12162E1D1D03A30033843A /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
-		8B12162F1D1D03A30033843A /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B1216301D1D03A30033843A /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
-		8B1216311D1D03A30033843A /* Doctors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doctors+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B1216321D1D03A30033843A /* Doctors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Doctors.swift; sourceTree = "<group>"; };
+		8B12166C1D1E12F70033843A /* PersonsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonsModel.xcdatamodel; sourceTree = "<group>"; };
+		8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doctors+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B12166F1D1E14200033843A /* Doctors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Doctors.swift; sourceTree = "<group>"; };
+		8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B1216711D1E14200033843A /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,13 +63,11 @@
 		8B1216061D1D02290033843A = {
 			isa = PBXGroup;
 			children = (
-				8B12162D1D1D03A30033843A /* Persons+CoreDataProperties.swift */,
-				8B12162E1D1D03A30033843A /* Persons.swift */,
-				8B12162F1D1D03A30033843A /* Users+CoreDataProperties.swift */,
-				8B1216301D1D03A30033843A /* Users.swift */,
-				8B1216311D1D03A30033843A /* Doctors+CoreDataProperties.swift */,
-				8B1216321D1D03A30033843A /* Doctors.swift */,
-				8B12162A1D1D024C0033843A /* PersonsModel.xcdatamodeld */,
+				8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */,
+				8B12166F1D1E14200033843A /* Doctors.swift */,
+				8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */,
+				8B1216711D1E14200033843A /* Persons.swift */,
+				8B12166B1D1E12F70033843A /* PersonsModel.xcdatamodeld */,
 				8B1216121D1D02290033843A /* PersonsKit */,
 				8B12161E1D1D02290033843A /* PersonsKitTests */,
 				8B1216111D1D02290033843A /* Products */,
@@ -217,13 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1216341D1D03A30033843A /* Persons.swift in Sources */,
-				8B1216331D1D03A30033843A /* Persons+CoreDataProperties.swift in Sources */,
-				8B1216361D1D03A30033843A /* Users.swift in Sources */,
-				8B1216351D1D03A30033843A /* Users+CoreDataProperties.swift in Sources */,
-				8B1216371D1D03A30033843A /* Doctors+CoreDataProperties.swift in Sources */,
-				8B12162C1D1D024C0033843A /* PersonsModel.xcdatamodeld in Sources */,
-				8B1216381D1D03A30033843A /* Doctors.swift in Sources */,
+				8B1216741D1E14200033843A /* Persons+CoreDataProperties.swift in Sources */,
+				8B1216721D1E14200033843A /* Doctors+CoreDataProperties.swift in Sources */,
+				8B1216731D1E14200033843A /* Doctors.swift in Sources */,
+				8B1216751D1E14200033843A /* Persons.swift in Sources */,
+				8B12166D1D1E12F70033843A /* PersonsModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +403,7 @@
 				8B1216261D1D02290033843A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B1216271D1D02290033843A /* Build configuration list for PBXNativeTarget "PersonsKitTests" */ = {
 			isa = XCConfigurationList;
@@ -419,16 +412,17 @@
 				8B1216291D1D02290033843A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8B12162A1D1D024C0033843A /* PersonsModel.xcdatamodeld */ = {
+		8B12166B1D1E12F70033843A /* PersonsModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8B12162B1D1D024C0033843A /* PersonsModel.xcdatamodel */,
+				8B12166C1D1E12F70033843A /* PersonsModel.xcdatamodel */,
 			);
-			currentVersion = 8B12162B1D1D024C0033843A /* PersonsModel.xcdatamodel */;
+			currentVersion = 8B12166C1D1E12F70033843A /* PersonsModel.xcdatamodel */;
 			path = PersonsModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
