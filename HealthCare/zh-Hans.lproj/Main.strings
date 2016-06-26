@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Email invalid."; ObjectID = "5dE-Ub-fla"; */
+"5dE-Ub-fla.text" = "Email invalid.";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "FxV-0I-LlM"; */
+"FxV-0I-LlM.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "HealthCare"; ObjectID = "IHS-js-g9h"; */
+"IHS-js-g9h.text" = "HealthCare";
+
+/* Class = "UIButton"; normalTitle = "Sign Up for HealthCare"; ObjectID = "KUU-c8-xKA"; */
+"KUU-c8-xKA.normalTitle" = "Sign Up for HealthCare";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "bwE-bZ-Nmf"; */
+"bwE-bZ-Nmf.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL"; */
+"ibm-BT-vDL.normalTitle" = "Log In";

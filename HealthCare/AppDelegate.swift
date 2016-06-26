@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+// MARK: - Public function
 
 //Define Color by HEX type
 extension UIColor {
@@ -132,3 +133,23 @@ extension UIColor {
     }
 }
 
+
+//check email format
+public func validateEmail(enteredEmail:String) -> Bool {
+    let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+    return emailPredicate.evaluateWithObject(enteredEmail)
+    
+}
+
+//wiggle animation
+public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Offset: CGFloat)
+{
+    let animation = CABasicAnimation(keyPath: "position")
+    animation.duration = Duration
+    animation.repeatCount = RepeatCount
+    animation.autoreverses = true
+    animation.fromValue = NSValue(CGPoint: CGPointMake(Field.center.x - Offset, Field.center.y))
+    animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
+    Field.layer.addAnimation(animation, forKey: "position")
+}

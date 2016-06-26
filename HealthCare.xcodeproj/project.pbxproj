@@ -11,6 +11,7 @@
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
 		8B26FD671D1E5FE900C12813 /* PersonsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; };
 		8B26FD681D1E5FE900C12813 /* PersonsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448BD1D1F97DB00B7913F /* Alert.swift */; };
 		8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801781D13BD5500FDE666 /* AppDelegate.swift */; };
 		8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8017C1D13BD5500FDE666 /* Main.storyboard */; };
 		8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801821D13BD5500FDE666 /* Assets.xcassets */; };
@@ -54,6 +55,11 @@
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
 		8B26FD651D1E5FD000C12813 /* PersonsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PersonsKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/PersonsKit.framework"; sourceTree = "<group>"; };
+		8B5448BD1D1F97DB00B7913F /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		8B5448BF1D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		8B5448C01D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8B5448C11D1FA7F400B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		8B5448C21D1FA7F400B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8BE801751D13BD5500FDE666 /* HealthCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE801781D13BD5500FDE666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8017D1D13BD5500FDE666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 		8BE801771D13BD5500FDE666 /* HealthCare */ = {
 			isa = PBXGroup;
 			children = (
+				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
 				8B26FD651D1E5FD000C12813 /* PersonsKit.framework */,
 				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
@@ -217,6 +224,14 @@
 					8BE801741D13BD5500FDE666 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = Z5P4SMDK2W;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+						};
 					};
 					8BE8018B1D13BD5500FDE666 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -284,6 +299,7 @@
 			files = (
 				8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */,
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
+				8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */,
 				8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +340,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8BE8017D1D13BD5500FDE666 /* Base */,
+				8B5448BF1D1FA7EE00B7913F /* zh-Hans */,
+				8B5448C11D1FA7F400B7913F /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -332,6 +350,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8BE801851D13BD5500FDE666 /* Base */,
+				8B5448C01D1FA7EE00B7913F /* zh-Hans */,
+				8B5448C21D1FA7F400B7913F /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

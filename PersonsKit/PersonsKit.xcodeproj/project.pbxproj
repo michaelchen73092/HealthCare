@@ -11,10 +11,10 @@
 		8B12161B1D1D02290033843A /* PersonsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1216101D1D02290033843A /* PersonsKit.framework */; };
 		8B1216201D1D02290033843A /* PersonsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12161F1D1D02290033843A /* PersonsKitTests.swift */; };
 		8B12166D1D1E12F70033843A /* PersonsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166B1D1E12F70033843A /* PersonsModel.xcdatamodeld */; };
-		8B1216721D1E14200033843A /* Doctors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */; };
-		8B1216731D1E14200033843A /* Doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12166F1D1E14200033843A /* Doctors.swift */; };
-		8B1216741D1E14200033843A /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */; };
-		8B1216751D1E14200033843A /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1216711D1E14200033843A /* Persons.swift */; };
+		8B5448B91D1F5E8700B7913F /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448B51D1F5E8700B7913F /* Persons+CoreDataProperties.swift */; };
+		8B5448BA1D1F5E8700B7913F /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448B61D1F5E8700B7913F /* Persons.swift */; };
+		8B5448BB1D1F5E8700B7913F /* Doctors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448B71D1F5E8700B7913F /* Doctors+CoreDataProperties.swift */; };
+		8B5448BC1D1F5E8700B7913F /* Doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448B81D1F5E8700B7913F /* Doctors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +35,10 @@
 		8B12161F1D1D02290033843A /* PersonsKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsKitTests.swift; sourceTree = "<group>"; };
 		8B1216211D1D02290033843A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B12166C1D1E12F70033843A /* PersonsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonsModel.xcdatamodel; sourceTree = "<group>"; };
-		8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doctors+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B12166F1D1E14200033843A /* Doctors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Doctors.swift; sourceTree = "<group>"; };
-		8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B1216711D1E14200033843A /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
+		8B5448B51D1F5E8700B7913F /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B5448B61D1F5E8700B7913F /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
+		8B5448B71D1F5E8700B7913F /* Doctors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doctors+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B5448B81D1F5E8700B7913F /* Doctors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Doctors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +63,10 @@
 		8B1216061D1D02290033843A = {
 			isa = PBXGroup;
 			children = (
-				8B12166E1D1E14200033843A /* Doctors+CoreDataProperties.swift */,
-				8B12166F1D1E14200033843A /* Doctors.swift */,
-				8B1216701D1E14200033843A /* Persons+CoreDataProperties.swift */,
-				8B1216711D1E14200033843A /* Persons.swift */,
+				8B5448B51D1F5E8700B7913F /* Persons+CoreDataProperties.swift */,
+				8B5448B61D1F5E8700B7913F /* Persons.swift */,
+				8B5448B71D1F5E8700B7913F /* Doctors+CoreDataProperties.swift */,
+				8B5448B81D1F5E8700B7913F /* Doctors.swift */,
 				8B12166B1D1E12F70033843A /* PersonsModel.xcdatamodeld */,
 				8B1216121D1D02290033843A /* PersonsKit */,
 				8B12161E1D1D02290033843A /* PersonsKitTests */,
@@ -211,10 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1216741D1E14200033843A /* Persons+CoreDataProperties.swift in Sources */,
-				8B1216721D1E14200033843A /* Doctors+CoreDataProperties.swift in Sources */,
-				8B1216731D1E14200033843A /* Doctors.swift in Sources */,
-				8B1216751D1E14200033843A /* Persons.swift in Sources */,
+				8B5448BC1D1F5E8700B7913F /* Doctors.swift in Sources */,
+				8B5448BB1D1F5E8700B7913F /* Doctors+CoreDataProperties.swift in Sources */,
+				8B5448BA1D1F5E8700B7913F /* Persons.swift in Sources */,
+				8B5448B91D1F5E8700B7913F /* Persons+CoreDataProperties.swift in Sources */,
 				8B12166D1D1E12F70033843A /* PersonsModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

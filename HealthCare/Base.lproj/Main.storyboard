@@ -27,25 +27,10 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HealthCare_logo_inner" translatesAutoresizingMaskIntoConstraints="NO" id="nwA-Z1-yuj">
-                                <rect key="frame" x="182" y="275" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="do5-eS-Ylu">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="70"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="50" id="yUl-0u-eJY">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="70"/>
-                                    </constraint>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="IHS-js-g9h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2TF-bL-Brf"/>
-                            <constraint firstItem="nwA-Z1-yuj" firstAttribute="centerX" secondItem="IHS-js-g9h" secondAttribute="centerX" id="CKd-ir-CIu"/>
-                            <constraint firstItem="IHS-js-g9h" firstAttribute="top" secondItem="nwA-Z1-yuj" secondAttribute="bottom" constant="29" id="K5J-SB-gDC">
-                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
-                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="IHS-js-g9h" secondAttribute="trailing" constant="144" id="NBk-w0-lHc"/>
                             <constraint firstItem="IHS-js-g9h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="144" id="bpT-vH-gIi"/>
                             <constraint firstItem="IHS-js-g9h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x0t-UZ-klR"/>
@@ -84,7 +69,7 @@
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwE-bZ-Nmf">
-                                <rect key="frame" x="20" y="324" width="374" height="30"/>
+                                <rect key="frame" x="20" y="323" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
@@ -96,6 +81,9 @@
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="login" destination="KCH-2q-0lh" eventType="touchUpInside" id="4FT-9e-NFr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,7 +95,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HealthCare_logo_inner" translatesAutoresizingMaskIntoConstraints="NO" id="xK2-d4-wT4">
-                                <rect key="frame" x="182" y="234" width="50" height="50"/>
+                                <rect key="frame" x="182" y="233" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sjq-Ze-vpO"/>
                                     <constraint firstAttribute="width" constant="50" id="uQt-D8-VhY"/>
@@ -118,38 +106,70 @@
                                 <state key="normal" title="Sign Up for HealthCare">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signup" destination="KCH-2q-0lh" eventType="touchUpInside" id="Fzi-ds-dWO"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email invalid." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dE-Ub-fla">
+                                <rect key="frame" x="20" y="294" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="KUU-c8-xKA" firstAttribute="top" relation="lessThanOrEqual" secondItem="UNp-vq-a45" secondAttribute="bottom" constant="194" id="0Z2-MP-Wnd"/>
                             <constraint firstItem="FxV-0I-LlM" firstAttribute="centerX" secondItem="ElL-QL-TEI" secondAttribute="centerX" id="1AO-7M-PKi"/>
-                            <constraint firstItem="FxV-0I-LlM" firstAttribute="top" secondItem="bwE-bZ-Nmf" secondAttribute="bottom" constant="-1" id="9C6-gB-qb1"/>
-                            <constraint firstItem="czg-h2-U1j" firstAttribute="top" secondItem="KUU-c8-xKA" secondAttribute="bottom" constant="83" id="BXj-nb-32C"/>
+                            <constraint firstItem="FxV-0I-LlM" firstAttribute="top" secondItem="bwE-bZ-Nmf" secondAttribute="bottom" id="9C6-gB-qb1"/>
+                            <constraint firstItem="czg-h2-U1j" firstAttribute="top" secondItem="KUU-c8-xKA" secondAttribute="bottom" constant="83" id="BXj-nb-32C">
+                                <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                            </constraint>
+                            <constraint firstItem="bwE-bZ-Nmf" firstAttribute="top" secondItem="5dE-Ub-fla" secondAttribute="bottom" constant="8" id="Bdo-0L-53F"/>
                             <constraint firstAttribute="leadingMargin" secondItem="UNp-vq-a45" secondAttribute="leading" id="Cdc-dP-5il"/>
                             <constraint firstItem="UNp-vq-a45" firstAttribute="top" secondItem="FxV-0I-LlM" secondAttribute="bottom" constant="16" id="Dkj-b9-TPb"/>
                             <constraint firstItem="FxV-0I-LlM" firstAttribute="centerY" secondItem="ElL-QL-TEI" secondAttribute="centerY" id="H1t-8r-w34"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KUU-c8-xKA" secondAttribute="trailing" id="J0p-x8-ccd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5dE-Ub-fla" secondAttribute="trailing" id="ND4-lh-lQF"/>
                             <constraint firstItem="FxV-0I-LlM" firstAttribute="top" secondItem="hxC-nj-IHA" secondAttribute="bottom" constant="333" id="RAG-5A-8N0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UNp-vq-a45" secondAttribute="trailing" id="RhI-Mi-HhS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="bwE-bZ-Nmf" secondAttribute="leading" id="Sda-kF-QiL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FxV-0I-LlM" secondAttribute="trailing" id="WdL-lL-aWa"/>
                             <constraint firstItem="xK2-d4-wT4" firstAttribute="centerX" secondItem="ElL-QL-TEI" secondAttribute="centerX" id="Y9t-YQ-cc0"/>
+                            <constraint firstItem="KUU-c8-xKA" firstAttribute="top" relation="lessThanOrEqual" secondItem="UNp-vq-a45" secondAttribute="bottom" priority="500" constant="194" id="Ywf-pD-fTU"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5dE-Ub-fla" secondAttribute="leading" id="dV1-Nr-HFA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="KUU-c8-xKA" secondAttribute="leading" id="nPH-7l-BY5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bwE-bZ-Nmf" secondAttribute="trailing" id="npg-u5-czw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="FxV-0I-LlM" secondAttribute="leading" id="stO-Xq-WFo"/>
+                            <constraint firstItem="KUU-c8-xKA" firstAttribute="leading" secondItem="UNp-vq-a45" secondAttribute="trailing" constant="-374" id="ttK-lx-End"/>
                             <constraint firstItem="bwE-bZ-Nmf" firstAttribute="top" secondItem="xK2-d4-wT4" secondAttribute="bottom" constant="40" id="xdl-cn-xwi"/>
+                            <constraint firstItem="5dE-Ub-fla" firstAttribute="top" secondItem="xK2-d4-wT4" secondAttribute="bottom" constant="11" id="yfG-UX-e38"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="RAG-5A-8N0"/>
+                                <exclude reference="0Z2-MP-Wnd"/>
+                                <exclude reference="Ywf-pD-fTU"/>
+                                <exclude reference="ttK-lx-End"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Ywf-pD-fTU"/>
+                                <exclude reference="ttK-lx-End"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="emailField" destination="bwE-bZ-Nmf" id="cEe-J0-Gtd"/>
+                        <outlet property="invelidLabel" destination="5dE-Ub-fla" id="3GO-yy-9I5"/>
+                        <outlet property="passwordField" destination="FxV-0I-LlM" id="rMc-E8-Esa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbB-7m-cyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="332"/>
+            <point key="canvasLocation" x="871" y="332"/>
         </scene>
     </scenes>
     <resources>
