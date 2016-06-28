@@ -12,6 +12,16 @@
 		8B26FD671D1E5FE900C12813 /* PersonsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; };
 		8B26FD681D1E5FE900C12813 /* PersonsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448BD1D1F97DB00B7913F /* Alert.swift */; };
+		8B5448C51D20967E00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448C71D20967E00B7913F /* InfoPlist.strings */; };
+		8B5448CA1D20967F00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448CC1D20967F00B7913F /* InfoPlist.strings */; };
+		8B5448CF1D20968000B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448D11D20968000B7913F /* InfoPlist.strings */; };
+		8B5448D41D209C2000B7913F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448D61D209C2000B7913F /* Localizable.strings */; };
+		8B5448D81D20D3D900B7913F /* StartAcEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448D71D20D3D900B7913F /* StartAcEmailViewController.swift */; };
+		8B5448DC1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */; };
+		8B5448DE1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */; };
+		8B5448E01D219C6100B7913F /* StartAdNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */; };
+		8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */; };
+		8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */; };
 		8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801781D13BD5500FDE666 /* AppDelegate.swift */; };
 		8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8017C1D13BD5500FDE666 /* Main.storyboard */; };
 		8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801821D13BD5500FDE666 /* Assets.xcassets */; };
@@ -60,6 +70,16 @@
 		8B5448C01D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8B5448C11D1FA7F400B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		8B5448C21D1FA7F400B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8B5448C61D20967E00B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8B5448CB1D20967F00B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8B5448D01D20968000B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8B5448D51D209C2000B7913F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8B5448D71D20D3D900B7913F /* StartAcEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAcEmailViewController.swift; sourceTree = "<group>"; };
+		8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegueFromRight.swift; sourceTree = "<group>"; };
+		8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegueFromLeft.swift; sourceTree = "<group>"; };
+		8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAdNameViewController.swift; sourceTree = "<group>"; };
+		8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAePasswordViewController.swift; sourceTree = "<group>"; };
+		8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAfBirthdayViewController.swift; sourceTree = "<group>"; };
 		8BE801751D13BD5500FDE666 /* HealthCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE801781D13BD5500FDE666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8017D1D13BD5500FDE666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,13 +143,21 @@
 		8BE801771D13BD5500FDE666 /* HealthCare */ = {
 			isa = PBXGroup;
 			children = (
+				8B5448D61D209C2000B7913F /* Localizable.strings */,
+				8B5448CC1D20967F00B7913F /* InfoPlist.strings */,
 				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
+				8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */,
+				8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */,
 				8B26FD651D1E5FD000C12813 /* PersonsKit.framework */,
 				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
 				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
 				8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */,
 				8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */,
+				8B5448D71D20D3D900B7913F /* StartAcEmailViewController.swift */,
+				8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */,
+				8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */,
+				8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */,
 				8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */,
 				8BE801871D13BD5500FDE666 /* Info.plist */,
 			);
@@ -139,6 +167,7 @@
 		8BE8018F1D13BD5500FDE666 /* HealthCareTests */ = {
 			isa = PBXGroup;
 			children = (
+				8B5448C71D20967E00B7913F /* InfoPlist.strings */,
 				8BE801901D13BD5600FDE666 /* HealthCareTests.swift */,
 				8BE801921D13BD5600FDE666 /* Info.plist */,
 			);
@@ -148,6 +177,7 @@
 		8BE8019A1D13BD5600FDE666 /* HealthCareUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8B5448D11D20968000B7913F /* InfoPlist.strings */,
 				8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */,
 				8BE8019D1D13BD5600FDE666 /* Info.plist */,
 			);
@@ -270,7 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5448D41D209C2000B7913F /* Localizable.strings in Resources */,
 				8BE801861D13BD5500FDE666 /* LaunchScreen.storyboard in Resources */,
+				8B5448CA1D20967F00B7913F /* InfoPlist.strings in Resources */,
 				8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */,
 				8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */,
 			);
@@ -280,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5448C51D20967E00B7913F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5448CF1D20968000B7913F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,10 +331,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5448DE1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift in Sources */,
+				8B5448D81D20D3D900B7913F /* StartAcEmailViewController.swift in Sources */,
 				8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */,
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
 				8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */,
+				8B5448E01D219C6100B7913F /* StartAdNameViewController.swift in Sources */,
 				8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */,
+				8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */,
+				8B5448DC1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift in Sources */,
+				8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +376,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8B5448C71D20967E00B7913F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5448C61D20967E00B7913F /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8B5448CC1D20967F00B7913F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5448CB1D20967F00B7913F /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8B5448D11D20968000B7913F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5448D01D20968000B7913F /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8B5448D61D209C2000B7913F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5448D51D209C2000B7913F /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8BE8017C1D13BD5500FDE666 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

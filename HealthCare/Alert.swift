@@ -10,11 +10,11 @@ import UIKit
 
 class Alert: NSObject{
 
-    static func show(title:String, message: String, vc: UIViewController){
+    static func show(title:String, message: String, ok: String, vc: UIViewController){
     //create the controller
         let alertCT = UIAlertController(title:title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
     //create alert action
-        let okAc = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default){(alert: UIAlertAction) ->Void in
+        let okAc = UIAlertAction(title: ok, style: UIAlertActionStyle.Default){(alert: UIAlertAction) ->Void in
             alertCT.dismissViewControllerAnimated(true, completion: nil)
         }
     //add alert action to alert controller

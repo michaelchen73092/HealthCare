@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import PersonsKit
 
+// set a temporal Persons in memory
 var signInUser: Persons?
 
 class StartAaHelloViewController: UIViewController {
@@ -45,10 +46,10 @@ class StartAaHelloViewController: UIViewController {
         let fetchRequestDoctor = NSFetchRequest(entityName: "Doctors")
         let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
         do {
-            //fetch a local user
+            //fetch a local user in HD
             let Personresults =  try managedContext.executeFetchRequest(fetchRequestPerson)
             let person = Personresults as! [NSManagedObject]
-            //fetch a local doctor
+            //fetch a local doctor in HD
             let Doctorresults =  try managedContext.executeFetchRequest(fetchRequestDoctor)
             let doctor = Doctorresults as! [NSManagedObject]
             

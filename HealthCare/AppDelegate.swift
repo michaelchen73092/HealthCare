@@ -11,7 +11,7 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -116,8 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-// MARK: - Public function
 
+// MARK: - Public function
 //Define Color by HEX type
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
@@ -142,6 +142,17 @@ public func validateEmail(enteredEmail:String) -> Bool {
     
 }
 
+//check password format
+public func validatePassword(enteredPassword: String) -> Bool {
+    // patten at least 8 characters : (?=^.{8,}$)
+    // patten has at least a special words : (?=.*[!@#$%^&*]+)
+    // patten has 6 number : (?=.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9])
+    // patten has a letter words : (?=.*[A-Za-z])
+    let passwordFormat = "(?=^.{8,}$)(?=.*[!@#$%^&*]+)(?=.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9])(?=.*[A-Za-z]).*$"
+    let emailPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
+    return emailPredicate.evaluateWithObject(enteredPassword)
+}
+
 //wiggle animation
 public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Offset: CGFloat)
 {
@@ -152,4 +163,8 @@ public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Off
     animation.fromValue = NSValue(CGPoint: CGPointMake(Field.center.x - Offset, Field.center.y))
     animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
     Field.layer.addAnimation(animation, forKey: "position")
+}
+//global variable
+public struct Storyboard {
+    static let moveheight = CGFloat(70) // how much height should move when KB is shown
 }

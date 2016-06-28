@@ -1,8 +1,8 @@
 //
-//  StartAbLoginViewController.swift
+//  StartAcEmailViewController.swift
 //  HealthCare
 //
-//  Created by CHENWEI CHIH on 6/23/16.
+//  Created by CHENWEI CHIH on 6/26/16.
 //  Copyright © 2016 HealthCare.inc. All rights reserved.
 //
 
@@ -10,78 +10,61 @@ import UIKit
 import CoreData
 import PersonsKit
 
-class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
+class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Variables
-    @IBOutlet weak var invelidLabel: UILabel!
+    @IBOutlet weak var invalidEmail: UILabel!
     @IBOutlet weak var emailField: UITextField! { didSet{ emailField.delegate = self}}
-    @IBOutlet weak var passwordField: UITextField! { didSet{ passwordField.delegate = self}}
     private struct MVC {
-        static let nextIdentifier = "StartAc"
+        static let nextIdentifier = "StartAd"
+        static let lastIdentifier = "StartAb"
         static var KBisON = false // set for recording KB is ON/OFF
-        static var secure: Bool = true
     }
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
-    // MARK: - ViewController cycle
+    
+    // MARK: - Viewcontroller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         //set notification for keyboard appear and hide
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+
+        //swipe right gesture setting
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+        
     }
     private func updateUI(){
         //label setting
         emailField.clearsOnBeginEditing = true
-        passwordField.secureTextEntry = MVC.secure
-        passwordField.clearsOnBeginEditing = true
-        invelidLabel.hidden = true
+        invalidEmail.hidden = true
         
         //disable autocorrection
         emailField.autocorrectionType = .No
-        passwordField.autocorrectionType = .No
+        
+        //show email if it's set
+        emailField.text = signInUser?.email
+    }
+
+    // MARK: - Continue func
+    @IBAction func Continue() {
+        checkForNextPage()
     }
     
-    // MARK: - login or signup
-    @IBAction func login() {
-        invelidLabel.hidden = true
+    private func checkForNextPage(){
+        invalidEmail.hidden = true
         if emailField.text == "" {
             //wiggle if there is no data
             wiggle(emailField, Duration: 0.07, RepeatCount: 4, Offset: 10)
-        }
-        else if passwordField.text == "" {
-            //wiggle if there is no data
-            wiggle(passwordField, Duration: 0.07, RepeatCount: 4, Offset: 10)
-        }
-        else if !validateEmail(emailField.text!){
-            invelidLabel.hidden = false
+        }else if !validateEmail(emailField.text!){
+            invalidEmail.hidden = false
             wiggle(emailField, Duration: 0.03, RepeatCount: 10, Offset: 2)
+        }else{
+            signInUser?.email = emailField.text
+            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }
-        else {
-            //querry Doctor account on AWS if no data
-            //querry Persons account on AWS
-            //if success
-            if signInUser != nil {
-                //go to User page if signInUser is Persons type
-                //else go to Doctors page
-                
-            }
-            else{
-                //alert that there is no this user
-                let invalidemail = NSLocalizedString("Invalid Email", comment: "Title for no email record found")
-                let invalidemaildetail = NSLocalizedString("The email you entered doesn't appear to belong to an account. Please check your email address and try again.", comment: "Detail for no email record found")
-                let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
-                Alert.show(invalidemail, message: invalidemaildetail, ok: okstring,vc: self)
-            }//end else
-        }//end all else
-    }//end login
-    
-    @IBAction func signup() {
-        //initialize signInUser by moc
-        let PersonsEntity = NSEntityDescription.entityForName("Persons", inManagedObjectContext: moc)
-        signInUser = Persons(entity: PersonsEntity!, insertIntoManagedObjectContext: moc)
-        performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
     }
     
     // MARK: - Keyboard
@@ -91,26 +74,42 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
             MVC.KBisON = true
         }
     }
-    
+
     func keyboardWillHide(notification: NSNotification) {
         if MVC.KBisON {
             self.view.frame.origin.y += Storyboard.moveheight
             MVC.KBisON = false
         }
     }
+    
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
+        checkForNextPage()
         return true
+    }
+
+    
+    // MARK: - gesture
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                performSegueWithIdentifier(MVC.lastIdentifier, sender: nil)
+            default:
+                break
+            }
+        }
     }
     
     // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ac = segue.destinationViewController as? StartAcEmailViewController{
+        if let ad = segue.destinationViewController as? StartAdNameViewController{
             //pass current moc to next controller which use for create Persons object
-            ac.moc = self.moc
+            ad.moc = self.moc
         }
     }
+    
     /*
     // MARK: - Navigation
 

@@ -3,27 +3,27 @@
     <entity name="Doctors" representedClassName="Doctors" parentEntity="Persons" syncable="YES">
         <attribute name="doctorFiveStarNumber" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="doctorFourStarNumber" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
-        <attribute name="doctorGraduateSchool" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <attribute name="doctorHospital" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="doctorGraduateSchool" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doctorHospital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doctorLanguage" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="doctorOneStarNumber" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
-        <attribute name="doctorProfession" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="doctorProfession" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doctorStar" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="doctorThreeStarNumber" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="doctorTwoStarNumber" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Persons" representedClassName="Persons" isAbstract="YES" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" minDateTimeInterval="-1609430400" defaultDateTimeInterval="-978235200" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favorateDoctors" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
-        <attribute name="firstname" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <attribute name="gender" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isdoctor" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="lastname" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <attribute name="password" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Doctors" positionX="124" positionY="9" width="128" height="195"/>
-        <element name="Persons" positionX="-36" positionY="9" width="128" height="165"/>
+        <element name="Doctors" positionX="124" positionY="9" width="128" height="193"/>
+        <element name="Persons" positionX="-36" positionY="9" width="128" height="163"/>
     </elements>
 </model>

@@ -1,18 +1,18 @@
-
 /* Class = "UILabel"; text = "Email invalid."; ObjectID = "5dE-Ub-fla"; */
-"5dE-Ub-fla.text" = "Email invalid.";
+"5dE-Ub-fla.text" = "電子郵件錯誤";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "FxV-0I-LlM"; */
-"FxV-0I-LlM.placeholder" = "Password";
+"FxV-0I-LlM.placeholder" = "密碼";
 
 /* Class = "UILabel"; text = "HealthCare"; ObjectID = "IHS-js-g9h"; */
 "IHS-js-g9h.text" = "HealthCare";
 
 /* Class = "UIButton"; normalTitle = "Sign Up for HealthCare"; ObjectID = "KUU-c8-xKA"; */
-"KUU-c8-xKA.normalTitle" = "Sign Up for HealthCare";
+"KUU-c8-xKA.normalTitle" = "註冊 HealthCare";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "bwE-bZ-Nmf"; */
-"bwE-bZ-Nmf.placeholder" = "Email";
+"bwE-bZ-Nmf.placeholder" = "電子郵件";
 
 /* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL"; */
-"ibm-BT-vDL.normalTitle" = "Log In";
+"ibm-BT-vDL.normalTitle" = "登入";
+
