@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //creat new framework bundle - Wei-Chih Chen
-        let PersonsKitBundle = NSBundle(identifier: "HealthCare.inc.PersonsKit")
+        let PersonsKitBundle = NSBundle(identifier: "healthcare.testKit")
         let modelURL = PersonsKitBundle!.URLForResource("PersonsModel", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
@@ -144,11 +144,11 @@ public func validateEmail(enteredEmail:String) -> Bool {
 
 //check password format
 public func validatePassword(enteredPassword: String) -> Bool {
-    // patten at least 8 characters : (?=^.{8,}$)
+    // patten at least 6 characters : (?=^.{6,}$)
     // patten has at least a special words : (?=.*[!@#$%^&*]+)
-    // patten has 6 number : (?=.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9])
+    // patten has a number : (?=.*[0-9])
     // patten has a letter words : (?=.*[A-Za-z])
-    let passwordFormat = "(?=^.{8,}$)(?=.*[!@#$%^&*]+)(?=.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9])(?=.*[A-Za-z]).*$"
+    let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*]+)(?=.*[0-9])(?=.*[A-Za-z]).*$"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
     return emailPredicate.evaluateWithObject(enteredPassword)
 }

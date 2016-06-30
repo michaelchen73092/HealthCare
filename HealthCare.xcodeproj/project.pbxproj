@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */; };
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
-		8B26FD671D1E5FE900C12813 /* PersonsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; };
-		8B26FD681D1E5FE900C12813 /* PersonsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B26FD651D1E5FD000C12813 /* PersonsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */; };
 		8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448BD1D1F97DB00B7913F /* Alert.swift */; };
 		8B5448C51D20967E00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448C71D20967E00B7913F /* InfoPlist.strings */; };
 		8B5448CA1D20967F00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448CC1D20967F00B7913F /* InfoPlist.strings */; };
@@ -28,6 +27,8 @@
 		8BE801861D13BD5500FDE666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */; };
 		8BE801911D13BD5600FDE666 /* HealthCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801901D13BD5600FDE666 /* HealthCareTests.swift */; };
 		8BE8019C1D13BD5600FDE666 /* HealthCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */; };
+		8BE817611D232C29006FA9C8 /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE8175F1D232C0F006FA9C8 /* testKit.framework */; };
+		8BE817621D232C29006FA9C8 /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE8175F1D232C0F006FA9C8 /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B26FD681D1E5FE900C12813 /* PersonsKit.framework in Embed Frameworks */,
+				8BE817621D232C29006FA9C8 /* testKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +65,7 @@
 /* Begin PBXFileReference section */
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
-		8B26FD651D1E5FD000C12813 /* PersonsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PersonsKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/PersonsKit.framework"; sourceTree = "<group>"; };
+		8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAgGenderViewController.swift; sourceTree = "<group>"; };
 		8B5448BD1D1F97DB00B7913F /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8B5448BF1D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8B5448C01D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		8BE801971D13BD5600FDE666 /* HealthCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCareUITests.swift; sourceTree = "<group>"; };
 		8BE8019D1D13BD5600FDE666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BE8175F1D232C0F006FA9C8 /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B26FD671D1E5FE900C12813 /* PersonsKit.framework in Frameworks */,
+				8BE817611D232C29006FA9C8 /* testKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +150,7 @@
 				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
 				8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */,
 				8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */,
-				8B26FD651D1E5FD000C12813 /* PersonsKit.framework */,
+				8BE8175F1D232C0F006FA9C8 /* testKit.framework */,
 				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
 				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
@@ -158,6 +160,7 @@
 				8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */,
 				8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */,
 				8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */,
+				8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */,
 				8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */,
 				8BE801871D13BD5500FDE666 /* Info.plist */,
 			);
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5448DE1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift in Sources */,
+				8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */,
 				8B5448D81D20D3D900B7913F /* StartAcEmailViewController.swift in Sources */,
 				8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */,
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
@@ -454,7 +458,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -502,7 +506,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -526,7 +530,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/**",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
 					"/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphoneos/**",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
@@ -544,7 +548,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphonesimulator/**",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
 					"/Users/cmichael/Library/Developer/Xcode/DerivedData/PersonsKit-dkmjwrnqemtgesemsrhzajlezliy/Build/Products/Debug-iphoneos/**",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;

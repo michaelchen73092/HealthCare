@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import PersonsKit
+import testKit
 
 // set a temporal Persons in memory
 var signInUser: Persons?
