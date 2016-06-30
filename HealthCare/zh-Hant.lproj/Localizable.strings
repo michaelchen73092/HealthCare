@@ -1,9 +1,24 @@
+/* Title for fail open an account */
+"Fail" = "失敗";
+
 /* Title for no email record found */
 "Invalid Email" = "電子郵件錯誤";
 
 /* Confrim for exit alert */
 "OK" = "確定";
 
+/* Title for success open an account */
+"Success" = "成功";
+
 /* Detail for no email record found */
 "The email you entered doesn't appear to belong to an account. Please check your email address and try again." = "您輸入的電子郵件似乎不屬於任何帳號。請檢查您的電子郵件地址後再試一次。";
+
+/* detail of fail */
+"Your Account is NOT created" = "抱歉，無法為您創造帳戶，請稍候再試。";
+
+/* detail of Success */
+"Your Account is creaded" = "恭喜，您的帳戶已經建立。";
+
+/* Confrim for exit alert */
+"back" = "取消";
 

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import PersonsKit
+import testKit
 
 class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
     

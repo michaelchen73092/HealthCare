@@ -11,11 +11,23 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
+      <trans-unit id="3FZ-Nv-7Ew.placeholder">
+        <source>Enter your email address</source>
+        <note>Class = "UITextField"; placeholder = "Enter your email address"; ObjectID = "3FZ-Nv-7Ew";</note>
+      <target>輸入電子郵件</target></trans-unit>
+      <trans-unit id="5Kf-pu-L7i.normalTitle">
+        <source>Continue</source>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "5Kf-pu-L7i";</note>
+      <target>繼續</target></trans-unit>
       <trans-unit id="5dE-Ub-fla.text">
         <source>Email invalid.</source>
         <target>電子郵件錯誤</target>
         <note>Class = "UILabel"; text = "Email invalid."; ObjectID = "5dE-Ub-fla";</note>
       </trans-unit>
+      <trans-unit id="6rv-QS-xjQ.text">
+        <source>Enter a combination of at least six numbers, letters and punctuation marks (like # or !)</source>
+        <note>Class = "UILabel"; text = "Enter a combination of at least six numbers, letters and punctuation marks (like # or !)"; ObjectID = "6rv-QS-xjQ";</note>
+      <target>請輸入含有數字、英文字母和標點符號（例如＃或！）的密合組合，且至少由六個字元組成。</target></trans-unit>
       <trans-unit id="FxV-0I-LlM.placeholder">
         <source>Password</source>
         <target>密碼</target>
@@ -26,21 +38,89 @@
         <target>HealthCare</target>
         <note>Class = "UILabel"; text = "HealthCare"; ObjectID = "IHS-js-g9h";</note>
       </trans-unit>
+      <trans-unit id="IjB-V4-oJG.text">
+        <source>What's Your Birthday?</source>
+        <note>Class = "UILabel"; text = "What's Your Birthday?"; ObjectID = "IjB-V4-oJG";</note>
+      <target>請選擇您的出生日期。</target></trans-unit>
       <trans-unit id="KUU-c8-xKA.normalTitle">
         <source>Sign Up for HealthCare</source>
         <target>註冊 HealthCare</target>
         <note>Class = "UIButton"; normalTitle = "Sign Up for HealthCare"; ObjectID = "KUU-c8-xKA";</note>
       </trans-unit>
+      <trans-unit id="Qn8-u0-Ts3.normalTitle">
+        <source>Male</source>
+        <note>Class = "UIButton"; normalTitle = "Male"; ObjectID = "Qn8-u0-Ts3";</note>
+      <target>男性</target></trans-unit>
+      <trans-unit id="Rtt-X3-gR8.text">
+        <source>Create a Password</source>
+        <note>Class = "UILabel"; text = "Create a Password"; ObjectID = "Rtt-X3-gR8";</note>
+      <target>建立密碼</target></trans-unit>
+      <trans-unit id="Uik-XM-sei.placeholder">
+        <source>Password</source>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "Uik-XM-sei";</note>
+      <target>密碼</target></trans-unit>
+      <trans-unit id="XZI-aU-UWY.text">
+        <source>Email invalid.</source>
+        <note>Class = "UILabel"; text = "Email invalid."; ObjectID = "XZI-aU-UWY";</note>
+      <target>電子郵件無效。</target></trans-unit>
+      <trans-unit id="aE6-bR-fR3.text">
+        <source>You can change this later in your account settings.</source>
+        <note>Class = "UILabel"; text = "You can change this later in your account settings."; ObjectID = "aE6-bR-fR3";</note>
+      <target>您可以稍後在設定中更改。</target></trans-unit>
+      <trans-unit id="b99-8t-IqX.normalTitle">
+        <source>Female</source>
+        <note>Class = "UIButton"; normalTitle = "Female"; ObjectID = "b99-8t-IqX";</note>
+      <target>女性</target></trans-unit>
+      <trans-unit id="bH9-yI-8sF.text">
+        <source>Password Invalid.</source>
+        <note>Class = "UILabel"; text = "Password Invalid."; ObjectID = "bH9-yI-8sF";</note>
+      <target>密碼不合標準。</target></trans-unit>
       <trans-unit id="bwE-bZ-Nmf.placeholder">
         <source>Email</source>
         <target>電子郵件</target>
         <note>Class = "UITextField"; placeholder = "Email"; ObjectID = "bwE-bZ-Nmf";</note>
       </trans-unit>
+      <trans-unit id="chr-8a-FDB.placeholder">
+        <source>First name</source>
+        <note>Class = "UITextField"; placeholder = "First name"; ObjectID = "chr-8a-FDB";</note>
+      <target>名字</target></trans-unit>
+      <trans-unit id="gha-Ej-AQF.placeholder">
+        <source>Last name</source>
+        <note>Class = "UITextField"; placeholder = "Last name"; ObjectID = "gha-Ej-AQF";</note>
+      <target>姓氏</target></trans-unit>
       <trans-unit id="ibm-BT-vDL.normalTitle">
         <source>Log In</source>
         <target>登入</target>
         <note>Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL";</note>
       </trans-unit>
+      <trans-unit id="kT7-O6-L8c.normalTitle">
+        <source>Continue</source>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "kT7-O6-L8c";</note>
+      <target>繼續</target></trans-unit>
+      <trans-unit id="lIp-zX-usz.text">
+        <source>What's Your Name?</source>
+        <note>Class = "UILabel"; text = "What's Your Name?"; ObjectID = "lIp-zX-usz";</note>
+      <target>您的名字？</target></trans-unit>
+      <trans-unit id="m7v-gL-K9a.normalTitle">
+        <source>Continue</source>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "m7v-gL-K9a";</note>
+      <target>繼續</target></trans-unit>
+      <trans-unit id="rOF-8T-2XL.text">
+        <source>What's Your Email Adress?</source>
+        <note>Class = "UILabel"; text = "What's Your Email Adress?"; ObjectID = "rOF-8T-2XL";</note>
+      <target>您的電子郵件地址為何？</target></trans-unit>
+      <trans-unit id="uKH-lU-iDT.normalTitle">
+        <source>Continue</source>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "uKH-lU-iDT";</note>
+      <target>繼續</target></trans-unit>
+      <trans-unit id="vhr-pw-uQq.text">
+        <source>What's Your Gender?</source>
+        <note>Class = "UILabel"; text = "What's Your Gender?"; ObjectID = "vhr-pw-uQq";</note>
+      <target>您的性別？</target></trans-unit>
+      <trans-unit id="zgy-6X-nPQ.text">
+        <source>Please enter a valid birthday.</source>
+        <note>Class = "UILabel"; text = "Please enter a valid birthday."; ObjectID = "zgy-6X-nPQ";</note>
+      <target>請輸入正確的出生日期。</target></trans-unit>
     </body>
   </file>
   <file original="HealthCare/Info.plist" source-language="en" datatype="plaintext" target-language="zh-Hant">
@@ -63,18 +143,41 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
+      <trans-unit id="Fail">
+        <source>Fail</source>
+        <note>Title for fail open an account</note>
+      <target>失敗</target></trans-unit>
       <trans-unit id="Invalid Email">
         <source>Invalid Email</source>
+        <target>電子郵件錯誤</target>
         <note>Title for no email record found</note>
-      <target>電子郵件錯誤</target></trans-unit>
+      </trans-unit>
       <trans-unit id="OK">
         <source>OK</source>
+        <target>確定</target>
         <note>Confrim for exit alert</note>
-      <target>確定</target></trans-unit>
+      </trans-unit>
+      <trans-unit id="Success">
+        <source>Success</source>
+        <note>Title for success open an account</note>
+      <target>成功</target></trans-unit>
       <trans-unit id="The email you entered doesn't appear to belong to an account. Please check your email address and try again.">
         <source>The email you entered doesn't appear to belong to an account. Please check your email address and try again.</source>
+        <target>您輸入的電子郵件似乎不屬於任何帳號。請檢查您的電子郵件地址後再試一次。</target>
         <note>Detail for no email record found</note>
-      <target>您輸入的電子郵件似乎不屬於任何帳號。請檢查您的電子郵件地址後再試一次。</target></trans-unit>
+      </trans-unit>
+      <trans-unit id="Your Account is NOT created">
+        <source>Your Account is NOT created</source>
+        <note>detail of fail</note>
+      <target>抱歉，無法為您創造帳戶，請稍候再試。</target></trans-unit>
+      <trans-unit id="Your Account is creaded">
+        <source>Your Account is creaded</source>
+        <note>detail of Success</note>
+      <target>恭喜，您的帳戶已經建立。</target></trans-unit>
+      <trans-unit id="back">
+        <source>back</source>
+        <note>Confrim for exit alert</note>
+      <target>取消</target></trans-unit>
     </body>
   </file>
   <file original="HealthCareTests/Info.plist" source-language="en" datatype="plaintext" target-language="zh-Hant">
