@@ -1,14 +1,5 @@
-/* Class = "UITextField"; placeholder = "Enter your email address"; ObjectID = "3FZ-Nv-7Ew"; */
-"3FZ-Nv-7Ew.placeholder" = "輸入電子郵件";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "5Kf-pu-L7i"; */
-"5Kf-pu-L7i.normalTitle" = "繼續";
-
 /* Class = "UILabel"; text = "Email invalid."; ObjectID = "5dE-Ub-fla"; */
 "5dE-Ub-fla.text" = "電子郵件錯誤";
-
-/* Class = "UILabel"; text = "Enter a combination of at least six numbers, letters and punctuation marks (like # or !)"; ObjectID = "6rv-QS-xjQ"; */
-"6rv-QS-xjQ.text" = "請輸入含有數字、英文字母和標點符號（例如＃或！）的密合組合，且至少由六個字元組成。";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "FxV-0I-LlM"; */
 "FxV-0I-LlM.placeholder" = "密碼";
@@ -16,63 +7,12 @@
 /* Class = "UILabel"; text = "HealthCare"; ObjectID = "IHS-js-g9h"; */
 "IHS-js-g9h.text" = "HealthCare";
 
-/* Class = "UILabel"; text = "What's Your Birthday?"; ObjectID = "IjB-V4-oJG"; */
-"IjB-V4-oJG.text" = "請選擇您的出生日期。";
-
 /* Class = "UIButton"; normalTitle = "Sign Up for HealthCare"; ObjectID = "KUU-c8-xKA"; */
 "KUU-c8-xKA.normalTitle" = "註冊 HealthCare";
-
-/* Class = "UIButton"; normalTitle = "Male"; ObjectID = "Qn8-u0-Ts3"; */
-"Qn8-u0-Ts3.normalTitle" = "男性";
-
-/* Class = "UILabel"; text = "Create a Password"; ObjectID = "Rtt-X3-gR8"; */
-"Rtt-X3-gR8.text" = "建立密碼";
-
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Uik-XM-sei"; */
-"Uik-XM-sei.placeholder" = "密碼";
-
-/* Class = "UILabel"; text = "Email invalid."; ObjectID = "XZI-aU-UWY"; */
-"XZI-aU-UWY.text" = "電子郵件無效。";
-
-/* Class = "UILabel"; text = "You can change this later in your account settings."; ObjectID = "aE6-bR-fR3"; */
-"aE6-bR-fR3.text" = "您可以稍後在設定中更改。";
-
-/* Class = "UIButton"; normalTitle = "Female"; ObjectID = "b99-8t-IqX"; */
-"b99-8t-IqX.normalTitle" = "女性";
-
-/* Class = "UILabel"; text = "Password Invalid."; ObjectID = "bH9-yI-8sF"; */
-"bH9-yI-8sF.text" = "密碼不合標準。";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "bwE-bZ-Nmf"; */
 "bwE-bZ-Nmf.placeholder" = "電子郵件";
 
-/* Class = "UITextField"; placeholder = "First name"; ObjectID = "chr-8a-FDB"; */
-"chr-8a-FDB.placeholder" = "名字";
-
-/* Class = "UITextField"; placeholder = "Last name"; ObjectID = "gha-Ej-AQF"; */
-"gha-Ej-AQF.placeholder" = "姓氏";
-
 /* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL"; */
 "ibm-BT-vDL.normalTitle" = "登入";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "kT7-O6-L8c"; */
-"kT7-O6-L8c.normalTitle" = "繼續";
-
-/* Class = "UILabel"; text = "What's Your Name?"; ObjectID = "lIp-zX-usz"; */
-"lIp-zX-usz.text" = "您的名字？";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "m7v-gL-K9a"; */
-"m7v-gL-K9a.normalTitle" = "繼續";
-
-/* Class = "UILabel"; text = "What's Your Email Adress?"; ObjectID = "rOF-8T-2XL"; */
-"rOF-8T-2XL.text" = "您的電子郵件地址為何？";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "uKH-lU-iDT"; */
-"uKH-lU-iDT.normalTitle" = "繼續";
-
-/* Class = "UILabel"; text = "What's Your Gender?"; ObjectID = "vhr-pw-uQq"; */
-"vhr-pw-uQq.text" = "您的性別？";
-
-/* Class = "UILabel"; text = "Please enter a valid birthday."; ObjectID = "zgy-6X-nPQ"; */
-"zgy-6X-nPQ.text" = "請輸入正確的出生日期。";
 

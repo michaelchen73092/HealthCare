@@ -19,6 +19,7 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
         static let nextIdentifier = "StartAf"
         static let lastIdentifier = "StartAd"
         static var KBisON = false // set for recording KB is ON/OFF
+        static var secure: Bool = true
     }
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
@@ -38,6 +39,7 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
     private func updateUI(){
         //label setting
         passwordField.clearsOnBeginEditing = true
+        passwordField.secureTextEntry = MVC.secure
         invalidPassword.hidden = true
         //disable autocorrection
         passwordField.autocorrectionType = .No
