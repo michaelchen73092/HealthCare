@@ -56,6 +56,7 @@ class StartAaHelloViewController: UIViewController {
             if person.count != 0{
                 //if account is Persons, go to to user Main MVC(Aa)
                 signInUser = person[0] as? Persons //make sure person[0] always can downcasting to Person
+                performSegueWithIdentifier("MainPersons", sender: nil)
             }else if doctor.count != 0 {
                 //if account is Doctors, go to to doctor Main MVC(??)
                 signInUser = doctor[0] as! Doctors //make sure doctor[0] always can downcasting to Doctors

@@ -18,30 +18,50 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField! { didSet{ passwordField.delegate = self}}
     private struct MVC {
         static let nextIdentifier = "StartAc"
-        static var KBisON = false // set for recording KB is ON/OFF
         static var secure: Bool = true
     }
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
+    let tapRec = UITapGestureRecognizer()
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        //set notification for keyboard appear and hide
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        Storyboard.KBisON = false
+        
+        //tap gesture setting
+        tapRec.addTarget(self, action: #selector(self.tappedView))
+        self.view.addGestureRecognizer(tapRec)
+        
     }
     private func updateUI(){
         //label setting
-        emailField.clearsOnBeginEditing = true
         passwordField.secureTextEntry = MVC.secure
-        passwordField.clearsOnBeginEditing = true
         invelidLabel.hidden = true
         
         //disable autocorrection
         emailField.autocorrectionType = .No
         passwordField.autocorrectionType = .No
     }
+    
+    func tappedView(){
+        //dismissKB in AppDelegate
+        dismissKB(emailField, vc: self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        KBNotification()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    private func KBNotification(){
+        //set notification for keyboard appear and hide
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+
     
     // MARK: - login or signup
     @IBAction func login() {
@@ -65,7 +85,7 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
             if signInUser != nil {
                 //go to User page if signInUser is Persons type
                 //else go to Doctors page
-                
+                performSegueWithIdentifier("MainPersons", sender: nil)
             }
             else{
                 //alert that there is no this user
@@ -86,16 +106,16 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Keyboard
     func keyboardWillShow(notification: NSNotification) {
-        if !MVC.KBisON { //if NO KB, view move up
+        if !Storyboard.KBisON { //if NO KB, view move up
             self.view.frame.origin.y -= Storyboard.moveheight
-            MVC.KBisON = true
+            Storyboard.KBisON = true
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if MVC.KBisON {
+        if Storyboard.KBisON {
             self.view.frame.origin.y += Storyboard.moveheight
-            MVC.KBisON = false
+            Storyboard.KBisON = false
         }
     }
 

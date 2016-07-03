@@ -167,4 +167,16 @@ public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Off
 //global variable
 public struct Storyboard {
     static let moveheight = CGFloat(70) // how much height should move when KB is shown
+    static var KBisON = false // set for recording KB is ON/OFF
 }
+
+public func dismissKB(textField: UITextField, vc: UIViewController){
+    if Storyboard.KBisON {
+        vc.view.frame.origin.y += Storyboard.moveheight
+        Storyboard.KBisON = false
+        textField.resignFirstResponder()
+    }
+}
+
+
+

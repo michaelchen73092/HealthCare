@@ -43,6 +43,7 @@ class StartAgGenderViewController: UIViewController{
         buttonDehighlight(femaleButtonLabel, View: femaleView)
         //save user info to local CoreDate
         saveLocal()
+        performSegueWithIdentifier("MainPersons", sender: nil)
     }
     
     
@@ -54,6 +55,7 @@ class StartAgGenderViewController: UIViewController{
         buttonDehighlight(maleButtonLabel, View: maleView)
         //save user info to local CoreDate
         saveLocal()
+        performSegueWithIdentifier("MainPersons", sender: nil)
     }
     
     private func buttonHighlight(Button: UIButton!, View: UIView!){
@@ -82,10 +84,10 @@ class StartAgGenderViewController: UIViewController{
         do{
          try moc.save()
             //alert that there is no this user
-            let success = NSLocalizedString("Success", comment: "Title for success open an account")
-            let details = NSLocalizedString("Your Account is creaded", comment: "detail of Success")
-            let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
-            Alert.show(success, message: details, ok: okstring,vc: self)
+            //let success = NSLocalizedString("Success", comment: "Title for success open an account")
+            //let details = NSLocalizedString("Your Account is creaded", comment: "detail of Success")
+            //let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
+            //Alert.show(success, message: details, ok: okstring,vc: self)
         } catch _ as NSError
         {
             //alert that there is no this user

@@ -14,12 +14,11 @@ class UIStoryboardSegueFromRight: UIStoryboardSegue {
         let src = self.sourceViewController as UIViewController
         let dst = self.destinationViewController as UIViewController
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
-        //setting inital position for dst view (from right to left)
         dst.view.transform = CGAffineTransformMakeTranslation(src.view.frame.size.width, 0)
         
         UIView.animateWithDuration(0.5,
                                    delay: 0.0,
-                                   options: UIViewAnimationOptions.TransitionFlipFromRight,
+                                   options: UIViewAnimationOptions.CurveEaseInOut,
                                    animations: {
                                     dst.view.transform = CGAffineTransformMakeTranslation(0, 0)
             },

@@ -18,17 +18,20 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
     private struct MVC {
         static let nextIdentifier = "StartAf"
         static let lastIdentifier = "StartAd"
-        static var KBisON = false // set for recording KB is ON/OFF
     }
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let tapRec = UITapGestureRecognizer()
     
     // MARK: - Viewcontroller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        //set notification for keyboard appear and hide
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        Storyboard.KBisON = false
+        
+        //tap gesture setting
+        tapRec.addTarget(self, action: #selector(self.tappedView))
+        self.view.addGestureRecognizer(tapRec)
+        
         //swipe left gesture setting
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
@@ -37,7 +40,6 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
     
     private func updateUI(){
         //label setting
-        passwordField.clearsOnBeginEditing = true
         invalidPassword.hidden = true
         //disable autocorrection
         passwordField.autocorrectionType = .No
@@ -46,6 +48,32 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
         
     }
 
+    func tappedView(){
+        //dismissKB in AppDelegate
+        dismissKB(passwordField, vc: self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        KBNotification()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    private func KBNotification(){
+        //set notification for keyboard appear and hide
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    
+    // MARK: - Continue func
+    
+    @IBAction func Continue() {
+        checkForNextPage()
+    }
+    
     private func checkForNextPage(){
         invalidPassword.hidden = true
         if passwordField.text == "" {
@@ -60,25 +88,18 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - Continue func
-    
-    @IBAction func Continue() {
-        checkForNextPage()
-    }
-    
-    
     // MARK: - Keyboard
     func keyboardWillShow(notification: NSNotification) {
-        if !MVC.KBisON { //if NO KB, view move up
+        if !Storyboard.KBisON { //if NO KB, view move up
             self.view.frame.origin.y -= Storyboard.moveheight
-            MVC.KBisON = true
+            Storyboard.KBisON = true
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if MVC.KBisON {
+        if Storyboard.KBisON {
             self.view.frame.origin.y += Storyboard.moveheight
-            MVC.KBisON = false
+            Storyboard.KBisON = false
         }
     }
     
@@ -93,6 +114,7 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
+                tappedView()
                 performSegueWithIdentifier(MVC.lastIdentifier, sender: nil)
             default:
                 break

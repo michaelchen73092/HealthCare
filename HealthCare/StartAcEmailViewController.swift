@@ -18,27 +18,33 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
     private struct MVC {
         static let nextIdentifier = "StartAd"
         static let lastIdentifier = "StartAb"
-        static var KBisON = false // set for recording KB is ON/OFF
+        //static var KBisON = false // set for recording KB is ON/OFF
     }
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    //1
+    let tapRec = UITapGestureRecognizer()
     
     // MARK: - Viewcontroller Cycle
     override func viewDidLoad() {
+        //initialize
         super.viewDidLoad()
         updateUI()
-        //set notification for keyboard appear and hide
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-
+        //2
+        Storyboard.KBisON = false
+        
+        //tap gesture setting
+        tapRec.addTarget(self, action: #selector(self.tappedView))
+        self.view.addGestureRecognizer(tapRec)
+        
         //swipe right gesture setting
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
         
     }
+    
     private func updateUI(){
         //label setting
-        emailField.clearsOnBeginEditing = true
         invalidEmail.hidden = true
         
         //disable autocorrection
@@ -47,7 +53,26 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
         //show email if it's set
         emailField.text = signInUser?.email
     }
-
+    //3
+    func tappedView(){
+        //dismissKB in AppDelegate
+        dismissKB(emailField, vc: self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        KBNotification()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    private func KBNotification(){
+        //set notification for keyboard appear and hide
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    /////////3
     // MARK: - Continue func
     @IBAction func Continue() {
         checkForNextPage()
@@ -66,22 +91,22 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }
     }
-    
+    //4
     // MARK: - Keyboard
     func keyboardWillShow(notification: NSNotification) {
-        if !MVC.KBisON { //if NO KB, view move up
+        if !Storyboard.KBisON { //if NO KB, view move up
             self.view.frame.origin.y -= Storyboard.moveheight
-            MVC.KBisON = true
+            Storyboard.KBisON = true
         }
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        if MVC.KBisON {
+        if Storyboard.KBisON {
             self.view.frame.origin.y += Storyboard.moveheight
-            MVC.KBisON = false
+            Storyboard.KBisON = false
         }
     }
-    
+    /////////4
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
@@ -95,6 +120,8 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
+                //5
+                tappedView()
                 performSegueWithIdentifier(MVC.lastIdentifier, sender: nil)
             default:
                 break
@@ -104,7 +131,11 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ad = segue.destinationViewController as? StartAdNameViewController{
+        var destination = segue.destinationViewController as UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController!
+        }
+        if let ad = destination as? StartAdNameViewController{
             //pass current moc to next controller which use for create Persons object
             ad.moc = self.moc
         }
