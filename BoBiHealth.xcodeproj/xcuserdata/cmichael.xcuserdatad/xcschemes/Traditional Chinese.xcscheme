@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BE801741D13BD5500FDE666"
-               BuildableName = "HealthCare.app"
-               BlueprintName = "HealthCare"
-               ReferencedContainer = "container:HealthCare.xcodeproj">
+               BuildableName = "BoBiHealth.app"
+               BlueprintName = "BoBiHealth"
+               ReferencedContainer = "container:BoBiHealth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BE8018B1D13BD5500FDE666"
-               BuildableName = "HealthCareTests.xctest"
-               BlueprintName = "HealthCareTests"
-               ReferencedContainer = "container:HealthCare.xcodeproj">
+               BuildableName = "BoBiHealth.xctest"
+               BlueprintName = "BoBiHealthTests"
+               ReferencedContainer = "container:BoBiHealth.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BE801961D13BD5600FDE666"
-               BuildableName = "HealthCareUITests.xctest"
-               BlueprintName = "HealthCareUITests"
-               ReferencedContainer = "container:HealthCare.xcodeproj">
+               BuildableName = "BoBiHealth.xctest"
+               BlueprintName = "BoBiHealthUITests"
+               ReferencedContainer = "container:BoBiHealth.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BE801741D13BD5500FDE666"
-            BuildableName = "HealthCare.app"
-            BlueprintName = "HealthCare"
-            ReferencedContainer = "container:HealthCare.xcodeproj">
+            BuildableName = "BoBiHealth.app"
+            BlueprintName = "BoBiHealth"
+            ReferencedContainer = "container:BoBiHealth.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -70,15 +70,17 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      language = "zh-Hant"
+      region = "TW">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BE801741D13BD5500FDE666"
-            BuildableName = "HealthCare.app"
-            BlueprintName = "HealthCare"
-            ReferencedContainer = "container:HealthCare.xcodeproj">
+            BuildableName = "BoBiHealth.app"
+            BlueprintName = "BoBiHealth"
+            ReferencedContainer = "container:BoBiHealth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +97,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BE801741D13BD5500FDE666"
-            BuildableName = "HealthCare.app"
-            BlueprintName = "HealthCare"
-            ReferencedContainer = "container:HealthCare.xcodeproj">
+            BuildableName = "BoBiHealth.app"
+            BlueprintName = "BoBiHealth"
+            ReferencedContainer = "container:BoBiHealth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

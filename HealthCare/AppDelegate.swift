@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //creat new framework bundle - Wei-Chih Chen
-        let PersonsKitBundle = NSBundle(identifier: "healthcare.testKit")
+        let PersonsKitBundle = NSBundle(identifier: "BoBiHealth.testKit")
         let modelURL = PersonsKitBundle!.URLForResource("PersonsModel", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
@@ -148,7 +148,7 @@ public func validatePassword(enteredPassword: String) -> Bool {
     // patten has at least a special words : (?=.*[!@#$%^&*]+)
     // patten has a number : (?=.*[0-9])
     // patten has a letter words : (?=.*[A-Za-z])
-    let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*]+)(?=.*[0-9])(?=.*[A-Za-z]).*$"
+    let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*()+]+)(?=.*[0-9])(?=.*[A-Za-z]).*$"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
     return emailPredicate.evaluateWithObject(enteredPassword)
 }

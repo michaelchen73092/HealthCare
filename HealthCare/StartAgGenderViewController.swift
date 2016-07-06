@@ -69,6 +69,7 @@ class StartAgGenderViewController: UIViewController{
         View.backgroundColor = UIColor(netHex: 0xD7DCE4)
     }
     
+    
     //save to local CoreData
     private func saveLocal(){
         let dateFormatter = NSDateFormatter()
