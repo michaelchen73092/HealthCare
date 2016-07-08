@@ -10,7 +10,7 @@
         <!--Start Aa Hello View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="StartAaHelloViewController" id="BYZ-38-t0r" customClass="StartAaHelloViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAaHelloViewController" id="BYZ-38-t0r" customClass="StartAaHelloViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -45,7 +45,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="KCH-2q-0lh" kind="show" identifier="StartAb" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="V06-qk-peo"/>
+                        <segue destination="KCH-2q-0lh" kind="show" identifier="StartAb" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="V06-qk-peo"/>
                         <segue destination="zx0-Ao-xfq" kind="show" identifier="MainPersons" id="SrY-RS-VoC"/>
                     </connections>
                 </viewController>
@@ -56,7 +56,7 @@
         <!--Start Ab Login View Controller-->
         <scene sceneID="mXT-32-dPp">
             <objects>
-                <viewController storyboardIdentifier="StartAbLoginViewController" id="KCH-2q-0lh" customClass="StartAbLoginViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAbLoginViewController" id="KCH-2q-0lh" customClass="StartAbLoginViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hxC-nj-IHA"/>
                         <viewControllerLayoutGuide type="bottom" id="czg-h2-U1j"/>
@@ -183,7 +183,7 @@
                         <outlet property="emailField" destination="bwE-bZ-Nmf" id="cEe-J0-Gtd"/>
                         <outlet property="invelidLabel" destination="5dE-Ub-fla" id="3GO-yy-9I5"/>
                         <outlet property="passwordField" destination="FxV-0I-LlM" id="rMc-E8-Esa"/>
-                        <segue destination="Sqj-Lo-ffY" kind="show" identifier="StartAc" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="9IE-XW-E6l"/>
+                        <segue destination="Sqj-Lo-ffY" kind="show" identifier="StartAc" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="9IE-XW-E6l"/>
                         <segue destination="zx0-Ao-xfq" kind="show" identifier="MainPersons" id="jaA-EH-Y5c"/>
                     </connections>
                 </viewController>
@@ -194,7 +194,7 @@
         <!--Persons Aa Container View Controller-->
         <scene sceneID="Rep-gJ-Jx6">
             <objects>
-                <viewController id="zx0-Ao-xfq" customClass="PersonsAaContainerViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zx0-Ao-xfq" customClass="PersonsAaContainerViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sDe-db-v0W"/>
                         <viewControllerLayoutGuide type="bottom" id="zFf-mZ-2KE"/>
@@ -272,19 +272,43 @@
         <!--Persons Aa Search Doctor Table View Controller-->
         <scene sceneID="h9X-b8-JhM">
             <objects>
-                <tableViewController restorationIdentifier="doctorsController" id="d9n-9q-BJk" customClass="PersonsAaSearchDoctorTableViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="doctorsController" id="d9n-9q-BJk" customClass="PersonsAaSearchDoctorTableViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pYW-9J-x4f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="zge-pQ-jKd">
+                            <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iri-Wy-bDu">
+                                    <rect key="frame" x="8" y="8" width="398" height="29"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <segments>
+                                        <segment title="Now"/>
+                                        <segment title="Within A Day"/>
+                                        <segment title="Map"/>
+                                    </segments>
+                                    <color key="tintColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="iri-Wy-bDu" secondAttribute="trailing" constant="8" id="LwJ-qq-BXX"/>
+                                <constraint firstItem="iri-Wy-bDu" firstAttribute="leading" secondItem="zge-pQ-jKd" secondAttribute="leading" constant="8" id="aWb-c1-6GA"/>
+                                <constraint firstItem="iri-Wy-bDu" firstAttribute="top" secondItem="zge-pQ-jKd" secondAttribute="top" constant="8" id="fna-dP-dWp"/>
+                                <constraint firstAttribute="bottom" secondItem="iri-Wy-bDu" secondAttribute="bottom" constant="8" id="oVw-uq-5UP"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="doctors" id="QUA-U1-r28">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QUA-U1-r28" id="jrq-Tx-yZy">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -306,22 +330,32 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="ZQs-rR-qJB">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="QwH-AM-f1L">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="filterButton:" destination="d9n-9q-BJk" id="oKq-uA-hX5"/>
                             </connections>
                         </barButtonItem>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="fcN-1o-HOU">
+                            <rect key="frame" x="55" y="7" width="347" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filterView" destination="zge-pQ-jKd" id="ms2-8k-BsE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKX-pH-dHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="1409"/>
+            <point key="canvasLocation" x="2037" y="1409"/>
         </scene>
         <!--Persons Aa Search Filter Table View Controller-->
         <scene sceneID="7qb-LJ-TGq">
             <objects>
-                <tableViewController restorationIdentifier="searchFilterController" id="JSR-AZ-drC" customClass="PersonsAaSearchFilterTableViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="searchFilterController" id="JSR-AZ-drC" customClass="PersonsAaSearchFilterTableViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="28" sectionFooterHeight="28" id="IjO-vD-q0e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +365,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PBT-ct-TzW" id="etI-Zu-6Bq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="141.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.86274509799999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -352,7 +386,7 @@
         <!--Start Ac Email View Controller-->
         <scene sceneID="cHu-7e-xkK">
             <objects>
-                <viewController storyboardIdentifier="StartAcEmailViewController" id="Sqj-Lo-ffY" customClass="StartAcEmailViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAcEmailViewController" id="Sqj-Lo-ffY" customClass="StartAcEmailViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xu6-o0-Wap"/>
                         <viewControllerLayoutGuide type="bottom" id="oj1-Zm-BU0"/>
@@ -432,8 +466,8 @@
                     <connections>
                         <outlet property="emailField" destination="3FZ-Nv-7Ew" id="jI3-LW-Reu"/>
                         <outlet property="invalidEmail" destination="XZI-aU-UWY" id="4Qn-gw-zQB"/>
-                        <segue destination="bNg-b8-OjS" kind="show" identifier="StartAd" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="o4c-Vg-Pqb"/>
-                        <segue destination="KCH-2q-0lh" kind="show" identifier="StartAb" customClass="UIStoryboardSegueFromLeft" customModule="BerBiHealth" customModuleProvider="target" id="0Iq-4y-uQY"/>
+                        <segue destination="bNg-b8-OjS" kind="show" identifier="StartAd" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="o4c-Vg-Pqb"/>
+                        <segue destination="KCH-2q-0lh" kind="show" identifier="StartAb" customClass="UIStoryboardSegueFromLeft" customModule="BoBiHealth" customModuleProvider="target" id="0Iq-4y-uQY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8w-lB-Sjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,7 +477,7 @@
         <!--Start Ad Name View Controller-->
         <scene sceneID="yEg-f7-WNt">
             <objects>
-                <viewController storyboardIdentifier="StartAdNameViewController" id="bNg-b8-OjS" customClass="StartAdNameViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAdNameViewController" id="bNg-b8-OjS" customClass="StartAdNameViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Pr-Qb-5pw"/>
                         <viewControllerLayoutGuide type="bottom" id="pA3-4X-Glf"/>
@@ -532,8 +566,8 @@
                     <connections>
                         <outlet property="firstnameField" destination="chr-8a-FDB" id="kek-D1-XKG"/>
                         <outlet property="lastnameField" destination="gha-Ej-AQF" id="7l9-A2-Wdv"/>
-                        <segue destination="Sqj-Lo-ffY" kind="show" identifier="StartAc" customClass="UIStoryboardSegueFromLeft" customModule="BerBiHealth" customModuleProvider="target" id="i1y-1X-J4w"/>
-                        <segue destination="Kus-86-v6k" kind="show" identifier="StartAe" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="P3p-aH-5Ko"/>
+                        <segue destination="Sqj-Lo-ffY" kind="show" identifier="StartAc" customClass="UIStoryboardSegueFromLeft" customModule="BoBiHealth" customModuleProvider="target" id="i1y-1X-J4w"/>
+                        <segue destination="Kus-86-v6k" kind="show" identifier="StartAe" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="P3p-aH-5Ko"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zl1-Ae-eCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,7 +577,7 @@
         <!--Start Ae Password View Controller-->
         <scene sceneID="OkG-KG-mLb">
             <objects>
-                <viewController storyboardIdentifier="StartAePasswordViewController" id="Kus-86-v6k" customClass="StartAePasswordViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAePasswordViewController" id="Kus-86-v6k" customClass="StartAePasswordViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="52q-Rc-UUP"/>
                         <viewControllerLayoutGuide type="bottom" id="A5j-Gz-GXX"/>
@@ -648,8 +682,8 @@
                     <connections>
                         <outlet property="invalidPassword" destination="bH9-yI-8sF" id="c3W-Fe-bOb"/>
                         <outlet property="passwordField" destination="Uik-XM-sei" id="csV-oP-iEl"/>
-                        <segue destination="bNg-b8-OjS" kind="show" identifier="StartAd" customClass="UIStoryboardSegueFromLeft" customModule="BerBiHealth" customModuleProvider="target" id="2MO-AO-Hu6"/>
-                        <segue destination="K4p-2a-tcx" kind="show" identifier="StartAf" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="9WI-nJ-zkc"/>
+                        <segue destination="bNg-b8-OjS" kind="show" identifier="StartAd" customClass="UIStoryboardSegueFromLeft" customModule="BoBiHealth" customModuleProvider="target" id="2MO-AO-Hu6"/>
+                        <segue destination="K4p-2a-tcx" kind="show" identifier="StartAf" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="9WI-nJ-zkc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAC-XJ-YQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -659,7 +693,7 @@
         <!--Start Af Birthday View Controller-->
         <scene sceneID="UO2-3J-T7z">
             <objects>
-                <viewController storyboardIdentifier="StartAfBirthdayViewController" id="K4p-2a-tcx" customClass="StartAfBirthdayViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAfBirthdayViewController" id="K4p-2a-tcx" customClass="StartAfBirthdayViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RZA-ci-t9e"/>
                         <viewControllerLayoutGuide type="bottom" id="m8g-Ls-do2"/>
@@ -772,8 +806,8 @@
                         <outlet property="birthdayField" destination="NsW-mv-inG" id="LHz-QT-NmU"/>
                         <outlet property="datePicker" destination="SZV-Nz-4VU" id="qsX-gH-q7s"/>
                         <outlet property="invalidBirthday" destination="zgy-6X-nPQ" id="3nQ-Z2-Upb"/>
-                        <segue destination="Kus-86-v6k" kind="show" identifier="StartAe" customClass="UIStoryboardSegueFromLeft" customModule="BerBiHealth" customModuleProvider="target" id="ZvI-t8-dD6"/>
-                        <segue destination="AmE-8g-0kh" kind="show" identifier="StartAg" customClass="UIStoryboardSegueFromRight" customModule="BerBiHealth" customModuleProvider="target" id="nNJ-0m-uLW"/>
+                        <segue destination="Kus-86-v6k" kind="show" identifier="StartAe" customClass="UIStoryboardSegueFromLeft" customModule="BoBiHealth" customModuleProvider="target" id="ZvI-t8-dD6"/>
+                        <segue destination="AmE-8g-0kh" kind="show" identifier="StartAg" customClass="UIStoryboardSegueFromRight" customModule="BoBiHealth" customModuleProvider="target" id="nNJ-0m-uLW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDH-W1-aP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,7 +817,7 @@
         <!--Start Ag Gender View Controller-->
         <scene sceneID="Lyp-0w-RRp">
             <objects>
-                <viewController storyboardIdentifier="StartAgGenderViewController" id="AmE-8g-0kh" customClass="StartAgGenderViewController" customModule="BerBiHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartAgGenderViewController" id="AmE-8g-0kh" customClass="StartAgGenderViewController" customModule="BoBiHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VgS-po-QXg"/>
                         <viewControllerLayoutGuide type="bottom" id="6F1-7J-abU"/>
@@ -1023,10 +1057,10 @@
         <image name="Search" width="72" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i1y-1X-J4w"/>
-        <segue reference="2MO-AO-Hu6"/>
+        <segue reference="2A3-0d-AdK"/>
         <segue reference="P3p-aH-5Ko"/>
-        <segue reference="jaA-EH-Y5c"/>
+        <segue reference="2MO-AO-Hu6"/>
+        <segue reference="9IE-XW-E6l"/>
         <segue reference="V06-qk-peo"/>
     </inferredMetricsTieBreakers>
 </document>

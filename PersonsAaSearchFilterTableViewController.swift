@@ -9,7 +9,7 @@
 import UIKit
 
 class PersonsAaSearchFilterTableViewController: UITableViewController {
-
+    // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +19,8 @@ class PersonsAaSearchFilterTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //set portrait view only
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }

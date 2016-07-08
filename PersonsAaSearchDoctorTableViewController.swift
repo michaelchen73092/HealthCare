@@ -14,6 +14,51 @@ class PersonsAaSearchDoctorTableViewController: UITableViewController {
     @IBAction func filterButton(sender: UIBarButtonItem) {
         NSNotificationCenter.defaultCenter().postNotificationName("filterButtonTap", object: self, userInfo: nil)
         }
+
+    @IBOutlet weak var filterView: UIView!
+    
+//    func setpanGesture(){
+//        let gesture = UIPanGestureRecognizer()
+//        addGestureRecognizer(gesture)
+//        let translation = gesture.translationInView(self.view)
+//        let naviBarheight = (self.navigationController?.navigationBar.frame.size.height)!
+//        switch gesture.state{
+//        case .Ended:
+//            if (self.navigationController?.navigationBar.frame.origin.y < -(naviBarheight / 2)){
+//                close(0.1)
+//            }else{
+//                open(0.1)
+//            }
+//        case .Changed:
+//            if (translation.y < -(naviBarheight / 2) ) && (self.navigationController?.navigationBar.frame.origin.y > -naviBarheight) {
+//                self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation(translation.y, 0)
+//            }
+//            print("translation.y: \(translation.y)")
+//            print("naviBarheight: \(naviBarheight)")
+//        default: break
+//        }
+//    }
+    
+    
+    func open(duration: NSTimeInterval){
+        UIView.animateWithDuration(duration,
+                                   delay: 0.0,
+                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   animations: {
+                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation((self.navigationController?.navigationBar.frame.size.width)!, 0)},
+                                   completion: nil)
+    }
+    
+    func close(duration: NSTimeInterval){
+        UIView.animateWithDuration(duration,
+                                   delay: 0.0,
+                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   animations: {
+                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation(0, 0)},
+                                   completion: nil)
+    }
+    
+    // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -22,6 +67,8 @@ class PersonsAaSearchDoctorTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //set portrait view only
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
@@ -29,7 +76,16 @@ class PersonsAaSearchDoctorTableViewController: UITableViewController {
     override func shouldAutorotate() -> Bool {
         return false
     }
-
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let naviheight = (self.navigationController?.navigationBar.frame.size.height)!
+        filterView.transform = CGAffineTransformMakeTranslation(0, naviheight + scrollView.contentOffset.y)
+        scrollView.bringSubviewToFront(filterView)
+        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
+        print("ffilterView.frame.origin.y: \(filterView.frame.origin.y)")
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

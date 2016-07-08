@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //creat new framework bundle - Wei-Chih Chen
         let PersonsKitBundle = NSBundle(identifier: "BoBiHealth.testKit")
+        assert(PersonsKitBundle != nil, "Not assign correct Bundle identifier. In function: \(#function),")
         let modelURL = PersonsKitBundle!.URLForResource("PersonsModel", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()

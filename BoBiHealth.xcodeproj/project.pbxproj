@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B0F89BC1D2D902D002DD067 /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BA1D2D9024002DD067 /* testKit.framework */; };
-		8B0F89BD1D2D902D002DD067 /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BA1D2D9024002DD067 /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B0F89C01D2DBA65002DD067 /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BE1D2DBA4A002DD067 /* testKit.framework */; };
+		8B0F89C11D2DBA65002DD067 /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BE1D2DBA4A002DD067 /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */; };
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
 		8B4414BE1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BD1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift */; };
@@ -58,7 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B0F89BD1D2D902D002DD067 /* testKit.framework in Embed Frameworks */,
+				8B0F89C11D2DBA65002DD067 /* testKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,7 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B0F89BA1D2D9024002DD067 /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/testKit.framework"; sourceTree = "<group>"; };
+		8B0F89BE1D2DBA4A002DD067 /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
 		8B4414BD1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAaSearchDoctorTableViewController.swift; path = ../PersonsAaSearchDoctorTableViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0F89BC1D2D902D002DD067 /* testKit.framework in Frameworks */,
+				8B0F89C01D2DBA65002DD067 /* testKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,8 +156,8 @@
 				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
 				8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */,
 				8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */,
-				8B0F89BA1D2D9024002DD067 /* testKit.framework */,
 				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
+				8B0F89BE1D2DBA4A002DD067 /* testKit.framework */,
 				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
 				8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */,
@@ -473,7 +473,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -521,7 +521,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -546,7 +546,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
 					"$(PROJECT_DIR)/HealthCare",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
@@ -567,7 +567,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
 					"$(PROJECT_DIR)/HealthCare",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
