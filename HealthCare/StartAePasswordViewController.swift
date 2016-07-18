@@ -50,14 +50,16 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
 
     func tappedView(){
         //dismissKB in AppDelegate
-        dismissKB(passwordField, vc: self)
+        dismissKB(passwordField, textField2: nil, vc: self)
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         KBNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

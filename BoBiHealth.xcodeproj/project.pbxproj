@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B0F89C01D2DBA65002DD067 /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BE1D2DBA4A002DD067 /* testKit.framework */; };
-		8B0F89C11D2DBA65002DD067 /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0F89BE1D2DBA4A002DD067 /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B0C03CE1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */; };
 		8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */; };
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
-		8B4414BE1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BD1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift */; };
-		8B4414C01D2ADB8B00E28180 /* PersonsAaSearchFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BF1D2ADB8B00E28180 /* PersonsAaSearchFilterTableViewController.swift */; };
+		8B148C251D3C6A470063499E /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; };
+		8B148C261D3C6A470063499E /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */; };
+		8B179CFE1D2F84B90086485E /* PersonsAdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */; };
+		8B21B6301D343D4F00A70581 /* PersonsCaMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */; };
+		8B21B6321D346EE100A70581 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21B6311D346EE100A70581 /* RBResizer.swift */; };
+		8B4414BE1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BD1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift */; };
+		8B4414C01D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BF1D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift */; };
 		8B4414C21D2ADC1D00E28180 /* PersonsAaContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */; };
 		8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */; };
+		8B50EFD41D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */; };
 		8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448BD1D1F97DB00B7913F /* Alert.swift */; };
 		8B5448C51D20967E00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448C71D20967E00B7913F /* InfoPlist.strings */; };
 		8B5448CA1D20967F00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448CC1D20967F00B7913F /* InfoPlist.strings */; };
@@ -58,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B0F89C11D2DBA65002DD067 /* testKit.framework in Embed Frameworks */,
+				8B148C261D3C6A470063499E /* testKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,13 +72,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B0F89BE1D2DBA4A002DD067 /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
+		8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCbAccountTableViewController.swift; sourceTree = "<group>"; };
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
-		8B4414BD1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAaSearchDoctorTableViewController.swift; path = ../PersonsAaSearchDoctorTableViewController.swift; sourceTree = "<group>"; };
-		8B4414BF1D2ADB8B00E28180 /* PersonsAaSearchFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAaSearchFilterTableViewController.swift; path = ../PersonsAaSearchFilterTableViewController.swift; sourceTree = "<group>"; };
+		8B148C231D3C6A290063499E /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
+		8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAcSearchContainerViewController.swift; sourceTree = "<group>"; };
+		8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAdListViewController.swift; sourceTree = "<group>"; };
+		8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCaMoreTableViewController.swift; sourceTree = "<group>"; };
+		8B21B6311D346EE100A70581 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBResizer.swift; sourceTree = "<group>"; };
+		8B4414BD1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAeSearchDoctorTableViewController.swift; path = ../PersonsAeSearchDoctorTableViewController.swift; sourceTree = "<group>"; };
+		8B4414BF1D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAbFilterTableViewController.swift; path = ../PersonsAbFilterTableViewController.swift; sourceTree = "<group>"; };
 		8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAaContainerViewController.swift; sourceTree = "<group>"; };
 		8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAgGenderViewController.swift; sourceTree = "<group>"; };
+		8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCcSearchCityTableViewController.swift; sourceTree = "<group>"; };
 		8B5448BD1D1F97DB00B7913F /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8B5448BF1D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8B5448C01D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -107,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0F89C01D2DBA65002DD067 /* testKit.framework in Frameworks */,
+				8B148C251D3C6A470063499E /* testKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +140,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0C03CA1D3609B400C02790 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */,
+				8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */,
+				8B5448D71D20D3D900B7913F /* StartAcEmailViewController.swift */,
+				8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */,
+				8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */,
+				8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */,
+				8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
+		8B0C03CC1D360A9800C02790 /* Persons */ = {
+			isa = PBXGroup;
+			children = (
+				8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */,
+				8B4414BF1D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift */,
+				8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */,
+				8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */,
+				8B4414BD1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift */,
+				8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */,
+				8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */,
+				8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */,
+			);
+			name = Persons;
+			sourceTree = "<group>";
+		};
 		8BE8016C1D13BD5500FDE666 = {
 			isa = PBXGroup;
 			children = (
@@ -151,25 +192,18 @@
 		8BE801771D13BD5500FDE666 /* BoBiHealth */ = {
 			isa = PBXGroup;
 			children = (
+				8B0C03CA1D3609B400C02790 /* Start */,
+				8B0C03CC1D360A9800C02790 /* Persons */,
 				8B5448D61D209C2000B7913F /* Localizable.strings */,
 				8B5448CC1D20967F00B7913F /* InfoPlist.strings */,
+				8B21B6311D346EE100A70581 /* RBResizer.swift */,
 				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
 				8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */,
 				8B5448DD1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift */,
-				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
-				8B0F89BE1D2DBA4A002DD067 /* testKit.framework */,
-				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
-				8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */,
-				8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */,
-				8B5448D71D20D3D900B7913F /* StartAcEmailViewController.swift */,
-				8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */,
-				8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */,
-				8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */,
-				8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */,
-				8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */,
-				8B4414BD1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift */,
-				8B4414BF1D2ADB8B00E28180 /* PersonsAaSearchFilterTableViewController.swift */,
+				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
+				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
+				8B148C231D3C6A290063499E /* testKit.framework */,
 				8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */,
 				8BE801871D13BD5500FDE666 /* Info.plist */,
 			);
@@ -268,7 +302,7 @@
 				TargetAttributes = {
 					8BE801741D13BD5500FDE666 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6464VLM34M;
+						DevelopmentTeam = Z5P4SMDK2W;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -348,17 +382,23 @@
 			files = (
 				8B5448DE1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift in Sources */,
 				8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */,
-				8B4414BE1D2ADB7100E28180 /* PersonsAaSearchDoctorTableViewController.swift in Sources */,
+				8B0C03CE1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift in Sources */,
+				8B4414BE1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift in Sources */,
 				8B5448D81D20D3D900B7913F /* StartAcEmailViewController.swift in Sources */,
+				8B50EFD41D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift in Sources */,
+				8B21B6301D343D4F00A70581 /* PersonsCaMoreTableViewController.swift in Sources */,
 				8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */,
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
-				8B4414C01D2ADB8B00E28180 /* PersonsAaSearchFilterTableViewController.swift in Sources */,
+				8B4414C01D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift in Sources */,
+				8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */,
 				8B4414C21D2ADC1D00E28180 /* PersonsAaContainerViewController.swift in Sources */,
+				8B179CFE1D2F84B90086485E /* PersonsAdListViewController.swift in Sources */,
 				8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */,
 				8B5448E01D219C6100B7913F /* StartAdNameViewController.swift in Sources */,
 				8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */,
 				8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */,
 				8B5448DC1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift in Sources */,
+				8B21B6321D346EE100A70581 /* RBResizer.swift in Sources */,
 				8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +591,7 @@
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.OnlineDoc.OnlineDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = "michaelchen70-hotmailc.om";
 				PRODUCT_NAME = BoBiHealth;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -572,7 +612,7 @@
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.OnlineDoc.OnlineDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = "michaelchen70-hotmailc.om";
 				PRODUCT_NAME = BoBiHealth;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

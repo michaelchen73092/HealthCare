@@ -22,9 +22,7 @@ class PersonsAaContainerViewController: UIViewController {
         switch gesture.state{
         case .Ended:
             //if swipe width is more than half filterView width, open else close
-            if translation.x < 0 {
-                close(0.15) //0.15 duration time: is UX design choice
-            }else if self.doctorView.frame.origin.x >= self.filterView.frame.size.width / 2{
+            if self.doctorView.frame.origin.x >= self.filterView.frame.size.width / 2{
                 open(0.2) // if swipe larger than half filterView width then open
             }else{
                 close(0.2)
@@ -32,9 +30,11 @@ class PersonsAaContainerViewController: UIViewController {
         case .Changed:
             // Setting close and open changed state and use transform to change doctorView simultaneously
             if (0 < translation.x) && (self.doctorView.frame.origin.x < self.filterView.frame.size.width){
-                doctorView.transform = CGAffineTransformMakeTranslation(translation.x, 0)
+                // translation at most is filterView width
+                doctorView.transform = CGAffineTransformMakeTranslation(min(translation.x, self.filterView.frame.size.width), 0)
             }else if (0 > translation.x) && (self.doctorView.frame.origin.x > 0){
-                doctorView.transform = CGAffineTransformMakeTranslation(self.filterView.frame.size.width + translation.x, 0)
+                // translation at least 0
+                doctorView.transform = CGAffineTransformMakeTranslation(max(0,self.filterView.frame.size.width + translation.x), 0)
             }
         default: break
         }
@@ -77,6 +77,7 @@ class PersonsAaContainerViewController: UIViewController {
     }
     
     //set portrait view only
+    //Under this setting PersonsAb and PersonsAc is portrait
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }

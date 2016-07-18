@@ -50,15 +50,16 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     
     func tappedView(){
         //dismissKB in AppDelegate
-        dismissKB(firstnameField, vc: self)
-        dismissKB(lastnameField, vc: self)
+        dismissKB(firstnameField, textField2: lastnameField, vc: self)
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         KBNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

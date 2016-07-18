@@ -45,14 +45,17 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
     
     func tappedView(){
         //dismissKB in AppDelegate
-        dismissKB(emailField, vc: self)
+        dismissKB(emailField, textField2: passwordField, vc: self)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         KBNotification()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

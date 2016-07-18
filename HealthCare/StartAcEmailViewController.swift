@@ -56,14 +56,18 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
     //3
     func tappedView(){
         //dismissKB in AppDelegate
-        dismissKB(emailField, vc: self)
+        dismissKB(emailField, textField2: nil, vc: self)
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         KBNotification()
     }
     
+    var etshow: NSObjectProtocol?
+    
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -71,6 +75,7 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
         //set notification for keyboard appear and hide
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
     }
     /////////3
     // MARK: - Continue func

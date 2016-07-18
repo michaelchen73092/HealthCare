@@ -8,7 +8,10 @@
 
 import UIKit
 
-class PersonsAaSearchFilterTableViewController: UITableViewController {
+class PersonsAbFilterTableViewController: UITableViewController {
+    var array = [["Rate", "Experience Year"],
+                 ["Family", "Primary Care", "Pediatrician", "Emergency Medicine", "Adult Medicine", "Clinical Psychology", "Internist"]]
+    
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +24,13 @@ class PersonsAaSearchFilterTableViewController: UITableViewController {
     }
     
     //set portrait view only
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
-    }
-    
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.Portrait
+//    }
+//    
+//    override func shouldAutorotate() -> Bool {
+//        return false
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

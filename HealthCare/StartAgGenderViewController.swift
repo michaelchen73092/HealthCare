@@ -14,7 +14,7 @@ class StartAgGenderViewController: UIViewController{
     
     // MARK: - Variables
     var ButtonSelect = false
-    var color: UIColor = UIColor(netHex: 0x003366)
+
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     @IBOutlet weak var maleButtonLabel: UIButton!
     @IBOutlet weak var femaleButtonLabel: UIButton!
@@ -28,10 +28,10 @@ class StartAgGenderViewController: UIViewController{
         
         //setup male and female view
         maleView.layer.borderWidth = 1.0
-        maleView.layer.borderColor = color.CGColor
+        maleView.layer.borderColor = Storyboard.color.CGColor
         
         femaleView.layer.borderWidth = 1.0
-        femaleView.layer.borderColor = color.CGColor
+        femaleView.layer.borderColor = Storyboard.color.CGColor
     }
     
     // MARK: - Male, Female function
@@ -69,6 +69,7 @@ class StartAgGenderViewController: UIViewController{
         View.backgroundColor = UIColor(netHex: 0xD7DCE4)
     }
     
+
     
     //save to local CoreData
     private func saveLocal(){

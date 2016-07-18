@@ -8,15 +8,8 @@
 
 import UIKit
 
-class PersonsAaSearchDoctorTableViewController: UITableViewController {
-    
-    
-    @IBAction func filterButton(sender: UIBarButtonItem) {
-        NSNotificationCenter.defaultCenter().postNotificationName("filterButtonTap", object: self, userInfo: nil)
-        }
-
-    @IBOutlet weak var filterView: UIView!
-    
+class PersonsAeSearchDoctorTableViewController: UITableViewController {
+        
 //    func setpanGesture(){
 //        let gesture = UIPanGestureRecognizer()
 //        addGestureRecognizer(gesture)
@@ -68,22 +61,16 @@ class PersonsAaSearchDoctorTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    //set portrait view only
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
-    }
-    
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+//    //set portrait view only
+//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.Portrait
+//    }
+//    
+//    override func shouldAutorotate() -> Bool {
+//        return false
+//    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        let naviheight = (self.navigationController?.navigationBar.frame.size.height)!
-        filterView.transform = CGAffineTransformMakeTranslation(0, naviheight + scrollView.contentOffset.y)
-        scrollView.bringSubviewToFront(filterView)
-        print("scrollView.contentOffset.y: \(scrollView.contentOffset.y)")
-        print("ffilterView.frame.origin.y: \(filterView.frame.origin.y)")
-        
     }
     
     // MARK: - Table view data source
