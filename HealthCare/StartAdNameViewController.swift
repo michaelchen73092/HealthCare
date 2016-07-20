@@ -15,6 +15,8 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Variables
     @IBOutlet weak var firstnameField: UITextField! { didSet{ firstnameField.delegate = self}}
     @IBOutlet weak var lastnameField: UITextField! { didSet{ lastnameField.delegate = self}}
+    @IBOutlet weak var invalidName: UILabel!
+    
     private struct MVC {
         static let nextIdentifier = "StartAe"
         static let lastIdentifier = "StartAc"
@@ -41,6 +43,7 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     private func updateUI(){
         //label setting
         //disable autocorrection
+        invalidName.hidden = true
         firstnameField.autocorrectionType = .No
         lastnameField.autocorrectionType = .No
         //show textField if it's set
@@ -75,12 +78,15 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func checkForNextPage(){
+        invalidName.hidden = true
         if firstnameField.text == "" {
             //wiggle if there is no data
             wiggle(firstnameField, Duration: 0.07, RepeatCount: 4, Offset: 10)
         }else if lastnameField.text == "" {
             //wiggle if there is no data
             wiggle(lastnameField, Duration: 0.07, RepeatCount: 4, Offset: 10)
+        }else if validateName(firstnameField.text!) || validateName(lastnameField.text!) {
+            invalidName.hidden = false
         }else{
             //Go to next page
             signInUser?.firstname = firstnameField.text
@@ -105,8 +111,13 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        invalidName.hidden = true
+        if validateName(textField.text!) {
+            invalidName.hidden = false
+        }else{
+            checkForNextPage()
+        }
         textField.resignFirstResponder()
-        checkForNextPage()
         return true
     }
     

@@ -134,14 +134,45 @@ extension UIColor {
     }
 }
 
+//for exclude emoji in name
+extension String {
+    func containsEmoji() -> Bool {
+        for i in self.characters {
+            if i.isEmoji() {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+extension Character {
+    func isEmoji() -> Bool {
+        return Character(UnicodeScalar(0x1d000)) <= self && self <= Character(UnicodeScalar(0x1f77f))
+            || Character(UnicodeScalar(0x1f900)) <= self && self <= Character(UnicodeScalar(0x1f9ff))
+            || Character(UnicodeScalar(0x2100)) <= self && self <= Character(UnicodeScalar(0x26ff))
+    }
+}
+
 
 //check email format
 public func validateEmail(enteredEmail:String) -> Bool {
-    let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    let emailFormat = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
     return emailPredicate.evaluateWithObject(enteredEmail)
     
 }
+
+//check name format
+public func validateName(enteredName:String) -> Bool {
+    // \\before execute simple turn execute simple as pure simple
+    // use \\\\ to pure \ simple
+    let nameFormat = "(?=.*[€£¥•~`!@#$%^&*()_+=,.:;<>?/{}\\[\\]|\\\\0123456789]).*$"
+    let namePredicate = NSPredicate(format:"SELF MATCHES %@", nameFormat)
+    
+    return namePredicate.evaluateWithObject(enteredName) || enteredName.containsEmoji() || (enteredName.rangeOfString(" ") != nil)
+}
+
 
 //check password format
 public func validatePassword(enteredPassword: String) -> Bool {
@@ -149,7 +180,7 @@ public func validatePassword(enteredPassword: String) -> Bool {
     // patten has at least a special words : (?=.*[!@#$%^&*]+)
     // patten has a number : (?=.*[0-9])
     // patten has a letter words : (?=.*[A-Za-z])
-    let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*()+]+)(?=.*[0-9])(?=.*[A-Za-z]).*$"
+    let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*()+])(?=.*[0-9])(?=.*[A-Za-z]).*$"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
     return emailPredicate.evaluateWithObject(enteredPassword)
 }
@@ -181,6 +212,5 @@ public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIVi
         textField2?.resignFirstResponder()
     }
 }
-
 
 

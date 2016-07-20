@@ -12,6 +12,7 @@
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
 		8B148C251D3C6A470063499E /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; };
 		8B148C261D3C6A470063499E /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B148C281D3D46270063499E /* PersonsCdEthnicityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B148C271D3D46270063499E /* PersonsCdEthnicityTableViewController.swift */; };
 		8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */; };
 		8B179CFE1D2F84B90086485E /* PersonsAdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */; };
 		8B21B6301D343D4F00A70581 /* PersonsCaMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */; };
@@ -36,7 +37,7 @@
 		8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8017C1D13BD5500FDE666 /* Main.storyboard */; };
 		8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801821D13BD5500FDE666 /* Assets.xcassets */; };
 		8BE801861D13BD5500FDE666 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */; };
-		8BE801911D13BD5600FDE666 /* HealthCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801901D13BD5600FDE666 /* HealthCareTests.swift */; };
+		8BE801911D13BD5600FDE666 /* BoBiHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801901D13BD5600FDE666 /* BoBiHealthTests.swift */; };
 		8BE8019C1D13BD5600FDE666 /* HealthCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
 		8B148C231D3C6A290063499E /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
+		8B148C271D3D46270063499E /* PersonsCdEthnicityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCdEthnicityTableViewController.swift; sourceTree = "<group>"; };
 		8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAcSearchContainerViewController.swift; sourceTree = "<group>"; };
 		8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAdListViewController.swift; sourceTree = "<group>"; };
 		8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCaMoreTableViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 		8BE801851D13BD5500FDE666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BE801871D13BD5500FDE666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BE8018C1D13BD5500FDE666 /* BoBiHealth.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoBiHealth.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BE801901D13BD5600FDE666 /* HealthCareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCareTests.swift; sourceTree = "<group>"; };
+		8BE801901D13BD5600FDE666 /* BoBiHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoBiHealthTests.swift; sourceTree = "<group>"; };
 		8BE801921D13BD5600FDE666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BE801971D13BD5600FDE666 /* BoBiHealth.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoBiHealth.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCareUITests.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */,
 				8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */,
 				8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */,
+				8B148C271D3D46270063499E /* PersonsCdEthnicityTableViewController.swift */,
 			);
 			name = Persons;
 			sourceTree = "<group>";
@@ -215,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5448C71D20967E00B7913F /* InfoPlist.strings */,
-				8BE801901D13BD5600FDE666 /* HealthCareTests.swift */,
+				8BE801901D13BD5600FDE666 /* BoBiHealthTests.swift */,
 				8BE801921D13BD5600FDE666 /* Info.plist */,
 			);
 			name = BoBiHealthTests;
@@ -399,6 +402,7 @@
 				8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */,
 				8B5448DC1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift in Sources */,
 				8B21B6321D346EE100A70581 /* RBResizer.swift in Sources */,
+				8B148C281D3D46270063499E /* PersonsCdEthnicityTableViewController.swift in Sources */,
 				8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,7 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BE801911D13BD5600FDE666 /* HealthCareTests.swift in Sources */,
+				8BE801911D13BD5600FDE666 /* BoBiHealthTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import HealthCare
+@testable import BoBiHealth
 
 class HealthCareTests: XCTestCase {
     
