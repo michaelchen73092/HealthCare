@@ -91,6 +91,8 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -132,8 +134,11 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
                 signInUser?.locationlongitude = coordinates.longitude
                 print("In Cc signInUser!.locationLatitude!: \(signInUser!.locationLatitude!)")
                 print("In Cc signInUser!.locationlongitude!: \(signInUser!.locationlongitude!)")
+                NSNotificationCenter.defaultCenter().postNotificationName("searchCityBack", object: self, userInfo: nil )
+                print("In Search City, viewController")
             }
         }
+
         resultSearchController.dismissViewControllerAnimated(true, completion: nil)
         navigationController?.popViewControllerAnimated(true)
     }

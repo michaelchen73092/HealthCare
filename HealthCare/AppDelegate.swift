@@ -185,6 +185,17 @@ public func validatePassword(enteredPassword: String) -> Bool {
     return emailPredicate.evaluateWithObject(enteredPassword)
 }
 
+//check password format
+public func validateNumberOnly(entered: String) -> Bool {
+    // patten at least 6 characters : (?=^.{6,}$)
+    // patten has at least a special words : (?=.*[!@#$%^&*]+)
+    // patten has a number : (?=.*[0-9])
+    // patten has a letter words : (?=.*[A-Za-z])
+    let numberFormat = "(?=.*[0-9]).*$"
+    let numberPredicate = NSPredicate(format:"SELF MATCHES %@", numberFormat)
+    return numberPredicate.evaluateWithObject(entered)
+}
+
 //wiggle animation
 public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Offset: CGFloat)
 {
@@ -201,7 +212,19 @@ public struct Storyboard {
     static let moveheight = CGFloat(70) // how much height should move when KB is shown
     static var KBisON = false // set for recording KB is ON/OFF
     static let color: UIColor = UIColor(netHex: 0x003366)
+    static let nextNavigationItemRightButton = NSLocalizedString("Next", comment: "All navigation item for right button")
+    static let backNavigationItemLeftButton = NSLocalizedString("Back", comment: "All navigation item for left going back button")
+    static let notSet = NSLocalizedString("Not Set", comment: "String for all person data is not set")
+    static let uploaded = NSLocalizedString("Image Uploaded", comment: "String for doctor image is uploaded")
+    static let CancelAlert = NSLocalizedString("Cancel", comment: "For all alert to access photo library")
+    static let TakeANewPictureAlert = NSLocalizedString("Take a New Picture", comment: "For all alert to access photo library")
+    static let FromPhotoLibraryAlert = NSLocalizedString("From Photo Library", comment: "For all alert to access photo library")
+    static let PhotoPrintForVerify = NSLocalizedString("This document for Berbi verify doctor's identity only!", comment: "For all doctor's documentation, we need to print this line for safy issue")
+    
+    
 }
+
+
 
 //dismiss KB no matter which textfield is hitted
 public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIViewController){
@@ -213,4 +236,66 @@ public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIVi
     }
 }
 
+public struct Language {
+    static let languageChinese = NSLocalizedString("Chinese", comment: "Language category")
+    static let languageCantonese = NSLocalizedString("Cantonese", comment: "Language category")
+    static let languageTaiwanese = NSLocalizedString("Taiwanese", comment: "Language category")
+    static let languageEnglish = NSLocalizedString("English", comment: "Language category")
+    static let languageFrench = NSLocalizedString("French", comment: "Language category")
+    static let languageGerman = NSLocalizedString("German", comment: "Language category")
+    static let languageJapanese = NSLocalizedString("Japanese", comment: "Language category")
+    static let languageDutch = NSLocalizedString("Dutch", comment: "Language category")
+    static let languageItalian = NSLocalizedString("Italian", comment: "Language category")
+    static let languageSpanish = NSLocalizedString("Spanish", comment: "Language category")
+    static let languageKorean = NSLocalizedString("Korean", comment: "Language category")
+    static let languagePortuguese = NSLocalizedString("Portuguese", comment: "Language category")
+    static let languageDanish = NSLocalizedString("Danish", comment: "Language category")
+    static let languageFinnish = NSLocalizedString("Finnish", comment: "Language category")
+    static let languageNorwegian = NSLocalizedString("Norwegian", comment: "Language category")
+    static let languageSwedish = NSLocalizedString("Swedish", comment: "Language category")
+    static let languageRussian = NSLocalizedString("Russian", comment: "Language category")
+    static let languagePolish = NSLocalizedString("Polish", comment: "Language category")
+    static let languageTurkish = NSLocalizedString("Turkish", comment: "Language category")
+    static let languageUkrainian = NSLocalizedString("Ukrainian", comment: "Language category")
+    static let languageArabic = NSLocalizedString("Arabic", comment: "Language category")
+    static let languageCroatian = NSLocalizedString("Croatian", comment: "Language category")
+    static let languageCzech = NSLocalizedString("Czech", comment: "Language category")
+    static let languageGreek = NSLocalizedString("Greek", comment: "Language category")
+    static let languageHebrew = NSLocalizedString("Hebrew", comment: "Language category")
+    static let languageRomanian = NSLocalizedString("Romanian", comment: "Language category")
+    static let languageSlovak = NSLocalizedString("Slovak", comment: "Language category")
+    static let languageThai = NSLocalizedString("Thai", comment: "Language category")
+    static let languageIndonesian = NSLocalizedString("Indonesian", comment: "Language category")
+    static let languageMalay = NSLocalizedString("Malay", comment: "Language category")
+    static let languageCatalan = NSLocalizedString("Catalan", comment: "Language category")
+    static let languageHungarian = NSLocalizedString("Hungarian", comment: "Language category")
+    static let languageVietnamese = NSLocalizedString("Vietnamese", comment: "Language category")
+    static let languageHindi = NSLocalizedString("Hindi", comment: "Language category")
+    static let languageBengali = NSLocalizedString("Bengali", comment: "Language category")
+}
 
+public struct School{
+    static let school = [
+            ["國立台灣大學醫學院醫學系", "National Taiwan University School of Medicine"],
+            ["國立陽明大學醫學系", "National Yang Ming University School of Medicine"],
+            ["國立成功大學醫學院醫學系", "National Cheng Kung University School of Medicine"],
+            ["國防醫學院醫學系", "National Defense Medical Center School of Medicine"],
+            ["台北醫學大學醫學系", "Taipei Medical University School of Medicine"],
+            ["輔仁大學醫學院", "Fu Jen Catholic University School of Medicine"],
+            ["長庚大學醫學院醫學系", "Chang Gung University School of Medicine"],
+            ["中國醫藥大學醫學系", "China Medical University School of Medicine"],
+            ["中國醫藥大學中醫學系","School of Chinese Medicine"],
+            ["中山醫學大學醫學系", "Chung Shan Medical University School of Medicine"],
+            ["高雄醫學大學醫學系", "Kaohsiung Medical University School of Medicine"],
+            ["慈濟醫學院醫學系", "Tzu Chi University School of Medicine"],
+            ["慈濟醫學院學士後中醫系", "Tzu Chi University School of Post-Baccalaureate Chinese Medicine"],
+            ["馬偕醫學院醫學系","Mackay Medical College Department of Medicine"],
+            ["國立台灣大學牙醫學系", "National Taiwan University School of Dentistry"],
+            ["國立陽明大學牙醫學系", "National Yang Ming University School of Dentistry"],
+            ["臺北醫學大學牙醫學系", "Taipei Medical University School of Dentistry"],
+            ["中國醫藥大學牙醫學系", "China Medical University School of Dentistry"],
+            ["中山醫學大學牙醫學系", "Chung Shan Medical University School of Dentistry"],
+            ["高雄醫學大學牙醫學系", "Kaohsiung Medical University School of Dentistry"],
+            ["義守大學學士後中醫學系","I-Shou University The School of Chinese Medicine for Post Baccalaureate"]
+    ]
+}

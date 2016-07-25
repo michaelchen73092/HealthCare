@@ -132,13 +132,14 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("in didUpdateLocations")
-        
         //print location
-        let userLocation = CLLocation(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
-        reverseGeoLocation(userLocation)
-        self.locationManager.stopUpdatingLocation()
-        locationLabel.font = UIFont.systemFontOfSize(17)
-        
+        if manager.location != nil{
+            let userLocation = CLLocation(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
+            print("manager.location!.coordinate.latitude:\(manager.location!.coordinate.latitude)")
+            print("manager.location!.coordinate.longitude:\(manager.location!.coordinate.longitude)")
+            GeoLocation(userLocation)
+            locationLabel.font = UIFont.systemFontOfSize(17)
+        }
     }
     
     func printLocation(){
@@ -155,6 +156,7 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
                 if placemarks?.count > 0 {
                     let pm = placemarks![0] as CLPlacemark
                     self.displayLocationInfo(pm)
+                    print("@@@@@@@@@@SUCESS@@@@@@@@@")
                 }else{
                     print("Problem with the data received from geocoder")
                 }
@@ -162,7 +164,7 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         }
     }
     
-    func reverseGeoLocation(location: CLLocation?){
+    func GeoLocation(location: CLLocation?){
         CLGeocoder().reverseGeocodeLocation(location!) { (placemarks, error) in
             if error != nil {
                 let noInternet = NSLocalizedString("No Internet Connection", comment: "Title for error message that no internet in PersonCb's LocationLabel")
@@ -174,10 +176,16 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
             }
             if placemarks?.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
-                self.displayLocationInfo(pm)
                 //store latitude and longitude for user info
                 signInUser?.locationLatitude = location!.coordinate.latitude
                 signInUser?.locationlongitude = location!.coordinate.longitude
+                self.displayLocationInfo(pm)
+                print("location!.coordinate.latitude:\(location!.coordinate.latitude)")
+                print("location!.coordinate.longitude:\(location!.coordinate.longitude)")
+                //wait finish update then tableView reload
+                self.locationSection = 1
+                self.tableView.reloadData()
+                self.locationManager.stopUpdatingLocation()
             }else{
                 print("Problem with the data received from geocoder")
             }
@@ -189,15 +197,17 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         let state = (placemark.administrativeArea != nil) ? placemark.administrativeArea! : ""
         let country = (placemark.country != nil) ? placemark.country! : ""
         locationLabel.text = "\(city), \(state) in \(country)"
+        print("locationLabel.text:\(locationLabel.text!)")
+        print("displayLocationInfo")
         
     }
     
     
     @IBAction func tapEditLocation(sender: UITapGestureRecognizer) {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = 100.0 // Will notify the LocationManager every 100 meters, not aler all the time
+        locationManager.distanceFilter = 1000.0 // Will notify the LocationManager every 1000 meters, not aler all the time
         locationManager.startUpdatingLocation()
     }
     
@@ -367,13 +377,38 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         
         //add datePicker event
         datePicker.addTarget(self, action: #selector(self.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        //add ethnicity back notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.ethnicityBackUpdate), name: "ethnicityBack", object: nil)
+        //add location back notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.searchCityBackUpdate), name: "searchCityBack", object: nil)
+        
         print("In viewDidLoad")
         
     }
 
+    func ethnicityBackUpdate(){
+        //if Ethnicity is changed it will show in here
+        if signInUser!.ethnicity! != "" {
+            ethnicityLabel?.text = signInUser!.ethnicity!
+            ethnicityLabel?.font = UIFont.systemFontOfSize(17)
+        }else{
+            let navbarFont = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
+            ethnicityLabel?.font = navbarFont
+            ethnicityLabel?.text = MVC.notSet
+        }
+        print("get EthnicityBack notice")
+    }
+    
+    func searchCityBackUpdate(){
+        printLocation()
+        print("get SearchCityBack notice")
+    }
+    
     func saveButtonClicked(){
         saveToCoreData()
         // After saving go back to previous page
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ethnicityBack", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "searchCityBack", object: nil)
         navigationController?.popViewControllerAnimated(true)
     }
     func saveToCoreData(){
@@ -403,26 +438,19 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
             print("Could not fetch or Save \(error), \(error.userInfo)")
         }
     }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        //if Ethnicity is changed it will show in here
-        if signInUser!.ethnicity! != "" {
-            ethnicityLabel?.text = signInUser!.ethnicity!
-            ethnicityLabel?.font = UIFont.systemFontOfSize(17)
-        }else{
-            let navbarFont = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
-            ethnicityLabel?.font = navbarFont
-            ethnicityLabel?.text = MVC.notSet
-        }
-        print("viewWillLayouySubviews")
-        printLocation()
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        //NSNotificationCenter.defaultCenter().removeObserver(self, name: "ethnicityBack", object: nil)
+        //NSNotificationCenter.defaultCenter().removeObserver(self, name: "searchCityBack", object: nil)
+        saveToCoreData()
+        print("viewWillDisappear")
     }
     
     //save back to CoreData if click back
     //we want to update
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        saveToCoreData()
         print("viewWillAppear")
     }
     
@@ -523,21 +551,20 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         return true
     }
     
-    // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var destination = segue.destinationViewController as UIViewController
-        if let navCon = destination as? UINavigationController {
-            destination = navCon.visibleViewController!
-        }
-        if destination is PersonsCdEthnicityTableViewController{
-            //pass current moc to next controller which use for create Persons object
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            self.navigationItem.backBarButtonItem = backItem
+//    // MARK: - prepareForSegue
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        var destination = segue.destinationViewController as UIViewController
+//        if let navCon = destination as? UINavigationController {
+//            destination = navCon.visibleViewController!
+//        }
+//        if destination is PersonsCdEthnicityTableViewController{
+//            //pass current moc to next controller which use for create Persons object
+//            let backItem = UIBarButtonItem()
+//            backItem.title = ""
+//            self.navigationItem.backBarButtonItem = backItem
+//        }
+//    }
 
-        }
-    }
-    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

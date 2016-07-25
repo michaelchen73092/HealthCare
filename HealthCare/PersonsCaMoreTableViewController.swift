@@ -27,12 +27,12 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
         //set a new AlertController
         let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .ActionSheet)
         //set cancel action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: Storyboard.CancelAlert, style: .Cancel) { (action) in
             // ...
         }
         alertController.addAction(cancelAction)
         //set Take a New Picture action
-        let NewPicAction = UIAlertAction(title: "Take a New Picture", style: .Default) { (action) in
+        let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) {
                 let picker = UIImagePickerController()
                 picker.sourceType = .Camera
@@ -46,7 +46,7 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
         alertController.addAction(NewPicAction)
         
         //set Select From Library action
-        let profileAction = UIAlertAction(title: "From Photo Library", style: .Default) { (action) in
+        let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
                 print("In library")
                 let picker = UIImagePickerController()
