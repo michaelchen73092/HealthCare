@@ -17,13 +17,18 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     @IBOutlet weak var LicenseTextField: UITextField!{ didSet{ LicenseTextField.delegate = self}}
     @IBOutlet weak var descriptionForImageUsage: UILabel!
     
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     private struct MVC {
         static let nextIdentifier = "Show DoctorStartAd"
     }
+    @IBOutlet weak var medicalLicenseDescription: UILabel!
+    
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup description 
+        medicalLicenseDescription.text = NSLocalizedString("Please enter your license number and upload a clear image of your medicine license to verify your doctor identity.", comment: "In DoctorStartAcLicence, description for this page")
         
         //setup navigation
         let medicalLicenseTitle = NSLocalizedString("Medical License", comment: "In DoctorStartAcLicense's title")
@@ -39,7 +44,17 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         descriptionForImageUsage.layer.borderColor = UIColor.redColor().CGColor
         descriptionForImageUsage.text = Storyboard.PhotoPrintForVerify
         invalidLicenseNumber.hidden = true
+        
+        if tempDoctor?.doctorLicenseNumber != nil {
+            LicenseTextField.text = tempDoctor!.doctorLicenseNumber
+        }
+        
         //setup medicalLicense if any
+        checkWhetherStoredImageOrNot()
+        
+    }
+
+    func checkWhetherStoredImageOrNot(){
         //setup Default Image
         if let imagedata = tempDoctor!.doctorImageMedicalLicense {
             image = UIImage(data: imagedata)
@@ -51,9 +66,8 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
             }
             
         }
-        
     }
-
+    
     func nextButtonClicked(){
         //set back item's title to ""
         let backItem = UIBarButtonItem()
@@ -61,6 +75,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         self.navigationItem.backBarButtonItem = backItem
 
         if validateNumberOnly(LicenseTextField.text!) && (tempDoctor?.doctorImageMedicalLicense != nil){
+            tempDoctor?.doctorLicenseNumber = LicenseTextField.text
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }else{
             invalidLicenseNumber.hidden = false
@@ -70,6 +85,13 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if tempDoctor?.doctorImageMedicalLicense != nil && presentImage?.image == nil {
+            checkWhetherStoredImageOrNot()
+        }
     }
     
     // MARK: - Update Photo function
@@ -88,7 +110,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         //set Take a New Picture action
         let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                let picker = UIImagePickerController()
+                let picker = imagePickerControllerSingleton.singleton()
                 picker.sourceType = .Camera
                 // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
@@ -103,7 +125,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
                 print("In library")
-                let picker = UIImagePickerController()
+                let picker = imagePickerControllerSingleton.singleton()
                 //Set navigation back to default color
                 let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFontOfSize(17)
                 UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.blackColor()]
@@ -137,7 +159,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     }
     
     // add ratio to new image, reference to stanford cs193p lecture 8
-    private var aspectRatioConstraint: NSLayoutConstraint? {
+    private weak var aspectRatioConstraint: NSLayoutConstraint? {
         willSet {
             if let existingConstraint = aspectRatioConstraint {
                 view.removeConstraint(existingConstraint)
@@ -150,26 +172,29 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         }
     }
     
-    private var image: UIImage? {
+    private weak var image: UIImage? {
         get {
             return presentImage?.image
         }
         set {
-            presentImage?.image = newValue
-            if let constrainedView = presentImage {
-                if let newImage = newValue {
-                    aspectRatioConstraint = NSLayoutConstraint(
-                        item: constrainedView,
-                        attribute: .Width,
-                        relatedBy: .Equal,
-                        toItem: constrainedView,
-                        attribute: .Height,
-                        multiplier: newImage.aspectRatio,
-                        constant: 0)
-                    presentImage.hidden = false
-                    descriptionForImageUsage.hidden = false
-                } else {
-                    aspectRatioConstraint = nil
+            if newValue != nil{
+                presentImage?.image = newValue
+                if let constrainedView = presentImage {
+                    if let newImage = newValue {
+                        aspectRatioConstraint = NSLayoutConstraint(
+                            item: constrainedView,
+                            attribute: .Width,
+                            relatedBy: .Equal,
+                            toItem: constrainedView,
+                            attribute: .Height,
+                            multiplier: newImage.aspectRatio,
+                            constant: 0)
+                        presentImage.hidden = false
+                        descriptionForImageUsage.hidden = false
+                    } else {
+                        aspectRatioConstraint = nil
+                    }
+                    
                 }
             }
         }
@@ -177,31 +202,25 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        image = info[UIImagePickerControllerEditedImage] as? UIImage
-        if image == nil {
-            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        image = resize.singleton(info[UIImagePickerControllerOriginalImage] as! UIImage , container: presentImage.image!)
+        //print("image?.size.height:\(image?.size.height)")
+        //print("image?.size.width:\(image?.size.width)")
+        //image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
+            //print("image size %f KB:", imageData.length / 1024)
+            tempDoctor?.doctorImageMedicalLicense = imageData
+            image = nil
         }
-        presentImage.image = image
-        saveImage()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func saveImage()
-    {
-        if let image = presentImage.image {
-            //get image as JPEG
-            if let imageData = UIImageJPEGRepresentation(image, 1) {
-                //print("image size %f KB:", imageData.length / 1024)
-                tempDoctor?.doctorImageMedicalLicense = imageData
-            }
-        }
-    }
 
+    // MARK: - textField
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        tempDoctor?.doctorLicenseNumber = textField.text
         textField.resignFirstResponder()
         return true
     }
@@ -210,7 +229,9 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let ad = segue.destinationViewController as? DoctorStartAdGraduateSchoolTableViewController{
             //pass current moc to next controller which use for create Persons object
-            ad.moc = self.moc
+            ad.moc = self.moc!
+            presentImage?.image = nil
+            descriptionForImageUsage.hidden = true
         }
     }
 

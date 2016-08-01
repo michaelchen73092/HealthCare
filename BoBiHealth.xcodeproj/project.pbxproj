@@ -39,6 +39,8 @@
 		8B5448E01D219C6100B7913F /* StartAdNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */; };
 		8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */; };
 		8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */; };
+		8B58344B1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */; };
+		8B58344D1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */; };
 		8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801781D13BD5500FDE666 /* AppDelegate.swift */; };
 		8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8017C1D13BD5500FDE666 /* Main.storyboard */; };
 		8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801821D13BD5500FDE666 /* Assets.xcassets */; };
@@ -114,6 +116,8 @@
 		8B5448DF1D219C6100B7913F /* StartAdNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAdNameViewController.swift; sourceTree = "<group>"; };
 		8B5448E11D21FBF100B7913F /* StartAePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAePasswordViewController.swift; sourceTree = "<group>"; };
 		8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAfBirthdayViewController.swift; sourceTree = "<group>"; };
+		8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAgCurrentHospitalTableViewController.swift; sourceTree = "<group>"; };
+		8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAhSummaryTableViewController.swift; sourceTree = "<group>"; };
 		8BE801751D13BD5500FDE666 /* BoBiHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoBiHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE801781D13BD5500FDE666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8017D1D13BD5500FDE666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				8B1B29081D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift */,
 				8B1B290A1D42DF8E00BD95DA /* DoctorStartAeSearchSchoolTableViewController.swift */,
 				8B1B290C1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift */,
+				8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */,
+				8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */,
 			);
 			name = DoctorStart;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				8B1B290D1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift in Sources */,
 				8B5448DE1D20EB4800B7913F /* UIStoryboardSegueFromLeft.swift in Sources */,
 				8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */,
+				8B58344B1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift in Sources */,
 				8B1A39801D41392C00DA3893 /* DoctorStartAcLicenceViewController.swift in Sources */,
 				8B0C03CE1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift in Sources */,
 				8B4414BE1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift in Sources */,
@@ -424,6 +431,7 @@
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
 				8B4414C01D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift in Sources */,
 				8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */,
+				8B58344D1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift in Sources */,
 				8B1B29091D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift in Sources */,
 				8B4414C21D2ADC1D00E28180 /* PersonsAaContainerViewController.swift in Sources */,
 				8B179CFE1D2F84B90086485E /* PersonsAdListViewController.swift in Sources */,

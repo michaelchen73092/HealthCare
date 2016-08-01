@@ -8,10 +8,11 @@
 
 import UIKit
 import MobileCoreServices
+import CoreData
 
 class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
+    // MARK: - Variables
     @IBOutlet weak var graduatedLabel: UILabel!
     @IBOutlet weak var medicalDiplomaLabel: UIButton!
     @IBOutlet weak var descriptionForDiploma: UILabel!
@@ -21,15 +22,21 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     
     @IBOutlet weak var invalidNotification: UILabel!
     
-    var diplomaHeight: CGFloat?
-    var idCardHeight: CGFloat?
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var diplomaHeight = CGFloat(60)
+    var idCardHeight = CGFloat(60)
+    weak var moc : NSManagedObjectContext?
     private struct MVC {
         static let nextIdentifier = "Show DoctorStartAf"
     }
+    @IBOutlet weak var graduatedDescription: UILabel!
     
+    // MARK: - view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup description 
+        graduatedDescription.text = NSLocalizedString("Please choose the school where you graudated AND upload either Medical Diploma OR ID Card(Driver License) to verify your identity.", comment: "In DoctorStartAdGraduateSchool, description for this page")
+        
         //for description initailiaztion
         descriptionForDiploma.layer.borderWidth = 1.0
         descriptionForDiploma.layer.borderColor = UIColor.redColor().CGColor
@@ -49,33 +56,47 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         
         //add graduate back notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.graduateSchoolUpdate), name: "graduateSchoolBack", object: nil)
+        //add Default graduate school
+        graduateSchoolUpdate()
         //add image set
         //setup Default Image
-        if let imagedata = tempDoctor?.doctorImageDiploma {
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
-                let image = UIImage(data: imagedata)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self!.diplomaPresentImage.image = image
-                    self!.diplomaHeight = self!.diplomaPresentImage.frame.width / image!.aspectRatio
-                }
-            }
+        imageDiploma()
+        if tempDoctor?.doctorImageDiploma != nil{
             labelToUpload(medicalDiplomaLabel)
         }
-        
-        if let imagedata = tempDoctor?.doctorImageID {
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
-                let image = UIImage(data: imagedata)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self!.idCardImage.image = image
-                    self!.idCardHeight = self!.idCardImage.frame.width / image!.aspectRatio
-                }
-            }
+        imageID()
+        if tempDoctor?.doctorImageID != nil{
             labelToUpload(idCardLabel)
         }
     }
     
+    private func imageDiploma(){
+        if let imagedata = tempDoctor?.doctorImageDiploma {
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
+                var image = UIImage(data: imagedata)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self!.diplomaPresentImage.image = image
+                    self!.diplomaHeight = self!.diplomaPresentImage.frame.width / image!.aspectRatio
+                    image = nil
+                }
+            }
+        }
+    }
+    
+    private func imageID(){
+        if let imagedata = tempDoctor?.doctorImageID {
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
+                var image = UIImage(data: imagedata)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self!.idCardImage.image = image
+                    self!.idCardHeight = self!.idCardImage.frame.width / image!.aspectRatio
+                    image = nil
+                }
+            }
+        }
+    }
     // MARK: - Graudated School
     func graduateSchoolUpdate(){
         if tempDoctor?.doctorGraduateSchool != nil {
@@ -111,6 +132,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             getPhoto()
         }else{
             if diplomaSection == 1 {
+                imageDiploma()
                 diplomaSection = 2
             }else{
                 diplomaSection = 1
@@ -139,6 +161,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             getPhoto()
         }else{
             if idCardSection == 1 {
+                imageID()
                 idCardSection = 2
             }else{
                 idCardSection = 1
@@ -170,7 +193,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         //set Take a New Picture action
         let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                let picker = UIImagePickerController()
+                let picker = imagePickerControllerSingleton.singleton()
                 picker.sourceType = .Camera
                 // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
@@ -185,7 +208,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
                 print("In library")
-                let picker = UIImagePickerController()
+                let picker = imagePickerControllerSingleton.singleton()
                 //Set navigation back to default color
                 let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFontOfSize(17)
                 UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.blackColor()]
@@ -231,32 +254,30 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         tableView.reloadData()
     }
     
-    
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         //since under table view its deal with data, so it may not deal with it in main queue,
         //we should dispatch back to main queue for add image update here
-        var image = info[UIImagePickerControllerEditedImage] as? UIImage
-        if image == nil {
-            image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        }
-        
+        var image = info[UIImagePickerControllerOriginalImage] as? UIImage
         if !diplomaOrIDCard {
+            image = resize.singleton(image! , container: diplomaPresentImage.image!)
             diplomaPresentImage.image = image
             diplomaHeight = diplomaPresentImage.frame.width / image!.aspectRatio
             labelToUpload(medicalDiplomaLabel)
-            if let imageData = UIImageJPEGRepresentation(image!, 1) {
+            if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
                 //print("image size %f KB:", imageData.length / 1024)
                 tempDoctor?.doctorImageDiploma = imageData
+                image = nil
             }
             diplomaSection = 2
         }else{
+            image = resize.singleton(image! , container: idCardImage.image!)
             idCardImage.image = image
             idCardHeight = idCardImage.frame.width / image!.aspectRatio
             labelToUpload(idCardLabel)
-            if let imageData = UIImageJPEGRepresentation(image!, 1) {
+            if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
                 //print("image size %f KB:", imageData.length / 1024)
                 tempDoctor?.doctorImageID = imageData
+                image = nil
             }
             idCardSection = 2
         }
@@ -318,22 +339,23 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 1 && indexPath.row == 1 {
-            return diplomaHeight!
+            return diplomaHeight
         }else if indexPath.section == 2 && indexPath.row == 1 {
-            return idCardHeight!
+            return idCardHeight
         }
         return 60
     }
     
     // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ad = segue.destinationViewController as? DoctorStartAcLicenceViewController{
-            //pass current moc to next controller which use for create Persons object
-            ad.moc = self.moc
-        }
         if let af = segue.destinationViewController as? DoctorStartAfSpecialistTableViewController{
             //pass current moc to next controller which use for create Persons object
-            af.moc = self.moc
+            af.moc = self.moc!
+            diplomaPresentImage.image = nil
+            idCardImage.image = nil
+            diplomaSection = 1
+            idCardSection = 1
+            tableView.reloadData()
         }
     }
 

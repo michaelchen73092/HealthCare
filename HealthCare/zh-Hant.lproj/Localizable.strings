@@ -1,17 +1,355 @@
+/* Specialty category */
+"Allergy and Immunology" = "過敏與免疫科";
+
+/* Specialty category */
+"Anesthesiology" = "麻醉科";
+
+/* Language category */
+"Arabic" = "阿拉伯文";
+
+/* In DoctorStartAfSpecialist's title */
+"Area of Practice" = "專業科目";
+
+/* All navigation item for left going back button */
+"Back" = "回上頁";
+
+/* In PersonsCbAccount, the title for Account setting */
+"Basic Info" = "基本資料";
+
+/* Language category */
+"Bengali" = "孟加拉文";
+
+/* For all alert to access photo library */
+"Cancel" = "取消";
+
+/* Language category */
+"Cantonese" = "廣東語";
+
+/* Specialty category */
+"Cardiologist" = "心臟科";
+
+/* Language category */
+"Catalan" = "加泰羅尼亞文";
+
+/* Language category */
+"Chinese" = "中文";
+
+/* Specialty category */
+"Chinese Medicine" = "中醫";
+
+/* In DoctorStartAbLanguage, description for this page */
+"Choose language(s) that you are comfortable to communicate with patient." = "請選擇您能與病患有效溝通的語言(可多選)。";
+
+/* Specialty category */
+"Colon and Rectal Surgery" = "大腸直腸外科";
+
+/* Specialty category */
+"Cosmetic Surgery" = "整形外科";
+
+/* Language category */
+"Croatian" = "克羅埃西亞文";
+
+/* In DoctorStartAgCurrentHospital's title */
+"Current Hospital" = "現職醫院";
+
+/* Language category */
+"Czech" = "捷克文";
+
+/* Language category */
+"Danish" = "丹麥文";
+
+/* Specialty category */
+"Dentist" = "牙科";
+
+/* Specialty category */
+"Dermatology" = "皮膚科";
+
+/* Language category */
+"Dutch" = "荷蘭文";
+
+/* Navigation item for right button */
+"Edit" = "編輯";
+
+/* Specialty category */
+"Emergency Medicine" = "急症科";
+
+/* Specialty category */
+"Endocrinologist" = "甲狀腺內分泌科";
+
+/* Language category */
+"English" = "英文";
+
+/* In PersonsCd's title */
+"Ethnicity" = "種族";
+
+/* In DoctorStartAhSummary, placeholder for cellphone format */
+"Ex: XXX-XXX-XXXX or XXXXXXXXXX" = "Ex: 09XX-XXX-XXX 或 (XX)XXXXXXX";
+
 /* Title for fail open an account */
 "Fail" = "失敗";
+
+/* Specialty category */
+"Family Medicine" = "家醫科";
+
+/* Female */
+"Female" = "女性";
+
+/* Language category */
+"Finnish" = "芬蘭文";
+
+/* Language category */
+"French" = "法文";
+
+/* For all alert to access photo library */
+"From Photo Library" = "選自相簿照片";
+
+/* Specialty category */
+"Gastroenterologist" = "腸胃科";
+
+/* Language category */
+"German" = "德文";
+
+/* In DoctorStartAbLanguage's title */
+"Graudated School" = "畢業學校";
+
+/* Language category */
+"Greek" = "希臘文";
+
+/* Language category */
+"Hebrew" = "希伯來文";
+
+/* Language category */
+"Hindi" = "印度文";
+
+/* Language category */
+"Hungarian" = "匈牙利文";
+
+/* String for doctor image is uploaded */
+"Image Uploaded" = "相片已上傳";
+
+/* Language category */
+"Indonesian" = "印尼文";
+
+/* Specialty category */
+"Infectious Diseases Specialist" = "傳染病科";
+
+/* Specialty category */
+"Internal Medicine" = "內科";
 
 /* Title for no email record found */
 "Invalid Email" = "電子郵件錯誤";
 
+/* Language category */
+"Italian" = "義大利文";
+
+/* Language category */
+"Japanese" = "日文";
+
+/* Language category */
+"Korean" = "韓文";
+
+/* In DoctorStartAbLanguage's title */
+"Language" = "語言";
+
+/* Setting Location , the title for search location manually */
+"Location" = "位置";
+
+/* Language category */
+"Malay" = "馬來文";
+
+/* Male */
+"Male" = "男性";
+
+/* Specialty category */
+"Medical Genetics and Genomics" = "生殖與遺傳科";
+
+/* In DoctorStartAcLicense's title */
+"Medical License" = "醫生證書";
+
+/* Specialty category */
+"Neurological Surgery" = "神經外科";
+
+/* Specialty category */
+"Neurology" = "腦神經科";
+
+/* All navigation item for right button */
+"Next" = "下一頁";
+
+/* Title for error message that no internet in PersonCb's LocationLabel */
+"No Internet Connection" = "無網路連線";
+
+/* In PersonsCbAccount for bmi Meaning */
+"Normal" = "正常";
+
+/* Language category */
+"Norwegian" = "挪威文";
+
+/* In PersonsCbAccount for Not set constant
+   String for all person data is not set */
+"Not Set" = "未設定";
+
+/* Specialty category */
+"Nuclear Medicine" = "核子醫學科";
+
 /* Confrim for exit alert */
 "OK" = "確定";
+
+/* In PersonsCbAccount for bmi Meaning */
+"Obese" = "肥胖";
+
+/* Specialty category */
+"Obstetrics and Gynecology" = "婦產科";
+
+/* Specialty category */
+"Oncologist" = "腫瘤科";
+
+/* Specialty category */
+"Ophthalmology" = "眼科";
+
+/* Specialty category */
+"Orthopaedic Surgery" = "骨科整形";
+
+/* Specialty category */
+"Other" = "其他";
+
+/* Specialty category */
+"Otolaryngology" = "耳鼻喉科";
+
+/* In PersonsCbAccount for bmi Meaning */
+"Overweight" = "過重";
+
+/* Specialty category */
+"Pathology" = "病理學科";
+
+/* Specialty category */
+"Pediatrics" = "小兒科";
+
+/* Specialty category */
+"Physical Medicine and Rehabilitation" = "復健科";
+
+/* Specialty category */
+"Plastic Surgery" = "整形外科";
+
+/* Message for error message that no internet in PersonCb's LocationLabel */
+"Please Use Wi-Fi to Access Data" = "請使用Wi-Fi來取用資料";
+
+/* In DoctorStartAhSummary, description for this page */
+"Please check your information and documents. If you want to edit, click top right button or click sumit to deliver application. Berbi will contact you within 2 business days to update your applcation status.
+
+Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需要編輯，請點選右上角編輯按鈕，或者點擊上傳按鈕來遞交您的申請資料。Berbi會在兩個工作天內更新您的申請狀況。
+
+歡迎加入Berbi醫師團隊!";
+
+/* In DoctorStartAdGraduateSchool, description for this page */
+"Please choose the school where you graudated AND upload either Medical Diploma OR ID Card(Driver License) to verify your identity." = "請選擇您畢業的學校，以及上傳畢業證書或者身份證(駕照)照片，以驗證您的身份。";
+
+/* In DoctorStartAfSpecialist, description for this page */
+"Please choose your status or your primary specialty. If you select your primary specialty, please also upload a photo of your medical specialties license." = "請選擇您目前的階段或者主要專業科目。如果您選擇專業科目，請上傳您的專科證照照片，以便驗證。";
+
+/* In DoctorStartAcLicence, description for this page */
+"Please enter your license number and upload a clear image of your medicine license to verify your doctor identity." = "請輸入您醫師證書上的號碼和上傳清楚的證書照片，以驗證您醫師的身份。";
+
+/* In DoctorStartAaViewController, lower prepare document description */
+"Please prepare below at least two documents: 
+1) Your Medical License 
+2) Your ID card or your Medicine Diploma 
+3) Medical Specialties License, if you have." = "請準備至少以下兩份文件：
+1) 醫師證書
+2) 身份證或畢業證書
+3) 專科證書(如果有)";
+
+/* In DoctorStartAc, detail for warning for at least select one language */
+"Please select at least one language." = "請選擇至少一種語言。";
+
+/* In DoctorStartAgCurrentHospital, description for this page */
+"Please text your current employed hospital or clinic. You can also provide past experience in second section." = "請輸入您目前就職醫院或診所名稱。您也可以在下面欄位提供過去就職經驗。";
+
+/* Language category */
+"Polish" = "波蘭文";
+
+/* Language category */
+"Portuguese" = "葡萄牙文";
+
+/* Specialty category */
+"Preventive Medicine" = "預防醫學科";
+
+/* In DoctorStartAdGraduateSchool's title */
+"Professional Education" = "醫學專業教育";
+
+/* Specialty category */
+"Psychiatry" = "精神科";
+
+/* Specialty category */
+"Radiology" = "放射科";
+
+/* Language category */
+"Romanian" = "羅馬尼亞文";
+
+/* Language category */
+"Russian" = "俄文";
+
+/* In PersonsCbAccount, the title for save update */
+"Save" = "儲存";
+
+/* In DoctorStartAc, warning for at least select one language */
+"Select Language" = "選擇語言";
+
+/* Language category */
+"Slovak" = "斯洛伐克文";
+
+/* Language category */
+"Spanish" = "西班牙文";
 
 /* Title for success open an account */
 "Success" = "成功";
 
+/* In DoctorStartAhSummary's title */
+"Summary" = "總結";
+
+/* Specialty category */
+"Surgery (General Surgery)" = "外科";
+
+/* Language category */
+"Swedish" = "瑞典文";
+
+/* Language category */
+"Taiwanese" = "台語";
+
+/* For all alert to access photo library */
+"Take a New Picture" = "相機拍照";
+
+/* Language category */
+"Thai" = "泰文";
+
 /* Detail for no email record found */
 "The email you entered doesn't appear to belong to an account. Please check your email address and try again." = "您輸入的電子郵件似乎不屬於任何帳號。請檢查您的電子郵件地址後再試一次。";
+
+/* For all doctor's documentation, we need to print this line for safy issue */
+"This document for Berbi verify doctor's identity only!" = "此文件僅讓Berbi公司驗證醫師身份用。";
+
+/* Specialty category */
+"Thoracic Surgery" = "胸外科";
+
+/* Language category */
+"Turkish" = "土耳其文";
+
+/* Language category */
+"Ukrainian" = "烏克蘭文";
+
+/* In PersonsCbAccount for bmi Meaning */
+"Underweight" = "過輕";
+
+/* Specialty category */
+"Urology" = "泌尿科";
+
+/* Specialty category */
+"Vascular Surgeon" = "血管外科";
+
+/* Language category */
+"Vietnamese" = "越南文";
+
+/* In DoctorStartAaViewController, upper welcome description */
+"Welcome to join Berbi as a licensed medical doctor. In this stage, we only accept for Taiwan licensed medical doctor. We will open other area soon, and sorry for any inconvenient." = "歡迎加入Berbi醫師團隊！現階段我們只開放有台灣醫師執照的醫師申請。未來將陸續開放其他地區的醫師，不便之處，敬請見諒。";
 
 /* detail of fail */
 "Your Account is NOT created" = "抱歉，無法為您創造帳戶，請稍候再試。";

@@ -70,9 +70,9 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     @IBOutlet weak var genderSegmentController: UISegmentedControl!
     @IBAction func genderSegmentAction() {
         if genderSegmentController.selectedSegmentIndex == 0{
-            signInUser?.gender = "Male"
+            signInUser?.gender = Storyboard.male
         }else{
-            signInUser?.gender = "Female"
+            signInUser?.gender = Storyboard.female
         }
         genderLabel?.text = signInUser!.gender!
     }
@@ -467,7 +467,7 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         //gender initialization
         //gender is setted so it can unwrap here
         genderLabel?.text = signInUser!.gender!
-        if signInUser!.gender! == "Female"{
+        if signInUser!.gender! == Storyboard.female {
             genderSegmentController?.selectedSegmentIndex = 1
         }else{
             genderSegmentController?.selectedSegmentIndex = 0

@@ -10,27 +10,28 @@ import UIKit
 import testKit
 import CoreData
 
-var tempDoctor: Doctors?
+
 class DoctorStartAbLanguageTableViewController: UITableViewController {
     // MARK: - Variables
     var language = [Language.languageArabic, Language.languageBengali, Language.languageCantonese, Language.languageCatalan, Language.languageChinese, Language.languageCroatian, Language.languageCzech, Language.languageDanish, Language.languageDutch, Language.languageEnglish, Language.languageFinnish, Language.languageFrench, Language.languageGerman, Language.languageGreek, Language.languageHebrew, Language.languageHindi, Language.languageHungarian, Language.languageIndonesian, Language.languageItalian, Language.languageJapanese, Language.languageKorean, Language.languageMalay, Language.languageNorwegian, Language.languagePolish, Language.languagePortuguese, Language.languageRomanian, Language.languageRussian, Language.languageSlovak, Language.languageSpanish, Language.languageSwedish, Language.languageTaiwanese, Language.languageThai, Language.languageTurkish, Language.languageUkrainian, Language.languageVietnamese]
     var checked = [Bool]()
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     
     private struct MVC {
         static let nextIdentifier = "Show DoctorStartAc"
     }
     
+    @IBOutlet weak var languageDescription: UILabel!
+    
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        languageDescription.text = NSLocalizedString("Choose language(s) that you are comfortable to communicate with patient.", comment: "In DoctorStartAbLanguage, description for this page")
         for _ in 0...(language.count - 1) {
             checked.append(false)
         }
-        // initialized tempDoctor
-        let DoctorsEntity = NSEntityDescription.entityForName("Doctors", inManagedObjectContext: moc)
-        tempDoctor = Doctors(entity: DoctorsEntity!, insertIntoManagedObjectContext: moc)
+        
         tempDoctor?.doctorLanguage = ""
         
         //setup navigation

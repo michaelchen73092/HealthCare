@@ -185,6 +185,7 @@ public func validatePassword(enteredPassword: String) -> Bool {
     return emailPredicate.evaluateWithObject(enteredPassword)
 }
 
+
 //check password format
 public func validateNumberOnly(entered: String) -> Bool {
     // patten at least 6 characters : (?=^.{6,}$)
@@ -194,6 +195,37 @@ public func validateNumberOnly(entered: String) -> Bool {
     let numberFormat = "(?=.*[0-9]).*$"
     let numberPredicate = NSPredicate(format:"SELF MATCHES %@", numberFormat)
     return numberPredicate.evaluateWithObject(entered)
+}
+
+//check Resident Date format
+public func validateResidentDate(enteredResidentDate:String) -> Bool {
+    let ResidentDateFormat = "[0-9]{2,2}+/[0-9]{4,4}"
+    let ResidentDatePredicate = NSPredicate(format:"SELF MATCHES %@", ResidentDateFormat)
+    if let sliceNotation = enteredResidentDate.rangeOfString("/"){
+        let month = Int(enteredResidentDate[enteredResidentDate.startIndex..<sliceNotation.startIndex])
+        let year = Int(enteredResidentDate[sliceNotation.endIndex..<enteredResidentDate.endIndex])
+        let currentdate = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: currentdate)
+        let currentyear =  Int(components.year)
+        if month >= 1 && month <= 12 && year <= currentyear && year >= (currentyear - 15){
+            return ResidentDatePredicate.evaluateWithObject(enteredResidentDate)
+        }
+    }
+    return false
+}
+
+//check phone format
+public func validatePhone(enteredPhone:String) -> Bool {
+    let usaFormat = "^\\d{3}-\\d{3}-\\d{4}$"
+    let usaPredicate = NSPredicate(format:"SELF MATCHES %@", usaFormat)
+    let twFormat = "^09\\d{2}-\\d{3}-\\d{3}$"
+    let twPredicate = NSPredicate(format:"SELF MATCHES %@", twFormat)
+    let twHomeFormat = "^\\(\\d{2}\\)\\d{7,9}$"
+    let twHomePredicate = NSPredicate(format:"SELF MATCHES %@", twHomeFormat)
+    let allFormat = "^\\d{10}$"
+    let allPredicate = NSPredicate(format:"SELF MATCHES %@", allFormat)
+    return usaPredicate.evaluateWithObject(enteredPhone) || twPredicate.evaluateWithObject(enteredPhone) || twHomePredicate.evaluateWithObject(enteredPhone) || allPredicate.evaluateWithObject(enteredPhone)
 }
 
 //wiggle animation
@@ -213,6 +245,7 @@ public struct Storyboard {
     static var KBisON = false // set for recording KB is ON/OFF
     static let color: UIColor = UIColor(netHex: 0x003366)
     static let nextNavigationItemRightButton = NSLocalizedString("Next", comment: "All navigation item for right button")
+    static let editNavigationItemRightButton = NSLocalizedString("Edit", comment: "Navigation item for right button")
     static let backNavigationItemLeftButton = NSLocalizedString("Back", comment: "All navigation item for left going back button")
     static let notSet = NSLocalizedString("Not Set", comment: "String for all person data is not set")
     static let uploaded = NSLocalizedString("Image Uploaded", comment: "String for doctor image is uploaded")
@@ -220,11 +253,9 @@ public struct Storyboard {
     static let TakeANewPictureAlert = NSLocalizedString("Take a New Picture", comment: "For all alert to access photo library")
     static let FromPhotoLibraryAlert = NSLocalizedString("From Photo Library", comment: "For all alert to access photo library")
     static let PhotoPrintForVerify = NSLocalizedString("This document for Berbi verify doctor's identity only!", comment: "For all doctor's documentation, we need to print this line for safy issue")
-    
-    
+    static let male = NSLocalizedString("Male", comment: "Male")
+    static let female = NSLocalizedString("Female", comment: "Female")
 }
-
-
 
 //dismiss KB no matter which textfield is hitted
 public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIViewController){
@@ -233,6 +264,37 @@ public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIVi
         Storyboard.KBisON = false
         textField.resignFirstResponder()
         textField2?.resignFirstResponder()
+    }
+}
+
+//singleton for UIImagePickerController
+public class imagePickerControllerSingleton{
+    static var token: dispatch_once_t = 0 //for thread safe
+    private static var picker: UIImagePickerController?
+    static func singleton() -> UIImagePickerController{
+        if picker == nil{
+            dispatch_once(&token, {
+                picker = UIImagePickerController()
+                })
+            
+        }
+        return picker!
+    }
+}
+
+//singleton for resize
+public class resize{
+    static func singleton(image: UIImage, container: UIImage) -> UIImage{
+        let scale = max(container.size.height / image.size.height, container.size.width / image.size.width)
+        
+        let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(scale, scale))
+        let autoScale : CGFloat = 0.0
+        UIGraphicsBeginImageContextWithOptions(size, true, autoScale)
+        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage
     }
 }
 
@@ -296,6 +358,45 @@ public struct School{
             ["中國醫藥大學牙醫學系", "China Medical University School of Dentistry"],
             ["中山醫學大學牙醫學系", "Chung Shan Medical University School of Dentistry"],
             ["高雄醫學大學牙醫學系", "Kaohsiung Medical University School of Dentistry"],
-            ["義守大學學士後中醫學系","I-Shou University The School of Chinese Medicine for Post Baccalaureate"]
+            ["義守大學學士後中醫學系","I-Shou University The School of Chinese Medicine for Post Baccalaureate"],
+            ["其他","School of Medicine in other school"]
     ]
+}
+
+public struct specialty{
+    static let AllergyandImmunology = NSLocalizedString("Allergy and Immunology", comment: "Specialty category")
+    static let Anesthesiology = NSLocalizedString("Anesthesiology", comment: "Specialty category")
+    static let Cardiologist = NSLocalizedString("Cardiologist", comment: "Specialty category")
+    static let ChineseMedicine = NSLocalizedString("Chinese Medicine", comment: "Specialty category")
+    static let ColonandRectalSurgery = NSLocalizedString("Colon and Rectal Surgery", comment: "Specialty category")
+    static let CosmeticSurgery = NSLocalizedString("Cosmetic Surgery", comment: "Specialty category")
+    static let Dentist = NSLocalizedString("Dentist", comment: "Specialty category")
+    static let Dermatology = NSLocalizedString("Dermatology", comment: "Specialty category")
+    static let EmergencyMedicine = NSLocalizedString("Emergency Medicine", comment: "Specialty category")
+    static let Endocrinologist = NSLocalizedString("Endocrinologist", comment: "Specialty category")
+    static let FamilyMedicine = NSLocalizedString("Family Medicine", comment: "Specialty category")
+    static let Gastroenterologist = NSLocalizedString("Gastroenterologist", comment: "Specialty category")
+    static let InternalMedicine = NSLocalizedString("Internal Medicine", comment: "Specialty category")
+    static let InfectiousDiseasesSpecialist = NSLocalizedString("Infectious Diseases Specialist", comment: "Specialty category")
+    static let MedicalGeneticsandGenomics = NSLocalizedString("Medical Genetics and Genomics", comment: "Specialty category")
+    static let NeurologicalSurgery = NSLocalizedString("Neurological Surgery", comment: "Specialty category")
+    static let Neurology = NSLocalizedString("Neurology", comment: "Specialty category")
+    static let NuclearMedicine = NSLocalizedString("Nuclear Medicine", comment: "Specialty category")
+    static let ObstetricsandGynecology = NSLocalizedString("Obstetrics and Gynecology", comment: "Specialty category")
+    static let Oncologist = NSLocalizedString("Oncologist", comment: "Specialty category")
+    static let Ophthalmology = NSLocalizedString("Ophthalmology", comment: "Specialty category")
+    static let OrthopaedicSurgery = NSLocalizedString("Orthopaedic Surgery", comment: "Specialty category")
+    static let Otolaryngology = NSLocalizedString("Otolaryngology", comment: "Specialty category")
+    static let Pathology = NSLocalizedString("Pathology", comment: "Specialty category")
+    static let Pediatrics = NSLocalizedString("Pediatrics", comment: "Specialty category")
+    static let PhysicalMedicineandRehabilitation = NSLocalizedString("Physical Medicine and Rehabilitation", comment: "Specialty category")
+    static let PlasticSurgery = NSLocalizedString("Plastic Surgery", comment: "Specialty category")
+    static let PreventiveMedicine = NSLocalizedString("Preventive Medicine", comment: "Specialty category")
+    static let Psychiatry = NSLocalizedString("Psychiatry", comment: "Specialty category")
+    static let Radiology = NSLocalizedString("Radiology", comment: "Specialty category")
+    static let SurgeryGeneralSurgery = NSLocalizedString("Surgery (General Surgery)", comment: "Specialty category")
+    static let ThoracicSurgery = NSLocalizedString("Thoracic Surgery", comment: "Specialty category")
+    static let Urology = NSLocalizedString("Urology", comment: "Specialty category")
+    static let VascularSurgeon = NSLocalizedString("Vascular Surgeon", comment: "Specialty category")
+    static let Other = NSLocalizedString("Other", comment: "Specialty category")
 }
