@@ -13,7 +13,6 @@ import CoreData
 
 class DoctorStartAbLanguageTableViewController: UITableViewController {
     // MARK: - Variables
-    var language = [Language.languageArabic, Language.languageBengali, Language.languageCantonese, Language.languageCatalan, Language.languageChinese, Language.languageCroatian, Language.languageCzech, Language.languageDanish, Language.languageDutch, Language.languageEnglish, Language.languageFinnish, Language.languageFrench, Language.languageGerman, Language.languageGreek, Language.languageHebrew, Language.languageHindi, Language.languageHungarian, Language.languageIndonesian, Language.languageItalian, Language.languageJapanese, Language.languageKorean, Language.languageMalay, Language.languageNorwegian, Language.languagePolish, Language.languagePortuguese, Language.languageRomanian, Language.languageRussian, Language.languageSlovak, Language.languageSpanish, Language.languageSwedish, Language.languageTaiwanese, Language.languageThai, Language.languageTurkish, Language.languageUkrainian, Language.languageVietnamese]
     var checked = [Bool]()
     weak var moc : NSManagedObjectContext?
     
@@ -26,9 +25,8 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         languageDescription.text = NSLocalizedString("Choose language(s) that you are comfortable to communicate with patient.", comment: "In DoctorStartAbLanguage, description for this page")
-        for _ in 0...(language.count - 1) {
+        for _ in 0...(Language.allLanguage.count - 1) {
             checked.append(false)
         }
         
@@ -60,7 +58,7 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
             let selectLanguage = NSLocalizedString("Select Language", comment: "In DoctorStartAc, warning for at least select one language")
             let selectLanguagedetail = NSLocalizedString("Please select at least one language.", comment: "In DoctorStartAc, detail for warning for at least select one language")
             let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
-            Alert.show(selectLanguage, message: selectLanguagedetail, ok: okstring,vc: self)
+            Alert.show(selectLanguage, message: selectLanguagedetail, ok: okstring, dismissBoth: false,vc: self)
         }else{
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }
@@ -80,14 +78,14 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return language.count
+        return Language.allLanguage.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = language[indexPath.row]
+        cell.textLabel?.text = Language.allLanguage[indexPath.row]
        
         //for reuse cell issue that view may display on wrong cell when user scroll fast 
         //check every time when cell is reused
@@ -106,31 +104,33 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
                 cell.accessoryType = .None
                 checked[indexPath.row] = false
                 var languageString = tempDoctor!.doctorLanguage!
-                
-                //remove 3) ethnicity in last (if it is last selected ethnicity remove)
-                if let range = languageString.rangeOfString(", " + language[indexPath.row]){
+                // use ", " and " " to closure a number
+                //this part is remove exist language
+                //remove 3) in last or between (if it is last selected language remove)
+                if let range = languageString.rangeOfString(", " + String(indexPath.row) + " "){
                     languageString.removeRange(range.startIndex..<range.endIndex)
                 }
                 
-                //remove unCheckmark from ethnicityString String
-                if let range = languageString.rangeOfString(language[indexPath.row]){
+                //remove unCheckmark from in first
+                if let range = languageString.rangeOfString(" " + String(indexPath.row) + " "){
                     languageString.removeRange(range.startIndex..<range.endIndex)
                 }
                 
-                //remove three possible: 1) ", " at first index which delete first ethnicity
-                if let range = languageString.rangeOfString(", ") {
+                //remove  ", " at first index which delete first language
+                if let range = languageString.rangeOfString(",") {
                     if range.startIndex == languageString.startIndex{
                         languageString.removeRange(range.startIndex..<range.endIndex)
                     }
                 }
                 tempDoctor?.doctorLanguage! = languageString
             } else {
+                //this part select a language
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
                 if tempDoctor!.doctorLanguage! != "" {
-                    tempDoctor?.doctorLanguage! = tempDoctor!.doctorLanguage! + ", " + language[indexPath.row]
+                    tempDoctor?.doctorLanguage! = tempDoctor!.doctorLanguage! + ", " + String(indexPath.row) + " "
                 }else{
-                    tempDoctor?.doctorLanguage! = language[indexPath.row]
+                    tempDoctor?.doctorLanguage! = " " + String(indexPath.row) + " "
                 }
             }
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

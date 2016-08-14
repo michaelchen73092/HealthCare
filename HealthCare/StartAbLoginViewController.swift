@@ -82,8 +82,9 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
             wiggle(emailField, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }
         else {
-            //querry Doctor account on AWS if no data
-            //querry Persons account on AWS
+            //querry account on AWS and tell isDoctor is true or false to go 
+            //User page or Doctor page
+            
             //if success
             if signInUser != nil {
                 //go to User page if signInUser is Persons type
@@ -95,7 +96,7 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
                 let invalidemail = NSLocalizedString("Invalid Email", comment: "Title for no email record found")
                 let invalidemaildetail = NSLocalizedString("The email you entered doesn't appear to belong to an account. Please check your email address and try again.", comment: "Detail for no email record found")
                 let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
-                Alert.show(invalidemail, message: invalidemaildetail, ok: okstring,vc: self)
+                Alert.show(invalidemail, message: invalidemaildetail, ok: okstring, dismissBoth: false, vc: self)
             }//end else
         }//end all else
     }//end login
@@ -104,6 +105,8 @@ class StartAbLoginViewController: UIViewController, UITextFieldDelegate {
         //initialize signInUser by moc
         let PersonsEntity = NSEntityDescription.entityForName("Persons", inManagedObjectContext: moc)
         signInUser = Persons(entity: PersonsEntity!, insertIntoManagedObjectContext: moc)
+        let PersonsPublicEntity = NSEntityDescription.entityForName("PersonsPublic", inManagedObjectContext: moc)
+        signInUserPublic = PersonsPublic(entity: PersonsPublicEntity!, insertIntoManagedObjectContext: moc)
         performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
     }
     

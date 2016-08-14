@@ -1,0 +1,80 @@
+{
+  "name": "AWS_Kit",
+  "version": "1.0.7",
+  "summary": "The Kit for accessing AWS service",
+  "description": "This Kit is created to access AWS service, it doesn’t include AWS framework. User has to install separately",
+  "homepage": "http://EXAMPLE/AWS_Kit",
+  "license": "MIT",
+  "authors": "zero064",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/michaelchen73092/AWS_Kit.git",
+    "tag": "1.0.7"
+  },
+  "source_files": [
+    "AWS_Kit",
+    "AWS_Kit/**/*.{h,m,swift}"
+  ],
+  "frameworks": [
+    "Foundation",
+    "CoreData"
+  ],
+  "dependencies": {
+    "Bolts": [
+
+    ],
+    "AWSAutoScaling": [
+
+    ],
+    "AWSCloudWatch": [
+
+    ],
+    "AWSCognito": [
+
+    ],
+    "AWSCognitoIdentityProvider": [
+
+    ],
+    "AWSDynamoDB": [
+
+    ],
+    "AWSEC2": [
+
+    ],
+    "AWSElasticLoadBalancing": [
+
+    ],
+    "AWSIoT": [
+
+    ],
+    "AWSKinesis": [
+
+    ],
+    "AWSLambda": [
+
+    ],
+    "AWSMachineLearning": [
+
+    ],
+    "AWSMobileAnalytics": [
+
+    ],
+    "AWSS3": [
+
+    ],
+    "AWSSES": [
+
+    ],
+    "AWSSimpleDB": [
+
+    ],
+    "AWSSNS": [
+
+    ],
+    "AWSSQS": [
+
+    ]
+  }
+}

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AWS_Kit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Setting Front color and size for All NavigationBar
         let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFontOfSize(17)
-        
+        registerForPushNotification(application)
         //UINavigationBar.appearance().barTintColor = UIColor(netHex: 0x003366)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -50,6 +51,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    // MARK: - Push Notification
+    var token:String?
+    func registerForPushNotification(application: UIApplication){
+        print("Function: \(#function), line: \(#line)")
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert],categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+    }
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        print("Function: \(#function), line: \(#line)")
+        if notificationSettings.types != .None {
+            print("get permission for remoteNotifications")
+            application.registerForRemoteNotifications()
+        }
+    }
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("Function: \(#function), line: \(#line)")
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        for i in 0..<deviceToken.length {
+            tokenString +=  String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        token = tokenString
+        print("Device Token:",tokenString)
+        
+        
+        //update token
+        /*let token2 = NSEntityDescription.insertNewObjectForEntityForName("APNs", inManagedObjectContext: managedObjectContext)
+         var token_arry = [NSManagedObject]()
+         token2.setValue("Chien-Lin", forKey: "firstname")
+         token2.setValue("zero064@gmail.com", forKey: "email")
+         token2.setValue("Chen", forKey: "lastname")
+         token2.setValue(token, forKey: "token")
+         token_arry.append(token2)
+         
+         let  obj_pari = ["APNs":token_arry]
+         dynamoDBManger.dynamoDB.batchWriteItem(dynamoDBManger.transTowrite(obj_pari))*/
+        
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Function: \(#function), line: \(#line)")
+        print("Failed to register:",error)
+    }
+    func application(application: UIApplication,didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void){
+        print("Function: \(#function), line: \(#line)")
+        let aps = userInfo["aps"] as! [String:AnyObject]
+        handleNotification(aps)
+        completionHandler(.NewData)
+        
+        
+    }
+    func handleNotification(aps:[String:AnyObject]){
+        let message = aps["alert"] as! String
+        print(message)
+    }
+    
+    
+    
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -117,6 +176,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
 
 // MARK: - Public function
 //Define Color by HEX type
@@ -239,6 +300,18 @@ public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Off
     animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
     Field.layer.addAnimation(animation, forKey: "position")
 }
+
+public func wiggleInvalidtext(Field: UILabel, Duration: Double, RepeatCount: Float, Offset: CGFloat)
+{
+    let animation = CABasicAnimation(keyPath: "position")
+    animation.duration = Duration
+    animation.repeatCount = RepeatCount
+    animation.autoreverses = true
+    animation.fromValue = NSValue(CGPoint: CGPointMake(Field.center.x - Offset, Field.center.y))
+    animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
+    Field.layer.addAnimation(animation, forKey: "position")
+}
+
 //global variable
 public struct Storyboard {
     static let moveheight = CGFloat(70) // how much height should move when KB is shown
@@ -250,11 +323,15 @@ public struct Storyboard {
     static let notSet = NSLocalizedString("Not Set", comment: "String for all person data is not set")
     static let uploaded = NSLocalizedString("Image Uploaded", comment: "String for doctor image is uploaded")
     static let CancelAlert = NSLocalizedString("Cancel", comment: "For all alert to access photo library")
+    static let ConfirmAlert = NSLocalizedString("Confirm", comment: "In DoctorAbOnlineWaitlist, for confirm change doctor status.")
     static let TakeANewPictureAlert = NSLocalizedString("Take a New Picture", comment: "For all alert to access photo library")
     static let FromPhotoLibraryAlert = NSLocalizedString("From Photo Library", comment: "For all alert to access photo library")
-    static let PhotoPrintForVerify = NSLocalizedString("This document for Berbi verify doctor's identity only!", comment: "For all doctor's documentation, we need to print this line for safy issue")
+    static let PhotoPrintForVerify = NSLocalizedString(" This document for Berbi verify doctor's identity only!", comment: "For all doctor's documentation, we need to print this line for safy issue")
     static let male = NSLocalizedString("Male", comment: "Male")
     static let female = NSLocalizedString("Female", comment: "Female")
+    static let offLine = NSLocalizedString("Offline", comment: "In DoctorStartAfSpecialist's offline status")
+    static let onLine = NSLocalizedString("Online", comment: "In DoctorStartAfSpecialist's online status")
+    static let yearsOld = NSLocalizedString("Years Old", comment: "In patient waitlist, tell how old this patient is")
 }
 
 //dismiss KB no matter which textfield is hitted
@@ -286,7 +363,6 @@ public class imagePickerControllerSingleton{
 public class resize{
     static func singleton(image: UIImage, container: UIImage) -> UIImage{
         let scale = max(container.size.height / image.size.height, container.size.width / image.size.width)
-        
         let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(scale, scale))
         let autoScale : CGFloat = 0.0
         UIGraphicsBeginImageContextWithOptions(size, true, autoScale)
@@ -296,6 +372,12 @@ public class resize{
         UIGraphicsEndImageContext()
         return scaledImage
     }
+}
+//application status
+public struct Status{
+    static let underReview = "Under Review"
+    static let userModeNotApply = "User Mode Not Apply"
+
 }
 
 public struct Language {
@@ -334,7 +416,11 @@ public struct Language {
     static let languageVietnamese = NSLocalizedString("Vietnamese", comment: "Language category")
     static let languageHindi = NSLocalizedString("Hindi", comment: "Language category")
     static let languageBengali = NSLocalizedString("Bengali", comment: "Language category")
+    
+    static let allLanguage = [Language.languageArabic, Language.languageBengali, Language.languageCantonese, Language.languageCatalan, Language.languageChinese, Language.languageCroatian, Language.languageCzech, Language.languageDanish, Language.languageDutch, Language.languageEnglish, Language.languageFinnish, Language.languageFrench, Language.languageGerman, Language.languageGreek, Language.languageHebrew, Language.languageHindi, Language.languageHungarian, Language.languageIndonesian, Language.languageItalian, Language.languageJapanese, Language.languageKorean, Language.languageMalay, Language.languageNorwegian, Language.languagePolish, Language.languagePortuguese, Language.languageRomanian, Language.languageRussian, Language.languageSlovak, Language.languageSpanish, Language.languageSwedish, Language.languageTaiwanese, Language.languageThai, Language.languageTurkish, Language.languageUkrainian, Language.languageVietnamese]
 }
+
+
 
 public struct School{
     static let school = [
@@ -399,4 +485,103 @@ public struct specialty{
     static let Urology = NSLocalizedString("Urology", comment: "Specialty category")
     static let VascularSurgeon = NSLocalizedString("Vascular Surgeon", comment: "Specialty category")
     static let Other = NSLocalizedString("Other", comment: "Specialty category")
+    
+    static let allSpecialty = [AllergyandImmunology, Anesthesiology, Cardiologist, ChineseMedicine, ColonandRectalSurgery, CosmeticSurgery, Dentist, Dermatology, EmergencyMedicine, Endocrinologist, FamilyMedicine, Gastroenterologist, InfectiousDiseasesSpecialist, InternalMedicine, MedicalGeneticsandGenomics, NeurologicalSurgery, Neurology, NuclearMedicine, ObstetricsandGynecology, Oncologist, Ophthalmology, OrthopaedicSurgery, Otolaryngology, Pathology, Pediatrics, PhysicalMedicineandRehabilitation, PlasticSurgery, PreventiveMedicine, Psychiatry, Radiology, SurgeryGeneralSurgery, ThoracicSurgery, Urology, VascularSurgeon, Other]
+    
+    static let Residents = NSLocalizedString("Residents", comment: "Specialty category")
+    static let Fellows = NSLocalizedString("Fellows", comment: "Specialty category")
+    static let Attendings = NSLocalizedString("Attendings", comment: "Specialty category")
+    static let title = [Residents, Fellows, Attendings]
+}
+
+public struct Ethnicity{
+    static let AfricanAmerican = NSLocalizedString("African American", comment: "Ethnicity category")
+    static let Chinese = NSLocalizedString("Chinese", comment: "Ethnicity category")
+    static let EastAfrican = NSLocalizedString("East African", comment: "Ethnicity category")
+    static let EastAsian = NSLocalizedString("East Asian", comment: "Ethnicity category")
+    static let Fijian = NSLocalizedString("Fijian", comment: "Ethnicity category")
+    static let HispanicorLatinAmerican = NSLocalizedString("Hispanic or Latin American", comment: "Ethnicity category")
+    static let Indian = NSLocalizedString("Indian", comment: "Ethnicity category")
+    static let Maori = NSLocalizedString("Maori", comment: "Ethnicity category")
+    static let MiddleEastern = NSLocalizedString("Middle Eastern", comment: "Ethnicity category")
+    static let NZEuropeanorPakeha = NSLocalizedString("NZ European or Pakeha", comment: "Ethnicity category")
+    static let NativeAmericanorInuit = NSLocalizedString("Native American or Inuit", comment: "Ethnicity category")
+    static let NativeHawaiian = NSLocalizedString("Native Hawaiian", comment: "Ethnicity category")
+    static let Niuean = NSLocalizedString("Niuean", comment: "Ethnicity category")
+    static let Other = NSLocalizedString("Other", comment: "Ethnicity category")
+    static let OtherPacificPeoples = NSLocalizedString("Other Pacific Peoples", comment: "Ethnicity category")
+    static let Samoan = NSLocalizedString("Samoan", comment: "Ethnicity category")
+    static let SouthAsian = NSLocalizedString("South Asian", comment: "Ethnicity category")
+    static let SouthEastAsian = NSLocalizedString("South East Asian", comment: "Ethnicity category")
+    static let Tokelauan = NSLocalizedString("Tokelauan", comment: "Ethnicity category")
+    static let Tongan = NSLocalizedString("Tongan", comment: "Ethnicity category")
+    static let WhiteorCaucasian = NSLocalizedString("White or Caucasian", comment: "Ethnicity category")
+    
+    static let ethnicity = [AfricanAmerican, Chinese, EastAfrican, EastAsian, Fijian, HispanicorLatinAmerican, Indian, Maori, MiddleEastern, NZEuropeanorPakeha, NativeAmericanorInuit, NativeHawaiian, Niuean, Other, OtherPacificPeoples, Samoan, SouthAsian, SouthEastAsian, Tokelauan, Tongan, WhiteorCaucasian]
+    
+}
+
+
+//from index to print string
+public func printLanguage(tempDoctordoctorLanguage: String ) -> String{
+    //need to check if tempDoctor?.doctorLanguage != nil && tempDoctor?.doctorLanguage != ""
+    var languageString = ""
+    var tempDoctorLanguage = tempDoctordoctorLanguage
+    while(tempDoctorLanguage != ""){
+        var temp = ""
+        if let decimalRange = tempDoctorLanguage.rangeOfString(" ,"){
+            temp = tempDoctorLanguage[tempDoctorLanguage.startIndex..<decimalRange.startIndex]
+            // it's possible there are two blank
+            if let blank = temp.rangeOfString(" "){
+                temp.removeAtIndex(blank.startIndex)
+            }
+            if let blank = temp.rangeOfString(" "){
+                temp.removeAtIndex(blank.startIndex)
+            }
+            tempDoctorLanguage.removeRange(tempDoctorLanguage.startIndex..<decimalRange.endIndex)
+        }
+        else if tempDoctorLanguage != ""{
+            temp = tempDoctorLanguage
+            if let blank = temp.rangeOfString(" "){
+                temp.removeAtIndex(blank.startIndex)
+            }
+            if let blank = temp.rangeOfString(" "){
+                temp.removeAtIndex(blank.startIndex)
+            }
+            tempDoctorLanguage = ""
+        }
+        // write to languageStirng
+        if languageString == ""{
+            languageString = Language.allLanguage[Int(temp)!]
+        }else{
+            languageString = languageString + ", " + Language.allLanguage[Int(temp)!]
+        }
+    }
+    //            //use for loop, go though all language
+    //            for i in 0...(Language.allLanguage.count - 1){
+    //                if let _ = tempDoctor!.doctorLanguage!.rangeOfString(" " + String(i) + " "){
+    //                    // for first string, no ", "
+    //                    if languageString == ""{
+    //                        languageString = Language.allLanguage[i]
+    //                    }else{
+    //                        languageString = languageString + ", " + Language.allLanguage[i]
+    //                    }
+    //                }
+    //            }
+    
+    return languageString
+}
+
+
+//personal medical record
+public struct medicalRecord{
+    let time : NSDate?
+    let duration : Int?
+    let doctorFirstName : String?
+    let doctorLastName : String?
+    let doctorImageRemoteURL : String?
+    let diseases : [String]?
+    let medicines : [String]?
+    let treatment : [String]?
+    let referral : Bool?
 }

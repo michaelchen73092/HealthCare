@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StartAfBirthdayViewController: UIViewController{
 
@@ -19,7 +20,7 @@ class StartAfBirthdayViewController: UIViewController{
         static let lastIdentifier = "StartAe"
         static var birthdaySet = false
     }
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     
     
     // MARK: - Viewcontroller Cycle
@@ -45,7 +46,7 @@ class StartAfBirthdayViewController: UIViewController{
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         if MVC.birthdaySet {
-            birthdayField.text = dateFormatter.stringFromDate((signInUser?.birthday)!)
+            birthdayField.text = dateFormatter.stringFromDate((signInUserPublic?.birthday)!)
         }else {
             birthdayField.text = dateFormatter.stringFromDate(NSDate())
         }
@@ -55,7 +56,7 @@ class StartAfBirthdayViewController: UIViewController{
         MVC.birthdaySet = true
         //use string formate to store NSdate for signInUser?.birthday
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        signInUser?.birthday = NSDate(dateString: dateFormatter.stringFromDate(datePicker.date))
+        signInUserPublic?.birthday = NSDate(dateString: dateFormatter.stringFromDate(datePicker.date))
         // this formate is localized formate already
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle

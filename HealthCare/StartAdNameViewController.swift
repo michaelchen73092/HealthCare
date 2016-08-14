@@ -21,7 +21,7 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
         static let nextIdentifier = "StartAe"
         static let lastIdentifier = "StartAc"
     }
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     let tapRec = UITapGestureRecognizer()
     
     // MARK: - Viewcontroller Cycle
@@ -47,8 +47,8 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
         firstnameField.autocorrectionType = .No
         lastnameField.autocorrectionType = .No
         //show textField if it's set
-        firstnameField.text = signInUser?.firstname
-        lastnameField.text = signInUser?.lastname
+        firstnameField.text = signInUserPublic?.firstname
+        lastnameField.text = signInUserPublic?.lastname
     }
     
     func tappedView(){
@@ -89,8 +89,8 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
             invalidName.hidden = false
         }else{
             //Go to next page
-            signInUser?.firstname = firstnameField.text
-            signInUser?.lastname = lastnameField.text
+            signInUserPublic?.firstname = firstnameField.text
+            signInUserPublic?.lastname = lastnameField.text
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }
     }

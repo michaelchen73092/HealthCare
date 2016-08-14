@@ -47,14 +47,14 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
             }else{
                 nameSection = 1
             }
-            signInUser?.firstname = firstNameField.text
-            signInUser?.lastname = lastNameField.text
+            signInUserPublic?.firstname = firstNameField.text
+            signInUserPublic?.lastname = lastNameField.text
             //close other
             genderSection = 1
             locationSection = 1
             birthdaySection = 1
             bmiSection = 1
-            nameLabel?.text = "\(signInUser!.firstname!) \(signInUser!.lastname!)"
+            nameLabel?.text = "\(signInUserPublic!.firstname!) \(signInUserPublic!.lastname!)"
         }
         else{
             invalidName.hidden = false
@@ -70,11 +70,11 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     @IBOutlet weak var genderSegmentController: UISegmentedControl!
     @IBAction func genderSegmentAction() {
         if genderSegmentController.selectedSegmentIndex == 0{
-            signInUser?.gender = Storyboard.male
+            signInUserPublic?.gender = NSNumber(bool: false)  // false is male
         }else{
-            signInUser?.gender = Storyboard.female
+            signInUserPublic?.gender = NSNumber(bool: true) // true is female
         }
-        genderLabel?.text = signInUser!.gender!
+        genderLabel?.text = (signInUserPublic!.gender!.boolValue) ? Storyboard.female : Storyboard.male
     }
     
     @IBAction func tapGender(sender: UITapGestureRecognizer) {
@@ -143,11 +143,11 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     }
     
     func printLocation(){
-        print("In printLocation, signInUser!.locationLatitude!: \(signInUser!.locationLatitude!)")
-        print("In printLocation, signInUser!.locationlongitude!: \(signInUser!.locationlongitude!)")
-        if (signInUser!.locationLatitude! != 0) || (signInUser!.locationlongitude! != 0) {
+        print("In printLocation, signInUser!.locationLatitude!: \(signInUserPublic!.locationLatitude!)")
+        print("In printLocation, signInUser!.locationlongitude!: \(signInUserPublic!.locationlongitude!)")
+        if (signInUserPublic!.locationLatitude! != 0) || (signInUserPublic!.locationlongitude! != 0) {
             locationLabel.font = UIFont.systemFontOfSize(17)
-            let userLocation = CLLocation(latitude: Double(signInUser!.locationLatitude!), longitude: Double(signInUser!.locationlongitude!))
+            let userLocation = CLLocation(latitude: Double(signInUserPublic!.locationLatitude!), longitude: Double(signInUserPublic!.locationlongitude!))
             CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
                 if error != nil {
                     print("Inside printLocation: Reverse geocoder failed with error" + error!.localizedDescription)
@@ -170,15 +170,15 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
                 let noInternet = NSLocalizedString("No Internet Connection", comment: "Title for error message that no internet in PersonCb's LocationLabel")
                 let noInternetMessage =  NSLocalizedString("Please Use Wi-Fi to Access Data", comment: "Message for error message that no internet in PersonCb's LocationLabel")
                 let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
-                Alert.show(noInternet, message: noInternetMessage, ok: okstring,vc: self)
+                Alert.show(noInternet, message: noInternetMessage, ok: okstring, dismissBoth: false,vc: self)
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
                 return
             }
             if placemarks?.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
                 //store latitude and longitude for user info
-                signInUser?.locationLatitude = location!.coordinate.latitude
-                signInUser?.locationlongitude = location!.coordinate.longitude
+                signInUserPublic?.locationLatitude = location!.coordinate.latitude
+                signInUserPublic?.locationlongitude = location!.coordinate.longitude
                 self.displayLocationInfo(pm)
                 print("location!.coordinate.latitude:\(location!.coordinate.latitude)")
                 print("location!.coordinate.longitude:\(location!.coordinate.longitude)")
@@ -291,10 +291,10 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     }
     
     private func bmiCalculate(){
-        if (signInUser?.height != nil) && (signInUser?.weight != nil){
-            let height = Float(signInUser!.height!) / 100
-            let bmi = Float(signInUser!.weight!) / (height * height)
-            if (height != 0) && (Float(signInUser!.weight!) != 0){
+        if (signInUserPublic?.height != nil) && (signInUserPublic?.weight != nil){
+            let height = Float(signInUserPublic!.height!) / 100
+            let bmi = Float(signInUserPublic!.weight!) / (height * height)
+            if (height != 0) && (Float(signInUserPublic!.weight!) != 0){
                 bmiValue.text = String(format: "%.1f", bmi)
                 
                 let Underweight =  NSLocalizedString("Underweight", comment: "In PersonsCbAccount for bmi Meaning")
@@ -331,14 +331,14 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     }
     
     private func bmiInit(){
-        if (signInUser?.height != nil) {
-            heightSliderValue.value = Float(signInUser!.height!)
+        if (signInUserPublic?.height != nil) {
+            heightSliderValue.value = Float(signInUserPublic!.height!)
             heightCalculate()
         }
-        if (signInUser?.weight != nil){
+        if (signInUserPublic?.weight != nil){
             weightSliderValue.minimumValue = 0.0
             weightSliderValue.maximumValue = 140.0
-            weightSliderValue.value = Float(signInUser!.weight!)
+            weightSliderValue.value = Float(signInUserPublic!.weight!)
             weightCalculate()
         }
         bmiCalculate()
@@ -346,13 +346,13 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     
     @IBAction func heightSlider(sender: UISlider) {
         heightCalculate()
-        signInUser?.height = heightSliderValue.value
+        signInUserPublic?.height = heightSliderValue.value
         bmiCalculate()
     }
     
     @IBAction func weightSlider(sender: UISlider) {
         weightCalculate()
-        signInUser?.weight = weightSliderValue.value
+        signInUserPublic?.weight = weightSliderValue.value
         bmiCalculate()
     }
 
@@ -388,8 +388,8 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
 
     func ethnicityBackUpdate(){
         //if Ethnicity is changed it will show in here
-        if signInUser!.ethnicity! != "" {
-            ethnicityLabel?.text = signInUser!.ethnicity!
+        if signInUserPublic!.ethnicity! != "" {
+            ethnicityLabel?.text = printEthnicity(signInUserPublic!.ethnicity!, array: Ethnicity.ethnicity)
             ethnicityLabel?.font = UIFont.systemFontOfSize(17)
         }else{
             let navbarFont = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
@@ -412,25 +412,25 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         navigationController?.popViewControllerAnimated(true)
     }
     func saveToCoreData(){
-        let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+        let fetchRequestPersonPublic = NSFetchRequest(entityName: "PersonsPublic")
         //fetch a local user in HD
         do {
-            let Personresults =  try moc.executeFetchRequest(fetchRequestPerson)
+            let PersonPublicresults =  try moc.executeFetchRequest(fetchRequestPersonPublic)
             
-            let person = Personresults as! [NSManagedObject]
-            person[0].setValue(signInUser!.firstname!, forKey: "firstname")
-            person[0].setValue(signInUser!.lastname!, forKey: "lastname")
-            person[0].setValue(signInUser!.gender!, forKey: "gender")
-            person[0].setValue(signInUser!.locationlongitude!, forKey: "locationlongitude")
-            person[0].setValue(signInUser!.locationLatitude!, forKey: "locationLatitude")
+            let personPublic = PersonPublicresults as! [NSManagedObject]
+            personPublic[0].setValue(signInUserPublic!.firstname!, forKey: "firstname")
+            personPublic[0].setValue(signInUserPublic!.lastname!, forKey: "lastname")
+            personPublic[0].setValue(signInUserPublic!.gender!, forKey: "gender")
+            personPublic[0].setValue(signInUserPublic!.locationlongitude!, forKey: "locationlongitude")
+            personPublic[0].setValue(signInUserPublic!.locationLatitude!, forKey: "locationLatitude")
             //use string formate to store NSdate for signInUser?.birthday
             dateFormatter.dateFormat = "MM-dd-yyyy"
-            signInUser?.birthday = NSDate(dateString: dateFormatter.stringFromDate(datePicker.date))
-            person[0].setValue(NSDate(dateString: dateFormatter.stringFromDate(signInUser!.birthday!)), forKey: "birthday")
-            person[0].setValue(signInUser!.ethnicity!, forKey: "ethnicity")
-            if (signInUser?.height != nil) && (signInUser?.weight != nil){
-                person[0].setValue(signInUser!.height!, forKey: "height")
-                person[0].setValue(signInUser!.weight!, forKey: "weight")
+            signInUserPublic?.birthday = NSDate(dateString: dateFormatter.stringFromDate(datePicker.date))
+            personPublic[0].setValue(NSDate(dateString: dateFormatter.stringFromDate(signInUserPublic!.birthday!)), forKey: "birthday")
+            personPublic[0].setValue(signInUserPublic!.ethnicity!, forKey: "ethnicity")
+            if (signInUserPublic?.height != nil) && (signInUserPublic?.weight != nil){
+                personPublic[0].setValue(signInUserPublic!.height!, forKey: "height")
+                personPublic[0].setValue(signInUserPublic!.weight!, forKey: "weight")
             }
             try moc.save()
             //need to save to global too
@@ -458,16 +458,16 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     private func updateUI(){
         //name initialization
         //firstname and lastname is checked in setting, so we can unwrap them here
-        nameLabel?.text = "\(signInUser!.firstname!) \(signInUser!.lastname!)"
+        nameLabel?.text = "\(signInUserPublic!.firstname!) \(signInUserPublic!.lastname!)"
         firstNameField?.placeholder = "First Name"
-        firstNameField?.text = signInUser!.firstname!
+        firstNameField?.text = signInUserPublic!.firstname!
         lastNameField?.placeholder = "Last Name"
-        lastNameField?.text = signInUser!.lastname!
+        lastNameField?.text = signInUserPublic!.lastname!
         
         //gender initialization
         //gender is setted so it can unwrap here
-        genderLabel?.text = signInUser!.gender!
-        if signInUser!.gender! == Storyboard.female {
+        genderLabel?.text = signInUserPublic!.gender!.boolValue ? Storyboard.female : Storyboard.male
+        if signInUserPublic!.gender! == true {
             genderSegmentController?.selectedSegmentIndex = 1
         }else{
             genderSegmentController?.selectedSegmentIndex = 0
@@ -481,13 +481,13 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         // set dateFormate
         dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        birthdayLabel?.text = dateFormatter.stringFromDate((signInUser?.birthday)!)
-        datePicker.date = signInUser!.birthday!
+        birthdayLabel?.text = dateFormatter.stringFromDate((signInUserPublic?.birthday)!)
+        datePicker.date = signInUserPublic!.birthday!
         
         //ethnicity update
-        if signInUser?.ethnicity != nil {
-            if signInUser!.ethnicity! != "" {
-                ethnicityLabel?.text = signInUser!.ethnicity!
+        if signInUserPublic?.ethnicity != nil {
+            if signInUserPublic!.ethnicity! != "" {
+                ethnicityLabel?.text = printEthnicity(signInUserPublic!.ethnicity!, array: Ethnicity.ethnicity)
                 ethnicityLabel?.font = UIFont.systemFontOfSize(17)
             }else{
                 let navbarFont = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
@@ -497,8 +497,46 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
             }
         }else{
             //initialized signInUser?.ethnicity
-            signInUser?.ethnicity = ""
+            signInUserPublic?.ethnicity = ""
         }
+    }
+    
+    //from index to print string
+    private func printEthnicity(signInUserethnicity: String, array: [String]) -> String{
+        //need to check if tempDoctor?.doctorLanguage != nil && tempDoctor?.doctorLanguage != ""
+        var ethnicityString = ""
+        var tempsignInUserethnicity = signInUserethnicity
+        while(tempsignInUserethnicity != ""){
+            var temp = ""
+            if let decimalRange = tempsignInUserethnicity.rangeOfString(" ,"){
+                temp = tempsignInUserethnicity[tempsignInUserethnicity.startIndex..<decimalRange.startIndex]
+                // it's possible there are two blank
+                if let blank = temp.rangeOfString(" "){
+                    temp.removeAtIndex(blank.startIndex)
+                }
+                if let blank = temp.rangeOfString(" "){
+                    temp.removeAtIndex(blank.startIndex)
+                }
+                tempsignInUserethnicity.removeRange(tempsignInUserethnicity.startIndex..<decimalRange.endIndex)
+            }
+            else if tempsignInUserethnicity != ""{
+                temp = tempsignInUserethnicity
+                if let blank = temp.rangeOfString(" "){
+                    temp.removeAtIndex(blank.startIndex)
+                }
+                if let blank = temp.rangeOfString(" "){
+                    temp.removeAtIndex(blank.startIndex)
+                }
+                tempsignInUserethnicity = ""
+            }
+            // write to languageStirng
+            if ethnicityString == ""{
+                ethnicityString = array[Int(temp)!]
+            }else{
+                ethnicityString = ethnicityString + ", " + array[Int(temp)!]
+            }
+        }
+        return ethnicityString
     }
     
     override func didReceiveMemoryWarning() {
@@ -539,9 +577,9 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         invalidName.hidden = true
         if !validateName(textField.text!) {
-            signInUser?.firstname = firstNameField.text
-            signInUser?.lastname = lastNameField.text
-            nameLabel?.text = "\(signInUser!.firstname!) \(signInUser!.lastname!)"
+            signInUserPublic?.firstname = firstNameField.text
+            signInUserPublic?.lastname = lastNameField.text
+            nameLabel?.text = "\(signInUserPublic!.firstname!) \(signInUserPublic!.lastname!)"
         }
         else{
             invalidName.hidden = false
@@ -550,74 +588,4 @@ class PersonsCbAccountTableViewController: UITableViewController, UITextFieldDel
         textField.resignFirstResponder()
         return true
     }
-    
-//    // MARK: - prepareForSegue
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        var destination = segue.destinationViewController as UIViewController
-//        if let navCon = destination as? UINavigationController {
-//            destination = navCon.visibleViewController!
-//        }
-//        if destination is PersonsCdEthnicityTableViewController{
-//            //pass current moc to next controller which use for create Persons object
-//            let backItem = UIBarButtonItem()
-//            backItem.title = ""
-//            self.navigationItem.backBarButtonItem = backItem
-//        }
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -4,6 +4,9 @@
 /* Class = "UITextField"; placeholder = "Enter your email address"; ObjectID = "3FZ-Nv-7Ew"; */
 "3FZ-Nv-7Ew.placeholder" = "輸入電子郵件";
 
+/* Class = "UILabel"; text = "Address:"; ObjectID = "3Yo-yW-6Jk"; */
+"3Yo-yW-6Jk.text" = "地址：";
+
 /* Class = "UILabel"; text = "Body Mass Index(BMI)"; ObjectID = "4Zh-Dq-ntY"; */
 "4Zh-Dq-ntY.text" = "身體質量指數(BMI)";
 
@@ -13,7 +16,7 @@
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "5Kf-pu-L7i"; */
 "5Kf-pu-L7i.normalTitle" = "繼續";
 
-/* Class = "UILabel"; text = "Be a Licensed Medical Doctor"; ObjectID = "5Yc-ta-qxJ"; */
+/* Class = "UILabel"; text = "Join Berbi Doctor Group"; ObjectID = "5Yc-ta-qxJ"; */
 "5Yc-ta-qxJ.text" = "加入Berbi醫師團隊";
 
 /* Class = "UILabel"; text = "Email invalid."; ObjectID = "5dE-Ub-fla"; */
@@ -28,7 +31,16 @@
 /* Class = "UILabel"; text = "My Favorite Doctors"; ObjectID = "7pr-jr-Ml2"; */
 "7pr-jr-Ml2.text" = "我喜愛的醫師";
 
-/* Class = "UILabel"; text = "Primary Specialty"; ObjectID = "64o-oD-A4F"; */
+/* Class = "UIBarButtonItem"; title = "End"; ObjectID = "9Y7-RM-VbR"; */
+"9Y7-RM-VbR.title" = "結束";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "23o-6M-x8p"; */
+"23o-6M-x8p.normalTitle" = "確認";
+
+/* Class = "UITableViewSection"; headerTitle = "Area of Practice"; ObjectID = "30B-dd-BAG"; */
+"30B-dd-BAG.headerTitle" = "專業科目";
+
+/* Class = "UILabel"; text = "Primary Specialty:"; ObjectID = "64o-oD-A4F"; */
 "64o-oD-A4F.text" = "專業科目";
 
 /* Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "73D-jt-9Wc"; */
@@ -40,10 +52,16 @@
 /* Class = "UILabel"; text = "PGY(Taiwan medical system only)"; ObjectID = "BL5-He-Bgh"; */
 "BL5-He-Bgh.text" = "PGY(限台灣醫療體系)";
 
+/* Class = "UILabel"; text = "More"; ObjectID = "BNY-Ms-yGO"; */
+"BNY-Ms-yGO.text" = "更多";
+
+/* Class = "UILabel"; text = "Not Set"; ObjectID = "BiO-dW-N8H"; */
+"BiO-dW-N8H.text" = "未設定";
+
 /* Class = "UITableViewSection"; headerTitle = "Graduated School"; ObjectID = "BnW-b0-j4d"; */
 "BnW-b0-j4d.headerTitle" = "畢業學校";
 
-/* Class = "UILabel"; text = "Please select your status AND enter correct information format."; ObjectID = "BtA-Zi-ZDX"; */
+/* Class = "UILabel"; text = "Please select your status. If you selected your specialty, please also select your specialty title."; ObjectID = "BtA-Zi-ZDX"; */
 "BtA-Zi-ZDX.text" = "請選擇您的階段或專科並且輸入正確格式。";
 
 /* Class = "UILabel"; text = "Please enter a valid Name."; ObjectID = "ByA-8A-8is"; */
@@ -58,17 +76,14 @@
 /* Class = "UITableViewSection"; headerTitle = "Gender"; ObjectID = "CjH-T5-9LO"; */
 "CjH-T5-9LO.headerTitle" = "性別";
 
-/* Class = "UILabel"; text = "Resident since"; ObjectID = "DC4-b5-5tf"; */
-"DC4-b5-5tf.text" = "住院醫師 從";
-
 /* Class = "UILabel"; text = "Internist"; ObjectID = "Dtp-vS-EmF"; */
 "Dtp-vS-EmF.text" = "實習醫生";
 
-/* Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "Ezn-2G-6KO"; */
-"Ezn-2G-6KO.normalTitle" = "未設定";
-
 /* Class = "UITableViewSection"; headerTitle = "Birthday"; ObjectID = "F83-nc-C3b"; */
 "F83-nc-C3b.headerTitle" = "生日";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "FkK-Ms-jHQ"; */
+"FkK-Ms-jHQ.title" = "取消";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "FxV-0I-LlM"; */
 "FxV-0I-LlM.placeholder" = "密碼";
@@ -115,13 +130,16 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "LPj-fj-ZMz"; */
 "LPj-fj-ZMz.text" = "姓名";
 
+/* Class = "UITableViewSection"; headerTitle = "Medical License"; ObjectID = "MOl-mH-DeM"; */
+"MOl-mH-DeM.headerTitle" = "醫生證書";
+
 /* Class = "UILabel"; text = "Height"; ObjectID = "OwK-1J-Vq9"; */
 "OwK-1J-Vq9.text" = "身高";
 
 /* Class = "UITableViewSection"; headerTitle = "Graduated School"; ObjectID = "PpC-hr-ana"; */
 "PpC-hr-ana.headerTitle" = "畢業學校";
 
-/* Class = "UILabel"; text = "Please enter current hospital AND not leave blank when adding futher experience."; ObjectID = "Q57-P0-ah1"; */
+/* Class = "UILabel"; text = "Please enter current hospital/clinic AND its address. AND not leave blank when adding futher experience."; ObjectID = "Q57-P0-ah1"; */
 "Q57-P0-ah1.text" = "請輸入您目前就職醫院。如您填寫過去經驗，請勿在中間欄位留白。";
 
 /* Class = "UIButton"; normalTitle = "Male"; ObjectID = "Qn8-u0-Ts3"; */
@@ -132,6 +150,9 @@
 
 /* Class = "UILabel"; text = "Create a Password"; ObjectID = "Rtt-X3-gR8"; */
 "Rtt-X3-gR8.text" = "建立密碼";
+
+/* Class = "UITableViewSection"; headerTitle = "[NOW] General Appointment"; ObjectID = "TWC-if-hpu"; */
+"TWC-if-hpu.headerTitle" = "[現在]一般預約";
 
 /* Class = "UITableViewSection"; headerTitle = "Ethnicity"; ObjectID = "TdX-0J-aqF"; */
 "TdX-0J-aqF.headerTitle" = "種族";
@@ -151,6 +172,9 @@
 /* Class = "UILabel"; text = "Not Set"; ObjectID = "VOC-1k-7C5"; */
 "VOC-1k-7C5.text" = "未設定";
 
+/* Class = "UITableViewSection"; headerTitle = "Board Certification"; ObjectID = "WJe-XU-ADB"; */
+"WJe-XU-ADB.headerTitle" = "專科證書";
+
 /* Class = "UISegmentedControl"; X5T-TL-V5K.segmentTitles[0] = "Male"; ObjectID = "X5T-TL-V5K"; */
 "X5T-TL-V5K.segmentTitles[0]" = "男性";
 
@@ -160,8 +184,14 @@
 /* Class = "UILabel"; text = "Email invalid."; ObjectID = "XZI-aU-UWY"; */
 "XZI-aU-UWY.text" = "電子郵件無效。";
 
+/* Class = "UILabel"; text = "Patients Wait List"; ObjectID = "Xf5-VL-5xy"; */
+"Xf5-VL-5xy.text" = "病人候診名單";
+
 /* Class = "UILabel"; text = "Weight"; ObjectID = "YKa-Qe-ubn"; */
 "YKa-Qe-ubn.text" = "體重";
+
+/* Class = "UILabel"; text = "More"; ObjectID = "Yyt-ef-dZC"; */
+"Yyt-ef-dZC.text" = "更多";
 
 /* Class = "UILabel"; text = "You can change this later in your account settings."; ObjectID = "aE6-bR-fR3"; */
 "aE6-bR-fR3.text" = "您可以稍後在設定中更改。";
@@ -187,6 +217,9 @@
 /* Class = "UITableViewSection"; headerTitle = "past experience"; ObjectID = "clq-i4-bCi"; */
 "clq-i4-bCi.headerTitle" = "過去經驗";
 
+/* Class = "UIBarButtonItem"; title = "Update"; ObjectID = "cme-ja-Daz"; */
+"cme-ja-Daz.title" = "更新";
+
 /* Class = "UILabel"; text = "Weight Result"; ObjectID = "cnC-Li-9Qc"; */
 "cnC-Li-9Qc.text" = "體重結果";
 
@@ -205,7 +238,7 @@
 /* Class = "UITableViewSection"; headerTitle = "Cell phone (*)"; ObjectID = "eXI-0D-Ebu"; */
 "eXI-0D-Ebu.headerTitle" = "手機(*)";
 
-/* Class = "UIButton"; normalTitle = "Sumit"; ObjectID = "fFJ-u6-qMn"; */
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "fFJ-u6-qMn"; */
 "fFJ-u6-qMn.normalTitle" = "上傳";
 
 /* Class = "UILabel"; text = "Not Set"; ObjectID = "fXU-Rv-2J4"; */
@@ -214,8 +247,17 @@
 /* Class = "UITextField"; placeholder = "Search"; ObjectID = "fcN-1o-HOU"; */
 "fcN-1o-HOU.placeholder" = "搜尋";
 
+/* Class = "UITableViewSection"; headerTitle = "ID Card / Driver License"; ObjectID = "ffw-tb-2n4"; */
+"ffw-tb-2n4.headerTitle" = "身份證 / 駕照";
+
 /* Class = "UILabel"; text = "Not Set"; ObjectID = "fyF-s9-CYB"; */
 "fyF-s9-CYB.text" = "未設定";
+
+/* Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "g5r-e5-rDh"; */
+"g5r-e5-rDh.normalTitle" = "未設定";
+
+/* Class = "UITableViewSection"; headerTitle = "Medical Diploma"; ObjectID = "gTC-8J-Ymn"; */
+"gTC-8J-Ymn.headerTitle" = "畢業證書";
 
 /* Class = "UILabel"; text = "Not Set"; ObjectID = "gZ7-nu-s6L"; */
 "gZ7-nu-s6L.text" = "未設定";
@@ -231,6 +273,9 @@
 
 /* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL"; */
 "ibm-BT-vDL.normalTitle" = "登入";
+
+/* Class = "UILabel"; text = "Specialty Title:"; ObjectID = "jtF-FB-1Nf"; */
+"jtF-FB-1Nf.text" = "專科職稱：";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "kT7-O6-L8c"; */
 "kT7-O6-L8c.normalTitle" = "繼續";
@@ -252,9 +297,6 @@
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "m7v-gL-K9a"; */
 "m7v-gL-K9a.normalTitle" = "繼續";
-
-/* Class = "UITextField"; placeholder = "MM/YYYY"; ObjectID = "nHu-IB-U97"; */
-"nHu-IB-U97.placeholder" = "MM/YYYY";
 
 /* Class = "UITableViewSection"; headerTitle = "Name"; ObjectID = "nk0-dd-Hnt"; */
 "nk0-dd-Hnt.headerTitle" = "姓名";
@@ -288,6 +330,9 @@
 
 /* Class = "UILabel"; text = "Payment"; ObjectID = "vHy-Ei-7yz"; */
 "vHy-Ei-7yz.text" = "付款";
+
+/* Class = "UILabel"; text = "Not Set"; ObjectID = "vTZ-xM-pFC"; */
+"vTZ-xM-pFC.text" = "未設定";
 
 /* Class = "UILabel"; text = "What's Your Gender?"; ObjectID = "vhr-pw-uQq"; */
 "vhr-pw-uQq.text" = "您的性別？";

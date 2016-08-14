@@ -12,8 +12,16 @@ import testKit
 
 // set a temporal Persons in memory
 var signInUser: Persons?
+var signInUserPublic: PersonsPublic?
+var signInDoctor: Doctors?
 
 class StartAaHelloViewController: UIViewController {
+    
+    private struct MVC{
+        static let MainPersonsIdentifier = "MainPersons"
+        static let StartAbIdentifier = "StartAb"
+        static let showDoctorAaIdentifier = "Show DoctorAa"
+    }
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,24 +53,46 @@ class StartAaHelloViewController: UIViewController {
 
         let fetchRequestDoctor = NSFetchRequest(entityName: "Doctors")
         let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+        let fetchRequestPersonPublic = NSFetchRequest(entityName: "PersonsPublic")
         do {
             //fetch a local user in HD
             let Personresults =  try managedContext.executeFetchRequest(fetchRequestPerson)
             let person = Personresults as! [NSManagedObject]
+            //fetch a local user Public in HD
+            let PersonPublicresults =  try managedContext.executeFetchRequest(fetchRequestPersonPublic)
+            let personPublic = PersonPublicresults as! [NSManagedObject]
             //fetch a local doctor in HD
             let Doctorresults =  try managedContext.executeFetchRequest(fetchRequestDoctor)
             let doctor = Doctorresults as! [NSManagedObject]
-            
+            //doctor first and user second
+            if doctor.count != 0 {
+                signInDoctor = doctor[0] as? Doctors
+                //if account is Doctors, go to to doctor Main MVC
+            }
             if person.count != 0{
                 //if account is Persons, go to to user Main MVC(Aa)
                 signInUser = person[0] as? Persons //make sure person[0] always can downcasting to Person
-                performSegueWithIdentifier("MainPersons", sender: nil)
-            }else if doctor.count != 0 {
-                //if account is Doctors, go to to doctor Main MVC(??)
-                signInUser = doctor[0] as! Doctors //make sure doctor[0] always can downcasting to Doctors
-            }else {
+                // assign personsPublic data
+                if personPublic.count != 0{
+                    signInUserPublic = personPublic[0] as? PersonsPublic
+                }
+                
+                //now for developing use////////////
+                if signInDoctor != nil{
+                    signInUser?.isdoctor = true
+                    signInDoctor?.doctorCertificated = NSNumber(bool: true)
+                }
+                ////////////////////////////////////
+                if signInUser?.isdoctor == false{
+                    performSegueWithIdentifier(MVC.MainPersonsIdentifier, sender: nil)
+                }else{
+                    performSegueWithIdentifier(MVC.showDoctorAaIdentifier, sender: nil)
+                }
+            }
+
+            if person.count == 0 && doctor.count == 0{
                 //if no account to go login page(StartAb)
-                performSegueWithIdentifier("StartAb", sender: nil)
+                performSegueWithIdentifier(MVC.StartAbIdentifier, sender: nil)
             }
             
         } catch let error as NSError {

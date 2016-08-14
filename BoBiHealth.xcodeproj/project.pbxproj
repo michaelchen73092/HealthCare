@@ -7,27 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CE15AB20C3608247A5D4A5A /* Pods_BoBiHealth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662E66F569E381322F5826D3 /* Pods_BoBiHealth.framework */; };
 		8B0C03CE1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */; };
 		8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */; };
 		8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */; };
-		8B148C251D3C6A470063499E /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; };
-		8B148C261D3C6A470063499E /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B148C231D3C6A290063499E /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B148C281D3D46270063499E /* PersonsCdEthnicityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B148C271D3D46270063499E /* PersonsCdEthnicityTableViewController.swift */; };
 		8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */; };
 		8B179CFE1D2F84B90086485E /* PersonsAdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */; };
 		8B1A39791D403EF700DA3893 /* DoctorStartAaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A39781D403EF700DA3893 /* DoctorStartAaViewController.swift */; };
 		8B1A397C1D404E3A00DA3893 /* DoctorStartAbLanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A397B1D404E3A00DA3893 /* DoctorStartAbLanguageTableViewController.swift */; };
 		8B1A39801D41392C00DA3893 /* DoctorStartAcLicenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A397F1D41392C00DA3893 /* DoctorStartAcLicenceViewController.swift */; };
+		8B1A87D01D5BD8D400F03C9A /* testKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A87CE1D5BD8CA00F03C9A /* testKit.framework */; };
+		8B1A87D11D5BD8D400F03C9A /* testKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1A87CE1D5BD8CA00F03C9A /* testKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B1B29091D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B29081D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift */; };
 		8B1B290B1D42DF8E00BD95DA /* DoctorStartAeSearchSchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B290A1D42DF8E00BD95DA /* DoctorStartAeSearchSchoolTableViewController.swift */; };
 		8B1B290D1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B290C1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift */; };
 		8B21B6301D343D4F00A70581 /* PersonsCaMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */; };
 		8B21B6321D346EE100A70581 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21B6311D346EE100A70581 /* RBResizer.swift */; };
+		8B2941EE1D5579C500AD4D43 /* DoctorStarAkSearchAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2941ED1D5579C500AD4D43 /* DoctorStarAkSearchAddressTableViewController.swift */; };
 		8B4414BE1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BD1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift */; };
 		8B4414C01D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414BF1D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift */; };
 		8B4414C21D2ADC1D00E28180 /* PersonsAaContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */; };
 		8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */; };
 		8B50EFD41D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */; };
+		8B51CBCE1D60FA840041C418 /* DoctorAdPatientDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51CBCD1D60FA840041C418 /* DoctorAdPatientDetailTableViewCell.swift */; };
 		8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448BD1D1F97DB00B7913F /* Alert.swift */; };
 		8B5448C51D20967E00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448C71D20967E00B7913F /* InfoPlist.strings */; };
 		8B5448CA1D20967F00B7913F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5448CC1D20967F00B7913F /* InfoPlist.strings */; };
@@ -41,6 +44,12 @@
 		8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */; };
 		8B58344B1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */; };
 		8B58344D1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */; };
+		8B5A71781D5D4F0900C26B7D /* DoctorAbPatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A71771D5D4F0900C26B7D /* DoctorAbPatientTableViewCell.swift */; };
+		8B617EE91D504C5E001CF59D /* DoctorStartAiInProcessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B617EE81D504C5E001CF59D /* DoctorStartAiInProcessTableViewController.swift */; };
+		8B617F291D51B4E0001CF59D /* DoctorAaNowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B617F281D51B4E0001CF59D /* DoctorAaNowTableViewController.swift */; };
+		8B63AA291D5AB79500B02CA6 /* DoctorAbOnlineWaitlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63AA281D5AB79500B02CA6 /* DoctorAbOnlineWaitlistTableViewController.swift */; };
+		8B63AA2B1D5BB18100B02CA6 /* DoctorAcInfoPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63AA2A1D5BB18100B02CA6 /* DoctorAcInfoPopoverViewController.swift */; };
+		8BE3E7B11D53BD30005D8D0F /* DoctorStartAjSpecialtyTitleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3E7B01D53BD30005D8D0F /* DoctorStartAjSpecialtyTitleTableViewController.swift */; };
 		8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE801781D13BD5500FDE666 /* AppDelegate.swift */; };
 		8BE8017E1D13BD5500FDE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8017C1D13BD5500FDE666 /* Main.storyboard */; };
 		8BE801831D13BD5500FDE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE801821D13BD5500FDE666 /* Assets.xcassets */; };
@@ -73,7 +82,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B148C261D3C6A470063499E /* testKit.framework in Embed Frameworks */,
+				8B1A87D11D5BD8D400F03C9A /* testKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,26 +90,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12C03EC3C64F4FC111A21531 /* Pods-BoBiHealth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoBiHealth.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoBiHealth/Pods-BoBiHealth.release.xcconfig"; sourceTree = "<group>"; };
+		662E66F569E381322F5826D3 /* Pods_BoBiHealth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoBiHealth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0C03CD1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCbAccountTableViewController.swift; sourceTree = "<group>"; };
 		8B1215C41D1C66420033843A /* StartAaHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAaHelloViewController.swift; sourceTree = "<group>"; };
 		8B1215C81D1CBD820033843A /* StartAbLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAbLoginViewController.swift; sourceTree = "<group>"; };
-		8B148C231D3C6A290063499E /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/testKit.framework"; sourceTree = "<group>"; };
 		8B148C271D3D46270063499E /* PersonsCdEthnicityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCdEthnicityTableViewController.swift; sourceTree = "<group>"; };
 		8B179CFB1D2F77710086485E /* PersonsAcSearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAcSearchContainerViewController.swift; sourceTree = "<group>"; };
 		8B179CFD1D2F84B90086485E /* PersonsAdListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAdListViewController.swift; sourceTree = "<group>"; };
 		8B1A39781D403EF700DA3893 /* DoctorStartAaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAaViewController.swift; sourceTree = "<group>"; };
 		8B1A397B1D404E3A00DA3893 /* DoctorStartAbLanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAbLanguageTableViewController.swift; sourceTree = "<group>"; };
 		8B1A397F1D41392C00DA3893 /* DoctorStartAcLicenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAcLicenceViewController.swift; sourceTree = "<group>"; };
+		8B1A87CE1D5BD8CA00F03C9A /* testKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = testKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/testKit.framework"; sourceTree = "<group>"; };
 		8B1B29081D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAdGraduateSchoolTableViewController.swift; sourceTree = "<group>"; };
 		8B1B290A1D42DF8E00BD95DA /* DoctorStartAeSearchSchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAeSearchSchoolTableViewController.swift; sourceTree = "<group>"; };
 		8B1B290C1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAfSpecialistTableViewController.swift; sourceTree = "<group>"; };
 		8B21B62F1D343D4F00A70581 /* PersonsCaMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCaMoreTableViewController.swift; sourceTree = "<group>"; };
 		8B21B6311D346EE100A70581 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBResizer.swift; sourceTree = "<group>"; };
+		8B2941ED1D5579C500AD4D43 /* DoctorStarAkSearchAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStarAkSearchAddressTableViewController.swift; sourceTree = "<group>"; };
 		8B4414BD1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAeSearchDoctorTableViewController.swift; path = ../PersonsAeSearchDoctorTableViewController.swift; sourceTree = "<group>"; };
 		8B4414BF1D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonsAbFilterTableViewController.swift; path = ../PersonsAbFilterTableViewController.swift; sourceTree = "<group>"; };
 		8B4414C11D2ADC1D00E28180 /* PersonsAaContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsAaContainerViewController.swift; sourceTree = "<group>"; };
 		8B465AD31D2442C90068ED82 /* StartAgGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAgGenderViewController.swift; sourceTree = "<group>"; };
 		8B50EFD31D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsCcSearchCityTableViewController.swift; sourceTree = "<group>"; };
+		8B51CBCD1D60FA840041C418 /* DoctorAdPatientDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAdPatientDetailTableViewCell.swift; sourceTree = "<group>"; };
 		8B5448BD1D1F97DB00B7913F /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8B5448BF1D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8B5448C01D1FA7EE00B7913F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -118,6 +131,12 @@
 		8B5448E31D22476300B7913F /* StartAfBirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAfBirthdayViewController.swift; sourceTree = "<group>"; };
 		8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAgCurrentHospitalTableViewController.swift; sourceTree = "<group>"; };
 		8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAhSummaryTableViewController.swift; sourceTree = "<group>"; };
+		8B5A71771D5D4F0900C26B7D /* DoctorAbPatientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAbPatientTableViewCell.swift; sourceTree = "<group>"; };
+		8B617EE81D504C5E001CF59D /* DoctorStartAiInProcessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAiInProcessTableViewController.swift; sourceTree = "<group>"; };
+		8B617F281D51B4E0001CF59D /* DoctorAaNowTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAaNowTableViewController.swift; sourceTree = "<group>"; };
+		8B63AA281D5AB79500B02CA6 /* DoctorAbOnlineWaitlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAbOnlineWaitlistTableViewController.swift; sourceTree = "<group>"; };
+		8B63AA2A1D5BB18100B02CA6 /* DoctorAcInfoPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAcInfoPopoverViewController.swift; sourceTree = "<group>"; };
+		8BE3E7B01D53BD30005D8D0F /* DoctorStartAjSpecialtyTitleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorStartAjSpecialtyTitleTableViewController.swift; sourceTree = "<group>"; };
 		8BE801751D13BD5500FDE666 /* BoBiHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoBiHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE801781D13BD5500FDE666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE8017D1D13BD5500FDE666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +149,7 @@
 		8BE801971D13BD5600FDE666 /* BoBiHealth.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoBiHealth.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8019B1D13BD5600FDE666 /* HealthCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCareUITests.swift; sourceTree = "<group>"; };
 		8BE8019D1D13BD5600FDE666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0E88FC6330370BF6C41C6B2 /* Pods-BoBiHealth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoBiHealth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoBiHealth/Pods-BoBiHealth.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B148C251D3C6A470063499E /* testKit.framework in Frameworks */,
+				2CE15AB20C3608247A5D4A5A /* Pods_BoBiHealth.framework in Frameworks */,
+				8B1A87D01D5BD8D400F03C9A /* testKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +179,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40167ED0549F5F439AAED12B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				662E66F569E381322F5826D3 /* Pods_BoBiHealth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B0C03CA1D3609B400C02790 /* PersonsStart */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +228,23 @@
 				8B1B290C1D46714800BD95DA /* DoctorStartAfSpecialistTableViewController.swift */,
 				8B58344A1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift */,
 				8B58344C1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift */,
+				8B617EE81D504C5E001CF59D /* DoctorStartAiInProcessTableViewController.swift */,
+				8BE3E7B01D53BD30005D8D0F /* DoctorStartAjSpecialtyTitleTableViewController.swift */,
+				8B2941ED1D5579C500AD4D43 /* DoctorStarAkSearchAddressTableViewController.swift */,
 			);
 			name = DoctorStart;
+			sourceTree = "<group>";
+		};
+		8B617F271D51B490001CF59D /* Doctor */ = {
+			isa = PBXGroup;
+			children = (
+				8B51CBCD1D60FA840041C418 /* DoctorAdPatientDetailTableViewCell.swift */,
+				8B617F281D51B4E0001CF59D /* DoctorAaNowTableViewController.swift */,
+				8B63AA281D5AB79500B02CA6 /* DoctorAbOnlineWaitlistTableViewController.swift */,
+				8B5A71771D5D4F0900C26B7D /* DoctorAbPatientTableViewCell.swift */,
+				8B63AA2A1D5BB18100B02CA6 /* DoctorAcInfoPopoverViewController.swift */,
+			);
+			name = Doctor;
 			sourceTree = "<group>";
 		};
 		8BE8016C1D13BD5500FDE666 = {
@@ -210,6 +254,8 @@
 				8BE8018F1D13BD5500FDE666 /* BoBiHealthTests */,
 				8BE8019A1D13BD5600FDE666 /* BoBiHealthUITests */,
 				8BE801761D13BD5500FDE666 /* Products */,
+				C7F000F935DB7E6404534EB7 /* Pods */,
+				40167ED0549F5F439AAED12B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,8 +275,9 @@
 				8B0C03CA1D3609B400C02790 /* PersonsStart */,
 				8B0C03CC1D360A9800C02790 /* Persons */,
 				8B1A397A1D403F0100DA3893 /* DoctorStart */,
-				8B5448D61D209C2000B7913F /* Localizable.strings */,
+				8B617F271D51B490001CF59D /* Doctor */,
 				8B5448CC1D20967F00B7913F /* InfoPlist.strings */,
+				8B5448D61D209C2000B7913F /* Localizable.strings */,
 				8B21B6311D346EE100A70581 /* RBResizer.swift */,
 				8B5448BD1D1F97DB00B7913F /* Alert.swift */,
 				8B5448DB1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift */,
@@ -238,8 +285,8 @@
 				8BE801781D13BD5500FDE666 /* AppDelegate.swift */,
 				8BE801821D13BD5500FDE666 /* Assets.xcassets */,
 				8BE8017C1D13BD5500FDE666 /* Main.storyboard */,
-				8B148C231D3C6A290063499E /* testKit.framework */,
 				8BE801841D13BD5500FDE666 /* LaunchScreen.storyboard */,
+				8B1A87CE1D5BD8CA00F03C9A /* testKit.framework */,
 				8BE801871D13BD5500FDE666 /* Info.plist */,
 			);
 			name = BoBiHealth;
@@ -268,6 +315,15 @@
 			path = HealthCareUITests;
 			sourceTree = "<group>";
 		};
+		C7F000F935DB7E6404534EB7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0E88FC6330370BF6C41C6B2 /* Pods-BoBiHealth.debug.xcconfig */,
+				12C03EC3C64F4FC111A21531 /* Pods-BoBiHealth.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,10 +331,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BE801A01D13BD5600FDE666 /* Build configuration list for PBXNativeTarget "BoBiHealth" */;
 			buildPhases = (
+				001D89119A294A9D54E55656 /* [CP] Check Pods Manifest.lock */,
 				8BE801711D13BD5500FDE666 /* Sources */,
 				8BE801721D13BD5500FDE666 /* Frameworks */,
 				8BE801731D13BD5500FDE666 /* Resources */,
 				8B1659DD1D2D84C500E11EB1 /* Embed Frameworks */,
+				60EFA94420BCEAFACBCC0578 /* [CP] Embed Pods Frameworks */,
+				780785BB6F5FCAB1633DAC8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,12 +396,15 @@
 				TargetAttributes = {
 					8BE801741D13BD5500FDE666 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = Z5P4SMDK2W;
+						DevelopmentTeam = 6464VLM34M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.DataProtection = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -410,6 +472,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		001D89119A294A9D54E55656 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		60EFA94420BCEAFACBCC0578 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BoBiHealth/Pods-BoBiHealth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		780785BB6F5FCAB1633DAC8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BoBiHealth/Pods-BoBiHealth-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BE801711D13BD5500FDE666 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -420,17 +530,23 @@
 				8B465AD41D2442C90068ED82 /* StartAgGenderViewController.swift in Sources */,
 				8B58344B1D4812FD00D7A862 /* DoctorStartAgCurrentHospitalTableViewController.swift in Sources */,
 				8B1A39801D41392C00DA3893 /* DoctorStartAcLicenceViewController.swift in Sources */,
+				8B63AA2B1D5BB18100B02CA6 /* DoctorAcInfoPopoverViewController.swift in Sources */,
 				8B0C03CE1D36ED8200C02790 /* PersonsCbAccountTableViewController.swift in Sources */,
+				8B5A71781D5D4F0900C26B7D /* DoctorAbPatientTableViewCell.swift in Sources */,
 				8B4414BE1D2ADB7100E28180 /* PersonsAeSearchDoctorTableViewController.swift in Sources */,
 				8B5448D81D20D3D900B7913F /* StartAcEmailViewController.swift in Sources */,
+				8B617EE91D504C5E001CF59D /* DoctorStartAiInProcessTableViewController.swift in Sources */,
 				8B1A397C1D404E3A00DA3893 /* DoctorStartAbLanguageTableViewController.swift in Sources */,
+				8BE3E7B11D53BD30005D8D0F /* DoctorStartAjSpecialtyTitleTableViewController.swift in Sources */,
 				8B50EFD41D3B1F3A00206697 /* PersonsCcSearchCityTableViewController.swift in Sources */,
 				8B1A39791D403EF700DA3893 /* DoctorStartAaViewController.swift in Sources */,
 				8B21B6301D343D4F00A70581 /* PersonsCaMoreTableViewController.swift in Sources */,
 				8B1215C91D1CBD820033843A /* StartAbLoginViewController.swift in Sources */,
 				8B1215C51D1C66420033843A /* StartAaHelloViewController.swift in Sources */,
 				8B4414C01D2ADB8B00E28180 /* PersonsAbFilterTableViewController.swift in Sources */,
+				8B617F291D51B4E0001CF59D /* DoctorAaNowTableViewController.swift in Sources */,
 				8B179CFC1D2F77710086485E /* PersonsAcSearchContainerViewController.swift in Sources */,
+				8B63AA291D5AB79500B02CA6 /* DoctorAbOnlineWaitlistTableViewController.swift in Sources */,
 				8B58344D1D4930BF00D7A862 /* DoctorStartAhSummaryTableViewController.swift in Sources */,
 				8B1B29091D42D6E600BD95DA /* DoctorStartAdGraduateSchoolTableViewController.swift in Sources */,
 				8B4414C21D2ADC1D00E28180 /* PersonsAaContainerViewController.swift in Sources */,
@@ -438,12 +554,14 @@
 				8B5448BE1D1F97DB00B7913F /* Alert.swift in Sources */,
 				8B5448E01D219C6100B7913F /* StartAdNameViewController.swift in Sources */,
 				8BE801791D13BD5500FDE666 /* AppDelegate.swift in Sources */,
+				8B51CBCE1D60FA840041C418 /* DoctorAdPatientDetailTableViewCell.swift in Sources */,
 				8B5448E41D22476400B7913F /* StartAfBirthdayViewController.swift in Sources */,
 				8B5448DC1D20EA8A00B7913F /* UIStoryboardSegueFromRight.swift in Sources */,
 				8B21B6321D346EE100A70581 /* RBResizer.swift in Sources */,
 				8B1B290B1D42DF8E00BD95DA /* DoctorStartAeSearchSchoolTableViewController.swift in Sources */,
 				8B148C281D3D46270063499E /* PersonsCdEthnicityTableViewController.swift in Sources */,
 				8B5448E21D21FBF100B7913F /* StartAePasswordViewController.swift in Sources */,
+				8B2941EE1D5579C500AD4D43 /* DoctorStarAkSearchAddressTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +675,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -605,7 +726,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -624,18 +748,39 @@
 		};
 		8BE801A11D13BD5600FDE666 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0E88FC6330370BF6C41C6B2 /* Pods-BoBiHealth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
+					"$(inherited)",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
 					"$(PROJECT_DIR)/HealthCare",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSAutoScaling\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCloudWatch\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCognito\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCognitoIDentityProvider\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCore\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSDynamoDB\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSEC2\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSElasticLoadBalancing\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSIoT\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSKinesis\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSLambda\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSMachineLearning\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSMobileAnalytics\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSS3\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSES\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSimpleDB\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSNS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSQS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "michaelchen70-hotmailc.om";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Berbi.Berbi;
 				PRODUCT_NAME = BoBiHealth;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -645,18 +790,39 @@
 		};
 		8BE801A21D13BD5600FDE666 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12C03EC3C64F4FC111A21531 /* Pods-BoBiHealth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphonesimulator/**",
+					"$(inherited)",
+					"/Users/cmichael/Library/Developer/Xcode/DerivedData/testKit-gftjrqwyudiuyqfflmytizgqgdcy/Build/Products/Debug-iphoneos/**",
 					"$(PROJECT_DIR)/HealthCare",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSAutoScaling\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCloudWatch\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCognito\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCognitoIDentityProvider\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSCore\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSDynamoDB\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSEC2\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSElasticLoadBalancing\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSIoT\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSKinesis\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSLambda\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSMachineLearning\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSMobileAnalytics\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSS3\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSES\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSimpleDB\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSNS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AWSSQS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
 				);
 				INFOPLIST_FILE = HealthCare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "michaelchen70-hotmailc.om";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Berbi.Berbi;
 				PRODUCT_NAME = BoBiHealth;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
 
@@ -19,7 +20,7 @@ class StartAePasswordViewController: UIViewController, UITextFieldDelegate {
         static let nextIdentifier = "StartAf"
         static let lastIdentifier = "StartAd"
     }
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     let tapRec = UITapGestureRecognizer()
     
     // MARK: - Viewcontroller Cycle

@@ -45,8 +45,8 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         descriptionForImageUsage.text = Storyboard.PhotoPrintForVerify
         invalidLicenseNumber.hidden = true
         
-        if tempDoctor?.doctorLicenseNumber != nil {
-            LicenseTextField.text = tempDoctor!.doctorLicenseNumber
+        if signInUser?.doctorLicenseNumber != nil {
+            LicenseTextField.text = signInUser!.doctorLicenseNumber
         }
         
         //setup medicalLicense if any
@@ -56,7 +56,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
 
     func checkWhetherStoredImageOrNot(){
         //setup Default Image
-        if let imagedata = tempDoctor!.doctorImageMedicalLicense {
+        if let imagedata = signInUser!.doctorImageMedicalLicense {
             image = UIImage(data: imagedata)
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
@@ -74,11 +74,12 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         backItem.title = ""
         self.navigationItem.backBarButtonItem = backItem
 
-        if validateNumberOnly(LicenseTextField.text!) && (tempDoctor?.doctorImageMedicalLicense != nil){
-            tempDoctor?.doctorLicenseNumber = LicenseTextField.text
+        if validateNumberOnly(LicenseTextField.text!) && (signInUser?.doctorImageMedicalLicense != nil){
+            signInUser?.doctorLicenseNumber = LicenseTextField.text
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }else{
             invalidLicenseNumber.hidden = false
+            wiggleInvalidtext(invalidLicenseNumber, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }
     }
     
@@ -89,7 +90,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if tempDoctor?.doctorImageMedicalLicense != nil && presentImage?.image == nil {
+        if signInUser?.doctorImageMedicalLicense != nil && presentImage?.image == nil {
             checkWhetherStoredImageOrNot()
         }
     }
@@ -208,7 +209,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
         //image = info[UIImagePickerControllerOriginalImage] as? UIImage
         if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
             //print("image size %f KB:", imageData.length / 1024)
-            tempDoctor?.doctorImageMedicalLicense = imageData
+            signInUser?.doctorImageMedicalLicense = imageData
             image = nil
         }
         dismissViewControllerAnimated(true, completion: nil)
@@ -220,7 +221,7 @@ class DoctorStartAcLicenceViewController: UIViewController, UIImagePickerControl
 
     // MARK: - textField
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
-        tempDoctor?.doctorLicenseNumber = textField.text
+        signInUser?.doctorLicenseNumber = textField.text
         textField.resignFirstResponder()
         return true
     }

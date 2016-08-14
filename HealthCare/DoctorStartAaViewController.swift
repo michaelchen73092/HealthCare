@@ -43,6 +43,9 @@ class DoctorStartAaViewController: UIViewController {
         if let ab = segue.destinationViewController as? DoctorStartAbLanguageTableViewController{
             //pass current moc to next controller which use for create Persons object
             tempDoctor = Doctors(entity: DoctorsEntity!, insertIntoManagedObjectContext: moc)
+            tempDoctor?.doctorFirstName = signInUserPublic!.firstname!
+            tempDoctor?.doctorLastName = signInUserPublic!.lastname!
+            tempDoctor?.email = signInUser!.email!
             let backItem = UIBarButtonItem()
             backItem.title = ""
             self.navigationItem.backBarButtonItem = backItem

@@ -61,17 +61,17 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         //add image set
         //setup Default Image
         imageDiploma()
-        if tempDoctor?.doctorImageDiploma != nil{
+        if signInUser?.doctorImageDiploma != nil{
             labelToUpload(medicalDiplomaLabel)
         }
         imageID()
-        if tempDoctor?.doctorImageID != nil{
+        if signInUser?.doctorImageID != nil{
             labelToUpload(idCardLabel)
         }
     }
     
     private func imageDiploma(){
-        if let imagedata = tempDoctor?.doctorImageDiploma {
+        if let imagedata = signInUser?.doctorImageDiploma {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 var image = UIImage(data: imagedata)
@@ -85,7 +85,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     }
     
     private func imageID(){
-        if let imagedata = tempDoctor?.doctorImageID {
+        if let imagedata = signInUser?.doctorImageID {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 var image = UIImage(data: imagedata)
@@ -100,7 +100,12 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     // MARK: - Graudated School
     func graduateSchoolUpdate(){
         if tempDoctor?.doctorGraduateSchool != nil {
-            graduatedLabel.text = tempDoctor!.doctorGraduateSchool!
+            let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
+            if langId.rangeOfString("en") != nil{
+                graduatedLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][1]
+            }else{
+                graduatedLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][0]
+            }
             graduatedLabel.font = UIFont.systemFontOfSize(17)
         }
     }
@@ -111,10 +116,11 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         let backItem = UIBarButtonItem()
         backItem.title = ""
         self.navigationItem.backBarButtonItem = backItem
-        if (tempDoctor?.doctorGraduateSchool != nil) && (tempDoctor?.doctorImageID != nil || tempDoctor?.doctorImageDiploma != nil){
+        if (tempDoctor?.doctorGraduateSchool != nil) && (signInUser?.doctorImageID != nil || signInUser?.doctorImageDiploma != nil){
             performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
         }else{
             invalidNotification.hidden = false
+            wiggleInvalidtext(invalidNotification, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }
         
         
@@ -127,7 +133,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     @IBOutlet weak var diplomaCameraLabel: UIButton!
     
     @IBAction func tapDiplomaLabel() {
-        if tempDoctor?.doctorImageDiploma == nil {
+        if signInUser?.doctorImageDiploma == nil {
             diplomaOrIDCard = false
             getPhoto()
         }else{
@@ -156,7 +162,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     @IBOutlet weak var idCardCameraLabel: UIButton!
     
     @IBAction func tapIDCardLabel() {
-        if tempDoctor?.doctorImageID == nil {
+        if signInUser?.doctorImageID == nil {
             diplomaOrIDCard = true
             getPhoto()
         }else{
@@ -265,7 +271,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             labelToUpload(medicalDiplomaLabel)
             if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
                 //print("image size %f KB:", imageData.length / 1024)
-                tempDoctor?.doctorImageDiploma = imageData
+                signInUser?.doctorImageDiploma = imageData
                 image = nil
             }
             diplomaSection = 2
@@ -276,7 +282,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             labelToUpload(idCardLabel)
             if let imageData = UIImageJPEGRepresentation(image!, 0.5) {
                 //print("image size %f KB:", imageData.length / 1024)
-                tempDoctor?.doctorImageID = imageData
+                signInUser?.doctorImageID = imageData
                 image = nil
             }
             idCardSection = 2
@@ -289,10 +295,10 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         if !diplomaOrIDCard {
-            tempDoctor?.doctorImageDiploma = nil
+            signInUser?.doctorImageDiploma = nil
             labelnotSet(medicalDiplomaLabel)
         }else{
-            tempDoctor?.doctorImageID = nil
+            signInUser?.doctorImageID = nil
             labelnotSet(idCardLabel)
         }
         dismissViewControllerAnimated(true, completion: nil)

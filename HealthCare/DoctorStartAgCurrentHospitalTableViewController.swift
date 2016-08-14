@@ -8,22 +8,31 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UITextViewDelegate {
+    
+    // MARK: - Variables
     let MIN_SIZE = CGFloat(11.0)
     @IBOutlet weak var invalidLabel: UILabel!
     weak var moc : NSManagedObjectContext?
     private struct MVC {
         static let nextIdentifier = "Show DoctorStartAh"
+        static let addressIdentifier = "Show DoctorStartAk"
     }
 
     @IBOutlet weak var currentHospitalDescription: UILabel!
+    @IBOutlet weak var HospitalAddress: UILabel!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //setup description
-        currentHospitalDescription.text = NSLocalizedString("Please text your current employed hospital or clinic. You can also provide past experience in second section.", comment: "In DoctorStartAgCurrentHospital, description for this page")
+        currentHospitalDescription.text = NSLocalizedString("Please type your current employed hospital or clinic AND its address. You can also provide past experience in second section.", comment: "In DoctorStartAgCurrentHospital, description for this page")
+        printLocation()
+        //add location back notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.HospitalAddressBackUpdate), name: "HospitalAddress", object: nil)
         
         //setup navigation
         let currentHospitalTitle = NSLocalizedString("Current Hospital", comment: "In DoctorStartAgCurrentHospital's title")
@@ -61,10 +70,12 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     }
     
     func nextButtonClicked(){
-        if currentHospital.text == ""{
+        if currentHospital.text == "" || (tempDoctor!.doctorHospitalLatitude! == 0) && (tempDoctor!.doctorHospitalLongitude! == 0) {
             invalidLabel.hidden = false
+            wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }else if (experienceSection == 2 && (firstExperience.text == "")) || (experienceSection == 3 && (firstExperience.text == "" || secondExperience.text == "")) || (experienceSection == 4 && (firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == "")) || (experienceSection == 5 && (firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == "" || fourthExperience.text == "")){
             invalidLabel.hidden = false
+            wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }else{
             tempDoctor?.doctorHospital = (currentHospital.text != "") ? currentHospital.text : nil
             tempDoctor?.doctorExperienceOne = (firstExperience.text != "") ? firstExperience.text : nil
@@ -77,12 +88,71 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         }
     }
     
+    func HospitalAddressBackUpdate(){
+        printLocation()
+        print("get SearchCityBack notice")
+    }
+    
+    // MARK: - Current Hospital
+    
     @IBOutlet weak var currentHospital: UITextView!{didSet{currentHospital.delegate = self}}
     
     @IBAction func currentHospitalEditButton() {
         currentHospital.becomeFirstResponder()
     }
     
+    @IBAction func tapAddress(sender: UITapGestureRecognizer) {
+        performSegueWithIdentifier(MVC.addressIdentifier, sender: nil)
+    }
+    
+    func printLocation(){
+        if (tempDoctor!.doctorHospitalLatitude! != 0) || (tempDoctor!.doctorHospitalLongitude! != 0) {
+            HospitalAddress.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)
+            let userLocation = CLLocation(latitude: Double(tempDoctor!.doctorHospitalLatitude!), longitude: Double(tempDoctor!.doctorHospitalLongitude!))
+            CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
+                if error != nil {
+                    print("Inside printLocation: Reverse geocoder failed with error" + error!.localizedDescription)
+                    return
+                }
+                if placemarks?.count > 0 {
+                    let pm = placemarks![0] as CLPlacemark
+                    self.displayLocationInfo(pm)
+                }else{
+                    print("Problem with the data received from geocoder")
+                }
+            }
+        }
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark){
+        // put a space between "4" and "Melrose Place"
+        let firstSpace = (placemark.subThoroughfare != nil && placemark.thoroughfare != nil) ? " " : ""
+        // put a comma between street and city/state
+        let comma = (placemark.subThoroughfare != nil || placemark.thoroughfare != nil) && (placemark.subAdministrativeArea != nil || placemark.administrativeArea != nil) ? ", " : ""
+        // put a space between "Washington" and "DC"
+        let secondSpace = (placemark.subAdministrativeArea != nil && placemark.administrativeArea != nil) ? " " : ""
+        let addressLine = String(
+            format:"%@%@%@%@%@%@%@",
+            // street number
+            placemark.subThoroughfare ?? "",
+            firstSpace,
+            // street name
+            placemark.thoroughfare ?? "",
+            comma,
+            // city
+            placemark.locality ?? "",
+            secondSpace,
+            // state
+            placemark.administrativeArea ?? ""
+        )
+        let country = (placemark.country != nil) ? placemark.country! : ""
+        HospitalAddress.text = addressLine + ", \(country)"
+        print("locationLabel.text:\(HospitalAddress.text!)")
+        
+    }
+    
+    
+    // MARK: - Past Experience
     
     var experienceSection = 1
     @IBOutlet weak var firstExperience: UITextView!{didSet{firstExperience.delegate = self}}
@@ -188,7 +258,7 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         if section == 1{
             return experienceSection
         }
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -226,8 +296,12 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
             let backItem = UIBarButtonItem()
             backItem.title = ""
             self.navigationItem.backBarButtonItem = backItem
-            
             ah.moc = self.moc!
+        }
+        if let _ = segue.destinationViewController as? DoctorStarAkSearchAddressTableViewController{
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            self.navigationItem.backBarButtonItem = backItem
         }
     }
 

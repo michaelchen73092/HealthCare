@@ -1,3 +1,20 @@
+/* For all doctor's documentation, we need to print this line for safy issue */
+" This document for Berbi verify doctor's identity only!" = " 此文件只讓Berbi公司做醫師身份驗證使用。";
+
+/* In DoctorStartAfSpecialist's general appointment, description for How it works? */
+"1) After tapping confirm button, system will offical turn your status into ONLINE. Users are able to search you and make appointment.
+
+2) You can stop making appointments by turning your status OFFLINE. System will stop any further appointment from patients.
+
+3) Please response patient's appointment within 20 minutes, or system regards you as OFFLINE and cancels all reservations on your waitlist. And please notice that all patients on your waitlist have permission to leave comment on you." = "1) 按確認按鈕後，系統會正式將您切到上線模式。使用者就可搜尋您以及向您掛號。
+
+2)您可以調整為離線模式，使用者就無法向您掛號。系統亦會阻止病人對您掛號。
+
+3)請在20分鐘內向病人看診，否則系統會視為您已經離線，並且取消您之後未看診的病人掛號。請注意，因為您離線而取消的掛號的病人，也有權利對您做出留言，給您評價！";
+
+/* Ethnicity category */
+"African American" = "非洲裔美國人";
+
 /* Specialty category */
 "Allergy and Immunology" = "過敏與免疫科";
 
@@ -10,6 +27,9 @@
 /* In DoctorStartAfSpecialist's title */
 "Area of Practice" = "專業科目";
 
+/* Specialty category */
+"Attendings" = "主治醫師";
+
 /* All navigation item for left going back button */
 "Back" = "回上頁";
 
@@ -19,7 +39,9 @@
 /* Language category */
 "Bengali" = "孟加拉文";
 
-/* For all alert to access photo library */
+/* Confrim for exit alert
+   For all alert to access photo library
+   In DoctorStartAfSpecialist's general reservation, cancel for not tap checkmark. */
 "Cancel" = "取消";
 
 /* Language category */
@@ -31,7 +53,8 @@
 /* Language category */
 "Catalan" = "加泰羅尼亞文";
 
-/* Language category */
+/* Ethnicity category
+   Language category */
 "Chinese" = "中文";
 
 /* Specialty category */
@@ -42,6 +65,15 @@
 
 /* Specialty category */
 "Colon and Rectal Surgery" = "大腸直腸外科";
+
+/* In DoctorAbOnlineWaitlist, for confirm change doctor status. */
+"Confirm" = "確定";
+
+/* In DoctorStartAhSummary, detail for successfully submit doctor application */
+"Congratulation! You have submitted your doctor application successfully!" = "恭喜！您已經成功繳交醫師申請資料！";
+
+/* In DoctorAbOnlineWaitlist, title for alert to end session safe. */
+"Congratulations! You have completed this section's jobs. Please tap confirm to leave." = "恭喜！您已經完成此次階段看診工作。請按確認離開。";
 
 /* Specialty category */
 "Cosmetic Surgery" = "整形外科";
@@ -64,14 +96,32 @@
 /* Specialty category */
 "Dermatology" = "皮膚科";
 
+/* In DoctorStartAfSpecialist's title */
+"Dr." = "醫師";
+
 /* Language category */
 "Dutch" = "荷蘭文";
+
+/* Ethnicity category */
+"East African" = "東非";
+
+/* Ethnicity category */
+"East Asian" = "東亞";
 
 /* Navigation item for right button */
 "Edit" = "編輯";
 
+/* translate for school */
+"Edu: " = "教育：";
+
 /* Specialty category */
 "Emergency Medicine" = "急症科";
+
+/* In DoctorAbOnlineWaitlist, title for alert to end session safe. */
+"End Session" = "結束診斷";
+
+/* In DoctorAcInfoPopover, title for third note. */
+"End Session:" = "結束診斷：";
 
 /* Specialty category */
 "Endocrinologist" = "甲狀腺內分泌科";
@@ -91,8 +141,14 @@
 /* Specialty category */
 "Family Medicine" = "家醫科";
 
+/* Specialty category */
+"Fellows" = "總醫師";
+
 /* Female */
 "Female" = "女性";
+
+/* Ethnicity category */
+"Fijian" = "斐濟";
 
 /* Language category */
 "Finnish" = "芬蘭文";
@@ -115,17 +171,35 @@
 /* Language category */
 "Greek" = "希臘文";
 
+/* In DoctorStartAfSpecialist's general reservation note */
+"Guideline:" = "介紹：";
+
 /* Language category */
 "Hebrew" = "希伯來文";
 
 /* Language category */
 "Hindi" = "印度文";
 
+/* Ethnicity category */
+"Hispanic or Latin American" = "西班牙裔或拉丁裔美國人";
+
+/* In DoctorStarAkSearchAddress, search hospital address */
+"Hospital Address" = "醫院地址";
+
 /* Language category */
 "Hungarian" = "匈牙利文";
 
+/* In DoctorStartAiInProcess, indicate which image is updated */
+"ID or Driver License" = "身份證 或 駕照";
+
+/* In DoctorAcInfoPopover, detail for first note. */
+"If you have any vacancy on your waitlist, system will keep you online unless you turn to offine. When you are online, users are able to search you and make an appointment with you." = "如果您的候診名單上還有空位，系統會持續保持您在上線模式，除非您自己切回到離線模式。當您在上線模式，使用者就可搜尋您以及向您掛號。";
+
 /* String for doctor image is uploaded */
 "Image Uploaded" = "相片已上傳";
+
+/* Ethnicity category */
+"Indian" = "印度";
 
 /* Language category */
 "Indonesian" = "印尼文";
@@ -151,6 +225,9 @@
 /* In DoctorStartAbLanguage's title */
 "Language" = "語言";
 
+/* translate language */
+"Language: " = "語言：";
+
 /* Setting Location , the title for search location manually */
 "Location" = "位置";
 
@@ -160,11 +237,33 @@
 /* Male */
 "Male" = "男性";
 
+/* Ethnicity category */
+"Maori" = "毛利";
+
+/* In DoctorStartAfSpecialist's general reservation, description for set quota */
+"Maximum number that patients can be on waitlist. When your waitlist is reaching this number, system will automatically change your status to OFFLINE. After you have vacant, system will turn your status ONLINE again." = "您候診名單當中，最多候診的人數。當您候診人數已達此數字，系統將會自動幫您切成離線模式。一直到您候診名單中有空缺時，系統會自動將您切回上線模式。";
+
+/* In DoctorStartAiInProcess, indicate which image is updated */
+"Medical Diploma" = "畢業證書";
+
 /* Specialty category */
 "Medical Genetics and Genomics" = "生殖與遺傳科";
 
-/* In DoctorStartAcLicense's title */
+/* In DoctorStartAcLicense's title
+   In DoctorStartAiInProcess, indicate which image is updated */
 "Medical License" = "醫生證書";
+
+/* Ethnicity category */
+"Middle Eastern" = "中東";
+
+/* Ethnicity category */
+"NZ European or Pakeha" = "紐西蘭 ";
+
+/* Ethnicity category */
+"Native American or Inuit" = "美國原住民";
+
+/* Ethnicity category */
+"Native Hawaiian" = "夏威夷";
 
 /* Specialty category */
 "Neurological Surgery" = "神經外科";
@@ -175,8 +274,18 @@
 /* All navigation item for right button */
 "Next" = "下一頁";
 
+/* Ethnicity category */
+"Niuean" = "紐埃";
+
+/* In DoctorStartAfSpecialist's general reservation, title for not tap checkmark. */
+"No CheckMark" = "無勾選";
+
 /* Title for error message that no internet in PersonCb's LocationLabel */
 "No Internet Connection" = "無網路連線";
+
+/* In DoctorStartAiInProcess, the string to indicate that this image is not updated
+   In DoctorStartAiInProcess, title for not upate image */
+"No Update" = "未更新";
 
 /* In PersonsCbAccount for bmi Meaning */
 "Normal" = "正常";
@@ -200,8 +309,20 @@
 /* Specialty category */
 "Obstetrics and Gynecology" = "婦產科";
 
+/* In DoctorStartAfSpecialist's offline status */
+"Offline" = "離線";
+
+/* In DoctorAcInfoPopover, title for second note. */
+"Offline Status:" = "離線模式：";
+
 /* Specialty category */
 "Oncologist" = "腫瘤科";
+
+/* In DoctorStartAfSpecialist's online status */
+"Online" = "上線";
+
+/* In DoctorAcInfoPopover, title for first note. */
+"Online Status:" = "上線模式：";
 
 /* Specialty category */
 "Ophthalmology" = "眼科";
@@ -209,8 +330,12 @@
 /* Specialty category */
 "Orthopaedic Surgery" = "骨科整形";
 
-/* Specialty category */
+/* Ethnicity category
+   Specialty category */
 "Other" = "其他";
+
+/* Ethnicity category */
+"Other Pacific Peoples" = "太平洋其他";
 
 /* Specialty category */
 "Otolaryngology" = "耳鼻喉科";
@@ -220,6 +345,9 @@
 
 /* Specialty category */
 "Pathology" = "病理學科";
+
+/* In DoctorAbOnlineWaitlist, title for alert to end session not safe. */
+"Patients Left!" = "尚有病人在等候！";
 
 /* Specialty category */
 "Pediatrics" = "小兒科";
@@ -234,17 +362,17 @@
 "Please Use Wi-Fi to Access Data" = "請使用Wi-Fi來取用資料";
 
 /* In DoctorStartAhSummary, description for this page */
-"Please check your information and documents. If you want to edit, click top right button or click sumit to deliver application. Berbi will contact you within 2 business days to update your applcation status.
+"Please check your information and documents. If you want to edit, click top right button or click submit to deliver application. Berbi will contact you within 2 business days to update your applcation status.
 
-Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需要編輯，請點選右上角編輯按鈕，或者點擊上傳按鈕來遞交您的申請資料。Berbi會在兩個工作天內更新您的申請狀況。
+Welcome to join Berbi group!" = "請確認您的資料與文件。如果您還需要編輯，請點選右上角的編輯按鈕，或者點選上傳按鈕已繳交醫師申請資料。Berbi會在兩個工作天內告知您的申請狀況。
 
-歡迎加入Berbi醫師團隊!";
+歡迎加入Berbi醫師團隊！";
 
 /* In DoctorStartAdGraduateSchool, description for this page */
 "Please choose the school where you graudated AND upload either Medical Diploma OR ID Card(Driver License) to verify your identity." = "請選擇您畢業的學校，以及上傳畢業證書或者身份證(駕照)照片，以驗證您的身份。";
 
 /* In DoctorStartAfSpecialist, description for this page */
-"Please choose your status or your primary specialty. If you select your primary specialty, please also upload a photo of your medical specialties license." = "請選擇您目前的階段或者主要專業科目。如果您選擇專業科目，請上傳您的專科證照照片，以便驗證。";
+"Please choose your status or your primary specialty. If you select primary specialty, please also select your current title." = "請選擇您現在狀態，或者主要專科。如果您選擇主要專科，請一併選則您目前職稱。";
 
 /* In DoctorStartAcLicence, description for this page */
 "Please enter your license number and upload a clear image of your medicine license to verify your doctor identity." = "請輸入您醫師證書上的號碼和上傳清楚的證書照片，以驗證您醫師的身份。";
@@ -258,11 +386,20 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 2) 身份證或畢業證書
 3) 專科證書(如果有)";
 
+/* In DoctorStartAfSpecialist's general reservation, detail for not tap checkmark. */
+"Please read guildlines and tap checkbox." = "請讀下面介紹，並且在框框內勾選表示確認";
+
 /* In DoctorStartAc, detail for warning for at least select one language */
 "Please select at least one language." = "請選擇至少一種語言。";
 
+/* In DoctorStartAjSpecialtyTitle's, descript for doctor to select their title and upload license if they have. */
+"Please select your status(title). If you have obtained board certified, please upload your license for verifying. You will get an license logo in your introduction when user searches you." = "請選擇您的職稱。如果您有獲得專科證書，請上傳您的證書照片。當您通過專科認證，使用者搜尋您的簡介時，會顯示已認證徽章。";
+
+/* In DoctorStarAkSearchAddress, search hospital address description */
+"Please type address of your current hospital or clinic. This help user finds you on map." = "請輸入您目前在職的醫院(整所)地址。這會協助使用者在地圖上搜尋到您。";
+
 /* In DoctorStartAgCurrentHospital, description for this page */
-"Please text your current employed hospital or clinic. You can also provide past experience in second section." = "請輸入您目前就職醫院或診所名稱。您也可以在下面欄位提供過去就職經驗。";
+"Please type your current employed hospital or clinic AND its address. You can also provide past experience in second section." = "請輸入您目前就職醫院(整所)名稱以及其地址。您也可以在下面欄位填入最多五個過去經歷。";
 
 /* Language category */
 "Polish" = "波蘭文";
@@ -282,11 +419,17 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 /* Specialty category */
 "Radiology" = "放射科";
 
+/* Specialty category */
+"Residents" = "住院醫師";
+
 /* Language category */
 "Romanian" = "羅馬尼亞文";
 
 /* Language category */
 "Russian" = "俄文";
+
+/* Ethnicity category */
+"Samoan" = "薩摩亞 ";
 
 /* In PersonsCbAccount, the title for save update */
 "Save" = "儲存";
@@ -294,13 +437,39 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 /* In DoctorStartAc, warning for at least select one language */
 "Select Language" = "選擇語言";
 
+/* translate where is doctor employed */
+"Serve at " = "就職於";
+
+/* In DoctorStartAfSpecialist's general appointment , Set Quota for max patients can be online */
+"Set Max Patients Quota:" = "設定最大候診病人數量：";
+
 /* Language category */
 "Slovak" = "斯洛伐克文";
+
+/* Ethnicity category */
+"South Asian" = "南亞";
+
+/* Ethnicity category */
+"South East Asian" = "東南亞";
 
 /* Language category */
 "Spanish" = "西班牙文";
 
-/* Title for success open an account */
+/* In DoctorStartAjSpecialtyTitle's title */
+"Specialty Title" = "專科職稱";
+
+/* In DoctorStartAiInProcess, indicate which image is updated */
+"Specialy License" = "專科證書";
+
+/* In DoctorAcInfoPopover, detail for third note. */
+"Step 1) Turn to offline and complete patients on your waitlist.
+Step 2) End this session by tap end button on top left button." = "[第一步] 調整成離線模式，並且看完候診名單上的病人。
+[第二步] 按左上角離開按鍵，離開此次診療。
+";
+
+/* In DoctorStartAhSummary, title for successfully submit doctor application
+   In DoctorStartAiInProcess, title for success update image
+   Title for success open an account */
 "Success" = "成功";
 
 /* In DoctorStartAhSummary's title */
@@ -312,11 +481,20 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 /* Language category */
 "Swedish" = "瑞典文";
 
+/* In DoctorAbOnlineWaitlist, message for alert to change online. */
+"System will start to arrange new appointments for you. You will turn into online and be searchable immediately if there is a vacancy on your waitlist." = "當您候診名單上有空缺時，系統將會開始幫您安排預約，並且將您調整成上線模式，可讓使用者立即搜尋到您。";
+
+/* In DoctorAbOnlineWaitlist, message for alert to change offline. */
+"System will stop arranging new appointment for you. You will turn into offline and user can't search you immediately." = "系統將停止新的預約。您轉成離線模式後，使用者搜就尋不到您。";
+
 /* Language category */
 "Taiwanese" = "台語";
 
 /* For all alert to access photo library */
 "Take a New Picture" = "相機拍照";
+
+/* In DoctorStartAfSpecialist's general appointment note */
+"Tap checkbox after read below guidelines." = "讀完下列介紹後勾選框框。";
 
 /* Language category */
 "Thai" = "泰文";
@@ -324,20 +502,43 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 /* Detail for no email record found */
 "The email you entered doesn't appear to belong to an account. Please check your email address and try again." = "您輸入的電子郵件似乎不屬於任何帳號。請檢查您的電子郵件地址後再試一次。";
 
-/* For all doctor's documentation, we need to print this line for safy issue */
-"This document for Berbi verify doctor's identity only!" = "此文件僅讓Berbi公司驗證醫師身份用。";
-
 /* Specialty category */
 "Thoracic Surgery" = "胸外科";
 
+/* Ethnicity category */
+"Tokelauan" = "托克勞";
+
+/* Ethnicity category */
+"Tongan" = "東加";
+
 /* Language category */
 "Turkish" = "土耳其文";
+
+/* In DoctorAbOnlineWaitlist, title for alert to change offline. */
+"Turn to Offline" = "轉成離線";
+
+/* In DoctorAbOnlineWaitlist, title for alert to change online. */
+"Turn to Online" = "轉成上線";
+
+/* In DoctorAcInfoPopover, detail for second note. */
+"Turn to offline manually by switching bar under your image. You can end this session if you don't have any patient on your waitlist. If you still have patients, please finish all appointments. 
+
+However, if you have emergency, you are able to leave without any penalty. But please be cautious, all patients on your waitlist have permission to leave comment on you." = "調整開關按鈕以手動切換到離線模式。如果您已經沒有候診病人，您可以離開此次診療。如果您尚有病人未看，請完成名單上候診的病人預約。
+
+但，如果您真的有警急的事件，您還是可以直接離線。但是請注意，所有在您候診名單上未看病的病人，他們都有權利向您留言，給您評價。";
 
 /* Language category */
 "Ukrainian" = "烏克蘭文";
 
 /* In PersonsCbAccount for bmi Meaning */
 "Underweight" = "過輕";
+
+/* In DoctorStartAiInProcess, description for this page */
+"Update Documents
+
+Berbi will contact with you by email if there are some documents needed re-upload. You can use below columns to update the documents." = "更新文件資料
+
+如果您的文件需要重新上傳，Berbi會用email與您聯繫需要上傳的文件。您可以使用下面的欄位上傳該文件。";
 
 /* Specialty category */
 "Urology" = "泌尿科";
@@ -350,6 +551,21 @@ Welcome to join Berbi group!" = "請檢查您的資料以及文件。如果需�
 
 /* In DoctorStartAaViewController, upper welcome description */
 "Welcome to join Berbi as a licensed medical doctor. In this stage, we only accept for Taiwan licensed medical doctor. We will open other area soon, and sorry for any inconvenient." = "歡迎加入Berbi醫師團隊！現階段我們只開放有台灣醫師執照的醫師申請。未來將陸續開放其他地區的醫師，不便之處，敬請見諒。";
+
+/* Ethnicity category */
+"White or Caucasian" = "白人 或 高加索人";
+
+/* In patient waitlist, tell how old this patient is */
+"Years Old" = "歲";
+
+/* In DoctorStartAiInProcess, detail for success update image and what image user update */
+"You do not update any image!" = "您未上傳任何文件";
+
+/* In DoctorStartAiInProcess, detail for success update image and what image user update */
+"You have updated the following image(s) successfully!: " = "您已成功上傳並更新以下文件：";
+
+/* In DoctorAbOnlineWaitlist, title for alert to end session not safe. */
+"You still have patients on your wait list! If you still confirm to leave, those patients have permission to leave comment on you!" = "您候診名單上還有病人！如果您還是確定要離開，這些病人有權利向您留言，給您評價！";
 
 /* detail of fail */
 "Your Account is NOT created" = "抱歉，無法為您創造帳戶，請稍候再試。";

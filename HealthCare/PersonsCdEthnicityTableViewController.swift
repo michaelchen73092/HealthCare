@@ -10,7 +10,6 @@ import UIKit
 
 class PersonsCdEthnicityTableViewController: UITableViewController {
 
-    var ethnicity = ["African American", "Chinese", "East African", "East Asian", "Fijian", "Hispanic or Latin American", "Indian", "Maori", "Middle Eastern", "NZ European or Pakeha", "Native American or Inuit", "Native Hawaiian", "Niuean", "Other", "Other Pacific Peoples", "Samoan", "South Asian", "South East Asian", "Tokelauan", "Tongan", "White or Caucasian"]
     var checked = [Bool]()
     
     
@@ -46,15 +45,15 @@ class PersonsCdEthnicityTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ethnicity.count
+        return Ethnicity.ethnicity.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = ethnicity[indexPath.row]
+        cell.textLabel?.text = Ethnicity.ethnicity[indexPath.row]
 
-        if ((signInUser!.ethnicity?.rangeOfString(ethnicity[indexPath.row])) != nil){
+        if ((signInUserPublic!.ethnicity!.rangeOfString(" " + String(indexPath.row) + " ")) != nil){
             cell.accessoryType = .Checkmark
             checked[indexPath.row] = true
         }
@@ -75,33 +74,34 @@ class PersonsCdEthnicityTableViewController: UITableViewController {
             if cell.accessoryType == .Checkmark {
                 cell.accessoryType = .None
                 checked[indexPath.row] = false
-                var ethnicityString = signInUser!.ethnicity!
-                
-                //remove 3) ethnicity in last (if it is last selected ethnicity remove)
-                if let range = ethnicityString.rangeOfString(", " + ethnicity[indexPath.row]){
-                        ethnicityString.removeRange(range.startIndex..<range.endIndex)
-                }
-                
-                //remove unCheckmark from ethnicityString String
-                if let range = ethnicityString.rangeOfString(ethnicity[indexPath.row]){
+                var ethnicityString = signInUserPublic!.ethnicity!
+                // use ", " and " " to closure a number
+                //this part is remove exist language
+                //remove 3) in last or between (if it is last selected language remove)
+                if let range = ethnicityString.rangeOfString(", " + String(indexPath.row) + " "){
                     ethnicityString.removeRange(range.startIndex..<range.endIndex)
                 }
                 
-                //remove three possible: 1) ", " at first index which delete first ethnicity
-                if let range = ethnicityString.rangeOfString(", ") {
+                //remove unCheckmark from in first
+                if let range = ethnicityString.rangeOfString(" " + String(indexPath.row) + " "){
+                    ethnicityString.removeRange(range.startIndex..<range.endIndex)
+                }
+                
+                //remove  ", " at first index which delete first language
+                if let range = ethnicityString.rangeOfString(",") {
                     if range.startIndex == ethnicityString.startIndex{
                         ethnicityString.removeRange(range.startIndex..<range.endIndex)
                     }
                 }
-   
-                signInUser?.ethnicity = ethnicityString
+                signInUserPublic?.ethnicity = ethnicityString
             } else {
+                //this part select a language
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
-                if signInUser!.ethnicity! != "" {
-                    signInUser?.ethnicity = signInUser!.ethnicity! + ", " + ethnicity[indexPath.row]
+                if signInUserPublic!.ethnicity! != "" {
+                    signInUserPublic?.ethnicity = signInUserPublic!.ethnicity! + ", " + String(indexPath.row) + " "
                 }else{
-                    signInUser?.ethnicity = ethnicity[indexPath.row]
+                    signInUserPublic?.ethnicity = " " + String(indexPath.row) + " "
                 }
             }
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

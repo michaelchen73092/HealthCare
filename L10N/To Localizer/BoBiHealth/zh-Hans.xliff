@@ -19,9 +19,25 @@
         <source>Current Location</source>
         <note>Class = "UILabel"; text = "Current Location"; ObjectID = "0lQ-Pc-0Px";</note>
       </trans-unit>
+      <trans-unit id="2af-wX-caj.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "2af-wX-caj";</note>
+      </trans-unit>
+      <trans-unit id="2nC-fi-vcs.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "2nC-fi-vcs";</note>
+      </trans-unit>
       <trans-unit id="3FZ-Nv-7Ew.placeholder">
         <source>Enter your email address</source>
         <note>Class = "UITextField"; placeholder = "Enter your email address"; ObjectID = "3FZ-Nv-7Ew";</note>
+      </trans-unit>
+      <trans-unit id="3Yo-yW-6Jk.text">
+        <source>Address:</source>
+        <note>Class = "UILabel"; text = "Address:"; ObjectID = "3Yo-yW-6Jk";</note>
+      </trans-unit>
+      <trans-unit id="3wy-vC-XIk.normalTitle">
+        <source>Label</source>
+        <note>Class = "UIButton"; normalTitle = "Label"; ObjectID = "3wy-vC-XIk";</note>
       </trans-unit>
       <trans-unit id="4Zh-Dq-ntY.text">
         <source>Body Mass Index(BMI)</source>
@@ -40,8 +56,8 @@
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "5Kf-pu-L7i";</note>
       </trans-unit>
       <trans-unit id="5Yc-ta-qxJ.text">
-        <source>Be a Licensed Medical Doctor</source>
-        <note>Class = "UILabel"; text = "Be a Licensed Medical Doctor"; ObjectID = "5Yc-ta-qxJ";</note>
+        <source>Join Berbi Doctor Group</source>
+        <note>Class = "UILabel"; text = "Join Berbi Doctor Group"; ObjectID = "5Yc-ta-qxJ";</note>
       </trans-unit>
       <trans-unit id="5dE-Ub-fla.text">
         <source>Email invalid.</source>
@@ -60,17 +76,57 @@
         <source>ID Card / Driver License</source>
         <note>Class = "UITableViewSection"; headerTitle = "ID Card / Driver License"; ObjectID = "7Fy-BC-dBm";</note>
       </trans-unit>
+      <trans-unit id="7XN-TF-O7j.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "7XN-TF-O7j";</note>
+      </trans-unit>
       <trans-unit id="7pr-jr-Ml2.text">
         <source>My Favorite Doctors</source>
         <note>Class = "UILabel"; text = "My Favorite Doctors"; ObjectID = "7pr-jr-Ml2";</note>
       </trans-unit>
+      <trans-unit id="7sr-IO-m6b.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "7sr-IO-m6b";</note>
+      </trans-unit>
+      <trans-unit id="8A9-bl-YJ2.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "8A9-bl-YJ2";</note>
+      </trans-unit>
+      <trans-unit id="8Yb-2u-NhI.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "8Yb-2u-NhI";</note>
+      </trans-unit>
+      <trans-unit id="8eu-EQ-m4l.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "8eu-EQ-m4l";</note>
+      </trans-unit>
+      <trans-unit id="9Y7-RM-VbR.title">
+        <source>End</source>
+        <note>Class = "UIBarButtonItem"; title = "End"; ObjectID = "9Y7-RM-VbR";</note>
+      </trans-unit>
+      <trans-unit id="23o-6M-x8p.normalTitle">
+        <source>Confirm</source>
+        <note>Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "23o-6M-x8p";</note>
+      </trans-unit>
+      <trans-unit id="30B-dd-BAG.headerTitle">
+        <source>Area of Practice</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Area of Practice"; ObjectID = "30B-dd-BAG";</note>
+      </trans-unit>
       <trans-unit id="64o-oD-A4F.text">
-        <source>Primary Specialty</source>
-        <note>Class = "UILabel"; text = "Primary Specialty"; ObjectID = "64o-oD-A4F";</note>
+        <source>Primary Specialty:</source>
+        <note>Class = "UILabel"; text = "Primary Specialty:"; ObjectID = "64o-oD-A4F";</note>
       </trans-unit>
       <trans-unit id="73D-jt-9Wc.normalTitle">
         <source>Not Set</source>
         <note>Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "73D-jt-9Wc";</note>
+      </trans-unit>
+      <trans-unit id="89M-2y-Oe5.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "89M-2y-Oe5";</note>
+      </trans-unit>
+      <trans-unit id="AXp-bB-hLM.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "AXp-bB-hLM";</note>
       </trans-unit>
       <trans-unit id="B57-q3-15O.text">
         <source>Male</source>
@@ -80,13 +136,21 @@
         <source>PGY(Taiwan medical system only)</source>
         <note>Class = "UILabel"; text = "PGY(Taiwan medical system only)"; ObjectID = "BL5-He-Bgh";</note>
       </trans-unit>
+      <trans-unit id="BNY-Ms-yGO.text">
+        <source>More</source>
+        <note>Class = "UILabel"; text = "More"; ObjectID = "BNY-Ms-yGO";</note>
+      </trans-unit>
+      <trans-unit id="BiO-dW-N8H.text">
+        <source>Not Set</source>
+        <note>Class = "UILabel"; text = "Not Set"; ObjectID = "BiO-dW-N8H";</note>
+      </trans-unit>
       <trans-unit id="BnW-b0-j4d.headerTitle">
         <source>Graduated School</source>
         <note>Class = "UITableViewSection"; headerTitle = "Graduated School"; ObjectID = "BnW-b0-j4d";</note>
       </trans-unit>
       <trans-unit id="BtA-Zi-ZDX.text">
-        <source>Please select your status AND enter correct information format.</source>
-        <note>Class = "UILabel"; text = "Please select your status AND enter correct information format."; ObjectID = "BtA-Zi-ZDX";</note>
+        <source>Please select your status. If you selected your specialty, please also select your specialty title.</source>
+        <note>Class = "UILabel"; text = "Please select your status. If you selected your specialty, please also select your specialty title."; ObjectID = "BtA-Zi-ZDX";</note>
       </trans-unit>
       <trans-unit id="ByA-8A-8is.text">
         <source>Please enter a valid Name.</source>
@@ -104,13 +168,9 @@
         <source>Gender</source>
         <note>Class = "UITableViewSection"; headerTitle = "Gender"; ObjectID = "CjH-T5-9LO";</note>
       </trans-unit>
-      <trans-unit id="D6u-KY-sd6.text">
-        <source>Label</source>
-        <note>Class = "UILabel"; text = "Label"; ObjectID = "D6u-KY-sd6";</note>
-      </trans-unit>
-      <trans-unit id="DC4-b5-5tf.text">
-        <source>Resident since</source>
-        <note>Class = "UILabel"; text = "Resident since"; ObjectID = "DC4-b5-5tf";</note>
+      <trans-unit id="D62-dv-5Hb.headerTitle">
+        <source>Title</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "D62-dv-5Hb";</note>
       </trans-unit>
       <trans-unit id="DVP-pG-YRm.text">
         <source>Label</source>
@@ -124,13 +184,13 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "E0k-qa-r13";</note>
       </trans-unit>
-      <trans-unit id="Ezn-2G-6KO.normalTitle">
-        <source>Not Set</source>
-        <note>Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "Ezn-2G-6KO";</note>
-      </trans-unit>
       <trans-unit id="F83-nc-C3b.headerTitle">
         <source>Birthday</source>
         <note>Class = "UITableViewSection"; headerTitle = "Birthday"; ObjectID = "F83-nc-C3b";</note>
+      </trans-unit>
+      <trans-unit id="FkK-Ms-jHQ.title">
+        <source>Cancel</source>
+        <note>Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "FkK-Ms-jHQ";</note>
       </trans-unit>
       <trans-unit id="FxV-0I-LlM.placeholder">
         <source>Password</source>
@@ -144,6 +204,10 @@
       <trans-unit id="G2r-LS-fZK.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "G2r-LS-fZK";</note>
+      </trans-unit>
+      <trans-unit id="G38-I9-AIc.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "G38-I9-AIc";</note>
       </trans-unit>
       <trans-unit id="GMo-lB-cvs.normalTitle">
         <source>Edit</source>
@@ -178,9 +242,17 @@
         <target>HealthCare</target>
         <note>Class = "UILabel"; text = "Berbi"; ObjectID = "IHS-js-g9h";</note>
       </trans-unit>
+      <trans-unit id="IcT-Ta-fIH.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "IcT-Ta-fIH";</note>
+      </trans-unit>
       <trans-unit id="IjB-V4-oJG.text">
         <source>What's Your Birthday?</source>
         <note>Class = "UILabel"; text = "What's Your Birthday?"; ObjectID = "IjB-V4-oJG";</note>
+      </trans-unit>
+      <trans-unit id="JGe-WP-zSg.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "JGe-WP-zSg";</note>
       </trans-unit>
       <trans-unit id="KUU-c8-xKA.normalTitle">
         <source>Sign Up for Berbi</source>
@@ -211,6 +283,14 @@
         <source>Title</source>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "LmN-uw-fC2";</note>
       </trans-unit>
+      <trans-unit id="MOl-mH-DeM.headerTitle">
+        <source>Medical License</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Medical License"; ObjectID = "MOl-mH-DeM";</note>
+      </trans-unit>
+      <trans-unit id="NhZ-oH-f9p.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "NhZ-oH-f9p";</note>
+      </trans-unit>
       <trans-unit id="Oj4-IX-H7C.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "Oj4-IX-H7C";</note>
@@ -236,8 +316,8 @@
         <note>Class = "UITableViewSection"; headerTitle = "Graduated School"; ObjectID = "PpC-hr-ana";</note>
       </trans-unit>
       <trans-unit id="Q57-P0-ah1.text">
-        <source>Please enter current hospital AND not leave blank when adding futher experience.</source>
-        <note>Class = "UILabel"; text = "Please enter current hospital AND not leave blank when adding futher experience."; ObjectID = "Q57-P0-ah1";</note>
+        <source>Please enter current hospital/clinic AND its address. AND not leave blank when adding futher experience.</source>
+        <note>Class = "UILabel"; text = "Please enter current hospital/clinic AND its address. AND not leave blank when adding futher experience."; ObjectID = "Q57-P0-ah1";</note>
       </trans-unit>
       <trans-unit id="Qn8-u0-Ts3.normalTitle">
         <source>Male</source>
@@ -259,9 +339,21 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "SiD-XO-RB6";</note>
       </trans-unit>
+      <trans-unit id="Sv8-dl-LaD.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "Sv8-dl-LaD";</note>
+      </trans-unit>
       <trans-unit id="T1q-NZ-pRe.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "T1q-NZ-pRe";</note>
+      </trans-unit>
+      <trans-unit id="TJG-Yk-uR9.text">
+        <source>0</source>
+        <note>Class = "UILabel"; text = "0"; ObjectID = "TJG-Yk-uR9";</note>
+      </trans-unit>
+      <trans-unit id="TWC-if-hpu.headerTitle">
+        <source>[NOW] General Appointment</source>
+        <note>Class = "UITableViewSection"; headerTitle = "[NOW] General Appointment"; ObjectID = "TWC-if-hpu";</note>
       </trans-unit>
       <trans-unit id="TdX-0J-aqF.headerTitle">
         <source>Ethnicity</source>
@@ -287,6 +379,10 @@
         <source>Not Set</source>
         <note>Class = "UILabel"; text = "Not Set"; ObjectID = "VOC-1k-7C5";</note>
       </trans-unit>
+      <trans-unit id="VeF-Ki-8mV.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "VeF-Ki-8mV";</note>
+      </trans-unit>
       <trans-unit id="Vgm-q8-378.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "Vgm-q8-378";</note>
@@ -298,6 +394,14 @@
       <trans-unit id="Vvd-Je-Kvu.text">
         <source>Title</source>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "Vvd-Je-Kvu";</note>
+      </trans-unit>
+      <trans-unit id="W5F-ca-i2D.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "W5F-ca-i2D";</note>
+      </trans-unit>
+      <trans-unit id="WJe-XU-ADB.headerTitle">
+        <source>Board Certification</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Board Certification"; ObjectID = "WJe-XU-ADB";</note>
       </trans-unit>
       <trans-unit id="X5T-TL-V5K.segmentTitles[0]">
         <source>Male</source>
@@ -315,9 +419,21 @@
         <source>Email invalid.</source>
         <note>Class = "UILabel"; text = "Email invalid."; ObjectID = "XZI-aU-UWY";</note>
       </trans-unit>
+      <trans-unit id="Xf5-VL-5xy.text">
+        <source>Patients Wait List</source>
+        <note>Class = "UILabel"; text = "Patients Wait List"; ObjectID = "Xf5-VL-5xy";</note>
+      </trans-unit>
+      <trans-unit id="Xpw-Mh-Wnw.normalTitle">
+        <source>Label</source>
+        <note>Class = "UIButton"; normalTitle = "Label"; ObjectID = "Xpw-Mh-Wnw";</note>
+      </trans-unit>
       <trans-unit id="Y1C-8T-7Wd.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "Y1C-8T-7Wd";</note>
+      </trans-unit>
+      <trans-unit id="YDo-5u-7QG.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "YDo-5u-7QG";</note>
       </trans-unit>
       <trans-unit id="YKa-Qe-ubn.text">
         <source>Weight</source>
@@ -326,6 +442,18 @@
       <trans-unit id="Yt1-Qc-VpA.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "Yt1-Qc-VpA";</note>
+      </trans-unit>
+      <trans-unit id="Yyt-ef-dZC.text">
+        <source>More</source>
+        <note>Class = "UILabel"; text = "More"; ObjectID = "Yyt-ef-dZC";</note>
+      </trans-unit>
+      <trans-unit id="ZJZ-Cu-Y2k.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "ZJZ-Cu-Y2k";</note>
+      </trans-unit>
+      <trans-unit id="Zas-Sa-MQR.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "Zas-Sa-MQR";</note>
       </trans-unit>
       <trans-unit id="aE6-bR-fR3.text">
         <source>You can change this later in your account settings.</source>
@@ -347,6 +475,10 @@
         <source>Password Invalid.</source>
         <note>Class = "UILabel"; text = "Password Invalid."; ObjectID = "bH9-yI-8sF";</note>
       </trans-unit>
+      <trans-unit id="bfL-nc-xqW.text">
+        <source>Subtitle</source>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "bfL-nc-xqW";</note>
+      </trans-unit>
       <trans-unit id="bwE-bZ-Nmf.placeholder">
         <source>Email</source>
         <target>Email</target>
@@ -360,6 +492,10 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "cJo-0X-96v";</note>
       </trans-unit>
+      <trans-unit id="cf2-sL-rwl.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "cf2-sL-rwl";</note>
+      </trans-unit>
       <trans-unit id="chr-8a-FDB.placeholder">
         <source>First name</source>
         <note>Class = "UITextField"; placeholder = "First name"; ObjectID = "chr-8a-FDB";</note>
@@ -367,6 +503,10 @@
       <trans-unit id="clq-i4-bCi.headerTitle">
         <source>past experience</source>
         <note>Class = "UITableViewSection"; headerTitle = "past experience"; ObjectID = "clq-i4-bCi";</note>
+      </trans-unit>
+      <trans-unit id="cme-ja-Daz.title">
+        <source>Update</source>
+        <note>Class = "UIBarButtonItem"; title = "Update"; ObjectID = "cme-ja-Daz";</note>
       </trans-unit>
       <trans-unit id="cnC-Li-9Qc.text">
         <source>Weight Result</source>
@@ -379,6 +519,10 @@
       <trans-unit id="d7r-Ar-dMv.text">
         <source>Please enter valid License Number and upload an Image</source>
         <note>Class = "UILabel"; text = "Please enter valid License Number and upload an Image"; ObjectID = "d7r-Ar-dMv";</note>
+      </trans-unit>
+      <trans-unit id="dFV-pP-6sv.text">
+        <source>Set Max Patients Quota</source>
+        <note>Class = "UILabel"; text = "Set Max Patients Quota"; ObjectID = "dFV-pP-6sv";</note>
       </trans-unit>
       <trans-unit id="eTc-KY-WpO.headerTitle">
         <source>Medical Diploma</source>
@@ -393,8 +537,8 @@
         <note>Class = "UITableViewSection"; headerTitle = "Cell phone (*)"; ObjectID = "eXI-0D-Ebu";</note>
       </trans-unit>
       <trans-unit id="fFJ-u6-qMn.normalTitle">
-        <source>Sumit</source>
-        <note>Class = "UIButton"; normalTitle = "Sumit"; ObjectID = "fFJ-u6-qMn";</note>
+        <source>Submit</source>
+        <note>Class = "UIButton"; normalTitle = "Submit"; ObjectID = "fFJ-u6-qMn";</note>
       </trans-unit>
       <trans-unit id="fXU-Rv-2J4.text">
         <source>Not Set</source>
@@ -404,9 +548,21 @@
         <source>Search</source>
         <note>Class = "UITextField"; placeholder = "Search"; ObjectID = "fcN-1o-HOU";</note>
       </trans-unit>
+      <trans-unit id="ffw-tb-2n4.headerTitle">
+        <source>ID Card / Driver License</source>
+        <note>Class = "UITableViewSection"; headerTitle = "ID Card / Driver License"; ObjectID = "ffw-tb-2n4";</note>
+      </trans-unit>
       <trans-unit id="fyF-s9-CYB.text">
         <source>Not Set</source>
         <note>Class = "UILabel"; text = "Not Set"; ObjectID = "fyF-s9-CYB";</note>
+      </trans-unit>
+      <trans-unit id="g5r-e5-rDh.normalTitle">
+        <source>Not Set</source>
+        <note>Class = "UIButton"; normalTitle = "Not Set"; ObjectID = "g5r-e5-rDh";</note>
+      </trans-unit>
+      <trans-unit id="gTC-8J-Ymn.headerTitle">
+        <source>Medical Diploma</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Medical Diploma"; ObjectID = "gTC-8J-Ymn";</note>
       </trans-unit>
       <trans-unit id="gZ7-nu-s6L.text">
         <source>Not Set</source>
@@ -424,9 +580,29 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "hN9-Tf-mI5";</note>
       </trans-unit>
+      <trans-unit id="hRt-0X-5iS.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "hRt-0X-5iS";</note>
+      </trans-unit>
       <trans-unit id="hac-IR-hOn.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "hac-IR-hOn";</note>
+      </trans-unit>
+      <trans-unit id="hbK-ch-Hhg.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "hbK-ch-Hhg";</note>
+      </trans-unit>
+      <trans-unit id="hfV-7X-z87.text">
+        <source>Title</source>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "hfV-7X-z87";</note>
+      </trans-unit>
+      <trans-unit id="i4D-vo-cZX.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "i4D-vo-cZX";</note>
+      </trans-unit>
+      <trans-unit id="i9U-1c-vbu.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "i9U-1c-vbu";</note>
       </trans-unit>
       <trans-unit id="iJF-Z3-nzy.text">
         <source>Meaning</source>
@@ -436,6 +612,18 @@
         <source>Log In</source>
         <target>Log In</target>
         <note>Class = "UIButton"; normalTitle = "Log In"; ObjectID = "ibm-BT-vDL";</note>
+      </trans-unit>
+      <trans-unit id="jtF-FB-1Nf.text">
+        <source>Specialty Title:</source>
+        <note>Class = "UILabel"; text = "Specialty Title:"; ObjectID = "jtF-FB-1Nf";</note>
+      </trans-unit>
+      <trans-unit id="k6X-mw-2GS.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "k6X-mw-2GS";</note>
+      </trans-unit>
+      <trans-unit id="kP5-XL-P3o.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "kP5-XL-P3o";</note>
       </trans-unit>
       <trans-unit id="kT7-O6-L8c.normalTitle">
         <source>Continue</source>
@@ -477,10 +665,6 @@
         <source>Title</source>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "mY8-Gt-Mx8";</note>
       </trans-unit>
-      <trans-unit id="nHu-IB-U97.placeholder">
-        <source>MM/YYYY</source>
-        <note>Class = "UITextField"; placeholder = "MM/YYYY"; ObjectID = "nHu-IB-U97";</note>
-      </trans-unit>
       <trans-unit id="nfp-YA-YK1.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "nfp-YA-YK1";</note>
@@ -489,9 +673,17 @@
         <source>Name</source>
         <note>Class = "UITableViewSection"; headerTitle = "Name"; ObjectID = "nk0-dd-Hnt";</note>
       </trans-unit>
+      <trans-unit id="nxF-1n-aXw.normalTitle">
+        <source>Label</source>
+        <note>Class = "UIButton"; normalTitle = "Label"; ObjectID = "nxF-1n-aXw";</note>
+      </trans-unit>
       <trans-unit id="oHc-2P-9Tn.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "oHc-2P-9Tn";</note>
+      </trans-unit>
+      <trans-unit id="oMV-ao-zmV.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "oMV-ao-zmV";</note>
       </trans-unit>
       <trans-unit id="p1Q-M2-q55.headerTitle">
         <source>Medical License</source>
@@ -501,13 +693,25 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "pkd-6a-uWI";</note>
       </trans-unit>
+      <trans-unit id="q1Q-Nc-373.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "q1Q-Nc-373";</note>
+      </trans-unit>
       <trans-unit id="qbJ-4j-KYK.text">
         <source>License Number</source>
         <note>Class = "UILabel"; text = "License Number"; ObjectID = "qbJ-4j-KYK";</note>
       </trans-unit>
+      <trans-unit id="rEK-iu-4n5.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "rEK-iu-4n5";</note>
+      </trans-unit>
       <trans-unit id="rOF-8T-2XL.text">
         <source>What's Your Email Adress?</source>
         <note>Class = "UILabel"; text = "What's Your Email Adress?"; ObjectID = "rOF-8T-2XL";</note>
+      </trans-unit>
+      <trans-unit id="sQr-xP-X3Z.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "sQr-xP-X3Z";</note>
       </trans-unit>
       <trans-unit id="sZ5-wE-vPe.normalTitle">
         <source>Enter Manually</source>
@@ -520,6 +724,14 @@
       <trans-unit id="shd-eO-jQy.text">
         <source>Account</source>
         <note>Class = "UILabel"; text = "Account"; ObjectID = "shd-eO-jQy";</note>
+      </trans-unit>
+      <trans-unit id="t4d-Hk-Ogl.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "t4d-Hk-Ogl";</note>
+      </trans-unit>
+      <trans-unit id="uBQ-Pf-ebl.normalTitle">
+        <source>Label</source>
+        <note>Class = "UIButton"; normalTitle = "Label"; ObjectID = "uBQ-Pf-ebl";</note>
       </trans-unit>
       <trans-unit id="uKH-lU-iDT.normalTitle">
         <source>Continue</source>
@@ -537,9 +749,17 @@
         <source>Payment</source>
         <note>Class = "UILabel"; text = "Payment"; ObjectID = "vHy-Ei-7yz";</note>
       </trans-unit>
+      <trans-unit id="vTZ-xM-pFC.text">
+        <source>Not Set</source>
+        <note>Class = "UILabel"; text = "Not Set"; ObjectID = "vTZ-xM-pFC";</note>
+      </trans-unit>
       <trans-unit id="vhr-pw-uQq.text">
         <source>What's Your Gender?</source>
         <note>Class = "UILabel"; text = "What's Your Gender?"; ObjectID = "vhr-pw-uQq";</note>
+      </trans-unit>
+      <trans-unit id="wAq-Hy-lqu.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "wAq-Hy-lqu";</note>
       </trans-unit>
       <trans-unit id="wOH-ze-oBJ.text">
         <source>Please enter a valide USA cell phone number.</source>
@@ -549,6 +769,14 @@
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "wYK-4K-o8T";</note>
       </trans-unit>
+      <trans-unit id="wpJ-rA-IsM.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "wpJ-rA-IsM";</note>
+      </trans-unit>
+      <trans-unit id="wpK-To-fgr.normalTitle">
+        <source>Label</source>
+        <note>Class = "UIButton"; normalTitle = "Label"; ObjectID = "wpK-To-fgr";</note>
+      </trans-unit>
       <trans-unit id="wre-Ar-oDq.text">
         <source>Last Name</source>
         <note>Class = "UILabel"; text = "Last Name"; ObjectID = "wre-Ar-oDq";</note>
@@ -556,6 +784,14 @@
       <trans-unit id="x4y-FC-zYo.text">
         <source>History</source>
         <note>Class = "UILabel"; text = "History"; ObjectID = "x4y-FC-zYo";</note>
+      </trans-unit>
+      <trans-unit id="xWA-MV-aRN.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "xWA-MV-aRN";</note>
+      </trans-unit>
+      <trans-unit id="xXs-Qj-aw6.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "xXs-Qj-aw6";</note>
       </trans-unit>
       <trans-unit id="xek-Xy-9Er.text">
         <source>First Name</source>
@@ -568,6 +804,14 @@
       <trans-unit id="ysP-yr-K3y.text">
         <source>Label</source>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "ysP-yr-K3y";</note>
+      </trans-unit>
+      <trans-unit id="yuV-Xw-chF.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "yuV-Xw-chF";</note>
+      </trans-unit>
+      <trans-unit id="zca-53-fQS.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "zca-53-fQS";</note>
       </trans-unit>
       <trans-unit id="zgy-6X-nPQ.text">
         <source>Please enter a valid birthday.</source>
@@ -596,9 +840,25 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
     </header>
     <body>
+      <trans-unit id=" This document for Berbi verify doctor's identity only!">
+        <source> This document for Berbi verify doctor's identity only!</source>
+        <note>For all doctor's documentation, we need to print this line for safy issue</note>
+      </trans-unit>
       <trans-unit id="%@ %@">
         <source>%1$@ %2$@</source>
         <note>Print Name by First Name and Last Name</note>
+      </trans-unit>
+      <trans-unit id="1) After tapping confirm button, system will offical turn your status into ONLINE. Users are able to search you and make appointment.\n\n2) You can stop making appointments by turning your status OFFLINE. System will stop any further appointment from patients.\n\n3) Please response patient's appointment within 20 minutes, or system regards you as OFFLINE and cancels all reservations on your waitlist. And please notice that all patients on your waitlist have permission to leave comment on you.">
+        <source>1) After tapping confirm button, system will offical turn your status into ONLINE. Users are able to search you and make appointment.
+
+2) You can stop making appointments by turning your status OFFLINE. System will stop any further appointment from patients.
+
+3) Please response patient's appointment within 20 minutes, or system regards you as OFFLINE and cancels all reservations on your waitlist. And please notice that all patients on your waitlist have permission to leave comment on you.</source>
+        <note>In DoctorStartAfSpecialist's general appointment, description for How it works?</note>
+      </trans-unit>
+      <trans-unit id="African American">
+        <source>African American</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Allergy and Immunology">
         <source>Allergy and Immunology</source>
@@ -616,6 +876,10 @@
         <source>Area of Practice</source>
         <note>In DoctorStartAfSpecialist's title</note>
       </trans-unit>
+      <trans-unit id="Attendings">
+        <source>Attendings</source>
+        <note>Specialty category</note>
+      </trans-unit>
       <trans-unit id="Back">
         <source>Back</source>
         <note>All navigation item for left going back button</note>
@@ -630,7 +894,9 @@
       </trans-unit>
       <trans-unit id="Cancel">
         <source>Cancel</source>
-        <note>For all alert to access photo library</note>
+        <note>Confrim for exit alert
+   For all alert to access photo library
+   In DoctorStartAfSpecialist's general reservation, cancel for not tap checkmark.</note>
       </trans-unit>
       <trans-unit id="Cantonese">
         <source>Cantonese</source>
@@ -646,7 +912,8 @@
       </trans-unit>
       <trans-unit id="Chinese">
         <source>Chinese</source>
-        <note>Language category</note>
+        <note>Ethnicity category
+   Language category</note>
       </trans-unit>
       <trans-unit id="Chinese Medicine">
         <source>Chinese Medicine</source>
@@ -659,6 +926,18 @@
       <trans-unit id="Colon and Rectal Surgery">
         <source>Colon and Rectal Surgery</source>
         <note>Specialty category</note>
+      </trans-unit>
+      <trans-unit id="Confirm">
+        <source>Confirm</source>
+        <note>In DoctorAbOnlineWaitlist, for confirm change doctor status.</note>
+      </trans-unit>
+      <trans-unit id="Congratulation! You have submitted your doctor application successfully!">
+        <source>Congratulation! You have submitted your doctor application successfully!</source>
+        <note>In DoctorStartAhSummary, detail for successfully submit doctor application</note>
+      </trans-unit>
+      <trans-unit id="Congratulations! You have completed this section's jobs. Please tap confirm to leave.">
+        <source>Congratulations! You have completed this section's jobs. Please tap confirm to leave.</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to end session safe.</note>
       </trans-unit>
       <trans-unit id="Cosmetic Surgery">
         <source>Cosmetic Surgery</source>
@@ -688,17 +967,41 @@
         <source>Dermatology</source>
         <note>Specialty category</note>
       </trans-unit>
+      <trans-unit id="Dr.">
+        <source>Dr.</source>
+        <note>In DoctorStartAfSpecialist's title</note>
+      </trans-unit>
       <trans-unit id="Dutch">
         <source>Dutch</source>
         <note>Language category</note>
+      </trans-unit>
+      <trans-unit id="East African">
+        <source>East African</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="East Asian">
+        <source>East Asian</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Edit">
         <source>Edit</source>
         <note>Navigation item for right button</note>
       </trans-unit>
+      <trans-unit id="Edu: ">
+        <source>Edu: </source>
+        <note>translate for school</note>
+      </trans-unit>
       <trans-unit id="Emergency Medicine">
         <source>Emergency Medicine</source>
         <note>Specialty category</note>
+      </trans-unit>
+      <trans-unit id="End Session">
+        <source>End Session</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to end session safe.</note>
+      </trans-unit>
+      <trans-unit id="End Session:">
+        <source>End Session:</source>
+        <note>In DoctorAcInfoPopover, title for third note.</note>
       </trans-unit>
       <trans-unit id="Endocrinologist">
         <source>Endocrinologist</source>
@@ -724,9 +1027,17 @@
         <source>Family Medicine</source>
         <note>Specialty category</note>
       </trans-unit>
+      <trans-unit id="Fellows">
+        <source>Fellows</source>
+        <note>Specialty category</note>
+      </trans-unit>
       <trans-unit id="Female">
         <source>Female</source>
         <note>Female</note>
+      </trans-unit>
+      <trans-unit id="Fijian">
+        <source>Fijian</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Finnish">
         <source>Finnish</source>
@@ -756,6 +1067,10 @@
         <source>Greek</source>
         <note>Language category</note>
       </trans-unit>
+      <trans-unit id="Guideline:">
+        <source>Guideline:</source>
+        <note>In DoctorStartAfSpecialist's general reservation note</note>
+      </trans-unit>
       <trans-unit id="Hebrew">
         <source>Hebrew</source>
         <note>Language category</note>
@@ -764,13 +1079,33 @@
         <source>Hindi</source>
         <note>Language category</note>
       </trans-unit>
+      <trans-unit id="Hispanic or Latin American">
+        <source>Hispanic or Latin American</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Hospital Address">
+        <source>Hospital Address</source>
+        <note>In DoctorStarAkSearchAddress, search hospital address</note>
+      </trans-unit>
       <trans-unit id="Hungarian">
         <source>Hungarian</source>
         <note>Language category</note>
       </trans-unit>
+      <trans-unit id="ID or Driver License">
+        <source>ID or Driver License</source>
+        <note>In DoctorStartAiInProcess, indicate which image is updated</note>
+      </trans-unit>
+      <trans-unit id="If you have any vacancy on your waitlist, system will keep you online unless you turn to offine. When you are online, users are able to search you and make an appointment with you.">
+        <source>If you have any vacancy on your waitlist, system will keep you online unless you turn to offine. When you are online, users are able to search you and make an appointment with you.</source>
+        <note>In DoctorAcInfoPopover, detail for first note.</note>
+      </trans-unit>
       <trans-unit id="Image Uploaded">
         <source>Image Uploaded</source>
         <note>String for doctor image is uploaded</note>
+      </trans-unit>
+      <trans-unit id="Indian">
+        <source>Indian</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Indonesian">
         <source>Indonesian</source>
@@ -804,6 +1139,10 @@
         <source>Language</source>
         <note>In DoctorStartAbLanguage's title</note>
       </trans-unit>
+      <trans-unit id="Language: ">
+        <source>Language: </source>
+        <note>translate language</note>
+      </trans-unit>
       <trans-unit id="Location">
         <source>Location</source>
         <note>Setting Location , the title for search location manually</note>
@@ -816,13 +1155,42 @@
         <source>Male</source>
         <note>Male</note>
       </trans-unit>
+      <trans-unit id="Maori">
+        <source>Maori</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Maximum number that patients can be on waitlist. When your waitlist is reaching this number, system will automatically change your status to OFFLINE. After you have vacant, system will turn your status ONLINE again.">
+        <source>Maximum number that patients can be on waitlist. When your waitlist is reaching this number, system will automatically change your status to OFFLINE. After you have vacant, system will turn your status ONLINE again.</source>
+        <note>In DoctorStartAfSpecialist's general reservation, description for set quota</note>
+      </trans-unit>
+      <trans-unit id="Medical Diploma">
+        <source>Medical Diploma</source>
+        <note>In DoctorStartAiInProcess, indicate which image is updated</note>
+      </trans-unit>
       <trans-unit id="Medical Genetics and Genomics">
         <source>Medical Genetics and Genomics</source>
         <note>Specialty category</note>
       </trans-unit>
       <trans-unit id="Medical License">
         <source>Medical License</source>
-        <note>In DoctorStartAcLicense's title</note>
+        <note>In DoctorStartAcLicense's title
+   In DoctorStartAiInProcess, indicate which image is updated</note>
+      </trans-unit>
+      <trans-unit id="Middle Eastern">
+        <source>Middle Eastern</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="NZ European or Pakeha">
+        <source>NZ European or Pakeha</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Native American or Inuit">
+        <source>Native American or Inuit</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Native Hawaiian">
+        <source>Native Hawaiian</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Neurological Surgery">
         <source>Neurological Surgery</source>
@@ -836,9 +1204,22 @@
         <source>Next</source>
         <note>All navigation item for right button</note>
       </trans-unit>
+      <trans-unit id="Niuean">
+        <source>Niuean</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="No CheckMark">
+        <source>No CheckMark</source>
+        <note>In DoctorStartAfSpecialist's general reservation, title for not tap checkmark.</note>
+      </trans-unit>
       <trans-unit id="No Internet Connection">
         <source>No Internet Connection</source>
         <note>Title for error message that no internet in PersonCb's LocationLabel</note>
+      </trans-unit>
+      <trans-unit id="No Update">
+        <source>No Update</source>
+        <note>In DoctorStartAiInProcess, the string to indicate that this image is not updated
+   In DoctorStartAiInProcess, title for not upate image</note>
       </trans-unit>
       <trans-unit id="Normal">
         <source>Normal</source>
@@ -869,9 +1250,25 @@
         <source>Obstetrics and Gynecology</source>
         <note>Specialty category</note>
       </trans-unit>
+      <trans-unit id="Offline">
+        <source>Offline</source>
+        <note>In DoctorStartAfSpecialist's offline status</note>
+      </trans-unit>
+      <trans-unit id="Offline Status:">
+        <source>Offline Status:</source>
+        <note>In DoctorAcInfoPopover, title for second note.</note>
+      </trans-unit>
       <trans-unit id="Oncologist">
         <source>Oncologist</source>
         <note>Specialty category</note>
+      </trans-unit>
+      <trans-unit id="Online">
+        <source>Online</source>
+        <note>In DoctorStartAfSpecialist's online status</note>
+      </trans-unit>
+      <trans-unit id="Online Status:">
+        <source>Online Status:</source>
+        <note>In DoctorAcInfoPopover, title for first note.</note>
       </trans-unit>
       <trans-unit id="Ophthalmology">
         <source>Ophthalmology</source>
@@ -883,7 +1280,12 @@
       </trans-unit>
       <trans-unit id="Other">
         <source>Other</source>
-        <note>Specialty category</note>
+        <note>Ethnicity category
+   Specialty category</note>
+      </trans-unit>
+      <trans-unit id="Other Pacific Peoples">
+        <source>Other Pacific Peoples</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Otolaryngology">
         <source>Otolaryngology</source>
@@ -896,6 +1298,10 @@
       <trans-unit id="Pathology">
         <source>Pathology</source>
         <note>Specialty category</note>
+      </trans-unit>
+      <trans-unit id="Patients Left!">
+        <source>Patients Left!</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to end session not safe.</note>
       </trans-unit>
       <trans-unit id="Pediatrics">
         <source>Pediatrics</source>
@@ -913,8 +1319,8 @@
         <source>Please Use Wi-Fi to Access Data</source>
         <note>Message for error message that no internet in PersonCb's LocationLabel</note>
       </trans-unit>
-      <trans-unit id="Please check your information and documents. If you want to edit, click top right button or click sumit to deliver application. Berbi will contact you within 2 business days to update your applcation status.\n\nWelcome to join Berbi group!">
-        <source>Please check your information and documents. If you want to edit, click top right button or click sumit to deliver application. Berbi will contact you within 2 business days to update your applcation status.
+      <trans-unit id="Please check your information and documents. If you want to edit, click top right button or click submit to deliver application. Berbi will contact you within 2 business days to update your applcation status.\n\nWelcome to join Berbi group!">
+        <source>Please check your information and documents. If you want to edit, click top right button or click submit to deliver application. Berbi will contact you within 2 business days to update your applcation status.
 
 Welcome to join Berbi group!</source>
         <note>In DoctorStartAhSummary, description for this page</note>
@@ -923,8 +1329,8 @@ Welcome to join Berbi group!</source>
         <source>Please choose the school where you graudated AND upload either Medical Diploma OR ID Card(Driver License) to verify your identity.</source>
         <note>In DoctorStartAdGraduateSchool, description for this page</note>
       </trans-unit>
-      <trans-unit id="Please choose your status or your primary specialty. If you select your primary specialty, please also upload a photo of your medical specialties license.">
-        <source>Please choose your status or your primary specialty. If you select your primary specialty, please also upload a photo of your medical specialties license.</source>
+      <trans-unit id="Please choose your status or your primary specialty. If you select primary specialty, please also select your current title.">
+        <source>Please choose your status or your primary specialty. If you select primary specialty, please also select your current title.</source>
         <note>In DoctorStartAfSpecialist, description for this page</note>
       </trans-unit>
       <trans-unit id="Please enter your license number and upload a clear image of your medicine license to verify your doctor identity.">
@@ -938,12 +1344,24 @@ Welcome to join Berbi group!</source>
 3) Medical Specialties License, if you have.</source>
         <note>In DoctorStartAaViewController, lower prepare document description</note>
       </trans-unit>
+      <trans-unit id="Please read guildlines and tap checkbox.">
+        <source>Please read guildlines and tap checkbox.</source>
+        <note>In DoctorStartAfSpecialist's general reservation, detail for not tap checkmark.</note>
+      </trans-unit>
       <trans-unit id="Please select at least one language.">
         <source>Please select at least one language.</source>
         <note>In DoctorStartAc, detail for warning for at least select one language</note>
       </trans-unit>
-      <trans-unit id="Please text your current employed hospital or clinic. You can also provide past experience in second section.">
-        <source>Please text your current employed hospital or clinic. You can also provide past experience in second section.</source>
+      <trans-unit id="Please select your status(title). If you have obtained board certified, please upload your license for verifying. You will get an license logo in your introduction when user searches you.">
+        <source>Please select your status(title). If you have obtained board certified, please upload your license for verifying. You will get an license logo in your introduction when user searches you.</source>
+        <note>In DoctorStartAjSpecialtyTitle's, descript for doctor to select their title and upload license if they have.</note>
+      </trans-unit>
+      <trans-unit id="Please type address of your current hospital or clinic. This help user finds you on map.">
+        <source>Please type address of your current hospital or clinic. This help user finds you on map.</source>
+        <note>In DoctorStarAkSearchAddress, search hospital address description</note>
+      </trans-unit>
+      <trans-unit id="Please type your current employed hospital or clinic AND its address. You can also provide past experience in second section.">
+        <source>Please type your current employed hospital or clinic AND its address. You can also provide past experience in second section.</source>
         <note>In DoctorStartAgCurrentHospital, description for this page</note>
       </trans-unit>
       <trans-unit id="Polish">
@@ -970,6 +1388,10 @@ Welcome to join Berbi group!</source>
         <source>Radiology</source>
         <note>Specialty category</note>
       </trans-unit>
+      <trans-unit id="Residents">
+        <source>Residents</source>
+        <note>Specialty category</note>
+      </trans-unit>
       <trans-unit id="Romanian">
         <source>Romanian</source>
         <note>Language category</note>
@@ -977,6 +1399,10 @@ Welcome to join Berbi group!</source>
       <trans-unit id="Russian">
         <source>Russian</source>
         <note>Language category</note>
+      </trans-unit>
+      <trans-unit id="Samoan">
+        <source>Samoan</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Save">
         <source>Save</source>
@@ -986,17 +1412,48 @@ Welcome to join Berbi group!</source>
         <source>Select Language</source>
         <note>In DoctorStartAc, warning for at least select one language</note>
       </trans-unit>
+      <trans-unit id="Serve at ">
+        <source>Serve at </source>
+        <note>translate where is doctor employed</note>
+      </trans-unit>
+      <trans-unit id="Set Max Patients Quota:">
+        <source>Set Max Patients Quota:</source>
+        <note>In DoctorStartAfSpecialist's general appointment , Set Quota for max patients can be online</note>
+      </trans-unit>
       <trans-unit id="Slovak">
         <source>Slovak</source>
         <note>Language category</note>
+      </trans-unit>
+      <trans-unit id="South Asian">
+        <source>South Asian</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="South East Asian">
+        <source>South East Asian</source>
+        <note>Ethnicity category</note>
       </trans-unit>
       <trans-unit id="Spanish">
         <source>Spanish</source>
         <note>Language category</note>
       </trans-unit>
+      <trans-unit id="Specialty Title">
+        <source>Specialty Title</source>
+        <note>In DoctorStartAjSpecialtyTitle's title</note>
+      </trans-unit>
+      <trans-unit id="Specialy License">
+        <source>Specialy License</source>
+        <note>In DoctorStartAiInProcess, indicate which image is updated</note>
+      </trans-unit>
+      <trans-unit id="Step 1) Turn to offline and complete patients on your waitlist.\nStep 2) End this session by tap end button on top left button.">
+        <source>Step 1) Turn to offline and complete patients on your waitlist.
+Step 2) End this session by tap end button on top left button.</source>
+        <note>In DoctorAcInfoPopover, detail for third note.</note>
+      </trans-unit>
       <trans-unit id="Success">
         <source>Success</source>
-        <note>Title for success open an account</note>
+        <note>In DoctorStartAhSummary, title for successfully submit doctor application
+   In DoctorStartAiInProcess, title for success update image
+   Title for success open an account</note>
       </trans-unit>
       <trans-unit id="Summary">
         <source>Summary</source>
@@ -1010,6 +1467,14 @@ Welcome to join Berbi group!</source>
         <source>Swedish</source>
         <note>Language category</note>
       </trans-unit>
+      <trans-unit id="System will start to arrange new appointments for you. You will turn into online and be searchable immediately if there is a vacancy on your waitlist.">
+        <source>System will start to arrange new appointments for you. You will turn into online and be searchable immediately if there is a vacancy on your waitlist.</source>
+        <note>In DoctorAbOnlineWaitlist, message for alert to change online.</note>
+      </trans-unit>
+      <trans-unit id="System will stop arranging new appointment for you. You will turn into offline and user can't search you immediately.">
+        <source>System will stop arranging new appointment for you. You will turn into offline and user can't search you immediately.</source>
+        <note>In DoctorAbOnlineWaitlist, message for alert to change offline.</note>
+      </trans-unit>
       <trans-unit id="Taiwanese">
         <source>Taiwanese</source>
         <note>Language category</note>
@@ -1017,6 +1482,10 @@ Welcome to join Berbi group!</source>
       <trans-unit id="Take a New Picture">
         <source>Take a New Picture</source>
         <note>For all alert to access photo library</note>
+      </trans-unit>
+      <trans-unit id="Tap checkbox after read below guidelines.">
+        <source>Tap checkbox after read below guidelines.</source>
+        <note>In DoctorStartAfSpecialist's general appointment note</note>
       </trans-unit>
       <trans-unit id="Thai">
         <source>Thai</source>
@@ -1026,17 +1495,35 @@ Welcome to join Berbi group!</source>
         <source>The email you entered doesn't appear to belong to an account. Please check your email address and try again.</source>
         <note>Detail for no email record found</note>
       </trans-unit>
-      <trans-unit id="This document for Berbi verify doctor's identity only!">
-        <source>This document for Berbi verify doctor's identity only!</source>
-        <note>For all doctor's documentation, we need to print this line for safy issue</note>
-      </trans-unit>
       <trans-unit id="Thoracic Surgery">
         <source>Thoracic Surgery</source>
         <note>Specialty category</note>
       </trans-unit>
+      <trans-unit id="Tokelauan">
+        <source>Tokelauan</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Tongan">
+        <source>Tongan</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
       <trans-unit id="Turkish">
         <source>Turkish</source>
         <note>Language category</note>
+      </trans-unit>
+      <trans-unit id="Turn to Offline">
+        <source>Turn to Offline</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to change offline.</note>
+      </trans-unit>
+      <trans-unit id="Turn to Online">
+        <source>Turn to Online</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to change online.</note>
+      </trans-unit>
+      <trans-unit id="Turn to offline manually by switching bar under your image. You can end this session if you don't have any patient on your waitlist. If you still have patients, please finish all appointments. \n\nHowever, if you have emergency, you are able to leave without any penalty. But please be cautious, all patients on your waitlist have permission to leave comment on you.">
+        <source>Turn to offline manually by switching bar under your image. You can end this session if you don't have any patient on your waitlist. If you still have patients, please finish all appointments. 
+
+However, if you have emergency, you are able to leave without any penalty. But please be cautious, all patients on your waitlist have permission to leave comment on you.</source>
+        <note>In DoctorAcInfoPopover, detail for second note.</note>
       </trans-unit>
       <trans-unit id="Ukrainian">
         <source>Ukrainian</source>
@@ -1045,6 +1532,12 @@ Welcome to join Berbi group!</source>
       <trans-unit id="Underweight">
         <source>Underweight</source>
         <note>In PersonsCbAccount for bmi Meaning</note>
+      </trans-unit>
+      <trans-unit id="Update Documents\n\nBerbi will contact with you by email if there are some documents needed re-upload. You can use below columns to update the documents.">
+        <source>Update Documents
+
+Berbi will contact with you by email if there are some documents needed re-upload. You can use below columns to update the documents.</source>
+        <note>In DoctorStartAiInProcess, description for this page</note>
       </trans-unit>
       <trans-unit id="Urology">
         <source>Urology</source>
@@ -1061,6 +1554,26 @@ Welcome to join Berbi group!</source>
       <trans-unit id="Welcome to join Berbi as a licensed medical doctor. In this stage, we only accept for Taiwan licensed medical doctor. We will open other area soon, and sorry for any inconvenient.">
         <source>Welcome to join Berbi as a licensed medical doctor. In this stage, we only accept for Taiwan licensed medical doctor. We will open other area soon, and sorry for any inconvenient.</source>
         <note>In DoctorStartAaViewController, upper welcome description</note>
+      </trans-unit>
+      <trans-unit id="White or Caucasian">
+        <source>White or Caucasian</source>
+        <note>Ethnicity category</note>
+      </trans-unit>
+      <trans-unit id="Years Old">
+        <source>Years Old</source>
+        <note>In patient waitlist, tell how old this patient is</note>
+      </trans-unit>
+      <trans-unit id="You do not update any image!">
+        <source>You do not update any image!</source>
+        <note>In DoctorStartAiInProcess, detail for success update image and what image user update</note>
+      </trans-unit>
+      <trans-unit id="You have updated the following image(s) successfully!: ">
+        <source>You have updated the following image(s) successfully!: </source>
+        <note>In DoctorStartAiInProcess, detail for success update image and what image user update</note>
+      </trans-unit>
+      <trans-unit id="You still have patients on your wait list! If you still confirm to leave, those patients have permission to leave comment on you!">
+        <source>You still have patients on your wait list! If you still confirm to leave, those patients have permission to leave comment on you!</source>
+        <note>In DoctorAbOnlineWaitlist, title for alert to end session not safe.</note>
       </trans-unit>
       <trans-unit id="Your Account is NOT created">
         <source>Your Account is NOT created</source>

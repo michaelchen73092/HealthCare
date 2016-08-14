@@ -15,11 +15,8 @@ class DoctorStartAeSearchSchoolTableViewController: UITableViewController {
         super.viewDidLoad()
         //recall previous select
         if tempDoctor?.doctorGraduateSchool != nil {
-            for i in 0...(School.school.count - 1) {
-                if tempDoctor!.doctorGraduateSchool!.rangeOfString(School.school[i][0]) != nil{
-                    print("i:\(i)")
-                    lastSelectedRow = NSIndexPath(forRow: i, inSection: 0)
-                }
+            if tempDoctor!.doctorGraduateSchool != nil{
+                lastSelectedRow = NSIndexPath(forRow: Int(tempDoctor!.doctorGraduateSchool!)!, inSection: 0)
             }
         }
         
@@ -78,7 +75,7 @@ class DoctorStartAeSearchSchoolTableViewController: UITableViewController {
             let newCell = tableView.cellForRowAtIndexPath(indexPath)
             newCell?.accessoryType = .Checkmark
             lastSelectedRow = indexPath
-            tempDoctor?.doctorGraduateSchool = School.school[indexPath.row][0]
+            tempDoctor?.doctorGraduateSchool = String(indexPath.row)
             print("tempDoctor?.doctorGraduateSchool:\(tempDoctor!.doctorGraduateSchool!)")
         }
     }

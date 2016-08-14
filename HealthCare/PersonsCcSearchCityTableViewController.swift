@@ -130,10 +130,10 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
             }
             if let placemark = placemarks?.first {
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                signInUser?.locationLatitude = coordinates.latitude
-                signInUser?.locationlongitude = coordinates.longitude
-                print("In Cc signInUser!.locationLatitude!: \(signInUser!.locationLatitude!)")
-                print("In Cc signInUser!.locationlongitude!: \(signInUser!.locationlongitude!)")
+                signInUserPublic?.locationLatitude = coordinates.latitude
+                signInUserPublic?.locationlongitude = coordinates.longitude
+                print("In Cc signInUser!.locationLatitude!: \(signInUserPublic!.locationLatitude!)")
+                print("In Cc signInUser!.locationlongitude!: \(signInUserPublic!.locationlongitude!)")
                 NSNotificationCenter.defaultCenter().postNotificationName("searchCityBack", object: self, userInfo: nil )
                 print("In Search City, viewController")
             }

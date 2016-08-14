@@ -14,8 +14,7 @@ class StartAgGenderViewController: UIViewController{
     
     // MARK: - Variables
     var ButtonSelect = false
-
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     @IBOutlet weak var maleButtonLabel: UIButton!
     @IBOutlet weak var femaleButtonLabel: UIButton!
 
@@ -37,7 +36,7 @@ class StartAgGenderViewController: UIViewController{
     // MARK: - Male, Female function
     @IBAction func maleButton() {
         ButtonSelect = true
-        signInUser?.gender = "Male"
+        signInUserPublic?.gender = false
         // set button color when it's clicked
         buttonHighlight(maleButtonLabel, View: maleView)
         buttonDehighlight(femaleButtonLabel, View: femaleView)
@@ -49,7 +48,7 @@ class StartAgGenderViewController: UIViewController{
     
     @IBAction func femaleButton() {
         ButtonSelect = true
-        signInUser?.gender = "Female"
+        signInUserPublic?.gender = true
         // set button color when it's clicked
         buttonHighlight(femaleButtonLabel, View: femaleView)
         buttonDehighlight(maleButtonLabel, View: maleView)
@@ -73,18 +72,10 @@ class StartAgGenderViewController: UIViewController{
     
     //save to local CoreData
     private func saveLocal(){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let ed = NSEntityDescription.entityForName("Persons", inManagedObjectContext: moc)
-        let person = Persons(entity: ed!, insertIntoManagedObjectContext: moc)
-        person.firstname = signInUser?.firstname
-        person.lastname = signInUser?.lastname
-        person.email = signInUser?.email
-        person.password = signInUser?.password
-        person.birthday = NSDate(dateString: dateFormatter.stringFromDate((signInUser?.birthday)!))
-        person.gender = signInUser?.gender
+        signInUser?.applicationStatus = Status.userModeNotApply
+        signInUserPublic?.email = signInUser!.email!
         do{
-         try moc.save()
+         try moc!.save()
             //alert that there is no this user
             //let success = NSLocalizedString("Success", comment: "Title for success open an account")
             //let details = NSLocalizedString("Your Account is creaded", comment: "detail of Success")
@@ -96,7 +87,7 @@ class StartAgGenderViewController: UIViewController{
             let fail = NSLocalizedString("Fail", comment: "Title for fail open an account")
             let details = NSLocalizedString("Your Account is NOT created", comment: "detail of fail")
             let okstring = NSLocalizedString("back", comment: "Confrim for exit alert")
-            Alert.show(fail, message: details, ok: okstring,vc: self)
+            Alert.show(fail, message: details, ok: okstring, dismissBoth: false,vc: self)
         }
     
     }

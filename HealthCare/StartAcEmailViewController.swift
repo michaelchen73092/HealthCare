@@ -20,7 +20,7 @@ class StartAcEmailViewController: UIViewController, UITextFieldDelegate {
         static let lastIdentifier = "StartAb"
         //static var KBisON = false // set for recording KB is ON/OFF
     }
-    var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    weak var moc : NSManagedObjectContext?
     //1
     let tapRec = UITapGestureRecognizer()
     

@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-
+import testKit
+import CoreLocation
 class DoctorStartAhSummaryTableViewController: UITableViewController, UITextViewDelegate {
     // MARK: - Variables
     
@@ -43,6 +44,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
     @IBOutlet weak var specialtyAdd: UIImageView!
     
     @IBOutlet weak var currentHospitalLabel: UILabel!
+    @IBOutlet weak var currentHospitalAddress: UILabel!
     
     @IBOutlet weak var experienceOneLabel: UILabel!
     @IBOutlet weak var experienceTwoLabel: UILabel!
@@ -55,7 +57,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
     weak var moc : NSManagedObjectContext?
     
     private struct MVC {
-        static let nextIdentifier = "Show DoctorStartAh"
+        static let nextIdentifier = "Show DoctorStartAi"
         static let cellphonePlaceholderString = NSLocalizedString("Ex: XXX-XXX-XXXX or XXXXXXXXXX", comment: "In DoctorStartAhSummary, placeholder for cellphone format")
     }
     @IBOutlet weak var summaryDescription: UILabel!
@@ -65,7 +67,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
         super.viewDidLoad()
         
         //setup description textView
-        summaryDescription.text = NSLocalizedString("Please check your information and documents. If you want to edit, click top right button or click sumit to deliver application. Berbi will contact you within 2 business days to update your applcation status.\n\nWelcome to join Berbi group!", comment: "In DoctorStartAhSummary, description for this page")
+        summaryDescription.text = NSLocalizedString("Please check your information and documents. If you want to edit, click top right button or click submit to deliver application. Berbi will contact you within 2 business days to update your applcation status.\n\nWelcome to join Berbi group!", comment: "In DoctorStartAhSummary, description for this page")
 
         
         //setup navigation
@@ -94,13 +96,14 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
         invalidSpecialtyLabel.text = Storyboard.PhotoPrintForVerify
         
         //setup Initialization
-        if tempDoctor?.doctorLanguage != nil{
-            languageLabel.text = tempDoctor!.doctorLanguage!
+        //print language
+        if tempDoctor?.doctorLanguage != nil && tempDoctor?.doctorLanguage != ""{
+            languageLabel.text = printLanguage(tempDoctor!.doctorLanguage!)
         }
-        if tempDoctor?.doctorLicenseNumber != nil{
-            medicalLicenseLabel.text = tempDoctor!.doctorLicenseNumber!
+        if signInUser?.doctorLicenseNumber != nil{
+            medicalLicenseLabel.text = signInUser!.doctorLicenseNumber!
         }
-        if let imagedata = tempDoctor?.doctorImageMedicalLicense {
+        if let imagedata = signInUser?.doctorImageMedicalLicense {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 let image = UIImage(data: imagedata)
@@ -111,9 +114,14 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
             }
         }
         if tempDoctor?.doctorGraduateSchool != nil{
-            graduatedSchoolLabel.text = tempDoctor!.doctorGraduateSchool!
+            let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
+            if langId.rangeOfString("en") != nil{
+                graduatedSchoolLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][1]
+            }else{
+                graduatedSchoolLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][0]
+            }
         }
-        if let imagedata = tempDoctor?.doctorImageDiploma {
+        if let imagedata = signInUser?.doctorImageDiploma {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 let image = UIImage(data: imagedata)
@@ -126,7 +134,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
         }else{
             labelnotSet(medicalDiplomaLabel, add: medicalDiplomaAdd)
         }
-        if let imagedata = tempDoctor?.doctorImageID {
+        if let imagedata = signInUser?.doctorImageID {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 let image = UIImage(data: imagedata)
@@ -140,8 +148,14 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
             labelnotSet(idLabel, add: idAdd)
         }
         //no matter there is doctorImageSpecialistLicense or not, we alway show doctorProfession
-        specialtyLabel.text = tempDoctor?.doctorProfession
-        if let imagedata = tempDoctor?.doctorImageSpecialistLicense {
+        if tempDoctor?.doctorProfessionTitle != nil {
+            if Int(tempDoctor!.doctorProfessionTitle!) != nil && Int(tempDoctor!.doctorProfession!) != nil{
+                specialtyLabel.text = specialty.allSpecialty[Int(tempDoctor!.doctorProfession!)!] +  " " + specialty.title[Int(tempDoctor!.doctorProfessionTitle!)!]
+            }
+        }else{
+            specialtyLabel.text = tempDoctor?.doctorProfession
+        }
+        if let imagedata = signInUser?.doctorImageSpecialistLicense {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
                 let image = UIImage(data: imagedata)
@@ -155,7 +169,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
             specialtyAdd.hidden = true
         }
         currentHospitalLabel.text = tempDoctor?.doctorHospital
-        
+        printLocation()
         if tempDoctor?.doctorExperienceOne == nil{
             experienceSection = 1
             experienceOneLabel.text = Storyboard.notSet
@@ -200,11 +214,50 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
         invalidCellPhone.hidden = true
         if !validatePhone(cellPhoneTextView.text){
             invalidCellPhone.hidden = false
+            wiggleInvalidtext(invalidCellPhone, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }else{
-            
+            signInUser?.applicationStatus = Status.underReview
+            saveLocal()
+            //need update tempDoctor info to AWS
+            //alert for update successfully
+            let success = NSLocalizedString("Success", comment: "In DoctorStartAhSummary, title for successfully submit doctor application")
+            let successdetail = NSLocalizedString("Congratulation! You have submitted your doctor application successfully!", comment: "In DoctorStartAhSummary, detail for successfully submit doctor application")
+            let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
+            Alert.show(success, message: successdetail, ok: okstring, dismissBoth: true, vc: self)
         }
     }
     
+    //save to local CoreData
+    private func saveLocal(){
+        do{
+            let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+            let Personresults =  try moc!.executeFetchRequest(fetchRequestPerson)
+            let person = Personresults as! [NSManagedObject]
+            if signInUser?.doctorImageMedicalLicense != nil{
+                person[0].setValue(signInUser?.doctorImageMedicalLicense, forKey: "doctorImageMedicalLicense")
+            }
+            if signInUser?.doctorImageDiploma != nil{
+                person[0].setValue(signInUser?.doctorImageDiploma, forKey: "doctorImageDiploma")
+            }
+            if signInUser?.doctorImageID != nil{
+                person[0].setValue(signInUser?.doctorImageID, forKey: "doctorImageID")
+            }
+            if signInUser?.doctorImageSpecialistLicense != nil{
+                person[0].setValue(signInUser?.doctorImageSpecialistLicense, forKey: "doctorImageSpecialistLicense")
+            }
+            person[0].setValue(signInUser?.doctorLicenseNumber, forKey: "doctorLicenseNumber")
+            person[0].setValue(signInUser?.cellPhone, forKey: "cellPhone")
+            person[0].setValue(signInUser?.applicationStatus, forKey: "applicationStatus")
+            if signInUserPublic?.imageRemoteUrl != nil && signInUserPublic?.imageRemoteUrl != ""{
+                signInDoctor?.doctorImageRemoteURL = signInUserPublic!.imageRemoteUrl!
+            }
+            //save tempDoctor and update signInUser info
+            try moc!.save()
+        } catch _ as NSError
+        {
+            print("failure to store tempDoctor to Core Data in Submit page")
+        }
+    }
     
     func labelToUpload(label: UILabel){
         label.text = Storyboard.uploaded
@@ -238,7 +291,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
     var medicalDiplomaSection = 1
     @IBAction func tapMedicalDiploma(sender: UITapGestureRecognizer) {
         //if no image, no expand
-        if tempDoctor?.doctorImageDiploma != nil{
+        if signInUser?.doctorImageDiploma != nil{
             if medicalDiplomaSection == 1{
                 medicalDiplomaSection = 2
             }else{
@@ -252,7 +305,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
     var idSection = 1
     @IBAction func tapID(sender: UITapGestureRecognizer) {
         //if no image, no expand
-        if tempDoctor?.doctorImageID != nil{
+        if signInUser?.doctorImageID != nil{
             if idSection == 1{
                 idSection = 2
             }else{
@@ -265,7 +318,7 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
     // MARK: - specialty
     var specialtySection = 1
     @IBAction func tapSpecialty(sender: UITapGestureRecognizer) {
-        if tempDoctor?.doctorImageSpecialistLicense != nil{
+        if signInUser?.doctorImageSpecialistLicense != nil{
             if specialtySection == 1{
                 specialtySection = 2
             }else{
@@ -273,6 +326,53 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
             }
             tableView.reloadData()
         }
+    }
+    
+    // MARK: - Current Hospital Address
+    func printLocation(){
+        if (tempDoctor!.doctorHospitalLatitude! != 0) || (tempDoctor!.doctorHospitalLongitude! != 0) {
+            currentHospitalAddress.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)
+            let userLocation = CLLocation(latitude: Double(tempDoctor!.doctorHospitalLatitude!), longitude: Double(tempDoctor!.doctorHospitalLongitude!))
+            CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
+                if error != nil {
+                    print("Inside printLocation: Reverse geocoder failed with error" + error!.localizedDescription)
+                    return
+                }
+                if placemarks?.count > 0 {
+                    let pm = placemarks![0] as CLPlacemark
+                    self.displayLocationInfo(pm)
+                }else{
+                    print("Problem with the data received from geocoder")
+                }
+            }
+        }
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark){
+        // put a space between "4" and "Melrose Place"
+        let firstSpace = (placemark.subThoroughfare != nil && placemark.thoroughfare != nil) ? " " : ""
+        // put a comma between street and city/state
+        let comma = (placemark.subThoroughfare != nil || placemark.thoroughfare != nil) && (placemark.subAdministrativeArea != nil || placemark.administrativeArea != nil) ? ", " : ""
+        // put a space between "Washington" and "DC"
+        let secondSpace = (placemark.subAdministrativeArea != nil && placemark.administrativeArea != nil) ? " " : ""
+        let addressLine = String(
+            format:"%@%@%@%@%@%@%@",
+            // street number
+            placemark.subThoroughfare ?? "",
+            firstSpace,
+            // street name
+            placemark.thoroughfare ?? "",
+            comma,
+            // city
+            placemark.locality ?? "",
+            secondSpace,
+            // state
+            placemark.administrativeArea ?? ""
+        )
+        let country = (placemark.country != nil) ? placemark.country! : ""
+        currentHospitalAddress.text = addressLine + ", \(country)"
+
+        
     }
     
     
@@ -293,6 +393,8 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
             return idSection
         }else if section == 6{
             return specialtySection
+        }else if section == 7{
+            return 2
         }else if section == 8{
             return experienceSection
         }
@@ -335,59 +437,25 @@ class DoctorStartAhSummaryTableViewController: UITableViewController, UITextView
         return true
     }
     
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+    
+    // MARK: - prepareForSegue
 
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var destination = segue.destinationViewController as UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController!
+        }
+        if destination is DoctorStartAiInProcessTableViewController{
+            //pass current moc to next controller which use for create Persons object
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            self.navigationItem.backBarButtonItem = backItem
+            self.navigationController?.setToolbarHidden(true, animated: true)
+        }
     }
-    */
 
 }
+
+
+

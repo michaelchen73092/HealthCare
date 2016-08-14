@@ -19,7 +19,10 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
     @IBOutlet weak var selfieView: UIView!
     // for save photoUrl to local CoreData
     var moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
+    private struct MVC{
+        static let beDoctorIdentifier = "Be a Certified Doctor"
+        static let underReviewIdentifier = "Show DoctorStartAi"
+    }
     // MARK: - Camera Function
     @IBAction func editSelfie() {
         
@@ -162,8 +165,8 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
     func updateImage() {
         //setup Name
         let NameFormateString = NSLocalizedString("%@ %@", comment: "Print Name by First Name and Last Name")
-        userName.text = String.localizedStringWithFormat(NameFormateString, signInUser!.firstname!, signInUser!.lastname!)
-        self.navigationItem.title = String.localizedStringWithFormat(NameFormateString, signInUser!.firstname!, signInUser!.lastname!)
+        userName.text = String.localizedStringWithFormat(NameFormateString, signInUserPublic!.firstname!, signInUserPublic!.lastname!)
+        self.navigationItem.title = String.localizedStringWithFormat(NameFormateString, signInUserPublic!.firstname!, signInUserPublic!.lastname!)
         //setup Default Image
         if let imagedata = signInUser!.imageLocal {
             if let image = UIImage(data: imagedata){
@@ -176,10 +179,10 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
                 }
             }
         }else{
-            if (signInUser?.gender)! == "Male"{
-                selfieImage.image = UIImage(named:"MaleImage.png")
-            }else{
+            if signInUserPublic!.gender!.boolValue {
                 selfieImage.image = UIImage(named:"FemaleImage.png")
+            }else{
+                selfieImage.image = UIImage(named:"MaleImage.png")
             }
         }
         //use url to find exist image data. Not use here now. We use NSData to store image in CoreData
@@ -243,6 +246,21 @@ class PersonsCaMoreTableViewController: UITableViewController, UIImagePickerCont
             
         } catch let error as NSError {
             print("Could not fetch or Save \(error), \(error.userInfo)")
+        }
+    }
+    
+    // MARK: - tap Be a Licensed Medical Doctor
+    @IBAction func tapJoinBerbi(sender: UITapGestureRecognizer) {
+        if signInUser!.isdoctor == false{
+            if signInUser!.applicationStatus == Status.userModeNotApply{
+                performSegueWithIdentifier(MVC.beDoctorIdentifier, sender: nil)
+            }else if signInUser!.applicationStatus == Status.underReview {
+                performSegueWithIdentifier(MVC.underReviewIdentifier, sender: nil)
+            }else{
+                //for doctor mode
+            }
+        }else{
+            performSegueWithIdentifier(MVC.underReviewIdentifier, sender: nil)
         }
     }
     
