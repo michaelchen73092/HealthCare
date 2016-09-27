@@ -56,25 +56,24 @@ class DoctorAaNowTableViewController: UITableViewController {
         tableView.allowsSelection = false
         //setup UI
         onlineLabel.text = Storyboard.offLine
-        onlineLabel.textColor = UIColor.lightGrayColor()
+        onlineLabel.textColor = UIColor.lightGray
         presentQuota.text = "\(Int(quotaSlider.value))"
-        
         //setup General appointment UI
         presentQuota.layer.borderWidth = 1.0
-        presentQuota.layer.borderColor = UIColor.lightGrayColor().CGColor
+        presentQuota.layer.borderColor = UIColor.lightGray.cgColor
         checkButton.layer.borderWidth = 1.0
-        checkButton.layer.borderColor = UIColor.darkGrayColor().CGColor
-        descriptionOneTitle.text = NSLocalizedString("Set Max Patients Quota:", comment: "In DoctorStartAfSpecialist's general appointment , Set Quota for max patients can be online")
+        checkButton.layer.borderColor = UIColor.darkGray.cgColor
+        descriptionOneTitle.text = NSLocalizedString("Maximum Waitlist Patients:", comment: "In DoctorStartAfSpecialist's general appointment , Set Quota for max patients can be online")
         descriptionOne.text = NSLocalizedString("Maximum number that patients can be on waitlist. When your waitlist is reaching this number, system will automatically change your status to OFFLINE. After you have vacant, system will turn your status ONLINE again.", comment: "In DoctorStartAfSpecialist's general reservation, description for set quota")
         descriptionTwoTitle.text = NSLocalizedString("Guideline:", comment: "In DoctorStartAfSpecialist's general reservation note")
-        descriptionTwo.text = NSLocalizedString("1) After tapping confirm button, system will offical turn your status into ONLINE. Users are able to search you and make appointment.\n\n2) You can stop making appointments by turning your status OFFLINE. System will stop any further appointment from patients.\n\n3) Please response patient's appointment within 20 minutes, or system regards you as OFFLINE and cancels all reservations on your waitlist. And please notice that all patients on your waitlist have permission to leave comment on you.", comment: "In DoctorStartAfSpecialist's general appointment, description for How it works?")
-        checkUsageButton.setTitle(NSLocalizedString("Tap checkbox after read below guidelines.", comment: "In DoctorStartAfSpecialist's general appointment note"), forState: .Normal)
+        descriptionTwo.text = NSLocalizedString("1) After tapping confirm button, system will offical turn your status into ONLINE. Users are able to search you and make appointment.\n\n2) You can stop making appointments by turning your status OFFLINE. System will stop any further appointment from patients.\n\n3) Please response patient's appointment within 20 minutes, or system regards you as OFFLINE and cancels all reservations on your waitlist. And please notice that all patients on your waitlist have permission to leave comment and give evaluation to you.", comment: "In DoctorStartAfSpecialist's general appointment, description for How it works?")
+        checkUsageButton.setTitle(NSLocalizedString("Tap checkbox after read below guidelines.", comment: "In DoctorStartAfSpecialist's general appointment note"), for: UIControlState())
     }
 
 
-    @IBAction func onOffSwitch(sender: UISwitch) {
-        if !onlineSwitch.on {
-            onlineLabel.textColor = UIColor.lightGrayColor()
+    @IBAction func onOffSwitch(_ sender: UISwitch) {
+        if !onlineSwitch.isOn {
+            onlineLabel.textColor = UIColor.lightGray
             onlineLabel.text = Storyboard.offLine
             onlineSwitch.setOn(false, animated: true)
         }else{
@@ -92,11 +91,11 @@ class DoctorAaNowTableViewController: UITableViewController {
         checkMark()
     }
     
-    private func checkMark(){
+    fileprivate func checkMark(){
         if checkButton.currentImage == nil{
-            checkButton.setImage(UIImage(named: "checkMark"), forState: .Normal)
+            checkButton.setImage(UIImage(named: "checkMark"), for: UIControlState())
         }else{
-            checkButton.setImage(nil, forState: .Normal)
+            checkButton.setImage(nil, for: UIControlState())
         }
     }
     
@@ -121,7 +120,7 @@ class DoctorAaNowTableViewController: UITableViewController {
         }else{
             //upload quota to AWS
             generalReservation.quota = Int(presentQuota.text!)
-            performSegueWithIdentifier("Show DoctorAb", sender: nil)
+            performSegue(withIdentifier: "Show DoctorAb", sender: nil)
         }
         
     }
@@ -133,7 +132,7 @@ class DoctorAaNowTableViewController: UITableViewController {
 
     // MARK: - General Reservation
     var generalReservationSection = 2
-    @IBAction func setQuota(sender: UISlider) {
+    @IBAction func setQuota(_ sender: UISlider) {
         let currentValue = Int(sender.value)
         presentQuota.text = "\(currentValue)"
     }
@@ -141,48 +140,46 @@ class DoctorAaNowTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return generalReservationSection
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }
 
 
 // image use user image. can't use for doctor
-public func doctorUpdateUI(nameLabel: UILabel, doctorGraduateSchool: UILabel, doctorCurrentHospital: UILabel, doctorLanguage: UILabel, doctorSpecialty: UILabel,doctorImageView: UIImageView, doctorIsBoardCertificated: UIImageView, doctor: Doctors?, starA: UIImageView, starB: UIImageView, starC: UIImageView, starD: UIImageView, starE: UIImageView)  {
-    let doctorTitle = NSLocalizedString("Dr.", comment: "In DoctorStartAfSpecialist's title")
-//    let englishFormat = "(?=.*[A-Za-z]).*$"
-//    let englishPredicate = NSPredicate(format:"SELF MATCHES %@", englishFormat)
+public func doctorUpdateUI(_ nameLabel: UILabel, doctorGraduateSchool: UILabel, doctorCurrentHospital: UILabel, doctorLanguage: UILabel, doctorSpecialty: UILabel,doctorImageView: UIImageView, doctorIsBoardCertificated: UIImageView, doctor: Doctors?, starA: UIImageView, starB: UIImageView, starC: UIImageView, starD: UIImageView, starE: UIImageView)  {
+    let englishFormat = "(?=.*[A-Za-z]).*$"
+    let englishPredicate = NSPredicate(format:"SELF MATCHES %@", englishFormat)
     if doctor!.doctorLastName != nil && doctor!.doctorFirstName != nil{
-        let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
-        if langId.rangeOfString("zh") != nil {
-            nameLabel.text = doctor!.doctorLastName!+" "+doctor!.doctorFirstName!+" "+doctorTitle
-        }else if langId.rangeOfString("en") != nil{
-            print("here")
-            nameLabel.text = doctorTitle+" "+doctor!.doctorFirstName!+" "+doctor!.doctorLastName!
+        let langId = (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode) as! String
+        if langId.range(of: "en") != nil || englishPredicate.evaluate(with: doctor!.doctorFirstName!) || englishPredicate.evaluate(with: doctor!.doctorLastName!) {
+            nameLabel.text = "Dr. "+doctor!.doctorFirstName!+" "+doctor!.doctorLastName!
+        }else if langId.range(of: "zh") != nil{
+            nameLabel.text = doctor!.doctorLastName!+doctor!.doctorFirstName!+" "+Storyboard.doctorTitle
         }else{
-            nameLabel.text = doctorTitle+" "+doctor!.doctorFirstName!+" "+doctor!.doctorLastName!
+            nameLabel.text = Storyboard.doctorTitle+" "+doctor!.doctorFirstName!+" "+doctor!.doctorLastName!
         }
     }
     let school = NSLocalizedString("Edu: ", comment: "translate for school")
     let hospital = NSLocalizedString("Serve at ", comment: "translate where is doctor employed")
     let language = NSLocalizedString("Language: ", comment: "translate language")
     if doctor!.doctorGraduateSchool != nil && doctor!.doctorHospital != nil && doctor!.doctorLanguage != nil{
-        let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
-        if langId.rangeOfString("en") != nil{
-            doctorGraduateSchool.text = school+School.school[Int(signInDoctor!.doctorGraduateSchool!)!][1]
+        let langId = (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode) as! String
+        if langId.range(of: "en") != nil{
+            doctorGraduateSchool.text = school+School.school[Int(doctor!.doctorGraduateSchool!)!][1]
         }else{
-            doctorGraduateSchool.text = school+School.school[Int(signInDoctor!.doctorGraduateSchool!)!][0]
+            doctorGraduateSchool.text = school+School.school[Int(doctor!.doctorGraduateSchool!)!][0]
         }
         doctorCurrentHospital.text = hospital+doctor!.doctorHospital!
         if doctor!.doctorLanguage != nil && doctor!.doctorLanguage != ""{
@@ -190,11 +187,10 @@ public func doctorUpdateUI(nameLabel: UILabel, doctorGraduateSchool: UILabel, do
         }
     }
     //show doctorIsBoardCertificated or not
-    doctorIsBoardCertificated.hidden = true
+    doctorIsBoardCertificated.isHidden = true
     if doctor!.doctorCertificated!.boolValue {
-        doctorIsBoardCertificated.hidden = false
+        doctorIsBoardCertificated.isHidden = false
     }
-    
     //no matter there is doctorImageSpecialistLicense or not, we alway show doctorProfession
     if doctor!.doctorProfession != nil{
         if doctor!.doctorProfessionTitle != nil {
@@ -202,20 +198,44 @@ public func doctorUpdateUI(nameLabel: UILabel, doctorGraduateSchool: UILabel, do
                 doctorSpecialty.text = specialty.allSpecialty[Int(doctor!.doctorProfession!)!] +  " " + specialty.title[Int(doctor!.doctorProfessionTitle!)!]
             }
         }else{
-            doctorSpecialty.text = doctor!.doctorProfession!
+            if doctor!.doctorProfession! == "Internist"{
+                doctorSpecialty.text = Storyboard.internist
+            }else{
+                doctorSpecialty.text = Storyboard.pgy
+            }
         }
     }
     //doctorImage
-    //setup Default Image
-    if let imagedata = signInUser!.imageLocal {
-        if let image = UIImage(data: imagedata){
-            doctorImageView.image = image
+    if doctor!.doctorImageRemoteURL != nil && doctor!.doctorImageRemoteURL! != ""{
+        if let profileImageURL = doctor!.doctorImageRemoteURL{
+            //let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            if let imageData = try? Data(contentsOf: URL(string:profileImageURL)!) {
+//                dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
+//                    dispatch_async(dispatch_get_main_queue()) {
+//                        self!.doctorImage?.image = UIImage(data: imageData)
+//                    }
+//                }
+                doctorImageView.image = UIImage(data: imageData)
+            }else{
+                print("Wrong imageURL for doctor :\(doctor!.doctorFirstName!) \(doctor!.doctorLastName)")
+                doctorImageView.image = UIImage(named:"doctor")
+            }
+        }else{
+            print("No image for doctor :\(doctor!.doctorFirstName!) \(doctor!.doctorLastName)")
+            doctorImageView.image = UIImage(named:"doctor")
         }
     }else{
-        if signInUserPublic!.gender!.boolValue == true {
-            doctorImageView.image = UIImage(named:"FemaleImage.png")
+        //setup Default Image
+        if let imagedata = signInUser!.imageLocal {
+            if let image = UIImage(data: imagedata){
+                doctorImageView.image = image
+            }
         }else{
-            doctorImageView.image = UIImage(named:"MaleImage.png")
+            if signInUserPublic!.gender!.boolValue == true {
+                doctorImageView.image = UIImage(named:"FemaleImage.png")
+            }else{
+                doctorImageView.image = UIImage(named:"MaleImage.png")
+            }
         }
     }
     //star image
@@ -295,6 +315,7 @@ public func doctorUpdateUI(nameLabel: UILabel, doctorGraduateSchool: UILabel, do
         starE.image = UIImage(named: "starFull")
     }
 }
+
 
 //for general reservation's parameter
 public struct generalReservation{

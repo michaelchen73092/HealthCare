@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import CoreData
 
+@available(iOS 10.0, *)
 class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - Variables
@@ -25,7 +26,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     var diplomaHeight = CGFloat(60)
     var idCardHeight = CGFloat(60)
     weak var moc : NSManagedObjectContext?
-    private struct MVC {
+    fileprivate struct MVC {
         static let nextIdentifier = "Show DoctorStartAf"
     }
     @IBOutlet weak var graduatedDescription: UILabel!
@@ -39,23 +40,23 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         
         //for description initailiaztion
         descriptionForDiploma.layer.borderWidth = 1.0
-        descriptionForDiploma.layer.borderColor = UIColor.redColor().CGColor
+        descriptionForDiploma.layer.borderColor = UIColor.red.cgColor
         descriptionForDiploma.text = Storyboard.PhotoPrintForVerify
         
         descriptionForIDCard.layer.borderWidth = 1.0
-        descriptionForIDCard.layer.borderColor = UIColor.redColor().CGColor
+        descriptionForIDCard.layer.borderColor = UIColor.red.cgColor
         descriptionForIDCard.text = Storyboard.PhotoPrintForVerify
         //setup
-        invalidNotification.hidden = true
+        invalidNotification.isHidden = true
         //setup navigation
         let graudateSchoolTitle = NSLocalizedString("Professional Education", comment: "In DoctorStartAdGraduateSchool's title")
         self.navigationItem.title = graudateSchoolTitle
         
-        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.nextButtonClicked))
+        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.nextButtonClicked))
         self.navigationItem.rightBarButtonItem = rightNextNavigationButton
         
         //add graduate back notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.graduateSchoolUpdate), name: "graduateSchoolBack", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.graduateSchoolUpdate), name: NSNotification.Name(rawValue: "graduateSchoolBack"), object: nil)
         //add Default graduate school
         graduateSchoolUpdate()
         //add image set
@@ -70,12 +71,12 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         }
     }
     
-    private func imageDiploma(){
+    fileprivate func imageDiploma(){
         if let imagedata = signInUser?.doctorImageDiploma {
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
+            //let qos = Int(DispatchQoS.QoSClass.userInitiated.rawValue)
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [weak self] in
                 var image = UIImage(data: imagedata)
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self!.diplomaPresentImage.image = image
                     self!.diplomaHeight = self!.diplomaPresentImage.frame.width / image!.aspectRatio
                     image = nil
@@ -84,12 +85,12 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         }
     }
     
-    private func imageID(){
+    fileprivate func imageID(){
         if let imagedata = signInUser?.doctorImageID {
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
+            //let qos = Int(DispatchQoS.QoSClass.userInitiated.rawValue)
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [weak self] in
                 var image = UIImage(data: imagedata)
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self!.idCardImage.image = image
                     self!.idCardHeight = self!.idCardImage.frame.width / image!.aspectRatio
                     image = nil
@@ -100,26 +101,26 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     // MARK: - Graudated School
     func graduateSchoolUpdate(){
         if tempDoctor?.doctorGraduateSchool != nil {
-            let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
-            if langId.rangeOfString("en") != nil{
+            let langId = (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode) as! String
+            if langId.range(of: "en") != nil{
                 graduatedLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][1]
             }else{
                 graduatedLabel.text = School.school[Int(tempDoctor!.doctorGraduateSchool!)!][0]
             }
-            graduatedLabel.font = UIFont.systemFontOfSize(17)
+            graduatedLabel.font = UIFont.systemFont(ofSize: 17)
         }
     }
     
     func nextButtonClicked(){
-        invalidNotification.hidden = true
+        invalidNotification.isHidden = true
         //set back item's title to ""
         let backItem = UIBarButtonItem()
         backItem.title = ""
         self.navigationItem.backBarButtonItem = backItem
         if (tempDoctor?.doctorGraduateSchool != nil) && (signInUser?.doctorImageID != nil || signInUser?.doctorImageDiploma != nil){
-            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
         }else{
-            invalidNotification.hidden = false
+            invalidNotification.isHidden = false
             wiggleInvalidtext(invalidNotification, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }
         
@@ -146,8 +147,8 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             tableView.reloadData()
         }
         if diplomaSection == 2 {
-            let indexPath = NSIndexPath(forRow: 1, inSection: 1)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            let indexPath = IndexPath(row: 1, section: 1)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
@@ -175,8 +176,8 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             tableView.reloadData()
         }
         if idCardSection == 2 {
-            let indexPath = NSIndexPath(forRow: 1, inSection: 2)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            let indexPath = IndexPath(row: 1, section: 2)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
 
@@ -190,45 +191,45 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     func getPhoto(){
         // alert for chosing where to get new selfie
         //set a new AlertController
-        let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .actionSheet)
         //set cancel action
-        let cancelAction = UIAlertAction(title: Storyboard.CancelAlert, style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: Storyboard.CancelAlert, style: .cancel) { (action) in
             // ...
         }
         alertController.addAction(cancelAction)
         //set Take a New Picture action
-        let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .Default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let picker = imagePickerControllerSingleton.singleton()
-                picker.sourceType = .Camera
+                picker.sourceType = .camera
                 // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
                 picker.delegate = self //need UINavigationControllerDelegate
                 //picker.allowsEditing = true
-                self.presentViewController(picker, animated: true, completion: nil)
+                self.present(picker, animated: true, completion: nil)
             }
         }
         alertController.addAction(NewPicAction)
         
         //set Select From Library action
-        let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .Default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+        let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 print("In library")
                 let picker = imagePickerControllerSingleton.singleton()
                 //Set navigation back to default color
-                let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFontOfSize(17)
-                UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.blackColor()]
+                let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFont(ofSize: 17)
+                UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.black]
                 UINavigationBar.appearance().tintColor = UIColor(netHex: 0x007AFF)
-                picker.sourceType = .PhotoLibrary // default value is UIImagePickerControllerSourceTypePhotoLibrary.
+                picker.sourceType = .photoLibrary // default value is UIImagePickerControllerSourceTypePhotoLibrary.
                 //                // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
                 //picker.allowsEditing = true
                 picker.delegate = self //need UINavigationControllerDelegate
-                self.presentViewController(picker, animated: true, completion: {
+                self.present(picker, animated: true, completion: {
                     //change back to defaul Navigation bar colour after setting image from Photo Library
-                    let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFontOfSize(17)
-                    UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.whiteColor()]
-                    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+                    let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFont(ofSize: 17)
+                    UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.white]
+                    UINavigationBar.appearance().tintColor = UIColor.white
                     }
                 )
             }
@@ -236,7 +237,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         alertController.addAction(profileAction)
         
         //for ipad popover
-        alertController.modalPresentationStyle = .Popover
+        alertController.modalPresentationStyle = .popover
         if let popoverController = alertController.popoverPresentationController{
             if !diplomaOrIDCard {
                 popoverController.sourceView = diplomaCameraLabel
@@ -247,20 +248,20 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             }
             
         }
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func closemedicalDiplomaImage(sender: UITapGestureRecognizer) {
+    @IBAction func closemedicalDiplomaImage(_ sender: UITapGestureRecognizer) {
         diplomaSection = 1
         tableView.reloadData()
     }
     
-    @IBAction func closeIDCardImage(sender: UITapGestureRecognizer) {
+    @IBAction func closeIDCardImage(_ sender: UITapGestureRecognizer) {
         idCardSection = 1
         tableView.reloadData()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //since under table view its deal with data, so it may not deal with it in main queue,
         //we should dispatch back to main queue for add image update here
         var image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -288,12 +289,12 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             idCardSection = 2
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         tableView.reloadData()
             
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         if !diplomaOrIDCard {
             signInUser?.doctorImageDiploma = nil
             labelnotSet(medicalDiplomaLabel)
@@ -301,7 +302,7 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
             signInUser?.doctorImageID = nil
             labelnotSet(idCardLabel)
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -310,24 +311,24 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
     }
 
 
-    func labelToUpload(label: UIButton){
-        label.setTitle(Storyboard.uploaded, forState: .Normal)
-        label.titleLabel!.font = UIFont.systemFontOfSize(17)
+    func labelToUpload(_ label: UIButton){
+        label.setTitle(Storyboard.uploaded, for: UIControlState())
+        label.titleLabel!.font = UIFont.systemFont(ofSize: 17)
     }
     
-    func labelnotSet(label: UIButton){
-        label.setTitle(Storyboard.notSet, forState: .Normal)
-        label.titleLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
+    func labelnotSet(_ label: UIButton){
+        label.setTitle(Storyboard.notSet, for: UIControlState())
+        label.titleLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17)
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if section == 0{
@@ -339,22 +340,22 @@ class DoctorStartAdGraduateSchoolTableViewController: UITableViewController, UII
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 1 && indexPath.row == 1 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == 1 {
             return diplomaHeight
-        }else if indexPath.section == 2 && indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 1 {
             return idCardHeight
         }
         return 60
     }
     
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let af = segue.destinationViewController as? DoctorStartAfSpecialistTableViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let af = segue.destination as? DoctorStartAfSpecialistTableViewController{
             //pass current moc to next controller which use for create Persons object
             af.moc = self.moc!
             diplomaPresentImage.image = nil

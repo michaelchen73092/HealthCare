@@ -9,12 +9,22 @@
 import UIKit
 import CoreData
 
+@available(iOS 10.0, *)
 class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     // MARK: - variable
-    weak var lastIndex : NSIndexPath?
+    
+    @IBOutlet weak var internistLabel: UILabel!
+    @IBOutlet weak var pgyLabel: UILabel!
+    @IBOutlet weak var primarySpecialtyLabel: UILabel!
+    @IBOutlet weak var specialtyTitleTitleOnly: UILabel!
+    
+    
+    var lastIndex : IndexPath?
     weak var moc : NSManagedObjectContext?
-    private struct MVC {
+    fileprivate struct MVC {
         static let nextIdentifier = "Show DoctorStartAg"
+        static let primarySpecialty = NSLocalizedString("Primary Specialty:", comment: "DoctorStartAfSpecialist")
+        static let specialtyTitle = NSLocalizedString("Specialty Title:", comment: "DoctorStartAfSpecialist")
     }
     @IBOutlet weak var invalidLabel: UILabel!
     @IBOutlet weak var specialtyDescription: UILabel!
@@ -29,31 +39,36 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
         //setup description textView
         specialtyDescription.text = NSLocalizedString("Please choose your status or your primary specialty. If you select primary specialty, please also select your current title.", comment: "In DoctorStartAfSpecialist, description for this page")
         
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
+        //UI setup
+        internistLabel.text = Storyboard.internist
+        pgyLabel.text = Storyboard.pgy
+        primarySpecialtyLabel.text = MVC.primarySpecialty
+        specialtyTitleTitleOnly.text = MVC.specialtyTitle
         //setup navigation
         let areaTitle = NSLocalizedString("Area of Practice", comment: "In DoctorStartAfSpecialist's title")
         self.navigationItem.title = areaTitle
-        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.nextButtonClicked))
+        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.nextButtonClicked))
         self.navigationItem.rightBarButtonItem = rightNextNavigationButton
         //add graduate back notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.SpecialtyTitleUpdate), name: "SpecialtyTitleBack", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.SpecialtyTitleUpdate), name: NSNotification.Name(rawValue: "SpecialtyTitleBack"), object: nil)
         //add Default graduate school
         
         
         //set pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
-        specialtyLabel.hidden = true
+        specialtyLabel.isHidden = true
         
         // deal with previous checkmark
         if tempDoctor?.doctorProfession != nil {
             if tempDoctor!.doctorProfession! == "Internist"{
-                lastIndex = NSIndexPath(forRow: 0, inSection: 0)
-            }else if tempDoctor!.doctorProfession!.rangeOfString("PGY") != nil {
-                lastIndex = NSIndexPath(forRow: 1, inSection: 0)
+                lastIndex = IndexPath(row: 0, section: 0)
+            }else if tempDoctor!.doctorProfession!.range(of: "PGY") != nil {
+                lastIndex = IndexPath(row: 1, section: 0)
             }else{
-                lastIndex = NSIndexPath(forRow: 2, inSection: 0)
-                specialtyLabel.hidden = false
+                lastIndex = IndexPath(row: 2, section: 0)
+                specialtyLabel.isHidden = false
                 if Int(tempDoctor!.doctorProfession!) != nil {
                     specialtyLabel.text = specialty.allSpecialty[Int(tempDoctor!.doctorProfession!)!]
                 }
@@ -65,11 +80,11 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
     }
     
     @objc
-    private func SpecialtyTitleUpdate(){
+    fileprivate func SpecialtyTitleUpdate(){
         if tempDoctor?.doctorProfessionTitle != nil{
             if Int(tempDoctor!.doctorProfessionTitle!) != nil{
                 specialtyTitleLabel.text = specialty.title[Int(tempDoctor!.doctorProfessionTitle!)!]
-                specialtyTitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)
+                specialtyTitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFont(ofSize: 17)
             }
         }
         if signInUser?.doctorImageSpecialistLicense != nil{
@@ -77,11 +92,11 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if lastIndex != nil{
-            let cell = tableView.cellForRowAtIndexPath(lastIndex!)
-            cell?.accessoryType = .Checkmark
+            let cell = tableView.cellForRow(at: lastIndex!)
+            cell?.accessoryType = .checkmark
             lastIndex = nil
         }
     }
@@ -92,53 +107,53 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
     }
     
     func nextButtonClicked(){
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         if tempDoctor?.doctorProfession != nil {
-            if tempDoctor!.doctorProfession! == "Internist" || tempDoctor!.doctorProfession!.rangeOfString("PGY") != nil{
-                performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            if tempDoctor!.doctorProfession! == "Internist" || tempDoctor!.doctorProfession!.range(of: "PGY") != nil{
+                performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
             }else{
                 if tempDoctor?.doctorProfessionTitle != nil{
-                    performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+                    performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
                 }else{
-                    invalidLabel.hidden = false
+                    invalidLabel.isHidden = false
                     wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
                 }
             }
         }else{
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
             wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }
     }
     // MARK: - Internist
-    @IBAction func tapInternist(sender: UITapGestureRecognizer) {
+    @IBAction func tapInternist(_ sender: UITapGestureRecognizer) {
         //order of first define tempDoctor?.doctorProfession and then deselectOtherCheckmark() is matter
         tempDoctor?.doctorProfession = "Internist"
         // deselect others
         deselectOtherCheckmark()
         //checkmark
-        let index = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = tableView.cellForRowAtIndexPath(index)
-        cell!.accessoryType = .Checkmark
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index)
+        cell!.accessoryType = .checkmark
         tableView.reloadData()
     }
     
-    private func deselectOtherCheckmark(){
-        var index = NSIndexPath(forRow: 0, inSection: 0)
-        var cell = tableView.cellForRowAtIndexPath(index)
+    fileprivate func deselectOtherCheckmark(){
+        var index = IndexPath(row: 0, section: 0)
+        var cell = tableView.cellForRow(at: index)
         for i in 0...2{
-            index = NSIndexPath(forRow: i, inSection: 0)
-            cell = tableView.cellForRowAtIndexPath(index)
-            cell!.accessoryType = .None
+            index = IndexPath(row: i, section: 0)
+            cell = tableView.cellForRow(at: index)
+            cell!.accessoryType = .none
         }
         
         specialistSection = 3
         //remove specialty label
-        specialtyLabel.hidden = true
+        specialtyLabel.isHidden = true
         specialtyLabel.text = ""
         
         //remove specialty title
         specialtyTitleLabel.text = Storyboard.notSet
-        specialtyTitleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
+        specialtyTitleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         tempDoctor?.doctorProfessionTitle = nil
         
         //remove specialtyImage
@@ -148,14 +163,14 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
     }
     
     // MARK: - PGY
-    @IBAction func tapPGY(sender: UITapGestureRecognizer) {
+    @IBAction func tapPGY(_ sender: UITapGestureRecognizer) {
         tempDoctor?.doctorProfession = "PGY(Taiwan medical system only)"
         // deselect others
         deselectOtherCheckmark()
         //checkmark
-        let index = NSIndexPath(forRow: 1, inSection: 0)
-        let cell = tableView.cellForRowAtIndexPath(index)
-        cell!.accessoryType = .Checkmark
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index)
+        cell!.accessoryType = .checkmark
         tableView.reloadData()
     }
     
@@ -164,24 +179,24 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var specialtyLabel: UILabel!
     
-    @IBAction func tapSpecialty(sender: UITapGestureRecognizer) {
+    @IBAction func tapSpecialty(_ sender: UITapGestureRecognizer) {
         if specialistSection == 3 {
             // deselect others
-            var index = NSIndexPath(forRow: 0, inSection: 0)
-            var cell = tableView.cellForRowAtIndexPath(index)
-            cell!.accessoryType = .None
-            index = NSIndexPath(forRow: 1, inSection: 0)
-            cell = tableView.cellForRowAtIndexPath(index)
-            cell!.accessoryType = .None
+            var index = IndexPath(row: 0, section: 0)
+            var cell = tableView.cellForRow(at: index)
+            cell!.accessoryType = .none
+            index = IndexPath(row: 1, section: 0)
+            cell = tableView.cellForRow(at: index)
+            cell!.accessoryType = .none
             
             specialistSection = 5
             //checkmark
-            index = NSIndexPath(forRow: 2, inSection: 0)
-            cell = tableView.cellForRowAtIndexPath(index)
-            cell!.accessoryType = .Checkmark
+            index = IndexPath(row: 2, section: 0)
+            cell = tableView.cellForRow(at: index)
+            cell!.accessoryType = .checkmark
             tableView.reloadData()
-            let indexPath = NSIndexPath(forRow: 4, inSection: 0)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            let indexPath = IndexPath(row: 4, section: 0)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
             //clear previous value if it is not specialty
             if tempDoctor?.doctorProfession != nil{
                 if Int(tempDoctor!.doctorProfession!) == nil{
@@ -191,7 +206,7 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
         }else {
             //it's been set true when specialistSection == 3
             if tempDoctor?.doctorProfession != nil {
-                specialtyLabel.hidden = false
+                specialtyLabel.isHidden = false
             }
             specialistSection = 3
             tableView.reloadData()
@@ -199,52 +214,52 @@ class DoctorStartAfSpecialistTableViewController: UITableViewController, UIPicke
     }
     
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return specialty.allSpecialty.count;
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return specialty.allSpecialty[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         specialtyLabel.text = specialty.allSpecialty[row]
-        specialtyLabel.hidden = false
+        specialtyLabel.isHidden = false
         tempDoctor?.doctorProfession = String(row)
     }
     
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return specialistSection
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 3 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row == 3 {
             return 240
         }
         return 60
     }
     
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ag = segue.destinationViewController as? DoctorStartAgCurrentHospitalTableViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ag = segue.destination as? DoctorStartAgCurrentHospitalTableViewController{
             let backItem = UIBarButtonItem()
             backItem.title = ""
             self.navigationItem.backBarButtonItem = backItem

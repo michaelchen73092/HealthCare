@@ -16,7 +16,7 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
     var resultSearchController = UISearchController()
 
     // MARK: - Address for UISearchResultsUpdating
-    func parseAddress(selectedItem:MKPlacemark) -> String {
+    func parseAddress(_ selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
         // put a comma between street and city/state
@@ -41,14 +41,14 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
     }
     
     //confirm UISearchResultsUpdating protocal
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         let searchBarText = searchController.searchBar.text!
         if searchBarText != ""{
             let request = MKLocalSearchRequest()
             request.naturalLanguageQuery = searchBarText
             ////request.region = mapView.region  //we don't have mapView.region here
             let search = MKLocalSearch(request: request)
-            search.startWithCompletionHandler { response, _ in
+            search.start { response, _ in
                 guard let response = response else {
                     //print("in search.startWithCompletionHandler ")
                     return
@@ -77,7 +77,7 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
         //set searchBar color as our App blue
         self.resultSearchController.searchBar.barTintColor = UIColor(netHex: 0x003366)
         //set "cancel" button to white color
-        self.resultSearchController.searchBar.tintColor = UIColor.whiteColor()
+        self.resultSearchController.searchBar.tintColor = UIColor.white
         //set searchbar on navigationbar
         self.resultSearchController.searchBar.placeholder = "Search Your Current City"
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
@@ -105,24 +105,24 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
 //        return 1
 //    }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("matchingItems.count: \(matchingItems.count)")
             return matchingItems.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
-        let selectedItem = matchingItems[indexPath.row].placemark
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let selectedItem = matchingItems[(indexPath as NSIndexPath).row].placemark
         cell.textLabel?.text = selectedItem.name
         cell.detailTextLabel?.text = parseAddress(selectedItem)
         
         return cell
     }
  
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedItem = matchingItems[indexPath.row].placemark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = matchingItems[(indexPath as NSIndexPath).row].placemark
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(parseAddress(selectedItem)) { (placemarks, error) in
             if((error) != nil){
@@ -130,17 +130,17 @@ class PersonsCcSearchCityTableViewController: UITableViewController, UISearchRes
             }
             if let placemark = placemarks?.first {
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                signInUserPublic?.locationLatitude = coordinates.latitude
-                signInUserPublic?.locationlongitude = coordinates.longitude
+                signInUserPublic?.locationLatitude = coordinates.latitude as NSNumber?
+                signInUserPublic?.locationlongitude = coordinates.longitude as NSNumber?
                 print("In Cc signInUser!.locationLatitude!: \(signInUserPublic!.locationLatitude!)")
                 print("In Cc signInUser!.locationlongitude!: \(signInUserPublic!.locationlongitude!)")
-                NSNotificationCenter.defaultCenter().postNotificationName("searchCityBack", object: self, userInfo: nil )
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "searchCityBack"), object: self, userInfo: nil )
                 print("In Search City, viewController")
             }
         }
 
-        resultSearchController.dismissViewControllerAnimated(true, completion: nil)
-        navigationController?.popViewControllerAnimated(true)
+        resultSearchController.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     /*

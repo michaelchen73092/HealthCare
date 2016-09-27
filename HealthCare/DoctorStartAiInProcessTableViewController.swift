@@ -11,10 +11,11 @@ import MobileCoreServices
 import CoreData
 import testKit
 
+@available(iOS 10.0, *)
 class DoctorStartAiInProcessTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     // MARK: - Variables
-    private struct MVC{
+    fileprivate struct MVC{
         static let NoUpdate = NSLocalizedString("No Update", comment: "In DoctorStartAiInProcess, the string to indicate that this image is not updated")
     }
     @IBOutlet weak var inProcessDescription: UILabel!
@@ -42,10 +43,10 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
     @IBOutlet weak var DescriptionSpecalty: UILabel!
     
     //initial temp image file
-    var imageMedicalLicense : NSData?
-    var imageMedicalDiploma : NSData?
-    var imageID : NSData?
-    var imageSpecialty : NSData?
+    var imageMedicalLicense : Data?
+    var imageMedicalDiploma : Data?
+    var imageID : Data?
+    var imageSpecialty : Data?
     var sectionGlobal = 0
     
     weak var moc : NSManagedObjectContext?
@@ -62,7 +63,7 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
         descriptionLabelInit(DescriptionMedicalDiploma)
         descriptionLabelInit(DescriptionId)
         descriptionLabelInit(DescriptionSpecalty)
-        moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        moc = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +71,7 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
         // Dispose of any resources that can be recreated.
     }
     
-    private func dismissVariables(){
+    fileprivate func dismissVariables(){
         imageMedicalLicense = nil
         imageMedicalDiploma = nil
         imageID = nil
@@ -81,17 +82,18 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
         specialtyPresentImage.image = nil
     }
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true) {}
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true) {}
         dismissVariables()
     }
     
-    @IBAction func update(sender: UIBarButtonItem) {
+    @IBAction func update(_ sender: UIBarButtonItem) {
         var itemString = ""
-        let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+        //let fetchRequestPerson = NSFetchRequest(entityName: "Persons")
+        let fetchRequestPerson: NSFetchRequest<Persons> = Persons.fetchRequest() as! NSFetchRequest<Persons>
         do{
-            let Personresults =  try moc!.executeFetchRequest(fetchRequestPerson)
-            let person = Personresults as! [NSManagedObject]
+            let Personresults =  try moc!.fetch(fetchRequestPerson)
+            let person = Personresults //as! [NSManagedObject]
             if imageMedicalLicense != nil {
                 let medicalLicenseString = NSLocalizedString("Medical License", comment: "In DoctorStartAiInProcess, indicate which image is updated")
                 person[0].setValue(imageMedicalLicense, forKey: "doctorImageMedicalLicense")
@@ -145,19 +147,19 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
     }
     
     
-    func labelToUpload(label: UIButton){
-        label.setTitle(Storyboard.uploaded, forState: .Normal)
-        label.titleLabel!.font = UIFont.systemFontOfSize(17)
+    func labelToUpload(_ label: UIButton){
+        label.setTitle(Storyboard.uploaded, for: UIControlState())
+        label.titleLabel!.font = UIFont.systemFont(ofSize: 17)
     }
     
-    func labelNoUpdate(label: UIButton){
-        label.setTitle(MVC.NoUpdate, forState: .Normal)
-        label.titleLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFontOfSize(17)
+    func labelNoUpdate(_ label: UIButton){
+        label.setTitle(MVC.NoUpdate, for: UIControlState())
+        label.titleLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17)
     }
 
-    func descriptionLabelInit(label: UILabel){
+    func descriptionLabelInit(_ label: UILabel){
         label.layer.borderWidth = 1.0
-        label.layer.borderColor = UIColor.redColor().CGColor
+        label.layer.borderColor = UIColor.red.cgColor
         label.text = Storyboard.PhotoPrintForVerify
     }
     
@@ -176,8 +178,8 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             tableView.reloadData()
         }
         if medicalLicenseSection == 2{
-            let indexPath = NSIndexPath(forRow: 1, inSection: 0)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            let indexPath = IndexPath(row: 1, section: 0)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
         }
     }
     
@@ -201,8 +203,8 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             tableView.reloadData()
         }
         if medicalDiplomaSection == 2{
-            let indexPath = NSIndexPath(forRow: 1, inSection: 1)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            let indexPath = IndexPath(row: 1, section: 1)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
         }
     }
     
@@ -227,8 +229,8 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             tableView.reloadData()
         }
         if idSection == 2{
-            let indexPath = NSIndexPath(forRow: 1, inSection: 2)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            let indexPath = IndexPath(row: 1, section: 2)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
         }
     }
     
@@ -252,8 +254,8 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             tableView.reloadData()
         }
         if specialtySection == 2{
-            let indexPath = NSIndexPath(forRow: 1, inSection: 3)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            let indexPath = IndexPath(row: 1, section: 3)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
         }
     }
     
@@ -267,44 +269,44 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
     func getPhoto(){
         // alert for chosing where to get new selfie
         //set a new AlertController
-        let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .actionSheet)
         //set cancel action
-        let cancelAction = UIAlertAction(title: Storyboard.CancelAlert, style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: Storyboard.CancelAlert, style: .cancel) { (action) in
             // ...
         }
         alertController.addAction(cancelAction)
         //set Take a New Picture action
-        let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .Default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        let NewPicAction = UIAlertAction(title: Storyboard.TakeANewPictureAlert, style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let picker = imagePickerControllerSingleton.singleton()
-                picker.sourceType = .Camera
+                picker.sourceType = .camera
                 // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
                 picker.delegate = self //need UINavigationControllerDelegate
                 //picker.allowsEditing = true
-                self.presentViewController(picker, animated: true, completion: nil)
+                self.present(picker, animated: true, completion: nil)
             }
         }
         alertController.addAction(NewPicAction)
         
         //set Select From Library action
-        let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .Default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+        let profileAction = UIAlertAction(title: Storyboard.FromPhotoLibraryAlert, style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let picker = imagePickerControllerSingleton.singleton()
                 //Set navigation back to default color
-                let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFontOfSize(17)
-                UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.blackColor()]
+                let navbarDefaultFont = UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFont(ofSize: 17)
+                UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarDefaultFont ,NSForegroundColorAttributeName: UIColor.black]
                 UINavigationBar.appearance().tintColor = UIColor(netHex: 0x007AFF)
-                picker.sourceType = .PhotoLibrary // default value is UIImagePickerControllerSourceTypePhotoLibrary.
+                picker.sourceType = .photoLibrary // default value is UIImagePickerControllerSourceTypePhotoLibrary.
                 //                // if we were looking for video, we'd check availableMediaTypes
                 picker.mediaTypes = [kUTTypeImage as String] //need import MobileCoreServices
                 //picker.allowsEditing = true
                 picker.delegate = self //need UINavigationControllerDelegate
-                self.presentViewController(picker, animated: true, completion: {
+                self.present(picker, animated: true, completion: {
                     //change back to defaul Navigation bar colour after setting image from Photo Library
-                    let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFontOfSize(17)
-                    UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.whiteColor()]
-                    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+                    let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFont(ofSize: 17)
+                    UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.white]
+                    UINavigationBar.appearance().tintColor = UIColor.white
                     }
                 )
             }
@@ -312,7 +314,7 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
         alertController.addAction(profileAction)
         
         //for ipad popover
-        alertController.modalPresentationStyle = .Popover
+        alertController.modalPresentationStyle = .popover
         if let popoverController = alertController.popoverPresentationController{
             switch(sectionGlobal){
             case 0:
@@ -329,10 +331,10 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
                 popoverController.sourceRect = specialtyCameraLabel.bounds
             }
         }
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //since under table view its deal with data, so it may not deal with it in main queue,
         //we should dispatch back to main queue for add image update here
         var image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -384,11 +386,11 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             specialtySection = 2
         }
         tableView.reloadData()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         switch (sectionGlobal) {
         case 0:
             imageMedicalLicense = nil
@@ -403,18 +405,18 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
             imageSpecialty = nil
             labelNoUpdate(specialtyButton)
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 4
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0{
             return medicalLicenseSection
@@ -427,21 +429,21 @@ class DoctorStartAiInProcessTableViewController: UITableViewController, UIImageP
         }
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 1 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 1 {
             return medicalLicenseHeight
-        }else if indexPath.section == 1 && indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == 1 {
             return medicalDiplomaHeight
-        }else if indexPath.section == 2 && indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 1 {
             return idHeight
-        }else if indexPath.section == 3 && indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).section == 3 && (indexPath as NSIndexPath).row == 1 {
             return specialtyHeight
         }
         return 60
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

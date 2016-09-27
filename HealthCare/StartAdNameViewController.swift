@@ -17,7 +17,7 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastnameField: UITextField! { didSet{ lastnameField.delegate = self}}
     @IBOutlet weak var invalidName: UILabel!
     
-    private struct MVC {
+    fileprivate struct MVC {
         static let nextIdentifier = "StartAe"
         static let lastIdentifier = "StartAc"
     }
@@ -36,16 +36,16 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
         
         //swipe left gesture setting
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
     }
 
-    private func updateUI(){
+    fileprivate func updateUI(){
         //label setting
         //disable autocorrection
-        invalidName.hidden = true
-        firstnameField.autocorrectionType = .No
-        lastnameField.autocorrectionType = .No
+        invalidName.isHidden = true
+        firstnameField.autocorrectionType = .no
+        lastnameField.autocorrectionType = .no
         //show textField if it's set
         firstnameField.text = signInUserPublic?.firstname
         lastnameField.text = signInUserPublic?.lastname
@@ -56,20 +56,20 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
         dismissKB(firstnameField, textField2: lastnameField, vc: self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         KBNotification()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    private func KBNotification(){
+    fileprivate func KBNotification(){
         //set notification for keyboard appear and hide
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // MARK: - Continue func
@@ -77,8 +77,8 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
         checkForNextPage()
     }
     
-    private func checkForNextPage(){
-        invalidName.hidden = true
+    fileprivate func checkForNextPage(){
+        invalidName.isHidden = true
         if firstnameField.text == "" {
             //wiggle if there is no data
             wiggle(firstnameField, Duration: 0.07, RepeatCount: 4, Offset: 10)
@@ -86,34 +86,34 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
             //wiggle if there is no data
             wiggle(lastnameField, Duration: 0.07, RepeatCount: 4, Offset: 10)
         }else if validateName(firstnameField.text!) || validateName(lastnameField.text!) {
-            invalidName.hidden = false
+            invalidName.isHidden = false
         }else{
             //Go to next page
             signInUserPublic?.firstname = firstnameField.text
             signInUserPublic?.lastname = lastnameField.text
-            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
         }
     }
     
     // MARK: - Keyboard
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         if !Storyboard.KBisON { //if NO KB, view move up
             self.view.frame.origin.y -= Storyboard.moveheight
             Storyboard.KBisON = true
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         if Storyboard.KBisON {
             self.view.frame.origin.y += Storyboard.moveheight
             Storyboard.KBisON = false
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
-        invalidName.hidden = true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        invalidName.isHidden = true
         if validateName(textField.text!) {
-            invalidName.hidden = false
+            invalidName.isHidden = false
         }else{
             checkForNextPage()
         }
@@ -122,12 +122,12 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - gesture
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Right:
+            case UISwipeGestureRecognizerDirection.right:
                 tappedView()
-                performSegueWithIdentifier(MVC.lastIdentifier, sender: nil)
+                performSegue(withIdentifier: MVC.lastIdentifier, sender: nil)
             default:
                 break
             }
@@ -135,8 +135,8 @@ class StartAdNameViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ae = segue.destinationViewController as? StartAePasswordViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ae = segue.destination as? StartAePasswordViewController{
             //pass current moc to next controller which use for create Persons object
             ae.moc = self.moc
         }

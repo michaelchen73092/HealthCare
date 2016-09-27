@@ -1,6 +1,0 @@
-framework module AWS_Kit {
-  umbrella header "AWS_Kit-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -15,20 +15,20 @@ class PersonsCdEthnicityTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...20 {
+        for _ in 0...(Ethnicity.ethnicity.count - 1) {
             checked.append(false)
         }
         //title for Ethnicity
         let ethnicityTitle = NSLocalizedString("Ethnicity", comment: "In PersonsCd's title")
         self.navigationItem.title = ethnicityTitle
-        let backNavigationButton = UIBarButtonItem(title: Storyboard.backNavigationItemLeftButton , style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.backButtonClicked))
+        let backNavigationButton = UIBarButtonItem(title: Storyboard.backNavigationItemLeftButton , style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.backButtonClicked))
         self.navigationItem.leftBarButtonItem = backNavigationButton
     }
     
     func backButtonClicked(){
         print("backButtonClicked()")
-        NSNotificationCenter.defaultCenter().postNotificationName("ethnicityBack", object: self, userInfo: nil )
-        navigationController?.popViewControllerAnimated(true)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ethnicityBack"), object: self, userInfo: nil )
+        navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,73 +38,73 @@ class PersonsCdEthnicityTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return Ethnicity.ethnicity.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = Ethnicity.ethnicity[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = Ethnicity.ethnicity[(indexPath as NSIndexPath).row]
 
-        if ((signInUserPublic!.ethnicity!.rangeOfString(" " + String(indexPath.row) + " ")) != nil){
-            cell.accessoryType = .Checkmark
-            checked[indexPath.row] = true
+        if ((signInUserPublic!.ethnicity!.range(of: " " + String((indexPath as NSIndexPath).row) + " ")) != nil){
+            cell.accessoryType = .checkmark
+            checked[(indexPath as NSIndexPath).row] = true
         }
         
         
-//        // set uncheck for non-selected
-//        if !checked[indexPath.row] {
-//            cell.accessoryType = .None
-//        } else if checked[indexPath.row] {
-//            cell.accessoryType = .Checkmark
-//        }
+        // set uncheck for non-selected
+        if checked[(indexPath as NSIndexPath).row] == false{
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .checkmark
+        }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if cell.accessoryType == .Checkmark {
-                cell.accessoryType = .None
-                checked[indexPath.row] = false
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+                checked[(indexPath as NSIndexPath).row] = false
                 var ethnicityString = signInUserPublic!.ethnicity!
                 // use ", " and " " to closure a number
                 //this part is remove exist language
                 //remove 3) in last or between (if it is last selected language remove)
-                if let range = ethnicityString.rangeOfString(", " + String(indexPath.row) + " "){
-                    ethnicityString.removeRange(range.startIndex..<range.endIndex)
+                if let range = ethnicityString.range(of: ", " + String((indexPath as NSIndexPath).row) + " "){
+                    ethnicityString.removeSubrange(range.lowerBound..<range.upperBound)
                 }
                 
                 //remove unCheckmark from in first
-                if let range = ethnicityString.rangeOfString(" " + String(indexPath.row) + " "){
-                    ethnicityString.removeRange(range.startIndex..<range.endIndex)
+                if let range = ethnicityString.range(of: " " + String((indexPath as NSIndexPath).row) + " "){
+                    ethnicityString.removeSubrange(range.lowerBound..<range.upperBound)
                 }
                 
                 //remove  ", " at first index which delete first language
-                if let range = ethnicityString.rangeOfString(",") {
-                    if range.startIndex == ethnicityString.startIndex{
-                        ethnicityString.removeRange(range.startIndex..<range.endIndex)
+                if let range = ethnicityString.range(of: ",") {
+                    if range.lowerBound == ethnicityString.startIndex{
+                        ethnicityString.removeSubrange(range.lowerBound..<range.upperBound)
                     }
                 }
                 signInUserPublic?.ethnicity = ethnicityString
             } else {
                 //this part select a language
-                cell.accessoryType = .Checkmark
-                checked[indexPath.row] = true
+                cell.accessoryType = .checkmark
+                checked[(indexPath as NSIndexPath).row] = true
                 if signInUserPublic!.ethnicity! != "" {
-                    signInUserPublic?.ethnicity = signInUserPublic!.ethnicity! + ", " + String(indexPath.row) + " "
+                    signInUserPublic?.ethnicity = signInUserPublic!.ethnicity! + ", " + String((indexPath as NSIndexPath).row) + " "
                 }else{
-                    signInUserPublic?.ethnicity = " " + String(indexPath.row) + " "
+                    signInUserPublic?.ethnicity = " " + String((indexPath as NSIndexPath).row) + " "
                 }
             }
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

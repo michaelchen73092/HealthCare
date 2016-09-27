@@ -29,7 +29,7 @@ class PersonsAdListViewController: UIViewController {
             leftRight = true
         }
         let dictToSend:[String: Bool] = ["Select" : leftRight]
-        NSNotificationCenter.defaultCenter().postNotificationName("Segment", object: self, userInfo: dictToSend)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "Segment"), object: self, userInfo: dictToSend)
     }
     
     /*

@@ -9,14 +9,44 @@
 import UIKit
 import CoreData
 import CoreLocation
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
+
+@available(iOS 10.0, *)
 class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UITextViewDelegate {
     
     // MARK: - Variables
     let MIN_SIZE = CGFloat(11.0)
     @IBOutlet weak var invalidLabel: UILabel!
     weak var moc : NSManagedObjectContext?
-    private struct MVC {
+    fileprivate struct MVC {
         static let nextIdentifier = "Show DoctorStartAh"
         static let addressIdentifier = "Show DoctorStartAk"
     }
@@ -32,14 +62,14 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         currentHospitalDescription.text = NSLocalizedString("Please type your current employed hospital or clinic AND its address. You can also provide past experience in second section.", comment: "In DoctorStartAgCurrentHospital, description for this page")
         printLocation()
         //add location back notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.HospitalAddressBackUpdate), name: "HospitalAddress", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.HospitalAddressBackUpdate), name: NSNotification.Name(rawValue: "HospitalAddress"), object: nil)
         
         //setup navigation
         let currentHospitalTitle = NSLocalizedString("Current Hospital", comment: "In DoctorStartAgCurrentHospital's title")
         self.navigationItem.title = currentHospitalTitle
-        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.nextButtonClicked))
+        let rightNextNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.nextButtonClicked))
         self.navigationItem.rightBarButtonItem = rightNextNavigationButton
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         
         if tempDoctor?.doctorHospital != nil{
             currentHospital.text = tempDoctor!.doctorHospital!
@@ -71,10 +101,10 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     
     func nextButtonClicked(){
         if currentHospital.text == "" || (tempDoctor!.doctorHospitalLatitude! == 0) && (tempDoctor!.doctorHospitalLongitude! == 0) {
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
             wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }else if (experienceSection == 2 && (firstExperience.text == "")) || (experienceSection == 3 && (firstExperience.text == "" || secondExperience.text == "")) || (experienceSection == 4 && (firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == "")) || (experienceSection == 5 && (firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == "" || fourthExperience.text == "")){
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
             wiggleInvalidtext(invalidLabel, Duration: 0.03, RepeatCount: 10, Offset: 2)
         }else{
             tempDoctor?.doctorHospital = (currentHospital.text != "") ? currentHospital.text : nil
@@ -84,7 +114,7 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
             tempDoctor?.doctorExperienceFour = (fourthExperience.text != "") ? fourthExperience.text : nil
             tempDoctor?.doctorExperienceFive = (fifthExperience.text != "") ? fifthExperience.text : nil
             //go to next
-            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
         }
     }
     
@@ -101,13 +131,13 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         currentHospital.becomeFirstResponder()
     }
     
-    @IBAction func tapAddress(sender: UITapGestureRecognizer) {
-        performSegueWithIdentifier(MVC.addressIdentifier, sender: nil)
+    @IBAction func tapAddress(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: MVC.addressIdentifier, sender: nil)
     }
     
     func printLocation(){
-        if (tempDoctor!.doctorHospitalLatitude! != 0) || (tempDoctor!.doctorHospitalLongitude! != 0) {
-            HospitalAddress.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)
+        if !(tempDoctor!.doctorHospitalLatitude! == 0 && tempDoctor!.doctorHospitalLongitude! == 0) {
+            HospitalAddress.font = UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFont(ofSize: 17)
             let userLocation = CLLocation(latitude: Double(tempDoctor!.doctorHospitalLatitude!), longitude: Double(tempDoctor!.doctorHospitalLongitude!))
             CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
                 if error != nil {
@@ -124,7 +154,7 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         }
     }
     
-    func displayLocationInfo(placemark: CLPlacemark){
+    func displayLocationInfo(_ placemark: CLPlacemark){
         // put a space between "4" and "Melrose Place"
         let firstSpace = (placemark.subThoroughfare != nil && placemark.thoroughfare != nil) ? " " : ""
         // put a comma between street and city/state
@@ -158,9 +188,9 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     @IBOutlet weak var firstExperience: UITextView!{didSet{firstExperience.delegate = self}}
     
     @IBAction func firstExperienceAdd() {
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         if firstExperience.text == ""{
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
         }else{
             experienceSection = 2
             tableView.reloadData()
@@ -179,9 +209,9 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     }
     
     @IBAction func secondExperienceAdd() {
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         if firstExperience.text == "" || secondExperience.text == ""{
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
         }else{
             experienceSection = 3
             tableView.reloadData()
@@ -200,9 +230,9 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     }
     
     @IBAction func thirdExperienceAdd() {
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         if firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == ""{
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
         }else{
             experienceSection = 4
             tableView.reloadData()
@@ -221,9 +251,9 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
     }
     
     @IBAction func fourthExperienceAdd() {
-        invalidLabel.hidden = true
+        invalidLabel.isHidden = true
         if firstExperience.text == "" || secondExperience.text == "" || thirdExperience.text == "" || fourthExperience.text == ""{
-            invalidLabel.hidden = false
+            invalidLabel.isHidden = false
         }else{
             experienceSection = 5
             tableView.reloadData()
@@ -249,24 +279,24 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1{
             return experienceSection
         }
         return 2
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Keyboard
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if(text == "\n"){
             textView.resignFirstResponder()
@@ -275,30 +305,30 @@ class DoctorStartAgCurrentHospitalTableViewController: UITableViewController, UI
         return true
     }
     
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        invalidLabel.hidden = true
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        invalidLabel.isHidden = true
         return true
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         let pos = textView.endOfDocument
-        let currentRect = textView.caretRectForPosition(pos)
+        let currentRect = textView.caretRect(for: pos)
         if textView.bounds.size.width - 20 <= currentRect.origin.x{
             if textView.font?.pointSize >= MIN_SIZE{
-                textView.font = UIFont.systemFontOfSize(textView.font!.pointSize - 1)
+                textView.font = UIFont.systemFont(ofSize: textView.font!.pointSize - 1)
             }
         }
     }
     
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ah = segue.destinationViewController as? DoctorStartAhSummaryTableViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ah = segue.destination as? DoctorStartAhSummaryTableViewController{
             let backItem = UIBarButtonItem()
             backItem.title = ""
             self.navigationItem.backBarButtonItem = backItem
             ah.moc = self.moc!
         }
-        if let _ = segue.destinationViewController as? DoctorStarAkSearchAddressTableViewController{
+        if let _ = segue.destination as? DoctorStarAkSearchAddressTableViewController{
             let backItem = UIBarButtonItem()
             backItem.title = ""
             self.navigationItem.backBarButtonItem = backItem

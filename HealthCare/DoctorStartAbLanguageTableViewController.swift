@@ -11,12 +11,13 @@ import testKit
 import CoreData
 
 
+@available(iOS 10.0, *)
 class DoctorStartAbLanguageTableViewController: UITableViewController {
     // MARK: - Variables
     var checked = [Bool]()
     weak var moc : NSManagedObjectContext?
     
-    private struct MVC {
+    fileprivate struct MVC {
         static let nextIdentifier = "Show DoctorStartAc"
     }
     
@@ -37,7 +38,7 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
         let languageTitle = NSLocalizedString("Language", comment: "In DoctorStartAbLanguage's title")
         self.navigationItem.title = languageTitle
         
-        let rightSaveNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.nextButtonClicked))
+        let rightSaveNavigationButton = UIBarButtonItem(title: Storyboard.nextNavigationItemRightButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.nextButtonClicked))
         self.navigationItem.rightBarButtonItem = rightSaveNavigationButton
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -60,7 +61,7 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
             let okstring = NSLocalizedString("OK", comment: "Confrim for exit alert")
             Alert.show(selectLanguage, message: selectLanguagedetail, ok: okstring, dismissBoth: false,vc: self)
         }else{
-            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
         }
     }
     
@@ -71,76 +72,76 @@ class DoctorStartAbLanguageTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return Language.allLanguage.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = Language.allLanguage[indexPath.row]
+        cell.textLabel?.text = Language.allLanguage[(indexPath as NSIndexPath).row]
        
         //for reuse cell issue that view may display on wrong cell when user scroll fast 
         //check every time when cell is reused
-        if checked[indexPath.row] == false {
-            cell.accessoryType = .None
+        if checked[(indexPath as NSIndexPath).row] == false {
+            cell.accessoryType = .none
         }else{
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if cell.accessoryType == .Checkmark {
-                cell.accessoryType = .None
-                checked[indexPath.row] = false
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+                checked[(indexPath as NSIndexPath).row] = false
                 var languageString = tempDoctor!.doctorLanguage!
                 // use ", " and " " to closure a number
                 //this part is remove exist language
                 //remove 3) in last or between (if it is last selected language remove)
-                if let range = languageString.rangeOfString(", " + String(indexPath.row) + " "){
-                    languageString.removeRange(range.startIndex..<range.endIndex)
+                if let range = languageString.range(of: ", " + String((indexPath as NSIndexPath).row) + " "){
+                    languageString.removeSubrange(range.lowerBound..<range.upperBound)
                 }
                 
                 //remove unCheckmark from in first
-                if let range = languageString.rangeOfString(" " + String(indexPath.row) + " "){
-                    languageString.removeRange(range.startIndex..<range.endIndex)
+                if let range = languageString.range(of: " " + String((indexPath as NSIndexPath).row) + " "){
+                    languageString.removeSubrange(range.lowerBound..<range.upperBound)
                 }
                 
                 //remove  ", " at first index which delete first language
-                if let range = languageString.rangeOfString(",") {
-                    if range.startIndex == languageString.startIndex{
-                        languageString.removeRange(range.startIndex..<range.endIndex)
+                if let range = languageString.range(of: ",") {
+                    if range.lowerBound == languageString.startIndex{
+                        languageString.removeSubrange(range.lowerBound..<range.upperBound)
                     }
                 }
                 tempDoctor?.doctorLanguage! = languageString
             } else {
                 //this part select a language
-                cell.accessoryType = .Checkmark
-                checked[indexPath.row] = true
+                cell.accessoryType = .checkmark
+                checked[(indexPath as NSIndexPath).row] = true
                 if tempDoctor!.doctorLanguage! != "" {
-                    tempDoctor?.doctorLanguage! = tempDoctor!.doctorLanguage! + ", " + String(indexPath.row) + " "
+                    tempDoctor?.doctorLanguage! = tempDoctor!.doctorLanguage! + ", " + String((indexPath as NSIndexPath).row) + " "
                 }else{
-                    tempDoctor?.doctorLanguage! = " " + String(indexPath.row) + " "
+                    tempDoctor?.doctorLanguage! = " " + String((indexPath as NSIndexPath).row) + " "
                 }
             }
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
     
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ac = segue.destinationViewController as? DoctorStartAcLicenceViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ac = segue.destination as? DoctorStartAcLicenceViewController{
             //pass current moc to next controller which use for create Persons object
             ac.moc = self.moc
         }

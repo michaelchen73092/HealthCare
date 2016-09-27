@@ -14,8 +14,8 @@ class StartAfBirthdayViewController: UIViewController{
     @IBOutlet weak var birthdayField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var invalidBirthday: UILabel!
-    let dateFormatter = NSDateFormatter()
-    private struct MVC {
+    let dateFormatter = DateFormatter()
+    fileprivate struct MVC {
         static let nextIdentifier = "StartAg"
         static let lastIdentifier = "StartAe"
         static var birthdaySet = false
@@ -29,60 +29,60 @@ class StartAfBirthdayViewController: UIViewController{
         updateUI()
         
         //add datePicker event
-        datePicker.addTarget(self, action: #selector(self.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        datePicker.addTarget(self, action: #selector(self.datePickerChanged(_:)), for: UIControlEvents.valueChanged)
         //add swipe gesture
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
     }
     
-    private func updateUI(){
-        invalidBirthday.hidden = true
+    fileprivate func updateUI(){
+        invalidBirthday.isHidden = true
         //not allow to edit
-        birthdayField.userInteractionEnabled = false
+        birthdayField.isUserInteractionEnabled = false
         //set datePicker 
-        datePicker?.maximumDate = NSDate()
+        datePicker?.maximumDate = Date()
         // set dateFormate
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateFormatter.timeStyle = DateFormatter.Style.none
         if MVC.birthdaySet {
-            birthdayField.text = dateFormatter.stringFromDate((signInUserPublic?.birthday)!)
+            birthdayField.text = dateFormatter.string(from: (signInUserPublic?.birthday)!)
         }else {
-            birthdayField.text = dateFormatter.stringFromDate(NSDate())
+            birthdayField.text = dateFormatter.string(from: Date())
         }
     }
     
-    func datePickerChanged(datePicker:UIDatePicker) {
+    func datePickerChanged(_ datePicker:UIDatePicker) {
         MVC.birthdaySet = true
         //use string formate to store NSdate for signInUser?.birthday
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        signInUserPublic?.birthday = NSDate(dateString: dateFormatter.stringFromDate(datePicker.date))
+        signInUserPublic?.birthday = Date(dateString: dateFormatter.string(from: datePicker.date))
         // this formate is localized formate already
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        let strDate = dateFormatter.stringFromDate(datePicker.date)
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        let strDate = dateFormatter.string(from: datePicker.date)
         birthdayField.text = strDate
         
     }
     
     // MARK: - Continue func
     @IBAction func Continue() {
-        invalidBirthday.hidden = true
-        if birthdayField.text == dateFormatter.stringFromDate(NSDate()){
-            invalidBirthday.hidden = false
+        invalidBirthday.isHidden = true
+        if birthdayField.text == dateFormatter.string(from: Date()){
+            invalidBirthday.isHidden = false
         }else{
-            performSegueWithIdentifier(MVC.nextIdentifier, sender: nil)
+            performSegue(withIdentifier: MVC.nextIdentifier, sender: nil)
         }
     }
     
     
     
     // MARK: - gesture
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Right:
-                performSegueWithIdentifier(MVC.lastIdentifier, sender: nil)
+            case UISwipeGestureRecognizerDirection.right:
+                performSegue(withIdentifier: MVC.lastIdentifier, sender: nil)
             default:
                 break
             }
@@ -91,8 +91,8 @@ class StartAfBirthdayViewController: UIViewController{
     
     
     // MARK: - prepareForSegue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ag = segue.destinationViewController as? StartAgGenderViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ag = segue.destination as? StartAgGenderViewController{
             //pass current moc to next controller which use for create Persons object
             ag.moc = self.moc
         }
@@ -112,14 +112,14 @@ class StartAfBirthdayViewController: UIViewController{
 }
 // MARK: - NSDate Extension
 // extension NSDate to init from String formate
-extension NSDate
+extension Date
 {
-    convenience
+    
     init(dateString:String) {
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let d = dateFormatter.dateFromString(dateString)!
-        self.init(timeInterval:0, sinceDate:d)
+        let d = dateFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:d)
     }
 }
 

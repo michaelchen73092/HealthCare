@@ -27,10 +27,10 @@ class StartAgGenderViewController: UIViewController{
         
         //setup male and female view
         maleView.layer.borderWidth = 1.0
-        maleView.layer.borderColor = Storyboard.color.CGColor
+        maleView.layer.borderColor = Storyboard.color.cgColor
         
         femaleView.layer.borderWidth = 1.0
-        femaleView.layer.borderColor = Storyboard.color.CGColor
+        femaleView.layer.borderColor = Storyboard.color.cgColor
     }
     
     // MARK: - Male, Female function
@@ -42,7 +42,7 @@ class StartAgGenderViewController: UIViewController{
         buttonDehighlight(femaleButtonLabel, View: femaleView)
         //save user info to local CoreDate
         saveLocal()
-        performSegueWithIdentifier("MainPersons", sender: nil)
+        performSegue(withIdentifier: "MainPersons", sender: nil)
     }
     
     
@@ -54,24 +54,24 @@ class StartAgGenderViewController: UIViewController{
         buttonDehighlight(maleButtonLabel, View: maleView)
         //save user info to local CoreDate
         saveLocal()
-        performSegueWithIdentifier("MainPersons", sender: nil)
+        performSegue(withIdentifier: "MainPersons", sender: nil)
     }
     
-    private func buttonHighlight(Button: UIButton!, View: UIView!){
-        Button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
-        Button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+    fileprivate func buttonHighlight(_ Button: UIButton!, View: UIView!){
+        Button.setTitleColor(UIColor.white, for: UIControlState.highlighted)
+        Button.setTitleColor(UIColor.white, for: UIControlState())
         View.backgroundColor = UIColor(netHex: 0x003366)
     }
 
-    private func buttonDehighlight(Button: UIButton!, View: UIView!){
-        Button.setTitleColor(UIColor(netHex: 0x003366), forState: UIControlState.Normal)
+    fileprivate func buttonDehighlight(_ Button: UIButton!, View: UIView!){
+        Button.setTitleColor(UIColor(netHex: 0x003366), for: UIControlState())
         View.backgroundColor = UIColor(netHex: 0xD7DCE4)
     }
     
 
     
     //save to local CoreData
-    private func saveLocal(){
+    fileprivate func saveLocal(){
         signInUser?.applicationStatus = Status.userModeNotApply
         signInUserPublic?.email = signInUser!.email!
         do{

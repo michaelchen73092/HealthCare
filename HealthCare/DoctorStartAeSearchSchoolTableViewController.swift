@@ -16,21 +16,21 @@ class DoctorStartAeSearchSchoolTableViewController: UITableViewController {
         //recall previous select
         if tempDoctor?.doctorGraduateSchool != nil {
             if tempDoctor!.doctorGraduateSchool != nil{
-                lastSelectedRow = NSIndexPath(forRow: Int(tempDoctor!.doctorGraduateSchool!)!, inSection: 0)
+                lastSelectedRow = IndexPath(row: Int(tempDoctor!.doctorGraduateSchool!)!, section: 0)
             }
         }
         
         //setup navigation
         let graudateSchoolTitle = NSLocalizedString("Graudated School", comment: "In DoctorStartAbLanguage's title")
         self.navigationItem.title = graudateSchoolTitle
-        let backNavigationButton = UIBarButtonItem(title: Storyboard.backNavigationItemLeftButton , style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.backButtonClicked))
+        let backNavigationButton = UIBarButtonItem(title: Storyboard.backNavigationItemLeftButton , style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.backButtonClicked))
         self.navigationItem.leftBarButtonItem = backNavigationButton
     }
 
     func backButtonClicked(){
         print("backButtonClicked()")
-        NSNotificationCenter.defaultCenter().postNotificationName("graduateSchoolBack", object: self, userInfo: nil )
-        navigationController?.popViewControllerAnimated(true)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "graduateSchoolBack"), object: self, userInfo: nil )
+        navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,42 +40,42 @@ class DoctorStartAeSearchSchoolTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return School.school.count
     }
 
-    var lastSelectedRow: NSIndexPath?
+    var lastSelectedRow: IndexPath?
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         //for show previous record
-        cell.accessoryType = (lastSelectedRow?.row == indexPath.row) ? .Checkmark : .None
+        cell.accessoryType = ((lastSelectedRow as NSIndexPath?)?.row == (indexPath as NSIndexPath).row) ? .checkmark : .none
         
-        cell.textLabel?.text = School.school[indexPath.row][0]
-        cell.detailTextLabel?.text = School.school[indexPath.row][1]
+        cell.textLabel?.text = School.school[(indexPath as NSIndexPath).row][0]
+        cell.detailTextLabel?.text = School.school[(indexPath as NSIndexPath).row][1]
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
         
         return cell
     }
  
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.row != lastSelectedRow?.row {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (indexPath as NSIndexPath).row != (lastSelectedRow as NSIndexPath?)?.row {
             if let last = lastSelectedRow {
-                let oldCell = tableView.cellForRowAtIndexPath(last)
-                oldCell?.accessoryType = .None
+                let oldCell = tableView.cellForRow(at: last)
+                oldCell?.accessoryType = .none
             }
             
-            let newCell = tableView.cellForRowAtIndexPath(indexPath)
-            newCell?.accessoryType = .Checkmark
+            let newCell = tableView.cellForRow(at: indexPath)
+            newCell?.accessoryType = .checkmark
             lastSelectedRow = indexPath
-            tempDoctor?.doctorGraduateSchool = String(indexPath.row)
+            tempDoctor?.doctorGraduateSchool = String((indexPath as NSIndexPath).row)
             print("tempDoctor?.doctorGraduateSchool:\(tempDoctor!.doctorGraduateSchool!)")
         }
     }

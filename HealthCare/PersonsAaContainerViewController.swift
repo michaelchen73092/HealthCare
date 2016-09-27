@@ -17,44 +17,44 @@ class PersonsAaContainerViewController: UIViewController {
     //Use panGesture to swipe and animation for filter view in and out
     
     // MARK: - Gesture function
-    @IBAction func panGesture(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translationInView(self.view)
+    @IBAction func panGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.view)
         switch gesture.state{
-        case .Ended:
+        case .ended:
             //if swipe width is more than half filterView width, open else close
             if self.doctorView.frame.origin.x >= self.filterView.frame.size.width / 2{
                 open(0.2) // if swipe larger than half filterView width then open
             }else{
                 close(0.2)
             }
-        case .Changed:
+        case .changed:
             // Setting close and open changed state and use transform to change doctorView simultaneously
             if (0 < translation.x) && (self.doctorView.frame.origin.x < self.filterView.frame.size.width){
                 // translation at most is filterView width
-                doctorView.transform = CGAffineTransformMakeTranslation(min(translation.x, self.filterView.frame.size.width), 0)
+                doctorView.transform = CGAffineTransform(translationX: min(translation.x, self.filterView.frame.size.width), y: 0)
             }else if (0 > translation.x) && (self.doctorView.frame.origin.x > 0){
                 // translation at least 0
-                doctorView.transform = CGAffineTransformMakeTranslation(max(0,self.filterView.frame.size.width + translation.x), 0)
+                doctorView.transform = CGAffineTransform(translationX: max(0,self.filterView.frame.size.width + translation.x), y: 0)
             }
         default: break
         }
     }
     
-    func open(duration: NSTimeInterval){
-        UIView.animateWithDuration(duration,
+    func open(_ duration: TimeInterval){
+        UIView.animate(withDuration: duration,
                                    delay: 0.0,
-                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   options: UIViewAnimationOptions(),
                                    animations: {
-                                    self.doctorView.transform = CGAffineTransformMakeTranslation(self.filterView.frame.size.width, 0)},
+                                    self.doctorView.transform = CGAffineTransform(translationX: self.filterView.frame.size.width, y: 0)},
                                    completion: nil)
     }
     
-    func close(duration: NSTimeInterval){
-        UIView.animateWithDuration(duration,
+    func close(_ duration: TimeInterval){
+        UIView.animate(withDuration: duration,
                                    delay: 0.0,
-                                   options: UIViewAnimationOptions.CurveEaseInOut,
+                                   options: UIViewAnimationOptions(),
                                    animations: {
-                                    self.doctorView.transform = CGAffineTransformMakeTranslation(0, 0)},
+                                    self.doctorView.transform = CGAffineTransform(translationX: 0, y: 0)},
                                    completion: nil)
     }
     // MARK: - ViewController cycle
@@ -63,26 +63,26 @@ class PersonsAaContainerViewController: UIViewController {
         // 3/5 of superview width is a design choice
         widthOfFilterView.constant = self.view.frame.size.width * 3 / 5
         //This notification is for PersonsAaSearchDoctor filterButton. If it's tapped, sent notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doctorViewChange), name: "filterButtonTap", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doctorViewChange), name: NSNotification.Name(rawValue: "filterButtonTap"), object: nil)
     }
     
     func doctorViewChange(){
         if self.doctorView.frame.origin.x == 0 {
-            doctorView.transform = CGAffineTransformMakeTranslation(0, 0)
+            doctorView.transform = CGAffineTransform(translationX: 0, y: 0)
             open(0.2)
         }else{
-            doctorView.transform = CGAffineTransformMakeTranslation(self.filterView.frame.size.width, 0)
+            doctorView.transform = CGAffineTransform(translationX: self.filterView.frame.size.width, y: 0)
             close(0.2)
         }
     }
     
     //set portrait view only
     //Under this setting PersonsAb and PersonsAc is portrait
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
     /*

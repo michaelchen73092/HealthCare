@@ -34,12 +34,12 @@ class DoctorAbPatientTableViewCell: UITableViewCell {
     // MARK: - functions
     func updateUI(){
         name.text = nil
-        infoLabel.hidden = true
+        infoLabel.isHidden = true
         genderAndYears.text = nil
         personsImage.image = nil
         
         if personspublic?.firstname == nil || personspublic?.lastname == nil || personspublic!.firstname! == "" || personspublic!.lastname! == "" {
-            infoLabel.hidden = true
+            infoLabel.isHidden = true
             name.text = ""
             genderAndYears.text = ""
        //     patientImage.hidden = true
@@ -50,26 +50,27 @@ class DoctorAbPatientTableViewCell: UITableViewCell {
             }else{
                 gender = Storyboard.male
             }
-            let now = NSDate()
+            let now = Date()
             
-            let calendar : NSCalendar = NSCalendar.currentCalendar()
-            let ageComponents = calendar.components(.Year,
-                                                    fromDate: personspublic!.birthday!,
-                                                    toDate: now,
+            let calendar : Calendar = Calendar.current
+            let ageComponents = (calendar as NSCalendar).components(.year,
+                                                    from: personspublic!.birthday!,
+                                                    to: now,
                                                     options: [])
             genderAndYears.text = gender! + "   " + "\(ageComponents.year) " + Storyboard.yearsOld
-            infoLabel.hidden = false
-            if NSLocale.currentLocale() == "zh-Hant"{
+            infoLabel.isHidden = false
+            let localeZH = NSLocale(localeIdentifier: "zh-Hant")
+            if Locale.current == localeZH as Locale{
                 name.text = personspublic!.lastname! + personspublic!.firstname!
             }else{
                 name.text = personspublic!.firstname! + " " + personspublic!.lastname!
             }
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            //let qos = Int(DispatchQoS.QoSClass.userInitiated.rawValue)
             if personspublic?.imageRemoteUrl != nil || personspublic!.imageRemoteUrl! != ""{
                 if let profileImageURL = personspublic?.imageRemoteUrl{
-                    if let imageData = NSData(contentsOfURL: NSURL(string:profileImageURL)!) {
-                        dispatch_async(dispatch_get_global_queue(qos, 0)) { [weak self] in
-                            dispatch_async(dispatch_get_main_queue()) {
+                    if let imageData = try? Data(contentsOf: URL(string:profileImageURL)!) {
+                        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [weak self] in
+                            DispatchQueue.main.async {
                                 self!.personsImage?.image = UIImage(data: imageData)
                             }
                         }
@@ -89,8 +90,8 @@ class DoctorAbPatientTableViewCell: UITableViewCell {
     }
     
     func defaultImage(){
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) { [weak self] in
-            dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [weak self] in
+            DispatchQueue.main.async {
                 if self!.personspublic!.gender!.boolValue {
                     self!.personsImage.image = UIImage(named:"FemaleImage")
                 }else{

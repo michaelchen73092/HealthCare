@@ -10,50 +10,35 @@ import UIKit
 
 class PersonsAeSearchDoctorTableViewController: UITableViewController {
         
-//    func setpanGesture(){
-//        let gesture = UIPanGestureRecognizer()
-//        addGestureRecognizer(gesture)
-//        let translation = gesture.translationInView(self.view)
-//        let naviBarheight = (self.navigationController?.navigationBar.frame.size.height)!
-//        switch gesture.state{
-//        case .Ended:
-//            if (self.navigationController?.navigationBar.frame.origin.y < -(naviBarheight / 2)){
-//                close(0.1)
-//            }else{
-//                open(0.1)
-//            }
-//        case .Changed:
-//            if (translation.y < -(naviBarheight / 2) ) && (self.navigationController?.navigationBar.frame.origin.y > -naviBarheight) {
-//                self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation(translation.y, 0)
-//            }
-//            print("translation.y: \(translation.y)")
-//            print("naviBarheight: \(naviBarheight)")
-//        default: break
-//        }
+    // MARK: - Variables
+    fileprivate struct MVC{
+        static let cellIdentifier = "doctors"
+        static let nextIdentifier = "show doctor Details"
+    }
+    
+    
+//    func open(duration: NSTimeInterval){
+//        UIView.animateWithDuration(duration,
+//                                   delay: 0.0,
+//                                   options: UIViewAnimationOptions.CurveEaseInOut,
+//                                   animations: {
+//                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation((self.navigationController?.navigationBar.frame.size.width)!, 0)},
+//                                   completion: nil)
 //    }
-    
-    
-    func open(duration: NSTimeInterval){
-        UIView.animateWithDuration(duration,
-                                   delay: 0.0,
-                                   options: UIViewAnimationOptions.CurveEaseInOut,
-                                   animations: {
-                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation((self.navigationController?.navigationBar.frame.size.width)!, 0)},
-                                   completion: nil)
-    }
-    
-    func close(duration: NSTimeInterval){
-        UIView.animateWithDuration(duration,
-                                   delay: 0.0,
-                                   options: UIViewAnimationOptions.CurveEaseInOut,
-                                   animations: {
-                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation(0, 0)},
-                                   completion: nil)
-    }
+//    
+//    func close(duration: NSTimeInterval){
+//        UIView.animateWithDuration(duration,
+//                                   delay: 0.0,
+//                                   options: UIViewAnimationOptions.CurveEaseInOut,
+//                                   animations: {
+//                                    self.navigationController?.navigationBar.transform = CGAffineTransformMakeTranslation(0, 0)},
+//                                   completion: nil)
+//    }
     
     // MARK: - ViewController cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        refresh()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,74 +55,81 @@ class PersonsAeSearchDoctorTableViewController: UITableViewController {
 //        return false
 //    }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    func refresh(){
+        refreshControl?.beginRefreshing()
+        refresh(refreshControl)
     }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl?) {
+        // no update for testing
+        tableView.reloadData()
+        sender?.endRefreshing()
+    }
+    
+    
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if onLineDoctor != nil{
+            return onLineDoctor!.count
+        }else{
+            return 0
+        }
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 164
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MVC.cellIdentifier, for: indexPath) as! PersonsAfDoctorDetailTableViewCell
+        if onLineDoctor != nil {
+            cell.Doctor = onLineDoctor![(indexPath as NSIndexPath).row]
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destination = segue.destination as UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController!
+        }
+        if let ag = destination as? PersonsAgDoctorDetailTableViewController{
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            self.navigationItem.backBarButtonItem = backItem
+            
+            let cell = sender as! PersonsAfDoctorDetailTableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                ag.Doctor = onLineDoctor![(indexPath as NSIndexPath).row]
+            }
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//            if identifier == MVC.nextIdentifier{
+//                if let ag = segue.destinationViewController as? PersonsAgDoctorDetailTableViewController{
+//                    let backItem = UIBarButtonItem()
+//                    backItem.title = ""
+//                    self.navigationItem.backBarButtonItem = backItem
+//                    
+//                    let cell = sender as! PersonsAfDoctorDetailTableViewCell
+//                    if let indexPath = tableView.indexPathForCell(cell){
+//                        ag.Doctor = onLineDoctor![indexPath.row]
+//                    }
+//                }
+//            }
     }
-    */
 
 }

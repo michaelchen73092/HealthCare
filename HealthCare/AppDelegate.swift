@@ -8,44 +8,73 @@
 
 import UIKit
 import CoreData
-import AWS_Kit
+
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // Setting Front color and size for All NavigationBar
-        let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFontOfSize(17)
+        let navbarFont = UIFont(name: "HelveticaNeue-Light", size: 20) ?? UIFont.systemFont(ofSize: 17)
         registerForPushNotification(application)
         //UINavigationBar.appearance().barTintColor = UIColor(netHex: 0x003366)
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont,NSForegroundColorAttributeName: UIColor.white]
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
@@ -53,23 +82,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Push Notification
     var token:String?
-    func registerForPushNotification(application: UIApplication){
+    func registerForPushNotification(_ application: UIApplication){
         print("Function: \(#function), line: \(#line)")
-        let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert],categories: nil)
+        let notificationSettings = UIUserNotificationSettings(types: [.badge,.sound,.alert],categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
     }
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         print("Function: \(#function), line: \(#line)")
-        if notificationSettings.types != .None {
+        if notificationSettings.types != UIUserNotificationType() {
             print("get permission for remoteNotifications")
             application.registerForRemoteNotifications()
         }
     }
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Function: \(#function), line: \(#line)")
-        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
         var tokenString = ""
-        for i in 0..<deviceToken.length {
+        for i in 0..<deviceToken.count {
             tokenString +=  String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
         token = tokenString
@@ -89,19 +118,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          dynamoDBManger.dynamoDB.batchWriteItem(dynamoDBManger.transTowrite(obj_pari))*/
         
     }
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Function: \(#function), line: \(#line)")
         print("Failed to register:",error)
     }
-    func application(application: UIApplication,didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void){
+    func application(_ application: UIApplication,didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void){
         print("Function: \(#function), line: \(#line)")
         let aps = userInfo["aps"] as! [String:AnyObject]
         handleNotification(aps)
-        completionHandler(.NewData)
+        completionHandler(.newData)
         
         
     }
-    func handleNotification(aps:[String:AnyObject]){
+    func handleNotification(_ aps:[String:AnyObject]){
         let message = aps["alert"] as! String
         print(message)
     }
@@ -111,34 +140,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Core Data stack
 
-    lazy var applicationDocumentsDirectory: NSURL = {
+    lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "HealthCare.inc.HealthCare" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         //creat new framework bundle - Wei-Chih Chen
-        let PersonsKitBundle = NSBundle(identifier: "BoBiHealth.testKit")
+        let PersonsKitBundle = Bundle(identifier: "BoBiHealth.testKit")
         assert(PersonsKitBundle != nil, "Not assign correct Bundle identifier. In function: \(#function),")
-        let modelURL = PersonsKitBundle!.URLForResource("PersonsModel", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = PersonsKitBundle!.url(forResource: "PersonsModel", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
         } catch {
             // Report any error we got.
             var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data" as AnyObject?
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason as AnyObject?
 
             dict[NSUnderlyingErrorKey] = error as NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
@@ -154,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
@@ -209,75 +238,79 @@ extension String {
 
 extension Character {
     func isEmoji() -> Bool {
+        return false
+        // previous iOS 9.0 version
+        /*
         return Character(UnicodeScalar(0x1d000)) <= self && self <= Character(UnicodeScalar(0x1f77f))
             || Character(UnicodeScalar(0x1f900)) <= self && self <= Character(UnicodeScalar(0x1f9ff))
             || Character(UnicodeScalar(0x2100)) <= self && self <= Character(UnicodeScalar(0x26ff))
-    }
+         */
+ }
 }
 
 
 //check email format
-public func validateEmail(enteredEmail:String) -> Bool {
+public func validateEmail(_ enteredEmail:String) -> Bool {
     let emailFormat = "[A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-    return emailPredicate.evaluateWithObject(enteredEmail)
+    return emailPredicate.evaluate(with: enteredEmail)
     
 }
 
 //check name format
-public func validateName(enteredName:String) -> Bool {
+public func validateName(_ enteredName:String) -> Bool {
     // \\before execute simple turn execute simple as pure simple
     // use \\\\ to pure \ simple
     let nameFormat = "(?=.*[€£¥•~`!@#$%^&*()_+=,.:;<>?/{}\\[\\]|\\\\0123456789]).*$"
     let namePredicate = NSPredicate(format:"SELF MATCHES %@", nameFormat)
     
-    return namePredicate.evaluateWithObject(enteredName) || enteredName.containsEmoji() || (enteredName.rangeOfString(" ") != nil)
+    return namePredicate.evaluate(with: enteredName) || enteredName.containsEmoji() || (enteredName.range(of: " ") != nil)
 }
 
 
 //check password format
-public func validatePassword(enteredPassword: String) -> Bool {
+public func validatePassword(_ enteredPassword: String) -> Bool {
     // patten at least 6 characters : (?=^.{6,}$)
     // patten has at least a special words : (?=.*[!@#$%^&*]+)
     // patten has a number : (?=.*[0-9])
     // patten has a letter words : (?=.*[A-Za-z])
     let passwordFormat = "(?=^.{6,}$)(?=.*[!@#$%^&*()+])(?=.*[0-9])(?=.*[A-Za-z]).*$"
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
-    return emailPredicate.evaluateWithObject(enteredPassword)
+    return emailPredicate.evaluate(with: enteredPassword)
 }
 
 
 //check password format
-public func validateNumberOnly(entered: String) -> Bool {
+public func validateNumberOnly(_ entered: String) -> Bool {
     // patten at least 6 characters : (?=^.{6,}$)
     // patten has at least a special words : (?=.*[!@#$%^&*]+)
     // patten has a number : (?=.*[0-9])
     // patten has a letter words : (?=.*[A-Za-z])
     let numberFormat = "(?=.*[0-9]).*$"
     let numberPredicate = NSPredicate(format:"SELF MATCHES %@", numberFormat)
-    return numberPredicate.evaluateWithObject(entered)
+    return numberPredicate.evaluate(with: entered)
 }
 
 //check Resident Date format
-public func validateResidentDate(enteredResidentDate:String) -> Bool {
+public func validateResidentDate(_ enteredResidentDate:String) -> Bool {
     let ResidentDateFormat = "[0-9]{2,2}+/[0-9]{4,4}"
     let ResidentDatePredicate = NSPredicate(format:"SELF MATCHES %@", ResidentDateFormat)
-    if let sliceNotation = enteredResidentDate.rangeOfString("/"){
-        let month = Int(enteredResidentDate[enteredResidentDate.startIndex..<sliceNotation.startIndex])
-        let year = Int(enteredResidentDate[sliceNotation.endIndex..<enteredResidentDate.endIndex])
-        let currentdate = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: currentdate)
-        let currentyear =  Int(components.year)
+    if let sliceNotation = enteredResidentDate.range(of: "/"){
+        let month = Int(enteredResidentDate[enteredResidentDate.startIndex..<sliceNotation.lowerBound])
+        let year = Int(enteredResidentDate[sliceNotation.upperBound..<enteredResidentDate.endIndex])
+        let currentdate = Date()
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.day , .month , .year], from: currentdate)
+        let currentyear =  Int(components.year!)
         if month >= 1 && month <= 12 && year <= currentyear && year >= (currentyear - 15){
-            return ResidentDatePredicate.evaluateWithObject(enteredResidentDate)
+            return ResidentDatePredicate.evaluate(with: enteredResidentDate)
         }
     }
     return false
 }
 
 //check phone format
-public func validatePhone(enteredPhone:String) -> Bool {
+public func validatePhone(_ enteredPhone:String) -> Bool {
     let usaFormat = "^\\d{3}-\\d{3}-\\d{4}$"
     let usaPredicate = NSPredicate(format:"SELF MATCHES %@", usaFormat)
     let twFormat = "^09\\d{2}-\\d{3}-\\d{3}$"
@@ -286,30 +319,30 @@ public func validatePhone(enteredPhone:String) -> Bool {
     let twHomePredicate = NSPredicate(format:"SELF MATCHES %@", twHomeFormat)
     let allFormat = "^\\d{10}$"
     let allPredicate = NSPredicate(format:"SELF MATCHES %@", allFormat)
-    return usaPredicate.evaluateWithObject(enteredPhone) || twPredicate.evaluateWithObject(enteredPhone) || twHomePredicate.evaluateWithObject(enteredPhone) || allPredicate.evaluateWithObject(enteredPhone)
+    return usaPredicate.evaluate(with: enteredPhone) || twPredicate.evaluate(with: enteredPhone) || twHomePredicate.evaluate(with: enteredPhone) || allPredicate.evaluate(with: enteredPhone)
 }
 
 //wiggle animation
-public func wiggle(Field: UITextField, Duration: Double, RepeatCount: Float, Offset: CGFloat)
+public func wiggle(_ Field: UITextField, Duration: Double, RepeatCount: Float, Offset: CGFloat)
 {
     let animation = CABasicAnimation(keyPath: "position")
     animation.duration = Duration
     animation.repeatCount = RepeatCount
     animation.autoreverses = true
-    animation.fromValue = NSValue(CGPoint: CGPointMake(Field.center.x - Offset, Field.center.y))
-    animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
-    Field.layer.addAnimation(animation, forKey: "position")
+    animation.fromValue = NSValue(cgPoint: CGPoint(x: Field.center.x - Offset, y: Field.center.y))
+    animation.toValue = NSValue(cgPoint: CGPoint(x: Field.center.x + Offset, y: Field.center.y))
+    Field.layer.add(animation, forKey: "position")
 }
 
-public func wiggleInvalidtext(Field: UILabel, Duration: Double, RepeatCount: Float, Offset: CGFloat)
+public func wiggleInvalidtext(_ Field: UILabel, Duration: Double, RepeatCount: Float, Offset: CGFloat)
 {
     let animation = CABasicAnimation(keyPath: "position")
     animation.duration = Duration
     animation.repeatCount = RepeatCount
     animation.autoreverses = true
-    animation.fromValue = NSValue(CGPoint: CGPointMake(Field.center.x - Offset, Field.center.y))
-    animation.toValue = NSValue(CGPoint: CGPointMake(Field.center.x + Offset, Field.center.y))
-    Field.layer.addAnimation(animation, forKey: "position")
+    animation.fromValue = NSValue(cgPoint: CGPoint(x: Field.center.x - Offset, y: Field.center.y))
+    animation.toValue = NSValue(cgPoint: CGPoint(x: Field.center.x + Offset, y: Field.center.y))
+    Field.layer.add(animation, forKey: "position")
 }
 
 //global variable
@@ -332,10 +365,18 @@ public struct Storyboard {
     static let offLine = NSLocalizedString("Offline", comment: "In DoctorStartAfSpecialist's offline status")
     static let onLine = NSLocalizedString("Online", comment: "In DoctorStartAfSpecialist's online status")
     static let yearsOld = NSLocalizedString("Years Old", comment: "In patient waitlist, tell how old this patient is")
+    static let minutes = NSLocalizedString("Min", comment: "In your language, this one is for Short translate name for Minutes.")
+    static let fullNameMinutes = NSLocalizedString("Minutes", comment: "fullNameMinutes In your language, this one is for full translate name for Minutes.")
+    static let seconds = NSLocalizedString("Sec", comment: "In your language, this one is for Short translate name for seconds")
+    static let doctorTitle = NSLocalizedString("Dr.", comment: "Doctor title")
+    static let medicalHistory = NSLocalizedString("Medical History", comment: "Medical History")
+    static let internist = NSLocalizedString("Internist", comment: "intern doctor")
+    static let pgy = NSLocalizedString("PGY(Taiwan medical system only)", comment: "PGY is the system only in taiwan medical system")
+
 }
 
 //dismiss KB no matter which textfield is hitted
-public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIViewController){
+public func dismissKB(_ textField: UITextField, textField2: UITextField?, vc: UIViewController){
     if Storyboard.KBisON {
         vc.view.frame.origin.y += Storyboard.moveheight
         Storyboard.KBisON = false
@@ -345,14 +386,15 @@ public func dismissKB(textField: UITextField, textField2: UITextField?, vc: UIVi
 }
 
 //singleton for UIImagePickerController
-public class imagePickerControllerSingleton{
-    static var token: dispatch_once_t = 0 //for thread safe
-    private static var picker: UIImagePickerController?
+open class imagePickerControllerSingleton{
+    private static var __once: () = {
+                picker = UIImagePickerController()
+                }()
+    static var token: Int = 0 //for thread safe
+    fileprivate static var picker: UIImagePickerController?
     static func singleton() -> UIImagePickerController{
         if picker == nil{
-            dispatch_once(&token, {
-                picker = UIImagePickerController()
-                })
+            _ = imagePickerControllerSingleton.__once
             
         }
         return picker!
@@ -360,19 +402,40 @@ public class imagePickerControllerSingleton{
 }
 
 //singleton for resize
-public class resize{
-    static func singleton(image: UIImage, container: UIImage) -> UIImage{
+open class resize{
+    static func singleton(_ image: UIImage, container: UIImage) -> UIImage{
         let scale = max(container.size.height / image.size.height, container.size.width / image.size.width)
-        let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(scale, scale))
+        print("scale:\(scale)")
+        print("container.size.height:\(container.size.height)")
+        print("container.size.width:\(container.size.width)")
+        let size = image.size.applying(CGAffineTransform(scaleX: scale, y: scale))
         let autoScale : CGFloat = 0.0
         UIGraphicsBeginImageContextWithOptions(size, true, autoScale)
-        image.drawInRect(CGRect(origin: CGPointZero, size: size))
-        
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return scaledImage
+        return scaledImage!
+    }
+    static func relfieSingleton(_ image: UIImage, remote: Bool) -> UIImage{
+        //set image size as 100x100
+        var relfieSize : CGFloat = 100.0
+        if remote{
+            relfieSize = CGFloat(70.0)
+        }
+        let scale = max(relfieSize / image.size.height, relfieSize / image.size.width)
+        print("scale:\(scale)")
+        let size = image.size.applying(CGAffineTransform(scaleX: scale, y: scale))
+        let autoScale : CGFloat = 0.0
+        UIGraphicsBeginImageContextWithOptions(size, true, autoScale)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage!
     }
 }
+
+
+
 //application status
 public struct Status{
     static let underReview = "Under Review"
@@ -452,24 +515,24 @@ public struct School{
 public struct specialty{
     static let AllergyandImmunology = NSLocalizedString("Allergy and Immunology", comment: "Specialty category")
     static let Anesthesiology = NSLocalizedString("Anesthesiology", comment: "Specialty category")
-    static let Cardiologist = NSLocalizedString("Cardiologist", comment: "Specialty category")
+    static let Cardiologist = NSLocalizedString("Cardiology", comment: "Specialty category")
     static let ChineseMedicine = NSLocalizedString("Chinese Medicine", comment: "Specialty category")
     static let ColonandRectalSurgery = NSLocalizedString("Colon and Rectal Surgery", comment: "Specialty category")
     static let CosmeticSurgery = NSLocalizedString("Cosmetic Surgery", comment: "Specialty category")
-    static let Dentist = NSLocalizedString("Dentist", comment: "Specialty category")
+    static let Dentist = NSLocalizedString("Dentistry", comment: "Specialty category")
     static let Dermatology = NSLocalizedString("Dermatology", comment: "Specialty category")
     static let EmergencyMedicine = NSLocalizedString("Emergency Medicine", comment: "Specialty category")
-    static let Endocrinologist = NSLocalizedString("Endocrinologist", comment: "Specialty category")
+    static let Endocrinologist = NSLocalizedString("Endocrinology", comment: "Specialty category")
     static let FamilyMedicine = NSLocalizedString("Family Medicine", comment: "Specialty category")
-    static let Gastroenterologist = NSLocalizedString("Gastroenterologist", comment: "Specialty category")
+    static let Gastroenterologist = NSLocalizedString("Gastroenterology", comment: "Specialty category")
     static let InternalMedicine = NSLocalizedString("Internal Medicine", comment: "Specialty category")
-    static let InfectiousDiseasesSpecialist = NSLocalizedString("Infectious Diseases Specialist", comment: "Specialty category")
+    static let InfectiousDiseasesSpecialist = NSLocalizedString("Infectious Diseases", comment: "Specialty category")
     static let MedicalGeneticsandGenomics = NSLocalizedString("Medical Genetics and Genomics", comment: "Specialty category")
     static let NeurologicalSurgery = NSLocalizedString("Neurological Surgery", comment: "Specialty category")
     static let Neurology = NSLocalizedString("Neurology", comment: "Specialty category")
     static let NuclearMedicine = NSLocalizedString("Nuclear Medicine", comment: "Specialty category")
     static let ObstetricsandGynecology = NSLocalizedString("Obstetrics and Gynecology", comment: "Specialty category")
-    static let Oncologist = NSLocalizedString("Oncologist", comment: "Specialty category")
+    static let Oncologist = NSLocalizedString("Oncology", comment: "Specialty category")
     static let Ophthalmology = NSLocalizedString("Ophthalmology", comment: "Specialty category")
     static let OrthopaedicSurgery = NSLocalizedString("Orthopaedic Surgery", comment: "Specialty category")
     static let Otolaryngology = NSLocalizedString("Otolaryngology", comment: "Specialty category")
@@ -496,14 +559,16 @@ public struct specialty{
 
 public struct Ethnicity{
     static let AfricanAmerican = NSLocalizedString("African American", comment: "Ethnicity category")
-    static let Chinese = NSLocalizedString("Chinese", comment: "Ethnicity category")
+    static let Alaska = NSLocalizedString("Alaska Native", comment: "Ethnicity category")
+    static let Chinese = NSLocalizedString("Chinese People", comment: "Ethnicity category")
     static let EastAfrican = NSLocalizedString("East African", comment: "Ethnicity category")
     static let EastAsian = NSLocalizedString("East Asian", comment: "Ethnicity category")
     static let Fijian = NSLocalizedString("Fijian", comment: "Ethnicity category")
-    static let HispanicorLatinAmerican = NSLocalizedString("Hispanic or Latin American", comment: "Ethnicity category")
+    static let HispanicorLatinAmerican = NSLocalizedString("Hispanic or Latin", comment: "Ethnicity category")
     static let Indian = NSLocalizedString("Indian", comment: "Ethnicity category")
     static let Maori = NSLocalizedString("Maori", comment: "Ethnicity category")
     static let MiddleEastern = NSLocalizedString("Middle Eastern", comment: "Ethnicity category")
+    static let MiddleAsian = NSLocalizedString("Middle Asian", comment: "Ethnicity category")
     static let NZEuropeanorPakeha = NSLocalizedString("NZ European or Pakeha", comment: "Ethnicity category")
     static let NativeAmericanorInuit = NSLocalizedString("Native American or Inuit", comment: "Ethnicity category")
     static let NativeHawaiian = NSLocalizedString("Native Hawaiian", comment: "Ethnicity category")
@@ -517,36 +582,36 @@ public struct Ethnicity{
     static let Tongan = NSLocalizedString("Tongan", comment: "Ethnicity category")
     static let WhiteorCaucasian = NSLocalizedString("White or Caucasian", comment: "Ethnicity category")
     
-    static let ethnicity = [AfricanAmerican, Chinese, EastAfrican, EastAsian, Fijian, HispanicorLatinAmerican, Indian, Maori, MiddleEastern, NZEuropeanorPakeha, NativeAmericanorInuit, NativeHawaiian, Niuean, Other, OtherPacificPeoples, Samoan, SouthAsian, SouthEastAsian, Tokelauan, Tongan, WhiteorCaucasian]
+    static let ethnicity = [AfricanAmerican, Alaska, Chinese, EastAfrican, EastAsian, Fijian, HispanicorLatinAmerican, Indian, Maori, MiddleEastern, MiddleAsian, NZEuropeanorPakeha, NativeAmericanorInuit, NativeHawaiian, Niuean, Other, OtherPacificPeoples, Samoan, SouthAsian, SouthEastAsian, Tokelauan, Tongan, WhiteorCaucasian]
     
 }
 
 
 //from index to print string
-public func printLanguage(tempDoctordoctorLanguage: String ) -> String{
+public func printLanguage(_ tempDoctordoctorLanguage: String ) -> String{
     //need to check if tempDoctor?.doctorLanguage != nil && tempDoctor?.doctorLanguage != ""
     var languageString = ""
     var tempDoctorLanguage = tempDoctordoctorLanguage
     while(tempDoctorLanguage != ""){
         var temp = ""
-        if let decimalRange = tempDoctorLanguage.rangeOfString(" ,"){
-            temp = tempDoctorLanguage[tempDoctorLanguage.startIndex..<decimalRange.startIndex]
+        if let decimalRange = tempDoctorLanguage.range(of: " ,"){
+            temp = tempDoctorLanguage[tempDoctorLanguage.startIndex..<decimalRange.lowerBound]
             // it's possible there are two blank
-            if let blank = temp.rangeOfString(" "){
-                temp.removeAtIndex(blank.startIndex)
+            if let blank = temp.range(of: " "){
+                temp.remove(at: blank.lowerBound)
             }
-            if let blank = temp.rangeOfString(" "){
-                temp.removeAtIndex(blank.startIndex)
+            if let blank = temp.range(of: " "){
+                temp.remove(at: blank.lowerBound)
             }
-            tempDoctorLanguage.removeRange(tempDoctorLanguage.startIndex..<decimalRange.endIndex)
+            tempDoctorLanguage.removeSubrange(tempDoctorLanguage.startIndex..<decimalRange.upperBound)
         }
         else if tempDoctorLanguage != ""{
             temp = tempDoctorLanguage
-            if let blank = temp.rangeOfString(" "){
-                temp.removeAtIndex(blank.startIndex)
+            if let blank = temp.range(of: " "){
+                temp.remove(at: blank.lowerBound)
             }
-            if let blank = temp.rangeOfString(" "){
-                temp.removeAtIndex(blank.startIndex)
+            if let blank = temp.range(of: " "){
+                temp.remove(at: blank.lowerBound)
             }
             tempDoctorLanguage = ""
         }
@@ -572,16 +637,3 @@ public func printLanguage(tempDoctordoctorLanguage: String ) -> String{
     return languageString
 }
 
-
-//personal medical record
-public struct medicalRecord{
-    let time : NSDate?
-    let duration : Int?
-    let doctorFirstName : String?
-    let doctorLastName : String?
-    let doctorImageRemoteURL : String?
-    let diseases : [String]?
-    let medicines : [String]?
-    let treatment : [String]?
-    let referral : Bool?
-}
